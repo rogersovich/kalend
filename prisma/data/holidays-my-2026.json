@@ -1,0 +1,160 @@
+{
+  "country": "MY",
+  "year": 2026,
+  "holidays": [
+    {
+      "date": "2026-01-01",
+      "name": "New Year's Day",
+      "type": "national",
+      "description": "First day of the Gregorian calendar year",
+      "region": null
+    },
+    {
+      "date": "2026-02-01",
+      "name": "Federal Territory Day",
+      "type": "regional",
+      "description": "Celebration of the Federal Territory status",
+      "region": "KUL"
+    },
+    {
+      "date": "2026-02-01",
+      "name": "Federal Territory Day",
+      "type": "regional",
+      "description": "Celebration of the Federal Territory status",
+      "region": "LBN"
+    },
+    {
+      "date": "2026-02-01",
+      "name": "Federal Territory Day",
+      "type": "regional",
+      "description": "Celebration of the Federal Territory status",
+      "region": "PJY"
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Chinese New Year",
+      "type": "national",
+      "description": "Lunar New Year, Year of the Horse",
+      "region": null
+    },
+    {
+      "date": "2026-02-18",
+      "name": "Chinese New Year (Second Day)",
+      "type": "national",
+      "description": "Second day of Chinese New Year celebrations",
+      "region": null
+    },
+    {
+      "date": "2026-03-20",
+      "name": "Hari Raya Aidilfitri",
+      "type": "national",
+      "description": "First day of Eid ul-Fitr celebrations",
+      "region": null
+    },
+    {
+      "date": "2026-03-21",
+      "name": "Hari Raya Aidilfitri (Second Day)",
+      "type": "national",
+      "description": "Second day of Eid ul-Fitr celebrations",
+      "region": null
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Good Friday",
+      "type": "regional",
+      "description": "Commemoration of crucifixion of Jesus Christ",
+      "region": "SBH"
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Good Friday",
+      "type": "regional",
+      "description": "Commemoration of crucifixion of Jesus Christ",
+      "region": "SWK"
+    },
+    {
+      "date": "2026-05-01",
+      "name": "Labour Day",
+      "type": "national",
+      "description": "International Workers' Day",
+      "region": null
+    },
+    {
+      "date": "2026-05-14",
+      "name": "Nuzul Al-Quran",
+      "type": "national",
+      "description": "Revelation of the Quran",
+      "region": null
+    },
+    {
+      "date": "2026-05-22",
+      "name": "Wesak Day",
+      "type": "national",
+      "description": "Buddha's Birthday and Enlightenment Day",
+      "region": null
+    },
+    {
+      "date": "2026-05-26",
+      "name": "Hari Raya Aidiladha",
+      "type": "national",
+      "description": "Feast of Sacrifice",
+      "region": null
+    },
+    {
+      "date": "2026-06-01",
+      "name": "Yang di-Pertuan Agong's Birthday",
+      "type": "national",
+      "description": "Official birthday of Malaysia's King",
+      "region": null
+    },
+    {
+      "date": "2026-06-16",
+      "name": "Awal Muharram",
+      "type": "national",
+      "description": "Islamic New Year 1448H",
+      "region": null
+    },
+    {
+      "date": "2026-08-31",
+      "name": "National Day",
+      "type": "national",
+      "description": "Malaysia Independence Day, Hari Merdeka",
+      "region": null
+    },
+    {
+      "date": "2026-08-25",
+      "name": "Maulidur Rasul",
+      "type": "national",
+      "description": "Prophet Muhammad's Birthday",
+      "region": null
+    },
+    {
+      "date": "2026-09-16",
+      "name": "Malaysia Day",
+      "type": "national",
+      "description": "Malaysia Day, formation of Federation",
+      "region": null
+    },
+    {
+      "date": "2026-11-08",
+      "name": "Deepavali",
+      "type": "national",
+      "description": "Festival of Lights celebrated by Hindus",
+      "region": null
+    },
+    {
+      "date": "2026-12-10",
+      "name": "Sultan Selangor's Birthday",
+      "type": "regional",
+      "description": "Birthday of the Sultan of Selangor",
+      "region": "SGR"
+    },
+    {
+      "date": "2026-12-25",
+      "name": "Christmas Day",
+      "type": "national",
+      "description": "Celebration of birth of Jesus Christ",
+      "region": null
+    }
+  ]
+}

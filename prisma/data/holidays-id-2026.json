@@ -1,0 +1,174 @@
+{
+  "country": "ID",
+  "year": 2026,
+  "holidays": [
+    {
+      "date": "2026-01-01",
+      "name": "Tahun Baru Masehi",
+      "type": "national",
+      "description": "Hari pertama tahun baru kalender Gregorian",
+      "region": null
+    },
+    {
+      "date": "2026-01-02",
+      "name": "Cuti Bersama Tahun Baru",
+      "type": "joint-leave",
+      "description": "Cuti bersama Tahun Baru Masehi",
+      "region": null
+    },
+    {
+      "date": "2026-01-16",
+      "name": "Isra Mi'raj Nabi Muhammad SAW",
+      "type": "national",
+      "description": "Peringatan perjalanan malam Nabi Muhammad SAW ke langit",
+      "region": null
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Tahun Baru Imlek 2577",
+      "type": "national",
+      "description": "Tahun Baru Imlek, perayaan tahun baru masyarakat Tionghoa",
+      "region": null
+    },
+    {
+      "date": "2026-03-20",
+      "name": "Hari Raya Idul Fitri 1447 H",
+      "type": "national",
+      "description": "Hari kemenangan umat Islam setelah bulan Ramadhan",
+      "region": null
+    },
+    {
+      "date": "2026-03-21",
+      "name": "Hari Raya Idul Fitri 1447 H (Kedua)",
+      "type": "national",
+      "description": "Hari kedua Idul Fitri 1447 H",
+      "region": null
+    },
+    {
+      "date": "2026-03-16",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1447 H",
+      "region": null
+    },
+    {
+      "date": "2026-03-17",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1447 H",
+      "region": null
+    },
+    {
+      "date": "2026-03-18",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1447 H",
+      "region": null
+    },
+    {
+      "date": "2026-03-19",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1447 H",
+      "region": null
+    },
+    {
+      "date": "2026-03-23",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1447 H",
+      "region": null
+    },
+    {
+      "date": "2026-03-24",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1447 H",
+      "region": null
+    },
+    {
+      "date": "2026-03-17",
+      "name": "Hari Suci Nyepi",
+      "type": "national",
+      "description": "Tahun Baru Saka 1948, hari raya umat Hindu",
+      "region": null
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Wafat Isa Almasih",
+      "type": "national",
+      "description": "Good Friday, peringatan wafatnya Yesus Kristus",
+      "region": null
+    },
+    {
+      "date": "2026-05-01",
+      "name": "Hari Buruh Internasional",
+      "type": "national",
+      "description": "May Day, hari peringatan perjuangan kaum buruh",
+      "region": null
+    },
+    {
+      "date": "2026-05-14",
+      "name": "Kenaikan Isa Almasih",
+      "type": "national",
+      "description": "Peringatan kenaikan Yesus Kristus ke surga",
+      "region": null
+    },
+    {
+      "date": "2026-05-27",
+      "name": "Hari Raya Waisak 2570",
+      "type": "national",
+      "description": "Hari raya umat Buddha",
+      "region": null
+    },
+    {
+      "date": "2026-05-27",
+      "name": "Hari Raya Idul Adha 1447 H",
+      "type": "national",
+      "description": "Hari raya kurban umat Islam",
+      "region": null
+    },
+    {
+      "date": "2026-06-01",
+      "name": "Hari Lahir Pancasila",
+      "type": "national",
+      "description": "Peringatan lahirnya Pancasila sebagai dasar negara Indonesia",
+      "region": null
+    },
+    {
+      "date": "2026-06-17",
+      "name": "Tahun Baru Islam 1448 H",
+      "type": "national",
+      "description": "Tahun baru hijriah 1448 H",
+      "region": null
+    },
+    {
+      "date": "2026-08-17",
+      "name": "Hari Kemerdekaan Republik Indonesia",
+      "type": "national",
+      "description": "Peringatan Proklamasi Kemerdekaan RI pada 17 Agustus 1945",
+      "region": null
+    },
+    {
+      "date": "2026-08-18",
+      "name": "Cuti Bersama HUT RI",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Kemerdekaan RI",
+      "region": null
+    },
+    {
+      "date": "2026-08-25",
+      "name": "Maulid Nabi Muhammad SAW",
+      "type": "national",
+      "description": "Peringatan kelahiran Nabi Muhammad SAW",
+      "region": null
+    },
+    {
+      "date": "2026-12-25",
+      "name": "Hari Raya Natal",
+      "type": "national",
+      "description": "Hari Natal, perayaan kelahiran Yesus Kristus",
+      "region": null
+    }
+  ]
+}

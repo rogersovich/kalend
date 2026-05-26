@@ -1,0 +1,195 @@
+{
+  "country": "ID",
+  "year": 2025,
+  "holidays": [
+    {
+      "date": "2025-01-01",
+      "name": "Tahun Baru Masehi",
+      "type": "national",
+      "description": "Hari pertama tahun baru kalender Gregorian",
+      "region": null
+    },
+    {
+      "date": "2025-01-27",
+      "name": "Isra Mi'raj Nabi Muhammad SAW",
+      "type": "national",
+      "description": "Peringatan perjalanan malam Nabi Muhammad SAW ke langit",
+      "region": null
+    },
+    {
+      "date": "2025-01-28",
+      "name": "Cuti Bersama Isra Mi'raj",
+      "type": "joint-leave",
+      "description": "Cuti bersama dalam rangka Isra Mi'raj",
+      "region": null
+    },
+    {
+      "date": "2025-01-29",
+      "name": "Tahun Baru Imlek 2576",
+      "type": "national",
+      "description": "Tahun Baru Imlek, perayaan tahun baru masyarakat Tionghoa",
+      "region": null
+    },
+    {
+      "date": "2025-03-29",
+      "name": "Hari Suci Nyepi",
+      "type": "national",
+      "description": "Tahun Baru Saka 1947, hari raya umat Hindu",
+      "region": null
+    },
+    {
+      "date": "2025-03-28",
+      "name": "Wafat Isa Almasih",
+      "type": "national",
+      "description": "Good Friday, peringatan wafatnya Yesus Kristus",
+      "region": null
+    },
+    {
+      "date": "2025-03-31",
+      "name": "Hari Raya Idul Fitri 1446 H",
+      "type": "national",
+      "description": "Hari kemenangan umat Islam setelah bulan Ramadhan",
+      "region": null
+    },
+    {
+      "date": "2025-04-01",
+      "name": "Hari Raya Idul Fitri 1446 H (Kedua)",
+      "type": "national",
+      "description": "Hari kedua Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-03-24",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-03-25",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-03-26",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-03-27",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-04-02",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-04-03",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-04-04",
+      "name": "Cuti Bersama Idul Fitri",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Idul Fitri 1446 H",
+      "region": null
+    },
+    {
+      "date": "2025-04-18",
+      "name": "Wafat Isa Almasih",
+      "type": "national",
+      "description": "Good Friday, peringatan wafatnya Yesus Kristus",
+      "region": null
+    },
+    {
+      "date": "2025-05-01",
+      "name": "Hari Buruh Internasional",
+      "type": "national",
+      "description": "May Day, hari peringatan perjuangan kaum buruh",
+      "region": null
+    },
+    {
+      "date": "2025-05-12",
+      "name": "Hari Raya Waisak 2569",
+      "type": "national",
+      "description": "Hari raya umat Buddha memperingati kelahiran, pencerahan, dan wafatnya Sang Buddha",
+      "region": null
+    },
+    {
+      "date": "2025-05-13",
+      "name": "Cuti Bersama Waisak",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Waisak",
+      "region": null
+    },
+    {
+      "date": "2025-05-29",
+      "name": "Kenaikan Isa Almasih",
+      "type": "national",
+      "description": "Peringatan kenaikan Yesus Kristus ke surga",
+      "region": null
+    },
+    {
+      "date": "2025-06-01",
+      "name": "Hari Lahir Pancasila",
+      "type": "national",
+      "description": "Peringatan lahirnya Pancasila sebagai dasar negara Indonesia",
+      "region": null
+    },
+    {
+      "date": "2025-06-06",
+      "name": "Hari Raya Idul Adha 1446 H",
+      "type": "national",
+      "description": "Hari raya kurban umat Islam",
+      "region": null
+    },
+    {
+      "date": "2025-06-27",
+      "name": "Tahun Baru Islam 1447 H",
+      "type": "national",
+      "description": "Tahun baru hijriah 1447 H",
+      "region": null
+    },
+    {
+      "date": "2025-08-17",
+      "name": "Hari Kemerdekaan Republik Indonesia",
+      "type": "national",
+      "description": "Peringatan Proklamasi Kemerdekaan RI pada 17 Agustus 1945",
+      "region": null
+    },
+    {
+      "date": "2025-09-05",
+      "name": "Maulid Nabi Muhammad SAW",
+      "type": "national",
+      "description": "Peringatan kelahiran Nabi Muhammad SAW",
+      "region": null
+    },
+    {
+      "date": "2025-12-25",
+      "name": "Hari Raya Natal",
+      "type": "national",
+      "description": "Hari Natal, perayaan kelahiran Yesus Kristus",
+      "region": null
+    },
+    {
+      "date": "2025-12-26",
+      "name": "Cuti Bersama Natal",
+      "type": "joint-leave",
+      "description": "Cuti bersama Hari Raya Natal",
+      "region": null
+    }
+  ]
+}

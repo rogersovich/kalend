@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Country {
+  id        String    @id @default(uuid()) @db.Uuid
+  code      String    @unique @db.VarChar(2)
+  name      String
+  timezone  String
+  locale    String
+  isActive  Boolean   @default(true) @map("is_active")
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+  regions   Region[]
+  holidays  Holiday[]
+
+  @@map("countries")
+}
+
+model Region {
+  id        String    @id @default(uuid()) @db.Uuid
+  countryId String    @map("country_id") @db.Uuid
+  code      String    @db.VarChar(8)
+  name      String
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+  country   Country   @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  holidays  Holiday[]
+
+  @@unique([countryId, code])
+  @@index([countryId])
+  @@map("regions")
+}
+
+model Holiday {
+  id          String   @id @default(uuid()) @db.Uuid
+  countryId   String   @map("country_id") @db.Uuid
+  regionId    String?  @map("region_id") @db.Uuid
+  date        DateTime @db.Date
+  type        String   @db.VarChar(32)
+  name        String
+  description String?
+  isRecurring Boolean  @default(false) @map("is_recurring")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+  country     Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  region      Region?  @relation(fields: [regionId], references: [id], onDelete: Cascade)
+
+  @@index([countryId, date])
+  @@index([date])
+  @@index([regionId])
+  @@map("holidays")
+}
+
+model Profile {
+  id        String      @id @db.Uuid
+  name      String?
+  provider  String
+  createdAt DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime    @updatedAt @map("updated_at") @db.Timestamptz(6)
+  events    UserEvent[]
+  apiKeys   ApiKey[]
+
+  @@map("profiles")
+}
+
+model UserEvent {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  title     String
+  date      DateTime  @db.Date
+  endDate   DateTime? @map("end_date") @db.Date
+  color     String?   @db.VarChar(32)
+  note      String?
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+  user      Profile   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+  @@map("user_events")
+}
+
+model ApiKey {
+  id         String        @id @default(uuid()) @db.Uuid
+  userId     String        @map("user_id") @db.Uuid
+  key        String        @unique
+  name       String
+  tier       String        @default("free") @db.VarChar(32)
+  rateLimit  Int           @default(100) @map("rate_limit")
+  isActive   Boolean       @default(true) @map("is_active")
+  lastUsedAt DateTime?     @map("last_used_at") @db.Timestamptz(6)
+  createdAt  DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt  DateTime      @updatedAt @map("updated_at") @db.Timestamptz(6)
+  user       Profile       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  usageLogs  ApiUsageLog[]
+
+  @@index([userId])
+  @@map("api_keys")
+}
+
+model ApiUsageLog {
+  id         String   @id @default(uuid()) @db.Uuid
+  apiKeyId   String   @map("api_key_id") @db.Uuid
+  endpoint   String
+  country    String?  @db.VarChar(2)
+  statusCode Int      @map("status_code")
+  responseMs Int?     @map("response_ms")
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  apiKey     ApiKey   @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+
+  @@index([apiKeyId, createdAt])
+  @@map("api_usage_logs")
+}
