@@ -1,15 +1,13 @@
 import { HolidayData } from "@/lib/calendar/holidays";
-import { Badge } from "@/components/ui/badge";
-import { PartyPopper } from "lucide-react";
 
 interface HolidayDetailCardProps {
   holidays: HolidayData[];
 }
 
-const TYPE_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
-  national: { label: "Libur Nasional", color: "bg-error/10 text-error border-error/20", icon: "🔴" },
-  "joint-leave": { label: "Cuti Bersama", color: "bg-badge-orange/10 text-badge-orange border-badge-orange/20", icon: "🟠" },
-  regional: { label: "Libur Daerah", color: "bg-badge-violet/10 text-badge-violet border-badge-violet/20", icon: "🟣" },
+const TYPE_CONFIG: Record<string, { label: string; bg: string }> = {
+  national:      { label: "Libur Nasional", bg: "bg-block-coral" },
+  "joint-leave": { label: "Cuti Bersama",   bg: "bg-block-cream" },
+  regional:      { label: "Libur Daerah",   bg: "bg-block-lilac" },
 };
 
 export default function HolidayDetailCard({ holidays }: HolidayDetailCardProps) {
@@ -20,27 +18,18 @@ export default function HolidayDetailCard({ holidays }: HolidayDetailCardProps) 
       {holidays.map((h) => {
         const cfg = TYPE_CONFIG[h.type] ?? TYPE_CONFIG.national;
         return (
-          <div key={h.id} className="rounded-lg border border-hairline bg-canvas p-lg">
-            <div className="mb-sm flex items-center gap-xs">
-              <PartyPopper className="h-4 w-4 text-muted" />
-              <span className="text-caption font-semibold uppercase tracking-wide text-muted">
-                Hari Libur
-              </span>
-            </div>
-
-            <div className="flex items-start justify-between gap-sm">
-              <h2 className="font-display text-title-md font-semibold text-ink">{h.name}</h2>
-              <Badge variant="outline" className={`shrink-0 text-[10px] ${cfg.color}`}>
-                {cfg.icon} {cfg.label}
-              </Badge>
-            </div>
-
+          <div key={h.id} className={`${cfg.bg} rounded-lg p-lg`}>
+            <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">
+              {cfg.label}
+            </p>
+            <h2 className="font-display text-headline font-normal text-ink">{h.name}</h2>
             {h.description && (
-              <p className="mt-xs text-body-sm text-muted leading-relaxed">{h.description}</p>
+              <p className="mt-sm font-display text-body-sm leading-relaxed text-ink">
+                {h.description}
+              </p>
             )}
-
             {h.regionName && (
-              <p className="mt-xs text-caption text-muted">Berlaku di: {h.regionName}</p>
+              <p className="mt-xs font-mono text-caption text-ink/60">Berlaku di: {h.regionName}</p>
             )}
           </div>
         );

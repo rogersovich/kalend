@@ -13,40 +13,37 @@ export default function YearNav({ year, country }: YearNavProps) {
   const nextYear = year + 1;
 
   return (
-    <div className="flex items-center gap-md">
+    <div className="flex items-center gap-lg">
       {prevYear >= MIN_YEAR ? (
         <Link
           href={`/${prevYear}${countryParam}`}
-          className="flex items-center gap-xs font-mono text-caption text-ink/60 transition-colors hover:text-ink"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors hover:bg-primary hover:text-white"
           aria-label={`Kalender ${prevYear}`}
         >
-          <ChevronLeft className="h-4 w-4" />
-          {prevYear}
+          <ChevronLeft className="h-5 w-5" />
         </Link>
       ) : (
-        <span className="flex items-center gap-xs font-mono text-caption text-ink/20 cursor-not-allowed select-none">
-          <ChevronLeft className="h-4 w-4" />
-          {prevYear}
+        <span className="flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full bg-surface-soft text-ink/20 select-none">
+          <ChevronLeft className="h-5 w-5" />
         </span>
       )}
 
-      <h1 className="font-display text-display-sm text-ink">
-        Kalender {year}
-      </h1>
+      <div className="text-center">
+        <h1 className="font-display text-display-lg font-normal text-ink">{year}</h1>
+        <p className="font-mono text-caption uppercase tracking-widest text-ink/50">Kalender</p>
+      </div>
 
       {nextYear <= MAX_YEAR ? (
         <Link
           href={`/${nextYear}${countryParam}`}
-          className="flex items-center gap-xs font-mono text-caption text-ink/60 transition-colors hover:text-ink"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors hover:bg-primary hover:text-white"
           aria-label={`Kalender ${nextYear}`}
         >
-          {nextYear}
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-5 w-5" />
         </Link>
       ) : (
-        <span className="flex items-center gap-xs font-mono text-caption text-ink/20 cursor-not-allowed select-none">
-          {nextYear}
-          <ChevronRight className="h-4 w-4" />
+        <span className="flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full bg-surface-soft text-ink/20 select-none">
+          <ChevronRight className="h-5 w-5" />
         </span>
       )}
     </div>

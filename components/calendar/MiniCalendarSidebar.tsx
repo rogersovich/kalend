@@ -34,19 +34,19 @@ export default function MiniCalendarSidebar({
   const holidayDates = new Set(
     holidays.map((h) => {
       const d = new Date(h.date);
-      return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
+      return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     })
   );
 
   return (
-    <div className="rounded-lg border border-hairline bg-canvas p-md">
-      <p className="mb-sm text-center text-caption font-semibold text-muted">
+    <div className="rounded-lg bg-block-cream p-md">
+      <p className="mb-sm text-center font-mono text-caption uppercase tracking-widest text-ink/60">
         {MONTH_NAMES_ID[month - 1]} {year}
       </p>
 
       <div className="mb-xs grid grid-cols-7">
         {DAY_NAMES_ID.map((d) => (
-          <div key={d} className="text-center text-[9px] font-medium text-muted">{d}</div>
+          <div key={d} className="text-center font-mono text-[9px] font-medium text-ink/50">{d}</div>
         ))}
       </div>
 
@@ -56,7 +56,7 @@ export default function MiniCalendarSidebar({
 
           const d = cell.date;
           const isActive = d.getDate() === activeDate.getDate();
-          const dayStr = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
+          const dayStr = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
           const isHoliday = holidayDates.has(dayStr);
           const isWeekend = d.getDay() === 0 || d.getDay() === 6;
 
@@ -66,10 +66,11 @@ export default function MiniCalendarSidebar({
               href={`/${year}/${monthSlug}/${d.getDate()}${qs}`}
               className={cn(
                 "flex h-6 w-full items-center justify-center rounded-full font-mono text-[11px] transition-colors",
-                isActive && "bg-brand-accent text-white font-semibold",
+                isActive && "bg-primary text-white font-semibold",
                 !isActive && isHoliday && "text-error font-semibold",
-                !isActive && isWeekend && !isHoliday && "text-muted",
-                !isActive && "hover:bg-surface-soft"
+                !isActive && isWeekend && !isHoliday && "text-ink/40",
+                !isActive && !isHoliday && !isWeekend && "text-ink",
+                !isActive && "hover:bg-black/10"
               )}
             >
               {d.getDate()}

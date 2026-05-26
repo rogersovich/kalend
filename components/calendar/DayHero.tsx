@@ -1,10 +1,15 @@
 import { HolidayData } from "@/lib/calendar/holidays";
 import { DAY_NAMES_FULL_ID, MONTH_NAMES_ID } from "@/lib/calendar/constants";
-import { Badge } from "@/components/ui/badge";
 
 interface DayHeroProps {
   date: Date;
   holidays: HolidayData[];
+}
+
+function getBg(holidays: HolidayData[]): string {
+  if (holidays.some((h) => h.type === "national")) return "bg-block-coral";
+  if (holidays.some((h) => h.type === "joint-leave")) return "bg-block-cream";
+  return "bg-block-mint";
 }
 
 export default function DayHero({ date, holidays }: DayHeroProps) {
@@ -15,31 +20,26 @@ export default function DayHero({ date, holidays }: DayHeroProps) {
 
   const nationalHoliday = holidays.find((h) => h.type === "national");
   const jointLeave = holidays.find((h) => h.type === "joint-leave");
+  const holidayName = nationalHoliday?.name ?? jointLeave?.name ?? null;
+  const holidayType = nationalHoliday
+    ? "Hari Libur Nasional"
+    : jointLeave
+    ? "Cuti Bersama"
+    : null;
 
   return (
-    <div className="rounded-xl border border-hairline bg-canvas p-xl">
-      <div className="flex flex-wrap items-start gap-sm">
-        {nationalHoliday && (
-          <Badge className="bg-error/10 text-error border-error/20" variant="outline">
-            🔴 Hari Libur Nasional
-          </Badge>
-        )}
-        {jointLeave && (
-          <Badge className="bg-badge-orange/10 text-badge-orange border-badge-orange/20" variant="outline">
-            🟠 Cuti Bersama
-          </Badge>
-        )}
-      </div>
-
-      <h1 className="mt-sm font-display text-display-md font-semibold text-ink">
-        {dayName}, {day} {monthName} {year}
+    <div className={`${getBg(holidays)} rounded-lg p-xxl`}>
+      <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-ink/60">
+        {holidayType ?? dayName}
+      </p>
+      <h1 className="font-display text-display-lg font-normal text-ink">
+        {day} {monthName} {year}
       </h1>
-
-      {nationalHoliday && (
-        <p className="mt-xs text-title-md text-muted">{nationalHoliday.name}</p>
+      {holidayName && (
+        <p className="mt-sm font-display text-headline text-ink">{holidayName}</p>
       )}
-      {!nationalHoliday && jointLeave && (
-        <p className="mt-xs text-title-md text-muted">{jointLeave.name}</p>
+      {!holidayName && (
+        <p className="mt-sm font-display text-body-lg text-ink">{dayName}</p>
       )}
     </div>
   );

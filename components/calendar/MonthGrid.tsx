@@ -118,6 +118,8 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
               showWeton={cell.inMonth}
               size="full"
               eventColors={eventColors}
+              isLastRow={i >= cells.length - 7}
+              isLastCol={i % 7 === 6}
               onClick={cell.inMonth ? () => navigateToDay(cell.date) : undefined}
             />
           );

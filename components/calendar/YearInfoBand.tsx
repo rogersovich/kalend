@@ -1,12 +1,18 @@
 import { HolidayData } from "@/lib/calendar/holidays";
 import { getShio, getHijriYears } from "@/lib/calendar/constants";
-import { CalendarDays, Sun, Star } from "lucide-react";
 
 interface YearInfoBandProps {
   year: number;
   holidays: HolidayData[];
   country: string;
 }
+
+const CARD_COLORS = [
+  "bg-block-lime",
+  "bg-block-coral",
+  "bg-block-lilac",
+  "bg-block-mint",
+];
 
 export default function YearInfoBand({ year, holidays, country }: YearInfoBandProps) {
   const nationalCount = holidays.filter((h) => h.type === "national").length;
@@ -15,33 +21,23 @@ export default function YearInfoBand({ year, holidays, country }: YearInfoBandPr
   const shio = country === "ID" ? getShio(year) : null;
 
   const stats = [
-    { icon: <CalendarDays className="h-4 w-4" />, label: "Hari Libur Nasional", value: nationalCount },
-    { icon: <Sun className="h-4 w-4" />, label: "Cuti Bersama", value: jointLeaveCount },
+    { value: String(nationalCount), label: "Hari Libur Nasional" },
+    { value: String(jointLeaveCount), label: "Cuti Bersama" },
+    { value: hijri, label: "Tahun Hijriyah" },
+    ...(shio ? [{ value: shio, label: "Shio" }] : []),
   ];
 
   return (
-    <div className="rounded-lg border border-hairline bg-surface-soft px-lg py-md">
-      <div className="flex flex-wrap items-center gap-lg">
-        {stats.map((s) => (
-          <div key={s.label} className="flex items-center gap-xs">
-            <span className="text-ink/50">{s.icon}</span>
-            <span className="font-mono text-title-sm font-semibold text-ink">{s.value}</span>
-            <span className="font-display text-body-sm text-ink">{s.label}</span>
-          </div>
-        ))}
-
-        <div className="flex items-center gap-xs font-display text-body-sm text-ink">
-          <span>📅</span>
-          <span>{hijri}</span>
+    <div className="grid grid-cols-2 gap-md sm:grid-cols-4">
+      {stats.map((s, i) => (
+        <div
+          key={s.label}
+          className={`${CARD_COLORS[i % CARD_COLORS.length]} rounded-lg p-md`}
+        >
+          <p className="font-display text-display-sm font-normal text-ink">{s.value}</p>
+          <p className="mt-xs font-mono text-caption uppercase tracking-widest text-ink/60">{s.label}</p>
         </div>
-
-        {shio && (
-          <div className="flex items-center gap-xs font-display text-body-sm text-ink">
-            <Star className="h-3.5 w-3.5" />
-            <span>Tahun {shio}</span>
-          </div>
-        )}
-      </div>
+      ))}
     </div>
   );
 }

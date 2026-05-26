@@ -2,7 +2,6 @@ import { HolidayData, countWorkdays } from "@/lib/calendar/holidays";
 import HolidayList from "./HolidayList";
 import AddEventButton from "./AddEventButton";
 import PDFDownloadButton from "@/components/pdf/PDFDownloadButton";
-import { Briefcase } from "lucide-react";
 
 interface MonthSidebarProps {
   year: number;
@@ -19,35 +18,32 @@ export default function MonthSidebar({ year, month, country, holidays }: MonthSi
 
   return (
     <aside className="flex flex-col gap-lg">
-      {/* Working days */}
-      <div className="rounded-lg border border-hairline bg-canvas p-lg">
-        <div className="flex items-center gap-xs text-muted mb-sm">
-          <Briefcase className="h-4 w-4" />
-          <span className="text-caption font-semibold uppercase tracking-wide">Hari Kerja</span>
-        </div>
-        <p className="font-mono text-display-sm font-semibold text-ink">{workdays}</p>
-        <p className="text-body-sm text-muted">hari kerja bulan ini</p>
+      {/* Working days — color block coral */}
+      <div className="rounded-lg bg-block-coral p-lg">
+        <p className="mb-xs font-mono text-caption uppercase tracking-widest text-ink/60">Hari Kerja</p>
+        <p className="font-display text-display-sm font-normal text-ink">{workdays}</p>
+        <p className="font-display text-body-sm text-ink">hari kerja bulan ini</p>
       </div>
 
-      {/* Holiday list */}
-      <div className="rounded-lg border border-hairline bg-canvas p-lg">
-        <h3 className="mb-md text-caption font-semibold uppercase tracking-wide text-muted">
+      {/* Holiday list — color block lime */}
+      <div className="rounded-lg bg-block-lime p-lg">
+        <h3 className="mb-md font-mono text-caption uppercase tracking-widest text-ink/60">
           Hari Libur Bulan Ini
         </h3>
         <HolidayList holidays={nationalHolidays} month={month} />
       </div>
 
-      {/* Add event */}
-      <div className="rounded-lg border border-hairline bg-canvas p-lg">
-        <h3 className="mb-sm text-caption font-semibold uppercase tracking-wide text-muted">
+      {/* Add event — color block cream */}
+      <div className="rounded-lg bg-block-cream p-lg">
+        <h3 className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">
           Event Saya
         </h3>
         <AddEventButton />
       </div>
 
-      {/* Download PDF */}
-      <div className="rounded-lg border border-hairline bg-canvas p-lg">
-        <h3 className="mb-sm text-caption font-semibold uppercase tracking-wide text-muted">
+      {/* Download — flat surface */}
+      <div className="rounded-lg bg-surface-soft p-lg">
+        <h3 className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">
           Download
         </h3>
         <PDFDownloadButton year={year} month={month} country={country} holidays={holidays} />

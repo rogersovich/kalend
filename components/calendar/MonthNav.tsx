@@ -31,35 +31,40 @@ export default function MonthNav({ year, month, country }: MonthNavProps) {
   const canGoNext = next.year <= MAX_YEAR;
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center gap-lg">
       {canGoPrev ? (
         <Link
           href={monthUrl(prev.year, prev.month, country)}
-          className="flex items-center gap-xs text-body-sm text-muted hover:text-ink transition-colors"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors hover:bg-primary hover:text-white"
+          aria-label={`${MONTH_NAMES_ID[prev.month - 1]} ${prev.year}`}
         >
-          <ChevronLeft className="h-4 w-4" />
-          {MONTH_NAMES_ID[prev.month - 1]}
+          <ChevronLeft className="h-5 w-5" />
         </Link>
       ) : (
-        <span className="w-20" />
+        <span className="flex h-10 w-10 cursor-not-allowed select-none items-center justify-center rounded-full bg-surface-soft text-ink/20">
+          <ChevronLeft className="h-5 w-5" />
+        </span>
       )}
 
       <div className="text-center">
-        <h1 className="font-display text-title-lg font-semibold text-ink">
-          {MONTH_NAMES_ID[month - 1]} {year}
+        <h1 className="font-display text-display-lg font-normal text-ink">
+          {MONTH_NAMES_ID[month - 1]}
         </h1>
+        <p className="font-mono text-caption uppercase tracking-widest text-ink/50">{year}</p>
       </div>
 
       {canGoNext ? (
         <Link
           href={monthUrl(next.year, next.month, country)}
-          className="flex items-center gap-xs text-body-sm text-muted hover:text-ink transition-colors"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors hover:bg-primary hover:text-white"
+          aria-label={`${MONTH_NAMES_ID[next.month - 1]} ${next.year}`}
         >
-          {MONTH_NAMES_ID[next.month - 1]}
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-5 w-5" />
         </Link>
       ) : (
-        <span className="w-20" />
+        <span className="flex h-10 w-10 cursor-not-allowed select-none items-center justify-center rounded-full bg-surface-soft text-ink/20">
+          <ChevronRight className="h-5 w-5" />
+        </span>
       )}
     </div>
   );

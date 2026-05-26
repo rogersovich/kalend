@@ -11,22 +11,17 @@ export default function WetonCard({ date }: WetonCardProps) {
   const weton = useMemo(() => calculateWeton(date), [date]);
 
   return (
-    <div className="rounded-lg border border-hairline bg-canvas p-lg">
-      <div className="mb-md flex items-center gap-xs text-muted">
-        <span className="text-sm">☯️</span>
-        <span className="text-caption font-semibold uppercase tracking-wide">Weton Jawa</span>
-      </div>
-
-      <div className="mb-md">
-        <p className="font-display text-title-lg font-semibold text-ink">{weton.weton}</p>
-        <p className="text-body-sm text-muted">
-          Neptu: {weton.neptuHari} ({weton.hari}) + {weton.neptuPasaran} ({weton.pasaran}) ={" "}
-          <span className="font-semibold text-ink">{weton.neptuTotal}</span>
-        </p>
-      </div>
-
-      <div className="rounded-md bg-surface-soft p-sm">
-        <p className="text-body-sm text-muted leading-relaxed">{weton.makna}</p>
+    <div className="rounded-lg bg-block-lilac p-lg">
+      <p className="mb-md font-mono text-caption uppercase tracking-widest text-ink/60">
+        Weton Jawa
+      </p>
+      <p className="font-display text-display-sm font-normal text-ink">{weton.weton}</p>
+      <p className="mt-xs font-display text-body-sm text-ink">
+        Neptu {weton.neptuHari} ({weton.hari}) + {weton.neptuPasaran} ({weton.pasaran}) ={" "}
+        <span className="font-semibold">{weton.neptuTotal}</span>
+      </p>
+      <div className="mt-md rounded-md bg-black/5 p-sm">
+        <p className="font-display text-body-sm leading-relaxed text-ink">{weton.makna}</p>
       </div>
     </div>
   );

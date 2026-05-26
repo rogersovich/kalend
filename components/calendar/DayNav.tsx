@@ -29,17 +29,21 @@ export default function DayNav({ date, country }: DayNavProps) {
     <div className="flex items-center justify-between">
       <Link
         href={formatDayLink(prev, country)}
-        className="flex items-center gap-xs text-body-sm text-muted hover:text-ink transition-colors"
+        className="flex items-center gap-sm font-mono text-caption text-ink/60 transition-colors hover:text-ink"
       >
-        <ChevronLeft className="h-4 w-4" />
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-soft transition-colors hover:bg-primary hover:text-white">
+          <ChevronLeft className="h-4 w-4" />
+        </span>
         {label(prev)}
       </Link>
       <Link
         href={formatDayLink(next, country)}
-        className="flex items-center gap-xs text-body-sm text-muted hover:text-ink transition-colors"
+        className="flex items-center gap-sm font-mono text-caption text-ink/60 transition-colors hover:text-ink"
       >
         {label(next)}
-        <ChevronRight className="h-4 w-4" />
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-soft transition-colors hover:bg-primary hover:text-white">
+          <ChevronRight className="h-4 w-4" />
+        </span>
       </Link>
     </div>
   );

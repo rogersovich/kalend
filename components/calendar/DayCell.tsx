@@ -10,6 +10,8 @@ interface DayCellProps {
   showWeton?: boolean;
   size?: "mini" | "full";
   eventColors?: string[];
+  isLastRow?: boolean;
+  isLastCol?: boolean;
   onClick?: () => void;
 }
 
@@ -27,6 +29,8 @@ export default function DayCell({
   showWeton = false,
   size = "mini",
   eventColors = [],
+  isLastRow = false,
+  isLastCol = false,
   onClick,
 }: DayCellProps) {
   const day = date.getDate();
@@ -50,7 +54,7 @@ export default function DayCell({
         <span
           className={cn(
             "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] leading-none",
-            isToday && "ring-2 ring-brand-accent ring-offset-1",
+            isToday && "ring-2 ring-primary ring-offset-1",
             isWeekend && !isHoliday && "text-muted",
             hasNational && "font-semibold text-error",
             hasJoint && !hasNational && "font-semibold text-badge-orange",
@@ -76,7 +80,9 @@ export default function DayCell({
   return (
     <div
       className={cn(
-        "min-h-[60px] border-b border-r border-hairline p-1",
+        "min-h-[60px] p-1.5",
+        !isLastRow && "border-b border-hairline",
+        !isLastCol && "border-r border-hairline",
         !isCurrentMonth && "bg-surface-soft/50",
         isWeekend && "bg-surface-strong/30",
         onClick && "cursor-pointer hover:bg-surface-soft transition-colors"
@@ -87,7 +93,7 @@ export default function DayCell({
         <span
           className={cn(
             "flex h-7 w-7 items-center justify-center rounded-full font-mono text-sm",
-            isToday && "bg-brand-accent font-semibold text-white",
+            isToday && "bg-primary font-semibold text-white",
             !isToday && hasNational && "font-semibold text-error",
             !isToday && hasJoint && !hasNational && "font-semibold text-badge-orange",
             !isCurrentMonth && "text-muted"
@@ -108,7 +114,7 @@ export default function DayCell({
         </div>
       </div>
       {showWeton && weton && (
-        <p className="mt-1 truncate text-[10px] leading-none text-muted">
+        <p className="mt-1 truncate text-[10px] leading-1 text-muted">
           {weton.pasaran}
         </p>
       )}

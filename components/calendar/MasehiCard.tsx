@@ -1,5 +1,4 @@
 import { DAY_NAMES_FULL_ID, MONTH_NAMES_ID } from "@/lib/calendar/constants";
-import { CalendarDays } from "lucide-react";
 
 interface MasehiCardProps {
   date: Date;
@@ -28,28 +27,26 @@ export default function MasehiCard({ date }: MasehiCardProps) {
   const totalDays = isLeapYear(date.getFullYear()) ? 366 : 365;
 
   return (
-    <div className="rounded-lg border border-hairline bg-canvas p-lg">
-      <div className="mb-md flex items-center gap-xs text-muted">
-        <CalendarDays className="h-4 w-4" />
-        <span className="text-caption font-semibold uppercase tracking-wide">Kalender Masehi</span>
-      </div>
-
+    <div className="rounded-lg bg-block-mint p-lg">
+      <p className="mb-md font-mono text-caption uppercase tracking-widest text-ink/60">
+        Kalender Masehi
+      </p>
       <dl className="grid grid-cols-2 gap-sm">
         <div>
-          <dt className="text-caption text-muted">Hari</dt>
-          <dd className="text-body-md font-medium text-ink">{dayName}</dd>
+          <dt className="font-mono text-caption uppercase tracking-widest text-ink/50">Hari</dt>
+          <dd className="font-display text-body font-normal text-ink">{dayName}</dd>
         </div>
         <div>
-          <dt className="text-caption text-muted">Bulan</dt>
-          <dd className="text-body-md font-medium text-ink">{monthName}</dd>
+          <dt className="font-mono text-caption uppercase tracking-widest text-ink/50">Bulan</dt>
+          <dd className="font-display text-body font-normal text-ink">{monthName}</dd>
         </div>
         <div>
-          <dt className="text-caption text-muted">Minggu ke-</dt>
-          <dd className="text-body-md font-medium text-ink">{weekNum} bulan ini</dd>
+          <dt className="font-mono text-caption uppercase tracking-widest text-ink/50">Minggu ke-</dt>
+          <dd className="font-display text-body font-normal text-ink">{weekNum} bulan ini</dd>
         </div>
         <div>
-          <dt className="text-caption text-muted">Hari ke-</dt>
-          <dd className="text-body-md font-medium text-ink">{dayOfYear} dari {totalDays}</dd>
+          <dt className="font-mono text-caption uppercase tracking-widest text-ink/50">Hari ke-</dt>
+          <dd className="font-display text-body font-normal text-ink">{dayOfYear} dari {totalDays}</dd>
         </div>
       </dl>
     </div>
