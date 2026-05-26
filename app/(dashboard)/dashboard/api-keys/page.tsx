@@ -62,10 +62,10 @@ export default function ApiKeysPage() {
   }
 
   return (
-    <div>
-      <div className="mb-lg flex items-center justify-between">
+    <div className="flex flex-col gap-xl">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-title-md font-semibold text-ink">API Keys</h1>
+          <h1 className="font-display text-display-sm font-semibold text-ink">API Keys</h1>
           <p className="text-body-sm text-muted">Limit: 100 request/hari per key (Free tier)</p>
         </div>
         <button
@@ -78,7 +78,7 @@ export default function ApiKeysPage() {
       </div>
 
       {showForm && (
-        <div className="mb-lg rounded-xl border border-hairline bg-canvas p-lg">
+        <div className="rounded-xl border border-hairline bg-canvas p-lg">
           <h2 className="mb-md font-display text-title-sm font-semibold text-ink">API Key Baru</h2>
           <form onSubmit={handleCreate} className="flex gap-3">
             <input

@@ -47,11 +47,11 @@ export default function SettingsPage() {
   if (!user) return null;
 
   return (
-    <div>
-      <h1 className="mb-lg font-display text-title-md font-semibold text-ink">Pengaturan Akun</h1>
+    <div className="flex flex-col gap-xl">
+      <h1 className="font-display text-display-sm font-semibold text-ink">Pengaturan Akun</h1>
 
       {/* Profile */}
-      <div className="mb-lg rounded-xl border border-hairline bg-canvas p-lg">
+      <div className="rounded-xl border border-hairline bg-canvas p-lg">
         <h2 className="mb-md font-display text-title-sm font-semibold text-ink">Profil</h2>
 
         {success && (
