@@ -50,15 +50,17 @@ export default function CutiOptimizerPage() {
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Tools", href: "/tools" }, { label: "Cuti Optimizer" }]} />
         </div>
 
-        <div className="mb-lg">
-          <h1 className="font-display text-display-lg font-normal text-ink">Cuti Optimizer</h1>
-          <p className="font-display text-body-lg text-muted">Temukan kombinasi cuti paling efisien untuk libur terpanjang.</p>
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-lime p-xxl">
+          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Tools</p>
+          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">Cuti Optimizer</h1>
+          <p className="font-display text-body-lg text-ink">Temukan kombinasi cuti paling efisien untuk libur terpanjang.</p>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="mb-xl flex flex-wrap items-end gap-md">
           <div>
-            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Tahun</label>
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Tahun</label>
             <select value={year} onChange={(e) => setYear(Number(e.target.value))} className={selectCls}>
               {Array.from({ length: 11 }, (_, i) => 2020 + i).map((y) => (
                 <option key={y} value={y}>{y}</option>
@@ -66,14 +68,14 @@ export default function CutiOptimizerPage() {
             </select>
           </div>
           <div>
-            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Negara</label>
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Negara</label>
             <select value={country} onChange={(e) => setCountry(e.target.value)} className={selectCls}>
               <option value="ID">Indonesia</option>
               <option value="MY">Malaysia</option>
             </select>
           </div>
           <div>
-            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Maks. cuti diambil</label>
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Maks. cuti diambil</label>
             <select value={maxLeave} onChange={(e) => setMaxLeave(Number(e.target.value))} className={selectCls}>
               {[1,2,3,4,5,7,10,14].map((n) => (
                 <option key={n} value={n}>{n} hari</option>
@@ -94,29 +96,31 @@ export default function CutiOptimizerPage() {
         {strategies !== null && (
           <>
             {strategies.length === 0 ? (
-              <p className="font-display text-body text-muted">Tidak ditemukan strategi cuti optimal.</p>
+              <p className="font-display text-body text-ink">Tidak ditemukan strategi cuti optimal.</p>
             ) : (
               <div className="flex flex-col gap-md">
-                <p className="font-mono text-caption text-muted">{strategies.length} strategi ditemukan, diurutkan berdasarkan efisiensi.</p>
-                {strategies.map((s, i) => (
-                  <div key={i} className="rounded-lg border border-hairline bg-canvas p-lg">
+                <p className="font-mono text-caption text-ink/60">{strategies.length} strategi ditemukan, diurutkan berdasarkan efisiensi.</p>
+                {strategies.map((s, i) => {
+                  const cardBg = i === 0 ? "bg-block-lime" : i === 1 ? "bg-block-mint" : "bg-block-cream";
+                  return (
+                  <div key={i} className={`rounded-lg ${cardBg} p-lg`}>
                     <div className="mb-md flex items-start justify-between gap-md">
                       <div>
                         <div className="flex items-center gap-sm mb-xs">
-                          <span className="rounded-pill bg-surface-soft px-sm py-xxs font-mono text-caption font-semibold text-ink">
+                          <span className="rounded-pill bg-black/10 px-sm py-xxs font-mono text-caption font-semibold text-ink">
                             #{i + 1}
                           </span>
                           <span className="font-display text-headline font-medium text-ink">
                             {s.totalDaysOff} hari libur
                           </span>
                         </div>
-                        <p className="font-display text-body-sm text-muted">
+                        <p className="font-display text-body-sm text-ink/60">
                           {formatDate(s.period.startDate)} – {formatDate(s.period.endDate)} {new Date(s.period.endDate).getFullYear()}
                         </p>
                       </div>
                       <div className="text-right">
                         <p className="font-display text-headline font-medium text-ink">{s.ratio.toFixed(1)}×</p>
-                        <p className="font-mono text-caption text-muted">efisiensi</p>
+                        <p className="font-mono text-caption text-ink/60">efisiensi</p>
                       </div>
                     </div>
 
@@ -124,20 +128,21 @@ export default function CutiOptimizerPage() {
                       {s.leaveDates.map((d) => {
                         const date = new Date(d);
                         return (
-                          <span key={d} className="flex flex-col items-center rounded-md border border-hairline bg-surface-soft px-sm py-xs text-center">
-                            <span className="font-mono text-caption text-muted">{DAY_ID[date.getDay()]}</span>
+                          <span key={d} className="flex flex-col items-center rounded-md bg-black/10 px-sm py-xs text-center">
+                            <span className="font-mono text-caption text-ink/60">{DAY_ID[date.getDay()]}</span>
                             <span className="font-display text-body-sm font-medium text-ink">{date.getDate()}</span>
-                            <span className="font-mono text-caption text-muted">{MONTH_NAMES_ID[date.getMonth()].slice(0,3)}</span>
+                            <span className="font-mono text-caption text-ink/60">{MONTH_NAMES_ID[date.getMonth()].slice(0,3)}</span>
                           </span>
                         );
                       })}
                     </div>
 
-                    <p className="mt-sm font-mono text-caption text-muted">
+                    <p className="mt-sm font-mono text-caption text-ink/60">
                       Ambil cuti {s.leaveDaysUsed} hari → dapat libur {s.totalDaysOff} hari
                     </p>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </>

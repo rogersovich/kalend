@@ -54,7 +54,7 @@ export default function MonthMini({ year, month, holidays, country }: MonthMiniP
     <div className="rounded-lg border border-hairline bg-canvas p-3 hover:border-brand-accent/30 hover:shadow-soft transition-all">
       <Link
         href={`/${year}/${monthSlug}${countryParam}`}
-        className="mb-2 block text-center text-caption font-semibold text-ink hover:text-brand-accent transition-colors"
+        className="mb-3 block text-center text-body-sm font-semibold text-ink hover:text-brand-accent transition-colors"
       >
         {monthName}
       </Link>

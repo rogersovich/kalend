@@ -30,7 +30,12 @@ export default function KalkulatorPage() {
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Tools", href: "/tools" }, { label: "Kalkulator Tanggal" }]} />
         </div>
 
-        <h1 className="mb-lg font-display text-display-lg font-normal text-ink">Kalkulator Tanggal</h1>
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-mint p-xxl">
+          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Tools</p>
+          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">Kalkulator Tanggal</h1>
+          <p className="font-display text-body-lg text-ink">Hitung selisih, tambah/kurangi, hari kerja, nama hari, dan umur dari tanggal.</p>
+        </div>
 
         {/* Pill tab bar */}
         <div className="mb-lg overflow-x-auto">
@@ -43,7 +48,7 @@ export default function KalkulatorPage() {
                   "whitespace-nowrap rounded-pill px-md py-xs font-display text-body-sm font-medium transition-colors",
                   active === tab.id
                     ? "bg-primary text-white"
-                    : "text-muted hover:text-ink"
+                    : "text-ink/50 hover:text-ink"
                 )}
               >
                 {tab.label}

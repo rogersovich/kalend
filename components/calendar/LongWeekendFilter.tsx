@@ -38,7 +38,7 @@ export default function LongWeekendFilter({ current }: LongWeekendFilterProps) {
             "rounded-pill px-sm py-[6px] text-caption font-medium transition-colors",
             current === opt.value
               ? "bg-canvas text-ink shadow-soft"
-              : "text-muted hover:text-ink"
+              : "text-ink/50 hover:text-ink"
           )}
         >
           {opt.label}

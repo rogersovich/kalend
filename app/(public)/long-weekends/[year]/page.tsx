@@ -65,21 +65,24 @@ export default async function LongWeekendsPage({ params, searchParams }: Props) 
           />
         </div>
 
-        <div className="mb-lg flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h1 className="font-display text-display-lg font-normal text-ink">
-              Long Weekend {year}
-            </h1>
-            <p className="font-mono text-caption text-muted">
-              {periods.length} periode libur panjang ditemukan
-            </p>
-          </div>
-          <CountrySwitcher current={country} />
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-lime p-xxl">
+          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-ink/60">
+            Long Weekend
+          </p>
+          <h1 className="font-display text-display-lg font-normal text-ink">{year}</h1>
+          <p className="mt-sm font-display text-body-lg text-ink">
+            {periods.length} periode libur panjang ditemukan
+          </p>
         </div>
 
-        <div className="mb-lg flex flex-wrap items-center gap-md">
-          <YearNav year={year} country={country} />
-          <LongWeekendFilter current={minDays} />
+        {/* Controls */}
+        <div className="mb-lg flex flex-wrap items-center justify-between gap-md">
+          <div className="flex flex-wrap items-center gap-md">
+            <YearNav year={year} country={country} />
+            <LongWeekendFilter current={minDays} />
+          </div>
+          <CountrySwitcher current={country} />
         </div>
 
         <LongWeekendList periods={periods} country={country} minDays={minDays} />

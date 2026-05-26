@@ -9,12 +9,20 @@ interface LongWeekendListProps {
   minDays: number;
 }
 
+// Day type chips — functional colors kept (red=holiday, orange=cuti is meaningful info)
 const DAY_TYPE_CONFIG: Record<DayType, { label: string; className: string }> = {
-  holiday: { label: "Libur", className: "bg-error/15 text-error border-error/20" },
-  "joint-leave": { label: "Cuti", className: "bg-badge-orange/15 text-badge-orange border-badge-orange/20" },
-  weekend: { label: "Weekend", className: "bg-surface-strong text-muted border-hairline" },
-  workday: { label: "Kerja", className: "bg-surface-soft text-muted border-hairline" },
+  holiday:      { label: "Libur",   className: "bg-error/15 text-error" },
+  "joint-leave":{ label: "Cuti",    className: "bg-badge-orange/15 text-badge-orange" },
+  weekend:      { label: "Weekend", className: "bg-black/8 text-ink" },
+  workday:      { label: "Kerja",   className: "bg-black/5 text-ink/50" },
 };
+
+// Card bg by period length — longer = more saturated block
+function getPeriodBg(totalDays: number): string {
+  if (totalDays >= 5) return "bg-block-lime";
+  if (totalDays >= 4) return "bg-block-mint";
+  return "bg-block-cream";
+}
 
 function formatRange(start: Date, end: Date): string {
   const sDay = start.getDate();
@@ -35,7 +43,7 @@ export default function LongWeekendList({ periods, country, minDays }: LongWeeke
 
   if (filtered.length === 0) {
     return (
-      <p className="py-xl text-center text-body-md text-muted">
+      <p className="py-xl text-center font-display text-body text-ink">
         Tidak ada long weekend dengan minimal {minDays} hari.
       </p>
     );
@@ -49,20 +57,29 @@ export default function LongWeekendList({ periods, country, minDays }: LongWeeke
         const dayLink = `/${year}/${monthSlug}/${period.startDate.getDate()}${qs}`;
 
         return (
-          <div key={i} className="rounded-lg border border-hairline bg-canvas p-lg hover:border-brand-accent/30 hover:shadow-soft transition-all">
+          <div key={i} className={`${getPeriodBg(period.totalDays)} rounded-lg p-lg`}>
             <div className="mb-md flex items-start justify-between gap-md">
               <div>
-                <Link href={dayLink} className="font-display text-title-md font-semibold text-ink hover:text-brand-accent transition-colors">
+                <Link
+                  href={dayLink}
+                  className="font-display text-display-sm font-normal text-ink transition-opacity hover:opacity-70"
+                >
                   {period.totalDays} hari
                 </Link>
-                <p className="text-body-sm text-muted">{formatRange(period.startDate, period.endDate)}</p>
+                <p className="font-display text-body-sm text-ink">
+                  {formatRange(period.startDate, period.endDate)}
+                </p>
               </div>
               <div className="flex flex-col items-end gap-xs">
                 {period.holidays.length > 0 && (
-                  <span className="text-caption text-muted">{period.holidays.length} libur nasional</span>
+                  <span className="font-mono text-caption text-ink/60">
+                    {period.holidays.length} libur nasional
+                  </span>
                 )}
                 {period.jointLeaves.length > 0 && (
-                  <span className="text-caption text-muted">{period.jointLeaves.length} cuti bersama</span>
+                  <span className="font-mono text-caption text-ink/60">
+                    {period.jointLeaves.length} cuti bersama
+                  </span>
                 )}
               </div>
             </div>
@@ -77,12 +94,12 @@ export default function LongWeekendList({ periods, country, minDays }: LongWeeke
                     key={j}
                     title={`${dateLabel} — ${cfg.label}`}
                     className={cn(
-                      "flex flex-col items-center rounded-md border px-[6px] py-[3px] text-center",
+                      "flex flex-col items-center rounded-md px-[6px] py-[3px] text-center",
                       cfg.className
                     )}
                   >
                     <span className="text-[9px] font-medium leading-none">{cfg.label}</span>
-                    <span className="font-mono text-[11px] font-semibold leading-none mt-[2px]">
+                    <span className="mt-[2px] font-mono text-[11px] font-semibold leading-none">
                       {day.date.getDate()}
                     </span>
                   </span>

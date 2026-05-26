@@ -54,7 +54,7 @@ export default function DayCell({
         <span
           className={cn(
             "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] leading-none",
-            isToday && "ring-2 ring-primary ring-offset-1",
+            isToday && "ring-2 ring-accent-magenta ring-offset-1",
             isWeekend && !isHoliday && "text-muted",
             hasNational && "font-semibold text-error",
             hasJoint && !hasNational && "font-semibold text-badge-orange",
@@ -93,7 +93,7 @@ export default function DayCell({
         <span
           className={cn(
             "flex h-7 w-7 items-center justify-center rounded-full font-mono text-sm",
-            isToday && "bg-primary font-semibold text-white",
+            isToday && "bg-accent-magenta font-semibold text-white",
             !isToday && hasNational && "font-semibold text-error",
             !isToday && hasJoint && !hasNational && "font-semibold text-badge-orange",
             !isCurrentMonth && "text-muted"
@@ -114,7 +114,7 @@ export default function DayCell({
         </div>
       </div>
       {showWeton && weton && (
-        <p className="mt-1 truncate text-[10px] leading-1 text-muted">
+        <p className="mt-1 truncate font-mono text-[10px] leading-none text-ink/50">
           {weton.pasaran}
         </p>
       )}

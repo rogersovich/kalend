@@ -30,14 +30,14 @@ const tools = [
     icon: CalendarCheck,
     label: "Cuti Optimizer",
     desc: "Temukan kombinasi cuti paling efisien untuk long weekend terpanjang.",
-    badge: "F-06",
+    badge: "Optimizer",
   },
   {
     href: "/tools/cek-weton",
     icon: Calendar,
     label: "Cek Weton",
     desc: "Hitung weton & neptu kalender Jawa untuk tanggal apapun. Bisa dibagikan via URL.",
-    badge: "F-07",
+    badge: "Jawa",
   },
 ];
 

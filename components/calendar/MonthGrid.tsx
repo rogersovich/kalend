@@ -14,6 +14,21 @@ interface MonthGridProps {
   country: string;
 }
 
+const MONTH_COLORS: Record<number, string> = {
+  1:  "bg-block-cream",
+  2:  "bg-block-pink",
+  3:  "bg-block-mint",
+  4:  "bg-block-lime",
+  5:  "bg-block-mint",
+  6:  "bg-block-lilac",
+  7:  "bg-block-coral",
+  8:  "bg-block-coral",
+  9:  "bg-block-cream",
+  10: "bg-block-lime",
+  11: "bg-block-lilac",
+  12: "bg-block-pink",
+};
+
 
 function buildMonthDays(year: number, month: number) {
   const firstDay = new Date(year, month - 1, 1).getDay();
@@ -84,14 +99,16 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
     router.push(`/${year}/${monthSlug}/${d}${qs}`);
   }
 
+  const headerBg = MONTH_COLORS[month];
+
   return (
-    <div className="rounded-lg border border-hairline overflow-hidden">
+    <div className="overflow-hidden rounded-lg border border-hairline">
       {/* Day headers */}
-      <div className="grid grid-cols-7 border-b border-hairline bg-surface-soft">
+      <div className={`grid grid-cols-7 border-b border-hairline ${headerBg}`}>
         {DAY_NAMES_ID.map((d) => (
           <div
             key={d}
-            className="py-xs text-center text-caption font-semibold uppercase text-muted"
+            className="py-sm text-center font-mono text-caption font-semibold uppercase tracking-widest text-ink"
           >
             {d}
           </div>

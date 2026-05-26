@@ -75,9 +75,11 @@ function CekWetonContent() {
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Tools", href: "/tools" }, { label: "Cek Weton" }]} />
         </div>
 
-        <div className="mb-lg">
-          <h1 className="font-display text-display-lg font-normal text-ink">Cek Weton</h1>
-          <p className="font-display text-body-lg text-muted">Hitung weton & neptu Jawa untuk tanggal apapun.</p>
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-lilac p-xxl">
+          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Tools</p>
+          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">Cek Weton</h1>
+          <p className="font-display text-body-lg text-ink">Hitung weton & neptu Jawa untuk tanggal apapun.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="mb-xl flex max-w-sm gap-sm">
@@ -98,8 +100,8 @@ function CekWetonContent() {
         {result && (
           <div className="max-w-sm">
             {/* Date display */}
-            <div className="mb-md rounded-lg border border-hairline bg-canvas p-lg text-center">
-              <p className="font-mono text-caption uppercase tracking-widest text-muted mb-xs">Weton untuk</p>
+            <div className="mb-md rounded-lg bg-block-mint p-lg text-center">
+              <p className="font-mono text-caption uppercase tracking-widest text-ink/60 mb-xs">Weton untuk</p>
               <p className="font-display text-headline font-medium text-ink">{fullDateId}</p>
             </div>
 
@@ -107,37 +109,37 @@ function CekWetonContent() {
             <div className="mb-md rounded-lg bg-block-lilac p-lg">
               <div className="mb-md flex items-center justify-center gap-lg">
                 <div className="text-center">
-                  <p className="font-mono text-caption uppercase tracking-widest text-muted">Hari</p>
+                  <p className="font-mono text-caption uppercase tracking-widest text-ink/60">Hari</p>
                   <p className="font-display text-headline font-medium text-ink">{result.hari}</p>
-                  <p className="font-mono text-caption text-muted">({result.neptuHari})</p>
+                  <p className="font-mono text-caption text-ink/60">({result.neptuHari})</p>
                 </div>
-                <div className="font-display text-body-lg text-muted">+</div>
+                <div className="font-display text-body-lg text-ink/40">+</div>
                 <div className="text-center">
-                  <p className="font-mono text-caption uppercase tracking-widest text-muted">Pasaran</p>
+                  <p className="font-mono text-caption uppercase tracking-widest text-ink/60">Pasaran</p>
                   <p className="font-display text-headline font-medium text-ink">{result.pasaran}</p>
-                  <p className="font-mono text-caption text-muted">({result.neptuPasaran})</p>
+                  <p className="font-mono text-caption text-ink/60">({result.neptuPasaran})</p>
                 </div>
               </div>
 
               <div className="flex flex-col items-center gap-xs border-t border-ink/10 pt-md">
-                <p className="font-mono text-caption uppercase tracking-widest text-muted">Neptu</p>
+                <p className="font-mono text-caption uppercase tracking-widest text-ink/60">Neptu</p>
                 <p className="font-display text-display-lg font-normal text-ink">{result.neptuTotal}</p>
                 {NEPTU_MEANING[result.neptuTotal] && (
-                  <p className="font-display text-body-sm text-muted">{NEPTU_MEANING[result.neptuTotal]}</p>
+                  <p className="font-display text-body-sm text-ink">{NEPTU_MEANING[result.neptuTotal]}</p>
                 )}
               </div>
             </div>
 
             {/* Weton name */}
-            <div className="mb-lg rounded-lg border border-hairline bg-canvas p-md text-center">
-              <p className="font-mono text-caption uppercase tracking-widest text-muted">Weton lengkap</p>
+            <div className="mb-lg rounded-lg bg-block-cream p-md text-center">
+              <p className="font-mono text-caption uppercase tracking-widest text-ink/60">Weton lengkap</p>
               <p className="font-display text-headline font-medium text-ink">{result.hari} {result.pasaran}</p>
             </div>
 
             {/* Share */}
             <button
               onClick={handleShare}
-              className="flex w-full items-center justify-center gap-sm rounded-pill border border-hairline py-xs font-display text-button font-medium text-muted transition-colors hover:text-ink"
+              className="flex w-full items-center justify-center gap-sm rounded-pill border border-hairline py-xs font-display text-button font-medium text-ink/60 transition-colors hover:text-ink"
             >
               {copied ? <Check className="h-4 w-4 text-semantic-success" /> : <Copy className="h-4 w-4" />}
               {copied ? "Link tersalin!" : "Salin link untuk berbagi"}

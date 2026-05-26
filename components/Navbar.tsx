@@ -57,7 +57,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-sm py-xs text-nav-link text-muted transition-colors hover:bg-surface-soft hover:text-ink"
+              className="rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
             >
               {link.label}
             </Link>
@@ -70,7 +70,7 @@ export default function Navbar() {
             <>
               <Link
                 href="/dashboard"
-                className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-muted transition-colors hover:bg-surface-soft hover:text-ink"
+                className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
               >
                 <User className="h-4 w-4" />
                 {displayName}
@@ -111,7 +111,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-sm py-xs text-nav-link text-muted transition-colors hover:bg-surface-soft hover:text-ink"
+                className="rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -122,7 +122,7 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/dashboard"
-                    className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-muted hover:bg-surface-soft hover:text-ink"
+                    className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-ink/60 hover:bg-surface-soft hover:text-ink"
                     onClick={() => setMobileOpen(false)}
                   >
                     <User className="h-4 w-4" />
