@@ -36,6 +36,14 @@ export default function RegisterPage() {
       setLoading(false);
       return;
     }
+
+    // Fire welcome email — non-blocking, ignore failure
+    fetch("/api/auth/welcome", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, name }),
+    }).catch(() => {});
+
     setSuccess(true);
     setLoading(false);
   }

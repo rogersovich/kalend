@@ -77,7 +77,7 @@ export default function SettingsPage() {
             <button
               type="submit"
               disabled={loading}
-              className="rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
+              className="rounded-pill bg-primary px-lg py-xs font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
             >
               {loading ? "Menyimpan..." : "Simpan perubahan"}
             </button>
@@ -93,7 +93,7 @@ export default function SettingsPage() {
         {!deleteConfirm ? (
           <button
             onClick={() => setDeleteConfirm(true)}
-            className="rounded-pill border border-error/30 px-lg py-xs font-display text-button font-medium text-error transition-colors hover:bg-error/10"
+            className="rounded-pill border border-error/30 px-lg py-xs font-display text-body-sm font-medium text-error transition-colors hover:bg-error/10"
           >
             Hapus akun
           </button>

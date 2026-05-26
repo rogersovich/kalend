@@ -94,7 +94,7 @@ export default async function DashboardPage() {
             </div>
             <Link
               href="/dashboard/events"
-              className="mt-xs inline-flex items-center gap-1 rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+              className="mt-xs inline-flex items-center gap-1 rounded-pill bg-primary px-lg py-xs font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active"
             >
               <CalendarDays className="h-4 w-4" />
               Tambah event

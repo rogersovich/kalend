@@ -72,7 +72,7 @@ export default function ApiKeysPage() {
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-xs rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+          className="flex items-center gap-xs rounded-pill bg-primary px-lg py-xs font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active"
         >
           <Plus className="h-4 w-4" />
           Generate Key

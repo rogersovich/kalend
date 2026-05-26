@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { prisma } from "@/lib/prisma";
 import { randomBytes } from "crypto";
+import { sendApiKeyEmail } from "@/lib/email";
 
 export async function GET() {
   const supabase = createClient();
@@ -37,6 +38,16 @@ export async function POST(request: Request) {
   const apiKey = await prisma.apiKey.create({
     data: { userId: user.id, name, key },
   });
+
+  // Send notification email — non-blocking
+  if (user.email) {
+    sendApiKeyEmail(
+      user.email,
+      user.user_metadata?.full_name ?? "",
+      name,
+      key.slice(0, 16),
+    ).catch(() => {});
+  }
 
   return NextResponse.json({ data: apiKey }, { status: 201 });
 }
