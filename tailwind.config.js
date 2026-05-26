@@ -32,10 +32,12 @@ module.exports = {
   			ink: 'var(--color-ink)',
   			body: 'var(--color-body)',
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
+  				DEFAULT: 'var(--color-muted)',
   				soft: 'var(--color-muted-soft)',
   				foreground: 'hsl(var(--muted-foreground))'
   			},
+  			'on-dark': 'var(--color-on-dark)',
+  			'on-dark-soft': 'var(--color-on-dark-soft)',
   			badge: {
   				orange: 'var(--color-badge-orange)',
   				pink: 'var(--color-badge-pink)',

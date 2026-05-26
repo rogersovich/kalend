@@ -162,7 +162,7 @@ export function calculateLeaveStrategies(
   }
 
   // For each holiday, try adding 1..maxLeave adjacent workdays
-  const uniqueHolidayDates = [...new Set(holidays.map((h) => h.date.toISOString().slice(0, 10)))];
+  const uniqueHolidayDates = Array.from(new Set(holidays.map((h) => h.date.toISOString().slice(0, 10))));
 
   for (const hDateStr of uniqueHolidayDates) {
     for (let leaveCount = 1; leaveCount <= maxLeave; leaveCount++) {

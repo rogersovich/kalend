@@ -1,0 +1,433 @@
+openapi: 3.1.0
+info:
+  title: Kalend API
+  description: |
+    API publik Kalend untuk mengakses data hari libur Indonesia dan Malaysia,
+    kalkulasi hari kerja, long weekend, dan informasi kalender lainnya.
+
+    ## Autentikasi
+
+    Semua endpoint memerlukan API key. Kirim API key di header `Authorization`:
+
+    ```
+    Authorization: Bearer kld_your_api_key_here
+    ```
+
+    Buat API key di [dashboard Kalend](/dashboard/api-keys).
+
+    ## Rate Limiting
+
+    Setiap API key dibatasi **100 request per hari**. Response header mencantumkan:
+    - `X-RateLimit-Limit`: batas harian
+    - `X-RateLimit-Remaining`: sisa request hari ini
+
+    Jika melebihi batas, API mengembalikan `429 Too Many Requests`.
+
+  version: "1.0.0"
+  contact:
+    name: Kalend Support
+    url: https://kalend.id
+  license:
+    name: MIT
+
+servers:
+  - url: https://kalend.id/api/v1
+    description: Production
+  - url: http://localhost:3000/api/v1
+    description: Development
+
+security:
+  - BearerAuth: []
+
+paths:
+  /countries:
+    get:
+      summary: List negara aktif
+      description: Mengembalikan daftar negara yang tersedia di Kalend.
+      operationId: listCountries
+      tags: [Reference]
+      responses:
+        "200":
+          description: Daftar negara
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+              example:
+                success: true
+                data:
+                  - code: ID
+                    name: Indonesia
+                  - code: MY
+                    name: Malaysia
+
+  /holidays:
+    get:
+      summary: Daftar hari libur
+      description: Ambil daftar hari libur berdasarkan negara, tahun, bulan, dan tipe.
+      operationId: listHolidays
+      tags: [Holidays]
+      parameters:
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+          description: Kode negara (ID atau MY)
+        - name: year
+          in: query
+          required: true
+          schema:
+            type: integer
+            example: 2026
+          description: Tahun (mis. 2026)
+        - name: month
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 12
+          description: Bulan 1–12 (opsional, tanpa ini mengembalikan semua bulan)
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [national, joint-leave]
+          description: Filter tipe hari libur (opsional)
+      responses:
+        "200":
+          description: Daftar hari libur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+              example:
+                success: true
+                data:
+                  - id: "cuid"
+                    date: "2026-01-01"
+                    name: "Tahun Baru Masehi"
+                    type: national
+                    countryCode: ID
+
+  /check:
+    get:
+      summary: Cek status hari
+      description: Cek apakah suatu tanggal adalah hari libur, akhir pekan, atau hari kerja.
+      operationId: checkDay
+      tags: [Check]
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2026-01-01"
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+      responses:
+        "200":
+          description: Status hari
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+              example:
+                success: true
+                data:
+                  date: "2026-01-01"
+                  isHoliday: true
+                  isWeekend: false
+                  isWorkday: false
+                  holidays:
+                    - name: Tahun Baru Masehi
+                      type: national
+
+  /check/workday:
+    get:
+      summary: Cek hari kerja
+      description: Cek apakah suatu tanggal adalah hari kerja.
+      operationId: checkWorkday
+      tags: [Check]
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+      responses:
+        "200":
+          description: Status hari kerja
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+              example:
+                success: true
+                data:
+                  date: "2026-01-05"
+                  isWorkday: true
+
+  /calculate/workdays:
+    get:
+      summary: Hitung hari kerja
+      description: Hitung jumlah hari kerja antara dua tanggal.
+      operationId: calculateWorkdays
+      tags: [Calculate]
+      parameters:
+        - name: start
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: end
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+      responses:
+        "200":
+          description: Jumlah hari kerja
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+              example:
+                success: true
+                data:
+                  start: "2026-01-01"
+                  end: "2026-01-31"
+                  workdays: 21
+                  country: ID
+
+  /calculate/diff:
+    get:
+      summary: Hitung selisih tanggal
+      description: Hitung selisih antara dua tanggal dalam berbagai satuan.
+      operationId: calculateDiff
+      tags: [Calculate]
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        "200":
+          description: Selisih tanggal
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+              example:
+                success: true
+                data:
+                  from: "2026-01-01"
+                  to: "2026-12-31"
+                  days: 364
+                  weeks: 52
+                  months: 11
+                  years: 0
+
+  /long-weekends:
+    get:
+      summary: Daftar long weekend
+      description: Ambil semua periode long weekend untuk tahun tertentu.
+      operationId: listLongWeekends
+      tags: [Long Weekends]
+      parameters:
+        - name: year
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+      responses:
+        "200":
+          description: Daftar long weekend
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /long-weekends/optimize:
+    get:
+      summary: Optimasi cuti
+      description: Temukan strategi cuti paling efisien berdasarkan jatah cuti yang tersedia.
+      operationId: optimizeLeave
+      tags: [Long Weekends]
+      parameters:
+        - name: year
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+        - name: maxLeave
+          in: query
+          schema:
+            type: integer
+            default: 5
+          description: Maksimum hari cuti yang tersedia
+      responses:
+        "200":
+          description: Strategi cuti teroptimal
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /calendar:
+    get:
+      summary: Data kalender bulanan
+      description: Ambil data lengkap setiap hari dalam satu bulan.
+      operationId: getCalendar
+      tags: [Calendar]
+      parameters:
+        - name: year
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: month
+          in: query
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 12
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+      responses:
+        "200":
+          description: Data kalender
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /year-info:
+    get:
+      summary: Informasi tahun
+      description: Ambil informasi ringkasan tahun termasuk shio, tahun Hijriah, dan jumlah hari libur.
+      operationId: getYearInfo
+      tags: [Calendar]
+      parameters:
+        - name: year
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ID, MY]
+      responses:
+        "200":
+          description: Informasi tahun
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+              example:
+                success: true
+                data:
+                  year: 2026
+                  shio: Kuda
+                  hijri: 1447
+                  totalHolidays: 17
+                  totalJointLeave: 4
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key dari dashboard Kalend (format `kld_...`)
+
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          description: Payload respons (bervariasi per endpoint)
+        meta:
+          type: object
+          description: Metadata tambahan (opsional)
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: INVALID_PARAMS
+            message:
+              type: string
+              example: Parameter 'country' wajib diisi
+
+tags:
+  - name: Reference
+    description: Data referensi (negara, dll)
+  - name: Holidays
+    description: Hari libur nasional dan cuti bersama
+  - name: Check
+    description: Cek status hari
+  - name: Calculate
+    description: Kalkulasi hari kerja dan selisih tanggal
+  - name: Long Weekends
+    description: Long weekend dan optimasi cuti
+  - name: Calendar
+    description: Data kalender lengkap

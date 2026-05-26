@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, Calendar } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Menu, X, Calendar, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 const navLinks = [
   { href: "/2026", label: "Kalender" },
@@ -12,7 +15,28 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const supabase = createClient();
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    router.push("/");
+    router.refresh();
+  }
+
+  const displayName = user?.user_metadata?.full_name ?? user?.email?.split("@")[0] ?? "Akun";
 
   return (
     <header className="sticky top-0 z-50 h-16 w-full border-b border-hairline bg-canvas">
@@ -41,12 +65,30 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden items-center gap-xs md:flex">
-          <Button variant="ghost" size="sm" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
-          <Button size="sm" asChild>
-            <Link href="/register">Mulai</Link>
-          </Button>
+          {user ? (
+            <>
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-xs rounded-md px-sm py-xs text-body-sm text-muted transition-colors hover:text-ink"
+              >
+                <User className="h-4 w-4" />
+                {displayName}
+              </Link>
+              <Button variant="ghost" size="sm" onClick={handleLogout}>
+                <LogOut className="mr-1 h-4 w-4" />
+                Keluar
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button size="sm" asChild>
+                <Link href="/register">Mulai</Link>
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Mobile hamburger */}
@@ -75,12 +117,31 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="mt-md flex flex-col gap-xs border-t border-hairline pt-md">
-              <Button variant="ghost" size="sm" className="justify-start" asChild>
-                <Link href="/login">Login</Link>
-              </Button>
-              <Button size="sm" asChild>
-                <Link href="/register">Mulai</Link>
-              </Button>
+              {user ? (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center gap-xs py-xs text-body-sm text-muted hover:text-ink"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <User className="h-4 w-4" />
+                    {displayName}
+                  </Link>
+                  <Button variant="ghost" size="sm" className="justify-start" onClick={handleLogout}>
+                    <LogOut className="mr-1 h-4 w-4" />
+                    Keluar
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button variant="ghost" size="sm" className="justify-start" asChild>
+                    <Link href="/login">Login</Link>
+                  </Button>
+                  <Button size="sm" asChild>
+                    <Link href="/register">Mulai</Link>
+                  </Button>
+                </>
+              )}
             </div>
           </nav>
         </div>
