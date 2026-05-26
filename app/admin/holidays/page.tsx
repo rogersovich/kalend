@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { MONTH_NAMES_ID } from "@/lib/calendar/constants";
+import HolidayFilters from "@/components/admin/HolidayFilters";
 
 export const metadata: Metadata = {
   title: "Kelola Hari Libur — Admin Kalend",
@@ -26,10 +27,9 @@ const TYPE_LABELS: Record<string, string> = {
 const TYPE_CLASSES: Record<string, string> = {
   national: "bg-error/10 text-error",
   "joint-leave": "bg-badge-orange/10 text-badge-orange",
-  regional: "bg-surface-soft text-muted",
+  regional: "bg-surface-soft text-ink/60",
 };
 
-const selectCls = "rounded-md border border-hairline bg-canvas px-md py-xs font-display text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink";
 
 export default async function AdminHolidaysPage({ searchParams }: Props) {
   const supabase = createClient();
@@ -59,34 +59,20 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
       <Navbar />
       <main className="mx-auto max-w-content px-lg py-xl">
         <div className="mb-md">
-          <Link href="/admin" className="flex items-center gap-1 font-display text-body-sm text-muted hover:text-ink">
+          <Link href="/admin" className="inline-flex items-center gap-xs font-mono text-caption uppercase tracking-widest text-ink/60 transition-colors hover:text-ink">
             <ChevronLeft className="h-3 w-3" /> Admin
           </Link>
         </div>
 
-        <div className="mb-lg flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="font-display text-display-lg font-normal text-ink">
-            Hari Libur ({holidays.length})
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-lime p-xxl">
+          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Admin</p>
+          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">
+            Hari Libur
           </h1>
-
-          <div className="flex gap-sm">
-            <select
-              defaultValue={country}
-              onChange={(e) => { window.location.href = `/admin/holidays?country=${e.target.value}&year=${year}`; }}
-              className={selectCls}
-            >
-              <option value="ID">Indonesia</option>
-              <option value="MY">Malaysia</option>
-            </select>
-            <select
-              defaultValue={year}
-              onChange={(e) => { window.location.href = `/admin/holidays?country=${country}&year=${e.target.value}`; }}
-              className={selectCls}
-            >
-              {Array.from({ length: 11 }, (_, i) => 2020 + i).map((y) => (
-                <option key={y} value={y}>{y}</option>
-              ))}
-            </select>
+          <div className="flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-display text-body-lg text-ink">{holidays.length} data · {country} {year}</p>
+            <HolidayFilters country={country} year={year} />
           </div>
         </div>
 
@@ -95,7 +81,7 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
             <thead className="bg-surface-soft">
               <tr>
                 {["Tanggal", "Nama", "Tipe", "Region"].map((h) => (
-                  <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-muted">{h}</th>
+                  <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-ink/60">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -105,14 +91,14 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
                 const dateStr = `${d.getDate()} ${MONTH_NAMES_ID[d.getMonth()]} ${d.getFullYear()}`;
                 return (
                   <tr key={h.id} className="border-t border-hairline hover:bg-surface-soft">
-                    <td className="px-md py-sm font-mono text-body-sm text-ink">{dateStr}</td>
+                    <td className="px-md py-sm font-mono text-caption text-ink">{dateStr}</td>
                     <td className="px-md py-sm font-display text-body-sm text-ink">{h.name}</td>
                     <td className="px-md py-sm">
-                      <span className={`rounded-pill px-sm py-xxs font-mono text-caption ${TYPE_CLASSES[h.type] ?? "bg-surface-soft text-muted"}`}>
+                      <span className={`rounded-pill px-sm py-xxs font-mono text-caption ${TYPE_CLASSES[h.type] ?? "bg-surface-soft text-ink/60"}`}>
                         {TYPE_LABELS[h.type] ?? h.type}
                       </span>
                     </td>
-                    <td className="px-md py-sm font-mono text-caption text-muted">
+                    <td className="px-md py-sm font-mono text-caption text-ink/60">
                       {h.region?.name ?? "—"}
                     </td>
                   </tr>
@@ -122,7 +108,7 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
           </table>
 
           {holidays.length === 0 && (
-            <p className="py-xl text-center font-display text-body-sm text-muted">
+            <p className="py-xl text-center font-display text-body text-ink">
               Tidak ada data hari libur untuk {country} {year}.
             </p>
           )}

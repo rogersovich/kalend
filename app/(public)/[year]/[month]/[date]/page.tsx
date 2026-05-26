@@ -57,10 +57,12 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const title = `${dayName}, ${day} ${monthName} ${year} | Kalend`;
   const description = `${dayName} ${day} ${monthName} ${year}. Weton: ${weton.weton} (Neptu ${weton.neptuTotal}). ${holidayInfo}`;
 
+  const qs = country !== "ID" ? `?country=${country}` : "";
   return {
     title,
     description,
     openGraph: { title, description, type: "website" },
+    alternates: { canonical: `/${year}/${params.month}/${day}${qs}` },
   };
 }
 

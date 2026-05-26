@@ -19,23 +19,29 @@ export default function AdminImportPage() {
       <Navbar />
       <main className="mx-auto max-w-content px-lg py-xl">
         <div className="mb-md">
-          <Link href="/admin" className="flex items-center gap-1 font-display text-body-sm text-muted hover:text-ink">
+          <Link href="/admin" className="inline-flex items-center gap-xs font-mono text-caption uppercase tracking-widest text-ink/60 transition-colors hover:text-ink">
             <ChevronLeft className="h-3 w-3" /> Admin
           </Link>
         </div>
 
-        <h1 className="mb-lg font-display text-display-lg font-normal text-ink">Import Data Hari Libur</h1>
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-coral p-xxl">
+          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Admin</p>
+          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">Import Data Hari Libur</h1>
+          <p className="font-display text-body-lg text-ink">Upload file JSON untuk menambah atau memperbarui data hari libur.</p>
+        </div>
 
-        <div className="mb-lg flex gap-md">
+        {/* Filters */}
+        <div className="mb-xl flex flex-wrap gap-md">
           <div>
-            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Negara</label>
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Negara</label>
             <select value={country} onChange={(e) => setCountry(e.target.value)} className={selectCls}>
               <option value="ID">Indonesia (ID)</option>
               <option value="MY">Malaysia (MY)</option>
             </select>
           </div>
           <div>
-            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Tahun</label>
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Tahun</label>
             <select value={year} onChange={(e) => setYear(Number(e.target.value))} className={selectCls}>
               {Array.from({ length: 11 }, (_, i) => 2020 + i).map((y) => (
                 <option key={y} value={y}>{y}</option>

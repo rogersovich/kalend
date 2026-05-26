@@ -18,16 +18,28 @@ export default function Navbar() {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [role, setRole] = useState<string | null>(null);
   const supabase = createClient();
 
+  async function fetchRole(userId: string) {
+    const { data } = await supabase.from("profiles").select("role").eq("id", userId).single();
+    setRole(data?.role ?? "user");
+  }
+
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+      if (data.user) fetchRole(data.user.id);
+    });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      if (session?.user) fetchRole(session.user.id);
+      else setRole(null);
     });
 
     return () => subscription.unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function handleLogout() {
@@ -37,6 +49,7 @@ export default function Navbar() {
   }
 
   const displayName = user?.user_metadata?.full_name ?? user?.email?.split("@")[0] ?? "Akun";
+  const homeLink = role === "admin" ? "/admin" : "/dashboard";
 
   return (
     <header className="sticky top-0 z-50 h-14 w-full border-b border-hairline bg-canvas">
@@ -69,7 +82,7 @@ export default function Navbar() {
           {user ? (
             <>
               <Link
-                href="/dashboard"
+                href={homeLink}
                 className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
               >
                 <User className="h-4 w-4" />
@@ -121,7 +134,7 @@ export default function Navbar() {
               {user ? (
                 <>
                   <Link
-                    href="/dashboard"
+                    href={homeLink}
                     className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-ink/60 hover:bg-surface-soft hover:text-ink"
                     onClick={() => setMobileOpen(false)}
                   >

@@ -30,11 +30,14 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
   const [mode, setMode] = useState<"add" | "update">("add");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ImportResult | null>(null);
+  const [dragging, setDragging] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  function validateAndReadFile(file: File) {
+    if (!file.name.endsWith(".json") && file.type !== "application/json") {
+      setParseError(`File "${file.name}" bukan format .json. Hanya file JSON yang diterima.`);
+      return;
+    }
     const reader = new FileReader();
     reader.onload = (ev) => {
       const text = ev.target?.result as string;
@@ -42,6 +45,30 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
       parseJson(text);
     };
     reader.readAsText(file);
+  }
+
+  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    validateAndReadFile(file);
+    e.target.value = "";
+  }
+
+  function handleDrop(e: React.DragEvent) {
+    e.preventDefault();
+    setDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (!file) return;
+    validateAndReadFile(file);
+  }
+
+  function handleDragOver(e: React.DragEvent) {
+    e.preventDefault();
+    setDragging(true);
+  }
+
+  function handleDragLeave() {
+    setDragging(false);
   }
 
   function parseJson(text: string) {
@@ -81,27 +108,36 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
       {/* Upload area */}
       <div
         onClick={() => fileRef.current?.click()}
-        className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-hairline bg-surface-soft py-xl transition-colors hover:border-brand-accent/40"
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        className={`flex cursor-pointer flex-col items-center justify-center gap-sm rounded-lg border-2 border-dashed py-xl transition-colors ${
+          dragging
+            ? "border-primary bg-primary/5"
+            : "border-hairline bg-surface-soft hover:border-primary/40"
+        }`}
       >
-        <FileJson className="h-8 w-8 text-muted" />
-        <p className="text-body-sm font-medium text-ink">Upload file JSON</p>
-        <p className="text-caption text-muted">atau paste langsung di bawah</p>
+        <FileJson className={`h-8 w-8 ${dragging ? "text-primary" : "text-ink/40"}`} />
+        <p className="font-display text-body-sm font-medium text-ink">
+          {dragging ? "Lepas file di sini" : "Upload atau drag & drop file JSON"}
+        </p>
+        <p className="font-mono text-caption text-ink/60">atau paste langsung di bawah</p>
         <input ref={fileRef} type="file" accept=".json" className="hidden" onChange={handleFile} />
       </div>
 
       {/* Textarea */}
       <div>
-        <label className="mb-1 block text-caption font-medium text-ink">JSON</label>
+        <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">JSON</label>
         <textarea
           rows={8}
           value={json}
           onChange={(e) => { setJson(e.target.value); parseJson(e.target.value); }}
           placeholder='[{"date":"2026-01-01","name":"Tahun Baru Masehi","type":"national"}]'
-          className="w-full resize-y rounded-lg border border-hairline bg-surface-soft px-3 py-2 font-mono text-[12px] text-ink outline-none focus:border-brand-accent"
+          className="w-full resize-y rounded-lg border border-hairline bg-surface-soft px-md py-sm font-mono text-caption text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
         {parseError && (
-          <p className="mt-1 flex items-center gap-1 text-caption text-error">
-            <AlertCircle className="h-3 w-3" /> {parseError}
+          <p className="mt-xs flex items-center gap-xs font-mono text-caption text-error">
+            <AlertCircle className="h-3 w-3 shrink-0" /> {parseError}
           </p>
         )}
       </div>
@@ -109,24 +145,24 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
       {/* Preview */}
       {preview && (
         <div>
-          <p className="mb-2 text-caption font-medium text-ink">Preview (10 baris pertama)</p>
+          <p className="mb-xs font-mono text-caption uppercase tracking-widest text-ink/60">Preview (10 baris pertama)</p>
           <div className="overflow-x-auto rounded-lg border border-hairline">
-            <table className="w-full text-left text-caption">
+            <table className="w-full text-left">
               <thead className="bg-surface-soft">
                 <tr>
                   {["date", "name", "type", "description", "regionCode"].map((h) => (
-                    <th key={h} className="px-3 py-2 font-semibold text-muted">{h}</th>
+                    <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-ink/60">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {preview.map((row, i) => (
-                  <tr key={i} className="border-t border-hairline">
-                    <td className="px-3 py-2 font-mono">{row.date}</td>
-                    <td className="px-3 py-2">{row.name}</td>
-                    <td className="px-3 py-2">{row.type}</td>
-                    <td className="px-3 py-2 text-muted">{row.description ?? "-"}</td>
-                    <td className="px-3 py-2 text-muted">{row.regionCode ?? "-"}</td>
+                  <tr key={i} className="border-t border-hairline hover:bg-surface-soft">
+                    <td className="px-md py-sm font-mono text-caption text-ink">{row.date}</td>
+                    <td className="px-md py-sm font-display text-body-sm text-ink">{row.name}</td>
+                    <td className="px-md py-sm font-mono text-caption text-ink">{row.type}</td>
+                    <td className="px-md py-sm font-display text-body-sm text-ink/60">{row.description ?? "—"}</td>
+                    <td className="px-md py-sm font-mono text-caption text-ink/60">{row.regionCode ?? "—"}</td>
                   </tr>
                 ))}
               </tbody>
@@ -139,16 +175,16 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
       {preview && (
         <div className="flex items-center gap-lg">
           <div>
-            <label className="mb-1 block text-caption font-medium text-ink">Mode</label>
-            <div className="flex gap-2">
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Mode</label>
+            <div className="flex gap-xs">
               {(["add", "update"] as const).map((m) => (
                 <button
                   key={m}
                   onClick={() => setMode(m)}
-                  className={`rounded-lg border px-3 py-1.5 text-caption font-medium transition-colors ${
+                  className={`rounded-pill px-md py-xs font-mono text-caption font-medium transition-colors ${
                     mode === m
-                      ? "border-brand-accent bg-brand-accent/10 text-brand-accent"
-                      : "border-hairline text-muted hover:text-ink"
+                      ? "bg-primary text-white"
+                      : "border border-hairline text-ink/60 hover:text-ink"
                   }`}
                 >
                   {m === "add" ? "Add (skip duplikat)" : "Update (upsert)"}
@@ -160,7 +196,7 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
           <button
             onClick={handleImport}
             disabled={loading || !preview}
-            className="ml-auto flex items-center gap-2 rounded-lg bg-brand-accent px-md py-sm text-body-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+            className="ml-auto flex items-center gap-xs rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-opacity hover:opacity-80 disabled:opacity-50"
           >
             <Upload className="h-4 w-4" />
             {loading ? "Mengimport..." : "Import"}
@@ -170,22 +206,24 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
 
       {/* Result */}
       {result && (
-        <div className={`rounded-xl border p-md ${result.errors.length ? "border-error/30 bg-error/5" : "border-success/30 bg-success/5"}`}>
-          <div className="flex items-center gap-2 mb-2">
+        <div className={`rounded-lg p-lg ${result.errors.length ? "bg-error/8" : "bg-block-mint"}`}>
+          <div className="mb-sm flex items-center gap-sm">
             {result.errors.length ? (
               <AlertCircle className="h-5 w-5 text-error" />
             ) : (
-              <CheckCircle className="h-5 w-5 text-success" />
+              <CheckCircle className="h-5 w-5 text-ink" />
             )}
-            <span className="font-medium text-ink">Import selesai</span>
+            <span className="font-display font-medium text-ink">Import selesai</span>
           </div>
-          <p className="text-body-sm text-muted">
-            Inserted: {result.inserted} · Updated: {result.updated} · Skipped: {result.skipped}
-          </p>
+          <div className="flex gap-lg font-mono text-caption text-ink/60">
+            <span>Inserted: <strong className="text-ink">{result.inserted}</strong></span>
+            <span>Updated: <strong className="text-ink">{result.updated}</strong></span>
+            <span>Skipped: <strong className="text-ink">{result.skipped}</strong></span>
+          </div>
           {result.errors.length > 0 && (
-            <ul className="mt-2 flex flex-col gap-1">
+            <ul className="mt-sm flex flex-col gap-xxs">
               {result.errors.map((e, i) => (
-                <li key={i} className="text-caption text-error">{e}</li>
+                <li key={i} className="font-mono text-caption text-error">{e}</li>
               ))}
             </ul>
           )}

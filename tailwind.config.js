@@ -173,7 +173,7 @@ module.exports = {
   			lg:      '1.5rem',
   			xl:      '2rem',
   			xxl:     '3rem',
-  			section: '6rem',
+  			section: '4rem',
   		},
 
   		maxWidth: {

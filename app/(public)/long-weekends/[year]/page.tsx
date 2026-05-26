@@ -33,10 +33,12 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const title = `Long Weekend ${year} ${countryName} — Daftar Lengkap | Kalend`;
   const description = `Daftar lengkap long weekend ${year} ${countryName}. ${periods.length} periode libur panjang sepanjang tahun.`;
 
+  const qs = country !== "ID" ? `?country=${country}` : "";
   return {
     title,
     description,
     openGraph: { title, description, type: "website" },
+    alternates: { canonical: `/long-weekends/${year}${qs}` },
   };
 }
 

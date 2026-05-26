@@ -26,31 +26,37 @@ const features = [
     icon: CalendarDays,
     label: "Kalender Lengkap",
     desc: "Tahunan, bulanan, dan detail harian dengan hari libur nasional, cuti bersama, dan penanggalan Jawa.",
+    href: `/${currentYear}`,
   },
   {
     icon: Zap,
     label: "Long Weekend",
     desc: "Deteksi otomatis semua periode libur panjang dan strategi cuti paling efisien.",
+    href: `/long-weekends/${currentYear}`,
   },
   {
     icon: Calculator,
     label: "Tools Kalender",
     desc: "Kalkulator selisih tanggal, hari kerja, hitung umur, cek weton, dan cuti optimizer.",
+    href: "/tools",
   },
   {
     icon: Globe,
     label: "Indonesia & Malaysia",
     desc: "Data hari libur akurat untuk 2 negara — Indonesia (34 provinsi) dan Malaysia (16 negeri).",
+    href: `/${currentYear}`,
   },
   {
     icon: Key,
     label: "API Publik",
     desc: "REST API untuk developer. Akses data hari libur, kalender, dan kalkulasi via HTTP.",
+    href: "/dashboard/api-keys",
   },
   {
     icon: Calendar,
     label: "Weton Jawa",
     desc: "Kalkulasi weton & neptu kalender Jawa untuk tanggal apapun, client-side tanpa delay.",
+    href: "/tools/cek-weton",
   },
 ];
 
@@ -99,29 +105,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── White canvas — quick nav chips ── */}
-      <section className="mx-auto max-w-content px-lg py-xl">
-        <div className="flex flex-wrap items-center justify-center gap-xs">
-          {[
-            { label: "Kalender", href: `/${currentYear}` },
-            { label: "Long Weekend", href: `/long-weekends/${currentYear}` },
-            { label: "Kalkulator", href: "/tools/kalkulator" },
-            { label: "Cuti Optimizer", href: "/tools/cuti-optimizer" },
-            { label: "Cek Weton", href: "/tools/cek-weton" },
-          ].map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className="rounded-pill border border-hairline bg-canvas px-md py-xxs font-display text-body-sm text-muted transition-colors hover:border-ink/20 hover:text-ink"
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {/* ── Color block: LIME — features ── */}
-      <section className="mx-auto max-w-content px-lg pb-section">
+      <section className="mx-auto max-w-content px-lg pb-section pt-20">
         <div className="rounded-lg bg-block-lime p-xxl">
           <p className="mb-md font-mono text-eyebrow uppercase tracking-widest text-ink/60">
             Fitur
@@ -130,21 +115,21 @@ export default function HomePage() {
             Semua yang kamu butuhkan
           </h2>
           <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
-            {features.map(({ icon: Icon, label, desc }) => (
-              <div key={label} className="rounded-lg bg-canvas p-lg shadow-elevated">
+            {features.map(({ icon: Icon, label, desc, href }) => (
+              <Link key={label} href={href} className="group rounded-lg bg-canvas p-lg shadow-elevated transition-opacity hover:opacity-80">
                 <div className="mb-md flex h-9 w-9 items-center justify-center rounded-full bg-surface-soft text-ink">
                   <Icon className="h-5 w-5" />
                 </div>
                 <p className="mb-xs font-display text-headline font-medium text-ink">{label}</p>
-                <p className="font-display text-body-sm text-muted">{desc}</p>
-              </div>
+                <p className="font-display text-body-sm text-ink">{desc}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── White canvas breathing room ── */}
-      <div className="py-section" />
+      <div className="py-xl" />
 
       {/* ── Color block: NAVY — ship/CTA ── */}
       <section className="mx-auto max-w-content px-lg pb-section">

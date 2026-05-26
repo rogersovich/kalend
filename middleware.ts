@@ -1,6 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
-import { prisma } from "@/lib/prisma";
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request: { headers: request.headers } });
@@ -35,10 +34,11 @@ export async function middleware(request: NextRequest) {
   }
 
   if (user && pathname.startsWith("/admin")) {
-    const profile = await prisma.profile.findUnique({
-      where: { id: user.id },
-      select: { role: true },
-    });
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .single();
     if (profile?.role !== "admin") {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }

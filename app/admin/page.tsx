@@ -32,10 +32,11 @@ export default async function AdminPage() {
     <>
       <Navbar />
       <main className="mx-auto max-w-content px-lg py-xl">
-        <div className="mb-lg">
-          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-muted">Admin</p>
-          <h1 className="font-display text-display-lg font-normal text-ink">Admin Panel</h1>
-          <p className="font-display text-body text-muted">Kelola data kalender Kalend.</p>
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-coral p-xxl">
+          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Admin</p>
+          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">Admin Panel</h1>
+          <p className="font-display text-body-lg text-ink">Kelola data kalender Kalend.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-md sm:grid-cols-3">
@@ -43,16 +44,16 @@ export default async function AdminPage() {
             <Link
               key={href}
               href={href}
-              className="group flex items-center gap-md rounded-lg border border-hairline bg-canvas p-lg transition-shadow hover:shadow-elevated"
+              className="group flex items-center gap-md rounded-lg border border-hairline bg-canvas p-lg transition-opacity hover:opacity-80"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors group-hover:bg-primary group-hover:text-white">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink">
                 <Icon className="h-5 w-5" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="font-display font-medium text-ink">{label}</p>
-                <p className="font-mono text-caption text-muted">{desc}</p>
+                <p className="font-mono text-caption text-ink/60">{desc}</p>
               </div>
-              <ArrowRight className="h-4 w-4 shrink-0 text-muted/40 group-hover:text-ink" />
+              <ArrowRight className="h-4 w-4 shrink-0 text-ink/30" />
             </Link>
           ))}
         </div>
