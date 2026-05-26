@@ -4,13 +4,16 @@
 
 @layer base {
   :root {
+    /* ── Brand & Core ── */
     --color-primary: #111111;
     --color-primary-active: #242424;
-    --color-brand-accent: #3b82f6;
     --color-on-primary: #ffffff;
+    --color-accent-magenta: #e040a0;
 
+    /* ── Surface ── */
     --color-canvas: #ffffff;
-    --color-surface-soft: #f8f9fa;
+    --color-inverse-canvas: #111111;
+    --color-surface-soft: #f5f5f5;
     --color-surface-card: #f5f5f5;
     --color-surface-strong: #e5e7eb;
     --color-surface-dark: #101010;
@@ -18,30 +21,51 @@
     --color-hairline: #e5e7eb;
     --color-hairline-soft: #f3f4f6;
 
+    /* ── Color Blocks (Figma pastel signatures) ── */
+    --color-block-lime: #d5f37a;
+    --color-block-lilac: #e6d0ff;
+    --color-block-cream: #fdf4e3;
+    --color-block-mint: #c5f5e1;
+    --color-block-pink: #ffd6eb;
+    --color-block-coral: #ffc8a0;
+    --color-block-navy: #1e1b4b;
+
+    /* ── Text ── */
     --color-ink: #111111;
+    --color-inverse-ink: #ffffff;
+    --color-on-inverse-soft: rgba(255, 255, 255, 0.16);
     --color-body: #374151;
     --color-muted: #6b7280;
     --color-muted-soft: #898989;
     --color-on-dark: #ffffff;
     --color-on-dark-soft: #a1a1aa;
 
+    /* ── Badge ── */
     --color-badge-orange: #fb923c;
     --color-badge-pink: #ec4899;
     --color-badge-violet: #8b5cf6;
     --color-badge-emerald: #34d399;
 
+    /* ── Semantic ── */
+    --color-semantic-success: #22c55e;
     --color-success: #10b981;
     --color-warning: #f59e0b;
     --color-error: #ef4444;
+    --color-overlay-scrim: rgba(0, 0, 0, 0.6);
 
+    /* ── shadcn tokens ── */
     --background: 0 0% 100%;
     --foreground: 0 0% 7%;
-    --radius-xs: 4px;
+
+    /* ── Radius ── */
+    --radius-xs: 2px;
     --radius-sm: 6px;
     --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
-    --radius-pill: 9999px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-2xl: 32px;
+    --radius-pill: 50px;
+    --radius-full: 9999px;
     --card: 0 0% 96%;
     --card-foreground: 0 0% 7%;
     --popover: 0 0% 100%;
@@ -90,14 +114,13 @@
     overflow-x: hidden;
     background: var(--color-canvas);
     color: var(--color-body);
-    font-family: var(--font-body), Inter, sans-serif;
+    font-family: var(--font-display), Inter, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   a {
-    color: inherit;
     text-decoration: none;
   }
 

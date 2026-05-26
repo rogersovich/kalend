@@ -17,34 +17,34 @@ export default function YearNav({ year, country }: YearNavProps) {
       {prevYear >= MIN_YEAR ? (
         <Link
           href={`/${prevYear}${countryParam}`}
-          className="flex items-center gap-xs text-caption text-muted hover:text-ink transition-colors"
+          className="flex items-center gap-xs font-mono text-caption text-ink/60 transition-colors hover:text-ink"
           aria-label={`Kalender ${prevYear}`}
         >
           <ChevronLeft className="h-4 w-4" />
           {prevYear}
         </Link>
       ) : (
-        <span className="flex items-center gap-xs text-caption text-muted/40 cursor-not-allowed select-none">
+        <span className="flex items-center gap-xs font-mono text-caption text-ink/20 cursor-not-allowed select-none">
           <ChevronLeft className="h-4 w-4" />
           {prevYear}
         </span>
       )}
 
-      <h1 className="font-display text-display-sm font-semibold text-ink">
+      <h1 className="font-display text-display-sm text-ink">
         Kalender {year}
       </h1>
 
       {nextYear <= MAX_YEAR ? (
         <Link
           href={`/${nextYear}${countryParam}`}
-          className="flex items-center gap-xs text-caption text-muted hover:text-ink transition-colors"
+          className="flex items-center gap-xs font-mono text-caption text-ink/60 transition-colors hover:text-ink"
           aria-label={`Kalender ${nextYear}`}
         >
           {nextYear}
           <ChevronRight className="h-4 w-4" />
         </Link>
       ) : (
-        <span className="flex items-center gap-xs text-caption text-muted/40 cursor-not-allowed select-none">
+        <span className="flex items-center gap-xs font-mono text-caption text-ink/20 cursor-not-allowed select-none">
           {nextYear}
           <ChevronRight className="h-4 w-4" />
         </span>

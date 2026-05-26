@@ -39,14 +39,15 @@ export default function Navbar() {
   const displayName = user?.user_metadata?.full_name ?? user?.email?.split("@")[0] ?? "Akun";
 
   return (
-    <header className="sticky top-0 z-50 h-16 w-full border-b border-hairline bg-canvas">
+    <header className="sticky top-0 z-50 h-14 w-full border-b border-hairline bg-canvas">
       <div className="mx-auto flex h-full max-w-content items-center justify-between px-lg">
+
         {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-xs font-display text-title-sm font-semibold text-ink"
         >
-          <Calendar className="h-5 w-5 text-brand-accent" aria-hidden />
+          <Calendar className="h-5 w-5" aria-hidden />
           Kalend
         </Link>
 
@@ -56,36 +57,36 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-sm py-xs text-nav-link text-muted transition-colors hover:text-ink"
+              className="rounded-full px-sm py-xs text-nav-link text-muted transition-colors hover:bg-surface-soft hover:text-ink"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Desktop CTA */}
+        {/* Desktop CTA — black+white pill pair */}
         <div className="hidden items-center gap-xs md:flex">
           {user ? (
             <>
               <Link
                 href="/dashboard"
-                className="flex items-center gap-xs rounded-md px-sm py-xs text-body-sm text-muted transition-colors hover:text-ink"
+                className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-muted transition-colors hover:bg-surface-soft hover:text-ink"
               >
                 <User className="h-4 w-4" />
                 {displayName}
               </Link>
               <Button variant="ghost" size="sm" onClick={handleLogout}>
-                <LogOut className="mr-1 h-4 w-4" />
+                <LogOut className="h-4 w-4" />
                 Keluar
               </Button>
             </>
           ) : (
             <>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/login">Login</Link>
+              <Button variant="secondary" size="sm" asChild>
+                <Link href="/login">Masuk</Link>
               </Button>
-              <Button size="sm" asChild>
-                <Link href="/register">Mulai</Link>
+              <Button variant="default" size="sm" asChild>
+                <Link href="/register">Mulai gratis</Link>
               </Button>
             </>
           )}
@@ -93,7 +94,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="flex items-center justify-center rounded-md p-xs text-ink md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-surface-soft md:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? "Tutup menu" : "Buka menu"}
           aria-expanded={mobileOpen}
@@ -102,7 +103,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile overlay */}
       {mobileOpen && (
         <div className="border-b border-hairline bg-canvas md:hidden">
           <nav className="mx-auto flex max-w-content flex-col px-lg py-md" aria-label="Mobile navigation">
@@ -110,7 +111,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="py-xs text-nav-link text-muted hover:text-ink"
+                className="rounded-full px-sm py-xs text-nav-link text-muted transition-colors hover:bg-surface-soft hover:text-ink"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -121,24 +122,24 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/dashboard"
-                    className="flex items-center gap-xs py-xs text-body-sm text-muted hover:text-ink"
+                    className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-muted hover:bg-surface-soft hover:text-ink"
                     onClick={() => setMobileOpen(false)}
                   >
                     <User className="h-4 w-4" />
                     {displayName}
                   </Link>
                   <Button variant="ghost" size="sm" className="justify-start" onClick={handleLogout}>
-                    <LogOut className="mr-1 h-4 w-4" />
+                    <LogOut className="h-4 w-4" />
                     Keluar
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="ghost" size="sm" className="justify-start" asChild>
-                    <Link href="/login">Login</Link>
+                  <Button variant="secondary" size="sm" className="w-full" asChild>
+                    <Link href="/login">Masuk</Link>
                   </Button>
-                  <Button size="sm" asChild>
-                    <Link href="/register">Mulai</Link>
+                  <Button variant="default" size="sm" className="w-full" asChild>
+                    <Link href="/register">Mulai gratis</Link>
                   </Button>
                 </>
               )}

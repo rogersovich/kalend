@@ -54,18 +54,17 @@ export default function BlogPostPage({ params }: Props) {
         </div>
 
         <article className="mx-auto max-w-2xl">
-          {/* Header */}
           <header className="mb-xl">
             <div className="mb-md">
-              <span className="rounded-full bg-brand-accent/10 px-2 py-0.5 text-caption font-medium text-brand-accent">
+              <span className="rounded-pill bg-surface-soft px-sm py-xxs font-mono text-caption uppercase tracking-widest text-muted">
                 {post.category}
               </span>
             </div>
-            <h1 className="mb-md font-display text-display-sm font-semibold text-ink leading-tight">
+            <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">
               {post.title}
             </h1>
-            <p className="mb-md text-body-md text-muted">{post.excerpt}</p>
-            <div className="flex items-center gap-md text-caption text-muted">
+            <p className="mb-md font-display text-body-lg text-muted">{post.excerpt}</p>
+            <div className="flex items-center gap-md font-mono text-caption text-muted">
               <span>{formatDate(post.publishedAt)}</span>
               <span className="flex items-center gap-1">
                 <Clock className="h-3 w-3" />
@@ -76,22 +75,21 @@ export default function BlogPostPage({ params }: Props) {
 
           {/* MDX Content */}
           <div className="prose prose-neutral max-w-none
-            prose-headings:font-display prose-headings:font-semibold prose-headings:text-ink
-            prose-p:text-muted prose-p:text-body-md prose-p:leading-relaxed
-            prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline
+            prose-headings:font-display prose-headings:font-normal prose-headings:text-ink
+            prose-p:font-display prose-p:text-muted prose-p:text-body prose-p:leading-relaxed
+            prose-a:text-ink prose-a:underline prose-a:underline-offset-2 hover:prose-a:opacity-70
             prose-strong:text-ink prose-strong:font-semibold
-            prose-code:font-mono prose-code:text-[13px] prose-code:bg-surface-soft prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-            prose-table:text-body-sm
+            prose-code:font-mono prose-code:text-caption prose-code:bg-surface-soft prose-code:px-xs prose-code:py-xxs prose-code:rounded-sm
+            prose-table:font-display prose-table:text-body-sm
             prose-th:text-ink prose-th:font-semibold
             prose-td:text-muted
             prose-hr:border-hairline
-            prose-li:text-muted">
+            prose-li:font-display prose-li:text-muted">
             <MDXRemote source={post.content} />
           </div>
 
-          {/* Back link */}
           <div className="mt-xl border-t border-hairline pt-lg">
-            <a href="/blog" className="text-body-sm text-brand-accent hover:underline">
+            <a href="/blog" className="font-display text-body-sm text-ink underline underline-offset-2 hover:opacity-70">
               ← Kembali ke Blog
             </a>
           </div>

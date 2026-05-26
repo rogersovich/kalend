@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Upload, CalendarDays, Globe } from "lucide-react";
+import { Upload, CalendarDays, Globe, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Admin — Kalend",
@@ -33,8 +33,9 @@ export default async function AdminPage() {
       <Navbar />
       <main className="mx-auto max-w-content px-lg py-xl">
         <div className="mb-lg">
-          <h1 className="font-display text-title-md font-semibold text-ink">Admin Panel</h1>
-          <p className="text-body-sm text-muted">Kelola data kalender Kalend.</p>
+          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-muted">Admin</p>
+          <h1 className="font-display text-display-lg font-normal text-ink">Admin Panel</h1>
+          <p className="font-display text-body text-muted">Kelola data kalender Kalend.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-md sm:grid-cols-3">
@@ -42,15 +43,16 @@ export default async function AdminPage() {
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-md rounded-xl border border-hairline bg-canvas p-lg transition-shadow hover:shadow-soft"
+              className="group flex items-center gap-md rounded-lg border border-hairline bg-canvas p-lg transition-shadow hover:shadow-elevated"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors group-hover:bg-primary group-hover:text-white">
                 <Icon className="h-5 w-5" />
               </div>
-              <div>
-                <p className="font-medium text-ink">{label}</p>
-                <p className="text-caption text-muted">{desc}</p>
+              <div className="min-w-0 flex-1">
+                <p className="font-display font-medium text-ink">{label}</p>
+                <p className="font-mono text-caption text-muted">{desc}</p>
               </div>
+              <ArrowRight className="h-4 w-4 shrink-0 text-muted/40 group-hover:text-ink" />
             </Link>
           ))}
         </div>

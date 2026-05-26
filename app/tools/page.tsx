@@ -46,9 +46,12 @@ export default function ToolsPage() {
     <>
       <Navbar />
       <main className="mx-auto max-w-content px-lg py-xl">
-        <div className="mb-xl">
-          <h1 className="font-display text-display-sm font-semibold text-ink">Tools</h1>
-          <p className="text-body-md text-muted">Kalkulator dan tools kalender gratis.</p>
+
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-mint p-xxl">
+          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-ink/60">Tools</p>
+          <h1 className="font-display text-display-lg font-normal text-ink">Tools Kalender</h1>
+          <p className="mt-sm font-display text-body-lg text-ink">Kalkulator dan tools kalender gratis.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
@@ -56,17 +59,19 @@ export default function ToolsPage() {
             <Link
               key={href}
               href={href}
-              className="group flex flex-col gap-md rounded-xl border border-hairline bg-canvas p-lg transition-all hover:border-brand-accent/30 hover:shadow-soft"
+              className="group flex flex-col gap-md rounded-lg border border-hairline bg-canvas p-lg transition-opacity hover:opacity-80"
             >
               <div className="flex items-start justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent transition-colors group-hover:bg-brand-accent group-hover:text-white">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-ink">
                   <Icon className="h-5 w-5" />
                 </div>
-                <span className="rounded-full bg-surface-soft px-2 py-0.5 text-caption text-muted">{badge}</span>
+                <span className="rounded-pill bg-surface-soft px-sm py-xxs font-mono text-caption uppercase tracking-widest text-ink">
+                  {badge}
+                </span>
               </div>
               <div>
-                <p className="mb-1 font-display text-title-sm font-semibold text-ink">{label}</p>
-                <p className="text-body-sm text-muted">{desc}</p>
+                <p className="mb-xs font-display text-headline text-ink">{label}</p>
+                <p className="font-display text-body-sm text-ink">{desc}</p>
               </div>
             </Link>
           ))}

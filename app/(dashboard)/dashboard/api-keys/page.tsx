@@ -14,6 +14,8 @@ interface ApiKey {
   createdAt: string;
 }
 
+const inputCls = "flex-1 rounded-md border border-hairline bg-canvas px-[14px] py-[12px] font-display text-body-sm text-ink placeholder:text-muted outline-none focus-visible:ring-2 focus-visible:ring-ink transition-colors";
+
 export default function ApiKeysPage() {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const [loading, setLoading] = useState(true);
@@ -65,12 +67,12 @@ export default function ApiKeysPage() {
     <div className="flex flex-col gap-xl">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-display-sm font-semibold text-ink">API Keys</h1>
-          <p className="text-body-sm text-muted">Limit: 100 request/hari per key (Free tier)</p>
+          <h1 className="font-display text-display-sm font-normal text-ink">API Keys</h1>
+          <p className="font-mono text-caption text-muted">Limit: 100 request/hari per key (Free tier)</p>
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-xs rounded-lg bg-brand-accent px-md py-sm text-body-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="flex items-center gap-xs rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
         >
           <Plus className="h-4 w-4" />
           Generate Key
@@ -78,9 +80,9 @@ export default function ApiKeysPage() {
       </div>
 
       {showForm && (
-        <div className="rounded-xl border border-hairline bg-canvas p-lg">
-          <h2 className="mb-md font-display text-title-sm font-semibold text-ink">API Key Baru</h2>
-          <form onSubmit={handleCreate} className="flex gap-3">
+        <div className="rounded-lg border border-hairline bg-canvas p-lg">
+          <h2 className="mb-md font-display text-headline font-medium text-ink">API Key Baru</h2>
+          <form onSubmit={handleCreate} className="flex gap-sm">
             <input
               type="text"
               required
@@ -88,19 +90,19 @@ export default function ApiKeysPage() {
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               placeholder="Nama key (contoh: Production App)"
-              className="flex-1 rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30"
+              className={inputCls}
             />
             <button
               type="submit"
               disabled={creating}
-              className="rounded-lg bg-brand-accent px-md py-sm text-body-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
             >
               {creating ? "Membuat..." : "Buat"}
             </button>
             <button
               type="button"
               onClick={() => { setShowForm(false); setNewName(""); }}
-              className="rounded-lg border border-hairline px-md py-sm text-body-sm font-medium text-muted hover:text-ink"
+              className="rounded-pill border border-hairline px-lg py-xs font-display text-button font-medium text-muted hover:text-ink"
             >
               Batal
             </button>
@@ -109,33 +111,27 @@ export default function ApiKeysPage() {
       )}
 
       {loading ? (
-        <p className="text-body-sm text-muted">Memuat...</p>
+        <p className="font-display text-body-sm text-muted">Memuat...</p>
       ) : keys.length === 0 ? (
-        <div className="rounded-xl border border-hairline bg-canvas py-xl text-center">
-          <Key className="mx-auto mb-3 h-10 w-10 text-muted/40" />
-          <p className="text-body-md text-muted">Belum ada API key.</p>
-          <button
-            onClick={() => setShowForm(true)}
-            className="mt-3 text-caption text-brand-accent hover:underline"
-          >
+        <div className="rounded-lg border border-hairline bg-canvas py-xl text-center">
+          <Key className="mx-auto mb-sm h-10 w-10 text-muted/40" />
+          <p className="font-display text-body text-muted">Belum ada API key.</p>
+          <button onClick={() => setShowForm(true)} className="mt-sm font-display text-body-sm text-ink underline underline-offset-2 hover:opacity-70">
             Generate key pertama
           </button>
         </div>
       ) : (
         <div className="flex flex-col gap-xs">
           {keys.map((k) => (
-            <div
-              key={k.id}
-              className="rounded-xl border border-hairline bg-canvas p-md"
-            >
-              <div className="mb-2 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-ink">{k.name}</span>
-                  <span className="rounded-full bg-surface-soft px-2 py-0.5 text-[10px] font-medium uppercase text-muted">
+            <div key={k.id} className="rounded-lg border border-hairline bg-canvas p-md">
+              <div className="mb-sm flex items-center justify-between">
+                <div className="flex items-center gap-sm">
+                  <span className="font-display font-medium text-ink">{k.name}</span>
+                  <span className="rounded-pill bg-surface-soft px-sm py-xxs font-mono text-caption uppercase tracking-widest text-muted">
                     {k.tier}
                   </span>
                   {!k.isActive && (
-                    <span className="rounded-full bg-error/10 px-2 py-0.5 text-[10px] font-medium text-error">
+                    <span className="rounded-pill bg-error/10 px-sm py-xxs font-mono text-caption text-error">
                       Revoked
                     </span>
                   )}
@@ -143,7 +139,7 @@ export default function ApiKeysPage() {
                 {k.isActive && (
                   <button
                     onClick={() => handleRevoke(k.id)}
-                    className="rounded-md p-1 text-muted transition-colors hover:text-error"
+                    className="rounded-full p-1 text-muted transition-colors hover:text-error"
                     title="Revoke"
                   >
                     <Trash2 className="h-4 w-4" />
@@ -151,20 +147,20 @@ export default function ApiKeysPage() {
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
-                <code className="flex-1 truncate rounded-md bg-surface-soft px-3 py-1.5 font-mono text-[12px] text-ink">
+              <div className="flex items-center gap-sm">
+                <code className="flex-1 truncate rounded-md bg-surface-soft px-md py-xs font-mono text-caption text-ink">
                   {k.key}
                 </code>
                 <button
                   onClick={() => handleCopy(k.key, k.id)}
-                  className="shrink-0 rounded-md border border-hairline px-2 py-1.5 text-muted transition-colors hover:text-ink"
+                  className="shrink-0 rounded-md border border-hairline px-sm py-xs text-muted transition-colors hover:text-ink"
                   title="Copy"
                 >
-                  {copiedId === k.id ? <Check className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                  {copiedId === k.id ? <Check className="h-4 w-4 text-semantic-success" /> : <Copy className="h-4 w-4" />}
                 </button>
               </div>
 
-              <p className="mt-2 text-caption text-muted">
+              <p className="mt-sm font-mono text-caption text-muted">
                 Limit: {k.rateLimit} req/hari ·{" "}
                 {k.lastUsedAt
                   ? `Terakhir dipakai: ${new Date(k.lastUsedAt).toLocaleDateString("id-ID")}`
@@ -175,11 +171,10 @@ export default function ApiKeysPage() {
         </div>
       )}
 
-      {/* Docs reference */}
-      <div className="mt-lg rounded-xl border border-hairline bg-surface-soft p-md">
-        <p className="text-caption text-muted">
+      <div className="mt-lg rounded-lg border border-hairline bg-surface-soft p-md">
+        <p className="font-mono text-caption text-muted">
           Sertakan key di header request:{" "}
-          <code className="rounded bg-canvas px-1 py-0.5 font-mono text-[11px]">
+          <code className="rounded-sm bg-canvas px-xs py-xxs font-mono text-caption">
             Authorization: Bearer &lt;your-api-key&gt;
           </code>
         </p>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-surface-soft">
+    <div className="flex min-h-screen flex-col bg-canvas">
       <Navbar />
       <div className="flex flex-1">
         <div className="mx-auto flex w-full max-w-content flex-1 flex-col md:flex-row">

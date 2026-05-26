@@ -30,19 +30,19 @@ export default function KalkulatorPage() {
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Tools", href: "/tools" }, { label: "Kalkulator Tanggal" }]} />
         </div>
 
-        <h1 className="mb-lg font-display text-display-sm font-semibold text-ink">Kalkulator Tanggal</h1>
+        <h1 className="mb-lg font-display text-display-lg font-normal text-ink">Kalkulator Tanggal</h1>
 
-        {/* Tab bar */}
+        {/* Pill tab bar */}
         <div className="mb-lg overflow-x-auto">
-          <div className="inline-flex min-w-full gap-1 rounded-xl bg-surface-soft p-1">
+          <div className="inline-flex min-w-full gap-xs rounded-pill bg-surface-soft p-xs">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActive(tab.id)}
                 className={cn(
-                  "whitespace-nowrap rounded-lg px-md py-sm text-body-sm font-medium transition-colors",
+                  "whitespace-nowrap rounded-pill px-md py-xs font-display text-body-sm font-medium transition-colors",
                   active === tab.id
-                    ? "bg-canvas text-ink shadow-soft"
+                    ? "bg-primary text-white"
                     : "text-muted hover:text-ink"
                 )}
               >
@@ -52,7 +52,6 @@ export default function KalkulatorPage() {
           </div>
         </div>
 
-        {/* Tab content */}
         <div className="max-w-xl">
           {active === "selisih" && <TabSelisih />}
           {active === "tambah" && <TabTambahKurang />}

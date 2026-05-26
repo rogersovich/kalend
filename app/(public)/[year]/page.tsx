@@ -69,15 +69,15 @@ export default async function YearPage({ params, searchParams }: Props) {
 
         {/* Legend */}
         <div className="mb-md flex flex-wrap items-center gap-md">
-          <div className="flex items-center gap-xs text-body-sm text-muted">
+          <div className="flex items-center gap-xs font-mono text-caption text-ink">
             <span className="h-[6px] w-[6px] rounded-full bg-error" />
             Hari Libur
           </div>
-          <div className="flex items-center gap-xs text-body-sm text-muted">
+          <div className="flex items-center gap-xs font-mono text-caption text-ink">
             <span className="h-[6px] w-[6px] rounded-full bg-badge-orange" />
             Cuti Bersama
           </div>
-          <div className="flex items-center gap-xs text-body-sm text-muted">
+          <div className="flex items-center gap-xs font-mono text-caption text-ink">
             <span className="inline-block h-3 w-3 rounded-sm bg-surface-strong" />
             Sabtu/Minggu
           </div>
@@ -87,7 +87,7 @@ export default async function YearPage({ params, searchParams }: Props) {
         {holidays !== null ? (
           <YearGrid year={year} holidays={holidays} country={country} />
         ) : (
-          <p className="py-section text-center text-body-md text-muted">
+          <p className="py-section text-center text-body text-ink">
             Data belum tersedia untuk tahun {year}.
           </p>
         )}

@@ -49,74 +49,62 @@ function LoginContent() {
     }
   }
 
+  const inputCls = "w-full rounded-md border border-hairline bg-canvas px-[14px] py-[12px] text-body-sm text-ink placeholder:text-muted outline-none focus-visible:ring-2 focus-visible:ring-ink transition-colors";
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-surface-soft px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-lg">
       <div className="w-full max-w-sm">
         {/* Logo */}
-        <div className="mb-8 flex flex-col items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-accent text-white">
+        <div className="mb-xl flex flex-col items-center gap-sm">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
             <CalendarDays size={20} />
           </div>
           <span className="font-display text-title-md font-semibold text-ink">Kalend</span>
         </div>
 
-        <div className="rounded-xl border border-hairline bg-canvas p-6 shadow-soft">
-          <h1 className="mb-1 font-display text-title-sm font-semibold text-ink">Masuk ke akun</h1>
-          <p className="mb-6 text-body-sm text-muted">Selamat datang kembali.</p>
+        <div className="rounded-lg border border-hairline bg-canvas p-lg">
+          <h1 className="mb-xs font-display text-headline font-medium text-ink">Masuk ke akun</h1>
+          <p className="mb-lg font-display text-body-sm text-muted">Selamat datang kembali.</p>
 
           {formError && (
-            <div className="mb-4 rounded-lg bg-error/10 px-3 py-2 text-body-sm text-error">
+            <div className="mb-md rounded-md bg-error/10 px-md py-sm font-display text-body-sm text-error">
               {formError}
             </div>
           )}
 
-          <form onSubmit={handleEmailLogin} className="flex flex-col gap-3">
+          <form onSubmit={handleEmailLogin} className="flex flex-col gap-sm">
             <div>
-              <label className="mb-1 block text-caption font-medium text-ink">Email</label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="kamu@email.com"
-                className="w-full rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30"
-              />
+              <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Email</label>
+              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="kamu@email.com" className={inputCls} />
             </div>
             <div>
-              <div className="mb-1 flex items-center justify-between">
-                <label className="text-caption font-medium text-ink">Password</label>
-                <Link href="/forgot-password" className="text-caption text-brand-accent hover:underline">
+              <div className="mb-xs flex items-center justify-between">
+                <label className="font-mono text-caption uppercase tracking-widest text-muted">Password</label>
+                <Link href="/forgot-password" className="font-display text-caption text-muted hover:text-ink hover:underline">
                   Lupa password?
                 </Link>
               </div>
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30"
-              />
+              <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className={inputCls} />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="mt-1 w-full rounded-lg bg-brand-accent py-2 text-body-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="mt-xs w-full rounded-pill bg-primary py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
             >
               {loading ? "Memproses..." : "Masuk"}
             </button>
           </form>
 
-          <div className="my-4 flex items-center gap-3">
+          <div className="my-md flex items-center gap-sm">
             <div className="h-px flex-1 bg-hairline" />
-            <span className="text-caption text-muted">atau</span>
+            <span className="font-mono text-caption text-muted">atau</span>
             <div className="h-px flex-1 bg-hairline" />
           </div>
 
           <button
             onClick={handleGoogleLogin}
             disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border border-hairline bg-canvas py-2 text-body-sm font-medium text-ink transition-colors hover:bg-surface-soft disabled:opacity-50"
+            className="flex w-full items-center justify-center gap-sm rounded-pill border border-hairline bg-canvas py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft disabled:opacity-50"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -127,9 +115,9 @@ function LoginContent() {
             Lanjutkan dengan Google
           </button>
 
-          <p className="mt-5 text-center text-caption text-muted">
+          <p className="mt-lg text-center font-display text-caption text-muted">
             Belum punya akun?{" "}
-            <Link href="/register" className="text-brand-accent hover:underline">
+            <Link href="/register" className="text-ink underline underline-offset-2 hover:opacity-70">
               Daftar gratis
             </Link>
           </p>

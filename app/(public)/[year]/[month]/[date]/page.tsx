@@ -141,10 +141,10 @@ export default async function DayPage({ params, searchParams }: Props) {
             />
 
             <div className="rounded-lg border border-hairline bg-canvas p-lg">
-              <h3 className="mb-sm text-caption font-semibold uppercase tracking-wide text-muted">
+              <h3 className="mb-sm font-mono text-caption uppercase tracking-widest text-muted">
                 Tambah Event
               </h3>
-              <p className="text-body-sm text-muted">
+              <p className="font-display text-body-sm text-muted">
                 Login untuk menambah event pribadi di tanggal ini.
               </p>
             </div>

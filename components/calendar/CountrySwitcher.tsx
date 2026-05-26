@@ -34,7 +34,7 @@ export default function CountrySwitcher({ current }: CountrySwitcherProps) {
             "flex items-center gap-xs rounded-pill px-sm py-[6px] text-caption font-medium transition-colors",
             current === c.code
               ? "bg-canvas text-ink shadow-soft"
-              : "text-muted hover:text-ink"
+              : "text-ink/50 hover:text-ink"
           )}
         >
           <span>{c.flag}</span>

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { CalendarDays } from "lucide-react";
 
+const inputCls = "w-full rounded-md border border-hairline bg-canvas px-[14px] py-[12px] text-body-sm text-ink placeholder:text-muted outline-none focus-visible:ring-2 focus-visible:ring-ink transition-colors";
+
 export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -54,18 +56,18 @@ export default function RegisterPage() {
 
   if (success) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-surface-soft px-4">
-        <div className="w-full max-w-sm rounded-xl border border-hairline bg-canvas p-6 shadow-soft text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success/15 text-success">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-lg">
+        <div className="w-full max-w-sm rounded-lg border border-hairline bg-canvas p-lg text-center">
+          <div className="mx-auto mb-md flex h-12 w-12 items-center justify-center rounded-full bg-surface-soft text-semantic-success">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polyline points="20,6 9,17 4,12" />
             </svg>
           </div>
-          <h2 className="mb-2 font-display text-title-sm font-semibold text-ink">Cek email kamu</h2>
-          <p className="text-body-sm text-muted">
+          <h2 className="mb-xs font-display text-headline font-medium text-ink">Cek email kamu</h2>
+          <p className="font-display text-body-sm text-muted">
             Link konfirmasi sudah dikirim ke <strong>{email}</strong>. Klik link tersebut untuk mengaktifkan akun.
           </p>
-          <Link href="/login" className="mt-4 inline-block text-caption text-brand-accent hover:underline">
+          <Link href="/login" className="mt-md inline-block font-display text-caption text-ink underline underline-offset-2 hover:opacity-70">
             Kembali ke halaman login
           </Link>
         </div>
@@ -74,79 +76,57 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-surface-soft px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-lg">
       <div className="w-full max-w-sm">
-        <div className="mb-8 flex flex-col items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-accent text-white">
+        <div className="mb-xl flex flex-col items-center gap-sm">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
             <CalendarDays size={20} />
           </div>
           <span className="font-display text-title-md font-semibold text-ink">Kalend</span>
         </div>
 
-        <div className="rounded-xl border border-hairline bg-canvas p-6 shadow-soft">
-          <h1 className="mb-1 font-display text-title-sm font-semibold text-ink">Buat akun gratis</h1>
-          <p className="mb-6 text-body-sm text-muted">Mulai kelola kalender personalmu.</p>
+        <div className="rounded-lg border border-hairline bg-canvas p-lg">
+          <h1 className="mb-xs font-display text-headline font-medium text-ink">Buat akun gratis</h1>
+          <p className="mb-lg font-display text-body-sm text-muted">Mulai kelola kalender personalmu.</p>
 
           {formError && (
-            <div className="mb-4 rounded-lg bg-error/10 px-3 py-2 text-body-sm text-error">
+            <div className="mb-md rounded-md bg-error/10 px-md py-sm font-display text-body-sm text-error">
               {formError}
             </div>
           )}
 
-          <form onSubmit={handleRegister} className="flex flex-col gap-3">
+          <form onSubmit={handleRegister} className="flex flex-col gap-sm">
             <div>
-              <label className="mb-1 block text-caption font-medium text-ink">Nama lengkap</label>
-              <input
-                type="text"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Nama Kamu"
-                className="w-full rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30"
-              />
+              <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Nama lengkap</label>
+              <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Nama Kamu" className={inputCls} />
             </div>
             <div>
-              <label className="mb-1 block text-caption font-medium text-ink">Email</label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="kamu@email.com"
-                className="w-full rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30"
-              />
+              <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Email</label>
+              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="kamu@email.com" className={inputCls} />
             </div>
             <div>
-              <label className="mb-1 block text-caption font-medium text-ink">Password</label>
-              <input
-                type="password"
-                required
-                minLength={8}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Min 8 karakter"
-                className="w-full rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none placeholder:text-muted focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30"
-              />
+              <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Password</label>
+              <input type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Min 8 karakter" className={inputCls} />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="mt-1 w-full rounded-lg bg-brand-accent py-2 text-body-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="mt-xs w-full rounded-pill bg-primary py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
             >
               {loading ? "Memproses..." : "Daftar sekarang"}
             </button>
           </form>
 
-          <div className="my-4 flex items-center gap-3">
+          <div className="my-md flex items-center gap-sm">
             <div className="h-px flex-1 bg-hairline" />
-            <span className="text-caption text-muted">atau</span>
+            <span className="font-mono text-caption text-muted">atau</span>
             <div className="h-px flex-1 bg-hairline" />
           </div>
 
           <button
             onClick={handleGoogleLogin}
             disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border border-hairline bg-canvas py-2 text-body-sm font-medium text-ink transition-colors hover:bg-surface-soft disabled:opacity-50"
+            className="flex w-full items-center justify-center gap-sm rounded-pill border border-hairline bg-canvas py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft disabled:opacity-50"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -157,9 +137,9 @@ export default function RegisterPage() {
             Daftar dengan Google
           </button>
 
-          <p className="mt-5 text-center text-caption text-muted">
+          <p className="mt-lg text-center font-display text-caption text-muted">
             Sudah punya akun?{" "}
-            <Link href="/login" className="text-brand-accent hover:underline">
+            <Link href="/login" className="text-ink underline underline-offset-2 hover:opacity-70">
               Masuk
             </Link>
           </p>

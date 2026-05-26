@@ -6,10 +6,12 @@ import { Calendar, CalendarDays, Calculator, Zap, Globe, Key } from "lucide-reac
 
 export const metadata: Metadata = {
   title: "Kalend — Kalender Indonesia & Malaysia Lengkap",
-  description: "Kalender digital lengkap untuk Indonesia dan Malaysia. Hari libur nasional, cuti bersama, penanggalan Jawa, cuti optimizer, dan API publik.",
+  description:
+    "Kalender digital lengkap untuk Indonesia dan Malaysia. Hari libur nasional, cuti bersama, penanggalan Jawa, cuti optimizer, dan API publik.",
   openGraph: {
     title: "Kalend — Kalender Indonesia & Malaysia Lengkap",
-    description: "Kalender digital lengkap untuk Indonesia dan Malaysia. Hari libur nasional, cuti bersama, penanggalan Jawa, cuti optimizer, dan API publik.",
+    description:
+      "Kalender digital lengkap untuk Indonesia dan Malaysia. Hari libur nasional, cuti bersama, penanggalan Jawa, cuti optimizer, dan API publik.",
     url: "/",
     type: "website",
     siteName: "Kalend",
@@ -57,96 +59,149 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      {/* Hero */}
-      <section className="mx-auto max-w-content px-lg py-[80px] text-center">
-        <div className="mx-auto mb-md flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-accent text-white shadow-soft">
-          <Calendar className="h-8 w-8" />
-        </div>
-        <h1 className="mx-auto mb-md max-w-2xl font-display text-display-lg font-semibold text-ink">
-          Kalender Indonesia & Malaysia Paling Lengkap
-        </h1>
-        <p className="mx-auto mb-xl max-w-xl text-body-lg text-muted">
-          Hari libur nasional, cuti bersama, penanggalan Jawa, long weekend optimizer, dan API publik — semua dalam satu platform.
+      {/* ── White canvas hero ── */}
+      <section className="mx-auto max-w-content px-lg py-section text-center">
+        {/* eyebrow label — figmaMono uppercase */}
+        <p className="mb-lg font-mono text-eyebrow uppercase tracking-widest text-muted">
+          Kalender Indonesia & Malaysia
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <h1 className="mx-auto mb-lg max-w-3xl font-display text-display-lg font-normal text-ink">
+          Satu platform untuk semua kebutuhan kalender kerjamu
+        </h1>
+        <p className="mx-auto mb-xl max-w-xl font-display text-body-lg text-muted">
+          Hari libur nasional, long weekend, penanggalan Jawa, dan API publik — semua gratis.
+        </p>
+        {/* Black + white pill pair */}
+        <div className="flex flex-wrap items-center justify-center gap-sm">
           <Link
             href={`/${currentYear}`}
-            className="rounded-xl bg-brand-accent px-xl py-md font-display text-body-md font-semibold text-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
           >
             Buka Kalender {currentYear}
           </Link>
           <Link
             href="/tools"
-            className="rounded-xl border border-hairline bg-canvas px-xl py-md font-display text-body-md font-semibold text-ink transition-colors hover:bg-surface-soft"
+            className="inline-flex items-center justify-center rounded-pill bg-canvas px-lg py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft border border-hairline"
           >
             Lihat Tools
           </Link>
         </div>
       </section>
 
-      {/* Quick links */}
-      <section className="border-y border-hairline bg-surface-soft py-md">
-        <div className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-xs px-lg">
-          {["Kalender", "Long Weekend", "Kalkulator", "Cuti Optimizer", "Cek Weton"].map((label, i) => {
-            const hrefs = [
-              `/${currentYear}`,
-              `/long-weekends/${currentYear}`,
-              "/tools/kalkulator",
-              "/tools/cuti-optimizer",
-              "/tools/cek-weton",
-            ];
-            return (
-              <Link
-                key={label}
-                href={hrefs[i]}
-                className="rounded-full border border-hairline bg-canvas px-md py-xs text-body-sm text-muted transition-colors hover:border-brand-accent/40 hover:text-ink"
-              >
-                {label}
-              </Link>
-            );
-          })}
+      {/* ── Marquee strip (inverse canvas) ── */}
+      <div className="w-full overflow-hidden bg-inverse-canvas py-xs">
+        <div className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-xl px-lg">
+          {["Indonesia", "Malaysia", "Hari Libur", "Long Weekend", "Weton Jawa", "API Publik"].map((label) => (
+            <span key={label} className="font-display text-body-sm font-medium text-white whitespace-nowrap">
+              {label}
+            </span>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* Features */}
+      {/* ── White canvas — quick nav chips ── */}
       <section className="mx-auto max-w-content px-lg py-xl">
-        <h2 className="mb-lg text-center font-display text-display-sm font-semibold text-ink">
-          Semua yang kamu butuhkan
-        </h2>
-        <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
-          {features.map(({ icon: Icon, label, desc }) => (
-            <div key={label} className="rounded-xl border border-hairline bg-canvas p-lg">
-              <div className="mb-md flex h-9 w-9 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
-                <Icon className="h-5 w-5" />
-              </div>
-              <p className="mb-xs font-display text-title-sm font-semibold text-ink">{label}</p>
-              <p className="text-body-sm text-muted">{desc}</p>
-            </div>
+        <div className="flex flex-wrap items-center justify-center gap-xs">
+          {[
+            { label: "Kalender", href: `/${currentYear}` },
+            { label: "Long Weekend", href: `/long-weekends/${currentYear}` },
+            { label: "Kalkulator", href: "/tools/kalkulator" },
+            { label: "Cuti Optimizer", href: "/tools/cuti-optimizer" },
+            { label: "Cek Weton", href: "/tools/cek-weton" },
+          ].map(({ label, href }) => (
+            <Link
+              key={label}
+              href={href}
+              className="rounded-pill border border-hairline bg-canvas px-md py-xxs font-display text-body-sm text-muted transition-colors hover:border-ink/20 hover:text-ink"
+            >
+              {label}
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mx-auto max-w-content px-lg pb-xl">
-        <div className="rounded-2xl bg-surface-dark px-xl py-[60px] text-center">
-          <h2 className="mb-sm font-display text-display-sm font-semibold text-white">
-            Mulai gratis sekarang
-          </h2>
-          <p className="mb-lg text-body-md text-white/60">
-            Buat akun untuk menyimpan event pribadi dan mengakses API publik.
+      {/* ── Color block: LIME — features ── */}
+      <section className="mx-auto max-w-content px-lg pb-section">
+        <div className="rounded-lg bg-block-lime p-xxl">
+          <p className="mb-md font-mono text-eyebrow uppercase tracking-widest text-ink/60">
+            Fitur
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <h2 className="mb-xxl max-w-lg font-display text-display-lg font-normal text-ink">
+            Semua yang kamu butuhkan
+          </h2>
+          <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
+            {features.map(({ icon: Icon, label, desc }) => (
+              <div key={label} className="rounded-lg bg-canvas p-lg shadow-elevated">
+                <div className="mb-md flex h-9 w-9 items-center justify-center rounded-full bg-surface-soft text-ink">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <p className="mb-xs font-display text-headline font-medium text-ink">{label}</p>
+                <p className="font-display text-body-sm text-muted">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── White canvas breathing room ── */}
+      <div className="py-section" />
+
+      {/* ── Color block: NAVY — ship/CTA ── */}
+      <section className="mx-auto max-w-content px-lg pb-section">
+        <div className="rounded-lg bg-block-navy p-xxl">
+          <p className="mb-md font-mono text-eyebrow uppercase tracking-widest text-white/60">
+            Mulai sekarang
+          </p>
+          <h2 className="mb-md max-w-lg font-display text-display-lg font-normal text-white">
+            Mulai gratis, tanpa kartu kredit
+          </h2>
+          <p className="mb-xl max-w-md font-display text-body-lg text-white/70">
+            Buat akun untuk menyimpan event pribadi dan mengakses API publik dengan rate limit lebih tinggi.
+          </p>
+          <div className="flex flex-wrap gap-sm">
             <Link
               href="/register"
-              className="rounded-xl bg-brand-accent px-xl py-md font-display text-body-md font-semibold text-white transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center rounded-pill bg-canvas px-lg py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft"
             >
               Daftar gratis
             </Link>
             <Link
               href={`/${currentYear}`}
-              className="rounded-xl border border-white/20 px-xl py-md font-display text-body-md font-semibold text-white/80 transition-colors hover:border-white/40 hover:text-white"
+              className="inline-flex items-center justify-center rounded-pill border border-white/30 px-lg py-xs font-display text-button font-medium text-white/80 transition-colors hover:border-white/60 hover:text-white"
             >
               Lihat kalender
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── White canvas breathing room ── */}
+      <div className="py-lg" />
+
+      {/* ── Color block: CORAL — developer/API ── */}
+      <section className="mx-auto max-w-content px-lg pb-section">
+        <div className="rounded-lg bg-block-coral p-xxl">
+          <p className="mb-md font-mono text-eyebrow uppercase tracking-widest text-ink/60">
+            Developer
+          </p>
+          <h2 className="mb-md max-w-lg font-display text-display-lg font-normal text-ink">
+            API publik siap pakai
+          </h2>
+          <p className="mb-xl max-w-md font-display text-body-lg text-ink/70">
+            REST API untuk mengakses data hari libur, kalender, dan kalkulasi tanggal via HTTP. Gratis, no auth required.
+          </p>
+          <div className="flex flex-wrap gap-sm">
+            <Link
+              href="/docs"
+              className="inline-flex items-center justify-center rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+            >
+              Lihat Dokumentasi
+            </Link>
+            <Link
+              href="/dashboard/api-keys"
+              className="inline-flex items-center justify-center rounded-pill border border-ink/20 bg-canvas px-lg py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft"
+            >
+              Dapatkan API Key
             </Link>
           </div>
         </div>

@@ -36,33 +36,37 @@ export default function BlogPage() {
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Blog" }]} />
         </div>
 
-        <div className="mb-xl">
-          <h1 className="font-display text-display-sm font-semibold text-ink">Blog</h1>
-          <p className="text-body-md text-muted">Artikel seputar kalender, hari libur, dan penanggalan.</p>
+        {/* Color block hero */}
+        <div className="mb-xl rounded-lg bg-block-cream p-xxl">
+          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-ink/60">Blog</p>
+          <h1 className="font-display text-display-lg font-normal text-ink">Artikel Kalender</h1>
+          <p className="mt-sm font-display text-body-lg text-ink">
+            Artikel seputar kalender, hari libur, dan penanggalan.
+          </p>
         </div>
 
         {posts.length === 0 ? (
-          <p className="text-body-md text-muted">Belum ada artikel.</p>
+          <p className="font-display text-body text-ink">Belum ada artikel.</p>
         ) : (
           <div className="flex flex-col gap-md">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group rounded-xl border border-hairline bg-canvas p-lg transition-all hover:border-brand-accent/30 hover:shadow-soft"
+                className="group rounded-lg border border-hairline bg-canvas p-lg transition-shadow hover:shadow-elevated"
               >
-                <div className="mb-md flex items-center gap-2">
-                  <span className="rounded-full bg-brand-accent/10 px-2 py-0.5 text-caption font-medium text-brand-accent">
+                <div className="mb-md flex items-center gap-sm">
+                  <span className="rounded-pill bg-surface-soft px-sm py-xxs font-mono text-caption uppercase tracking-widest text-ink">
                     {post.category}
                   </span>
                 </div>
 
-                <h2 className="mb-sm font-display text-title-sm font-semibold text-ink transition-colors group-hover:text-brand-accent">
+                <h2 className="mb-sm font-display text-headline text-ink transition-opacity group-hover:opacity-70">
                   {post.title}
                 </h2>
-                <p className="mb-md text-body-sm text-muted line-clamp-2">{post.excerpt}</p>
+                <p className="mb-md font-display text-body-sm text-ink line-clamp-2">{post.excerpt}</p>
 
-                <div className="flex items-center gap-md text-caption text-muted">
+                <div className="flex items-center gap-md font-mono text-caption text-ink/50">
                   <span>{formatDate(post.publishedAt)}</span>
                   <span className="flex items-center gap-1">
                     <Clock className="h-3 w-3" />

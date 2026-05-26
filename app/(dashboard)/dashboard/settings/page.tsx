@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
+const inputCls = "w-full max-w-sm rounded-md border border-hairline bg-canvas px-[14px] py-[12px] font-display text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink transition-colors";
+
 export default function SettingsPage() {
   const router = useRouter();
   const supabase = createClient();
@@ -39,7 +41,6 @@ export default function SettingsPage() {
   }
 
   async function handleDeleteAccount() {
-    // Sign out — actual deletion requires server-side with service role key
     await supabase.auth.signOut();
     router.push("/");
   }
@@ -48,40 +49,35 @@ export default function SettingsPage() {
 
   return (
     <div className="flex flex-col gap-xl">
-      <h1 className="font-display text-display-sm font-semibold text-ink">Pengaturan Akun</h1>
+      <h1 className="font-display text-display-sm font-normal text-ink">Pengaturan Akun</h1>
 
       {/* Profile */}
-      <div className="rounded-xl border border-hairline bg-canvas p-lg">
-        <h2 className="mb-md font-display text-title-sm font-semibold text-ink">Profil</h2>
+      <div className="rounded-lg border border-hairline bg-canvas p-lg">
+        <h2 className="mb-md font-display text-headline font-medium text-ink">Profil</h2>
 
         {success && (
-          <div className="mb-4 rounded-lg bg-success/10 px-3 py-2 text-body-sm text-success">
+          <div className="mb-md rounded-md bg-surface-soft px-md py-sm font-display text-body-sm text-semantic-success">
             Perubahan berhasil disimpan.
           </div>
         )}
         {error && (
-          <div className="mb-4 rounded-lg bg-error/10 px-3 py-2 text-body-sm text-error">{error}</div>
+          <div className="mb-md rounded-md bg-error/10 px-md py-sm font-display text-body-sm text-error">{error}</div>
         )}
 
-        <form onSubmit={handleUpdateName} className="flex flex-col gap-4">
+        <form onSubmit={handleUpdateName} className="flex flex-col gap-md">
           <div>
-            <label className="mb-1 block text-caption font-medium text-ink">Nama lengkap</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full max-w-sm rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30"
-            />
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Nama lengkap</label>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} className={inputCls} />
           </div>
           <div>
-            <label className="mb-1 block text-caption font-medium text-ink">Email</label>
-            <p className="text-body-sm text-muted">{user.email}</p>
+            <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-muted">Email</label>
+            <p className="font-display text-body-sm text-muted">{user.email}</p>
           </div>
           <div>
             <button
               type="submit"
               disabled={loading}
-              className="rounded-lg bg-brand-accent px-md py-sm text-body-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
             >
               {loading ? "Menyimpan..." : "Simpan perubahan"}
             </button>
@@ -90,31 +86,29 @@ export default function SettingsPage() {
       </div>
 
       {/* Danger zone */}
-      <div className="rounded-xl border border-error/30 bg-canvas p-lg">
-        <h2 className="mb-1 font-display text-title-sm font-semibold text-error">Zona Berbahaya</h2>
-        <p className="mb-md text-body-sm text-muted">
-          Tindakan di bawah ini tidak dapat dibatalkan.
-        </p>
+      <div className="rounded-lg border border-error/30 bg-canvas p-lg">
+        <h2 className="mb-xs font-display text-headline font-medium text-error">Zona Berbahaya</h2>
+        <p className="mb-md font-display text-body-sm text-muted">Tindakan di bawah ini tidak dapat dibatalkan.</p>
 
         {!deleteConfirm ? (
           <button
             onClick={() => setDeleteConfirm(true)}
-            className="rounded-lg border border-error/30 px-md py-sm text-body-sm font-medium text-error transition-colors hover:bg-error/10"
+            className="rounded-pill border border-error/30 px-lg py-xs font-display text-button font-medium text-error transition-colors hover:bg-error/10"
           >
             Hapus akun
           </button>
         ) : (
-          <div className="flex items-center gap-3">
-            <p className="text-body-sm text-error">Yakin ingin menghapus akun?</p>
+          <div className="flex items-center gap-sm">
+            <p className="font-display text-body-sm text-error">Yakin ingin menghapus akun?</p>
             <button
               onClick={handleDeleteAccount}
-              className="rounded-lg bg-error px-md py-sm text-body-sm font-medium text-white"
+              className="rounded-pill bg-error px-lg py-xs font-display text-button font-medium text-white"
             >
               Ya, hapus
             </button>
             <button
               onClick={() => setDeleteConfirm(false)}
-              className="text-caption text-muted hover:underline"
+              className="font-display text-caption text-muted hover:underline"
             >
               Batal
             </button>

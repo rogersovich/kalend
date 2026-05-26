@@ -76,15 +76,21 @@ function CekWetonContent() {
         </div>
 
         <div className="mb-lg">
-          <h1 className="font-display text-display-sm font-semibold text-ink">Cek Weton</h1>
-          <p className="text-body-md text-muted">Hitung weton & neptu Jawa untuk tanggal apapun.</p>
+          <h1 className="font-display text-display-lg font-normal text-ink">Cek Weton</h1>
+          <p className="font-display text-body-lg text-muted">Hitung weton & neptu Jawa untuk tanggal apapun.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="mb-xl flex max-w-sm gap-3">
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
-            className="flex-1 rounded-lg border border-hairline bg-surface-soft px-3 py-2 text-body-sm text-ink outline-none focus:border-brand-accent" />
-          <button type="submit"
-            className="rounded-lg bg-brand-accent px-md py-sm text-body-sm font-medium text-white transition-opacity hover:opacity-90">
+        <form onSubmit={handleSubmit} className="mb-xl flex max-w-sm gap-sm">
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            className="flex-1 rounded-md border border-hairline bg-canvas px-[14px] py-[12px] font-display text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink"
+          />
+          <button
+            type="submit"
+            className="rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+          >
             Cek
           </button>
         </form>
@@ -92,46 +98,48 @@ function CekWetonContent() {
         {result && (
           <div className="max-w-sm">
             {/* Date display */}
-            <div className="mb-md rounded-xl border border-hairline bg-canvas p-lg text-center">
-              <p className="text-caption text-muted mb-1">Weton untuk</p>
-              <p className="font-display text-title-sm font-semibold text-ink">{fullDateId}</p>
+            <div className="mb-md rounded-lg border border-hairline bg-canvas p-lg text-center">
+              <p className="font-mono text-caption uppercase tracking-widest text-muted mb-xs">Weton untuk</p>
+              <p className="font-display text-headline font-medium text-ink">{fullDateId}</p>
             </div>
 
-            {/* Weton result */}
-            <div className="mb-md rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-lg">
-              <div className="mb-md flex items-center justify-center gap-md">
+            {/* Color block: LILAC for weton result */}
+            <div className="mb-md rounded-lg bg-block-lilac p-lg">
+              <div className="mb-md flex items-center justify-center gap-lg">
                 <div className="text-center">
-                  <p className="text-caption font-medium text-muted">Hari</p>
-                  <p className="font-display text-title-md font-semibold text-ink">{result.hari}</p>
-                  <p className="text-caption text-muted">({result.neptuHari})</p>
+                  <p className="font-mono text-caption uppercase tracking-widest text-muted">Hari</p>
+                  <p className="font-display text-headline font-medium text-ink">{result.hari}</p>
+                  <p className="font-mono text-caption text-muted">({result.neptuHari})</p>
                 </div>
-                <div className="text-2xl text-muted">+</div>
+                <div className="font-display text-body-lg text-muted">+</div>
                 <div className="text-center">
-                  <p className="text-caption font-medium text-muted">Pasaran</p>
-                  <p className="font-display text-title-md font-semibold text-ink">{result.pasaran}</p>
-                  <p className="text-caption text-muted">({result.neptuPasaran})</p>
+                  <p className="font-mono text-caption uppercase tracking-widest text-muted">Pasaran</p>
+                  <p className="font-display text-headline font-medium text-ink">{result.pasaran}</p>
+                  <p className="font-mono text-caption text-muted">({result.neptuPasaran})</p>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center gap-1 border-t border-brand-accent/20 pt-md">
-                <p className="text-caption font-medium text-muted">Neptu</p>
-                <p className="font-display text-display-sm font-semibold text-brand-accent">{result.neptuTotal}</p>
+              <div className="flex flex-col items-center gap-xs border-t border-ink/10 pt-md">
+                <p className="font-mono text-caption uppercase tracking-widest text-muted">Neptu</p>
+                <p className="font-display text-display-lg font-normal text-ink">{result.neptuTotal}</p>
                 {NEPTU_MEANING[result.neptuTotal] && (
-                  <p className="text-caption text-muted">{NEPTU_MEANING[result.neptuTotal]}</p>
+                  <p className="font-display text-body-sm text-muted">{NEPTU_MEANING[result.neptuTotal]}</p>
                 )}
               </div>
             </div>
 
             {/* Weton name */}
-            <div className="mb-lg rounded-xl border border-hairline bg-canvas p-md text-center">
-              <p className="text-body-sm text-muted">Weton lengkap</p>
-              <p className="font-display text-title-sm font-semibold text-ink">{result.hari} {result.pasaran}</p>
+            <div className="mb-lg rounded-lg border border-hairline bg-canvas p-md text-center">
+              <p className="font-mono text-caption uppercase tracking-widest text-muted">Weton lengkap</p>
+              <p className="font-display text-headline font-medium text-ink">{result.hari} {result.pasaran}</p>
             </div>
 
-            {/* Share button */}
-            <button onClick={handleShare}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-hairline py-sm text-body-sm font-medium text-muted transition-colors hover:text-ink">
-              {copied ? <Check className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+            {/* Share */}
+            <button
+              onClick={handleShare}
+              className="flex w-full items-center justify-center gap-sm rounded-pill border border-hairline py-xs font-display text-button font-medium text-muted transition-colors hover:text-ink"
+            >
+              {copied ? <Check className="h-4 w-4 text-semantic-success" /> : <Copy className="h-4 w-4" />}
               {copied ? "Link tersalin!" : "Salin link untuk berbagi"}
             </button>
           </div>

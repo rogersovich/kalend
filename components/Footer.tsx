@@ -22,19 +22,21 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-surface-dark text-on-dark-soft">
-      <div className="mx-auto max-w-content px-lg py-xxl">
+    /* Figma footer: canvas background, ink text, caption for headings */
+    <footer className="border-t border-hairline bg-canvas text-ink">
+      <div className="mx-auto max-w-content px-lg py-section">
         <div className="grid grid-cols-2 gap-xl md:grid-cols-4">
-          {/* Brand */}
+
+          {/* Brand wordmark — display weight per Figma spec */}
           <div className="col-span-2 md:col-span-1">
             <Link
               href="/"
-              className="mb-md flex items-center gap-xs font-display text-title-sm font-semibold text-white"
+              className="mb-md flex items-center gap-xs font-display text-display-sm font-semibold text-ink"
             >
-              <Calendar className="h-5 w-5 text-brand-accent" aria-hidden />
+              <Calendar className="h-5 w-5" aria-hidden />
               Kalend
             </Link>
-            <p className="text-body-sm leading-relaxed">
+            <p className="text-body-sm text-muted leading-relaxed">
               Kalender digital untuk Indonesia dan Malaysia. Hari libur, long
               weekend, dan API publik.
             </p>
@@ -43,7 +45,8 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h3 className="mb-md text-caption font-semibold uppercase tracking-wider text-white">
+              {/* figmaMono uppercase caption heading */}
+              <h3 className="mb-md font-mono text-caption uppercase tracking-widest text-ink font-semibold">
                 {section}
               </h3>
               <ul className="flex flex-col gap-xs">
@@ -51,7 +54,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-body-sm transition-colors hover:text-white"
+                      className="text-body-sm text-muted transition-colors hover:text-ink"
                     >
                       {link.label}
                     </Link>
@@ -62,9 +65,9 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-xxl border-t border-white/10 pt-lg">
-          <p className="text-caption text-muted-soft">
-            © {year} Kalend. Dibuat dengan ❤️ untuk pekerja Indonesia dan Malaysia.
+        <div className="mt-xxl border-t border-hairline pt-lg">
+          <p className="font-mono text-caption uppercase tracking-widest text-muted">
+            © {year} Kalend — Kalender Indonesia & Malaysia
           </p>
         </div>
       </div>

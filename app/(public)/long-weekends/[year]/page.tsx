@@ -67,10 +67,10 @@ export default async function LongWeekendsPage({ params, searchParams }: Props) 
 
         <div className="mb-lg flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="font-display text-display-md font-semibold text-ink">
+            <h1 className="font-display text-display-lg font-normal text-ink">
               Long Weekend {year}
             </h1>
-            <p className="text-body-md text-muted">
+            <p className="font-mono text-caption text-muted">
               {periods.length} periode libur panjang ditemukan
             </p>
           </div>
