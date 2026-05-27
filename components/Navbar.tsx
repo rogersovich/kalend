@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Menu, X, Calendar, LogOut, User } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, LogOut, User } from "lucide-react";
+import calendarIcon from "@/app/assets/icons/calendar.png";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
@@ -61,7 +63,7 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-xs font-display text-title-sm font-semibold text-ink"
         >
-          <Calendar className="h-5 w-5" aria-hidden />
+          <Image src={calendarIcon} alt="" width={20} height={20} aria-hidden />
           Kalend
         </Link>
 
@@ -84,22 +86,22 @@ export default function Navbar() {
             <>
               <Link
                 href={homeLink}
-                className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
+                className="flex items-center gap-xs rounded-full px-sm py-xs text-tracking-wide text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
               >
                 <User className="h-4 w-4" />
                 {displayName}
               </Link>
-              <Button variant="ghost" size="sm" onClick={handleLogout}>
+              <Button variant="ghost" size="sm" className="text-nav-link" onClick={handleLogout}>
                 <LogOut className="h-4 w-4" />
                 Keluar
               </Button>
             </>
           ) : (
             <>
-              <Button variant="secondary" size="sm" asChild>
+              <Button variant="secondary" size="sm" className="text-nav-link" asChild>
                 <Link href="/login">Masuk</Link>
               </Button>
-              <Button variant="default" size="sm" asChild>
+              <Button variant="default" size="sm" className="text-nav-link" asChild>
                 <Link href="/register">Mulai gratis</Link>
               </Button>
             </>
@@ -136,23 +138,23 @@ export default function Navbar() {
                 <>
                   <Link
                     href={homeLink}
-                    className="flex items-center gap-xs rounded-full px-sm py-xs text-body-sm text-ink/60 hover:bg-surface-soft hover:text-ink"
+                    className="flex items-center gap-xs rounded-full px-sm py-xs text-nav-link text-ink/60 hover:bg-surface-soft hover:text-ink"
                     onClick={() => setMobileOpen(false)}
                   >
                     <User className="h-4 w-4" />
                     {displayName}
                   </Link>
-                  <Button variant="ghost" size="sm" className="justify-start" onClick={handleLogout}>
+                  <Button variant="ghost" size="sm" className="justify-start text-nav-link" onClick={handleLogout}>
                     <LogOut className="h-4 w-4" />
                     Keluar
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="secondary" size="sm" className="w-full" asChild>
+                  <Button variant="secondary" size="sm" className="w-full text-nav-link" asChild>
                     <Link href="/login">Masuk</Link>
                   </Button>
-                  <Button variant="default" size="sm" className="w-full" asChild>
+                  <Button variant="default" size="sm" className="w-full text-nav-link" asChild>
                     <Link href="/register">Mulai gratis</Link>
                   </Button>
                 </>

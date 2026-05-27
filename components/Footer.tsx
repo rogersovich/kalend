@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Calendar } from "lucide-react";
+import Image from "next/image";
+import calendarIcon from "@/app/assets/icons/calendar.png";
 
 const footerLinks = {
   Produk: [
@@ -9,7 +10,7 @@ const footerLinks = {
     { href: "/blog", label: "Blog" },
   ],
   API: [
-    { href: "/docs", label: "Dokumentasi" },
+    { href: "https://kalend-docs-one.vercel.app", label: "Dokumentasi" },
     { href: "/dashboard/api-keys", label: "API Keys" },
   ],
   Perusahaan: [
@@ -33,7 +34,7 @@ export default function Footer() {
               href="/"
               className="mb-md flex items-center gap-xs font-display text-display-sm font-semibold text-ink"
             >
-              <Calendar className="h-5 w-5" aria-hidden />
+              <Image src={calendarIcon} alt="" width={20} height={20} aria-hidden />
               Kalend
             </Link>
             <p className="text-body-sm text-muted leading-relaxed">
@@ -52,12 +53,23 @@ export default function Footer() {
               <ul className="flex flex-col gap-xs">
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-body-sm text-muted transition-colors hover:text-ink"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith("http") ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-body-sm text-muted transition-colors hover:text-ink"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-body-sm text-muted transition-colors hover:text-ink"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
