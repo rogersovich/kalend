@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+import { AlertTriangle } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import type { User } from "@supabase/supabase-js";
 
 const inputCls = "w-full max-w-sm rounded-md border border-hairline bg-canvas px-[14px] py-[12px] font-display text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink transition-colors";
@@ -14,7 +23,9 @@ export default function SettingsPage() {
   const [user, setUser] = useState<User | null>(null);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [confirmText, setConfirmText] = useState("");
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -37,6 +48,14 @@ export default function SettingsPage() {
   }
 
   async function handleDeleteAccount() {
+    setDeleting(true);
+    const res = await fetch("/api/user", { method: "DELETE" });
+    if (!res.ok) {
+      const json = await res.json();
+      toast.error(json.error ?? "Gagal menghapus akun");
+      setDeleting(false);
+      return;
+    }
     await supabase.auth.signOut();
     router.push("/");
   }
@@ -76,32 +95,67 @@ export default function SettingsPage() {
       <div className="rounded-lg border border-error/30 bg-canvas p-lg">
         <h2 className="mb-xs font-display text-headline font-medium text-error">Zona Berbahaya</h2>
         <p className="mb-md font-display text-body-sm text-muted">Tindakan di bawah ini tidak dapat dibatalkan.</p>
+        <button
+          onClick={() => { setConfirmText(""); setDeleteOpen(true); }}
+          className="rounded-pill border border-error/30 px-lg py-xs font-display text-body-sm font-medium text-error transition-colors hover:bg-error/10"
+        >
+          Hapus akun
+        </button>
+      </div>
 
-        {!deleteConfirm ? (
-          <button
-            onClick={() => setDeleteConfirm(true)}
-            className="rounded-pill border border-error/30 px-lg py-xs font-display text-body-sm font-medium text-error transition-colors hover:bg-error/10"
-          >
-            Hapus akun
-          </button>
-        ) : (
-          <div className="flex items-center gap-sm">
-            <p className="font-display text-body-sm text-error">Yakin ingin menghapus akun?</p>
+      {/* Delete confirmation modal */}
+      <Dialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <div className="mb-sm flex h-12 w-12 items-center justify-center rounded-full bg-error/10">
+              <AlertTriangle className="h-6 w-6 text-error" />
+            </div>
+            <DialogTitle className="font-display text-headline font-medium text-ink">
+              Hapus akun secara permanen?
+            </DialogTitle>
+            <DialogDescription className="font-display text-body-sm text-muted">
+              Semua data kamu akan dihapus secara permanen, termasuk:
+            </DialogDescription>
+          </DialogHeader>
+
+          <ul className="flex flex-col gap-xs rounded-lg bg-error/5 px-md py-sm">
+            {["Semua event pribadi", "Semua API key", "Riwayat penggunaan API", "Data profil"].map((item) => (
+              <li key={item} className="flex items-center gap-xs font-display text-body-sm text-error">
+                <span className="h-1 w-1 rounded-full bg-error" />
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <p className="font-display text-body-sm text-muted">
+            Ketik <strong className="text-ink">HAPUS</strong> untuk konfirmasi:
+          </p>
+          <input
+            type="text"
+            value={confirmText}
+            onChange={(e) => setConfirmText(e.target.value)}
+            placeholder="HAPUS"
+            className="w-full rounded-md border border-hairline bg-canvas px-md py-sm font-mono text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-error"
+          />
+
+          <DialogFooter className="flex gap-sm">
             <button
-              onClick={handleDeleteAccount}
-              className="rounded-pill bg-error px-lg py-xs font-display text-button font-medium text-white"
-            >
-              Ya, hapus
-            </button>
-            <button
-              onClick={() => setDeleteConfirm(false)}
-              className="font-display text-caption text-muted hover:underline"
+              onClick={() => setDeleteOpen(false)}
+              disabled={deleting}
+              className="flex-1 rounded-pill border border-hairline px-lg py-xs font-display text-body-sm font-medium text-muted transition-colors hover:text-ink disabled:opacity-50"
             >
               Batal
             </button>
-          </div>
-        )}
-      </div>
+            <button
+              onClick={handleDeleteAccount}
+              disabled={deleting || confirmText !== "HAPUS"}
+              className="flex-1 rounded-pill bg-error px-lg py-xs font-display text-body-sm font-medium text-white transition-opacity hover:opacity-80 disabled:opacity-40"
+            >
+              {deleting ? "Menghapus..." : "Ya, hapus akun"}
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
