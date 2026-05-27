@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
 
   // Fetch emails from Supabase auth
   const supabaseAdmin = createAdminClient();
-  const userIds = [...byUser.keys()];
+  const userIds = Array.from(byUser.keys());
 
   const { data: authUsers, error } = await supabaseAdmin.auth.admin.listUsers();
   if (error) {
@@ -60,7 +60,7 @@ export async function GET(req: NextRequest) {
   let sent = 0;
   const errors: string[] = [];
 
-  for (const [userId, userEvents] of byUser) {
+  for (const [userId, userEvents] of Array.from(byUser.entries())) {
     const email = emailMap.get(userId);
     if (!email) continue;
 

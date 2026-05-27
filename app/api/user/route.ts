@@ -1,25 +1,10 @@
 import { NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
-import { cookies } from "next/headers";
-import prisma from "@/lib/prisma";
+import { createClient } from "@/lib/supabase/server";
+import { prisma } from "@/lib/prisma";
 
 export async function DELETE() {
-  const cookieStore = cookies();
-
-  // Verify session
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get: (name) => cookieStore.get(name)?.value,
-        set: (name, value, options) => cookieStore.set({ name, value, ...options }),
-        remove: (name, options) => cookieStore.set({ name, value: "", ...options }),
-      },
-    }
-  );
-
+  const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -27,8 +12,7 @@ export async function DELETE() {
 
   // Delete user data from Prisma (cascade)
   await prisma.userEvent.deleteMany({ where: { userId: user.id } });
-  await prisma.apiKey.deleteMany({ where: { userId: user.id } });
-  await prisma.apiUsageLog.deleteMany({ where: { userId: user.id } });
+  await prisma.apiKey.deleteMany({ where: { userId: user.id } }); // ApiUsageLog cascade-deleted
 
   // Delete auth user via admin client
   const admin = createAdminClient(
