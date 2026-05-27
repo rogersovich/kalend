@@ -34,7 +34,7 @@ export default function YearInfoBand({ year, holidays, country }: YearInfoBandPr
           key={s.label}
           className={`${CARD_COLORS[i % CARD_COLORS.length]} rounded-lg p-sm sm:p-md`}
         >
-          <p className="font-display text-display-sm font-normal text-ink">{s.value}</p>
+          <p className="font-display text-title-lg sm:text-display-sm font-normal text-ink">{s.value}</p>
           <p className="mt-xs font-mono text-[10px] uppercase tracking-widest text-ink/60 sm:text-caption">{s.label}</p>
         </div>
       ))}

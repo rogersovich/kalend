@@ -6,6 +6,7 @@ import YearInfoBand from "@/components/calendar/YearInfoBand";
 import CountrySwitcher from "@/components/calendar/CountrySwitcher";
 import YearHolidayList from "@/components/calendar/YearHolidayList";
 import YearLongWeekendList from "@/components/calendar/YearLongWeekendList";
+import YearDownloadSection from "@/components/calendar/YearDownloadSection";
 import { getHolidaysByYear } from "@/lib/calendar/holidays";
 import { MIN_YEAR, MAX_YEAR, getShio, getHijriYears, CountryCode } from "@/lib/calendar/constants";
 
@@ -99,6 +100,9 @@ export default async function YearPage({ params, searchParams }: Props) {
 
         {/* Long weekend list */}
         <YearLongWeekendList year={year} holidays={holidays} />
+
+        {/* Download section */}
+        <YearDownloadSection year={year} holidays={holidays} country={country} />
     </main>
   );
 }

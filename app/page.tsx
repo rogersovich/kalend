@@ -71,7 +71,7 @@ export default function HomePage() {
         <p className="mb-md font-mono text-sm uppercase tracking-widest text-muted sm:mb-lg sm:text-eyebrow">
           Kalender Indonesia & Malaysia
         </p>
-        <h1 className="mx-auto mb-md max-w-3xl font-display text-display-md font-normal text-ink sm:mb-lg sm:text-display-lg">
+        <h1 className="mx-auto mb-md max-w-3xl font-display text-display-md font-bold text-ink sm:mb-lg sm:text-display-lg">
           Satu platform untuk semua kebutuhan kalender kerjamu
         </h1>
         <p className="mx-auto mb-lg max-w-xl font-display text-body-sm text-muted sm:mb-xl sm:text-body-lg">
@@ -81,13 +81,13 @@ export default function HomePage() {
         <div className="flex flex-wrap items-center justify-center gap-sm">
           <Link
             href={`/${currentYear}`}
-            className="inline-flex items-center justify-center rounded-pill bg-primary px-md py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active sm:px-lg sm:py-xs sm:text-button"
+            className="inline-flex items-center justify-center rounded-pill bg-primary px-md py-sm font-display text-caption sm:text-[16px] font-medium text-white transition-colors hover:bg-primary-active sm:px-lg sm:py-sm"
           >
             Buka Kalender {currentYear}
           </Link>
           <Link
             href="/tools"
-            className="inline-flex items-center justify-center rounded-pill border border-hairline bg-canvas px-md py-sm font-display text-body-sm font-medium text-ink transition-colors hover:bg-surface-soft sm:px-lg sm:py-xs sm:text-button"
+            className="inline-flex items-center justify-center rounded-pill border border-hairline bg-canvas px-md py-sm font-display text-caption sm:text-[16px] font-medium text-ink transition-colors hover:bg-surface-soft sm:px-lg sm:py-sm"
           >
             Lihat Tools
           </Link>
@@ -95,10 +95,10 @@ export default function HomePage() {
       </section>
 
       {/* ── Marquee strip (inverse canvas) ── */}
-      <div className="w-full overflow-hidden bg-inverse-canvas py-xs">
+      <div className="w-full overflow-hidden bg-inverse-canvas py-lg sm:py-xs">
         <div className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-md px-lg sm:gap-xl">
           {["Indonesia", "Malaysia", "Hari Libur", "Long Weekend", "Weton Jawa", "API Publik"].map((label) => (
-            <span key={label} className="font-display text-body-sm font-medium text-white whitespace-nowrap">
+            <span key={label} className="font-display text-caption sm:text-body-sm font-medium text-white whitespace-nowrap">
               {label}
             </span>
           ))}
@@ -111,7 +111,7 @@ export default function HomePage() {
           <p className="mb-md font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-eyebrow">
             Fitur
           </p>
-          <h2 className="mb-xl max-w-lg font-display text-display-md font-normal text-ink sm:mb-xxl sm:text-display-lg">
+          <h2 className="mb-xl max-w-lg font-display text-display-md text-ink sm:mb-xxl sm:text-display-lg">
             Semua yang kamu butuhkan
           </h2>
           <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
@@ -137,7 +137,7 @@ export default function HomePage() {
           <p className="mb-md font-mono text-sm uppercase tracking-widest text-white/60 sm:text-eyebrow">
             Mulai sekarang
           </p>
-          <h2 className="mb-md max-w-lg font-display text-display-md font-normal text-white sm:text-display-lg">
+          <h2 className="mb-md max-w-lg font-display text-display-md text-white sm:text-display-lg">
             Mulai gratis, tanpa kartu kredit
           </h2>
           <p className="mb-lg max-w-md font-display text-body-sm text-white/70 sm:mb-xl sm:text-body-lg">
@@ -169,7 +169,7 @@ export default function HomePage() {
           <p className="mb-md font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-eyebrow">
             Developer
           </p>
-          <h2 className="mb-md max-w-lg font-display text-display-md font-normal text-ink sm:text-display-lg">
+          <h2 className="mb-md max-w-lg font-display text-display-md text-ink sm:text-display-lg">
             API publik siap pakai
           </h2>
           <p className="mb-lg max-w-md font-display text-body-sm text-ink/70 sm:mb-xl sm:text-body-lg">
