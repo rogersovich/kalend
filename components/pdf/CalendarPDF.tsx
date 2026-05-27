@@ -44,24 +44,28 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     marginBottom: 16,
   },
+  headerLeft: {
+    flex: 1,
+  },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 700,
     color: INK,
   },
   subtitle: {
     fontSize: 9,
     color: MUTED,
+    marginTop: 1,
   },
   gridContainer: {
     flexDirection: "row",
-    gap: 12,
+    gap: 16,
   },
   calGrid: { flex: 1 },
-  sidebar: { width: 140 },
+  sidebar: { width: 160 },
   dayHeaderRow: {
     flexDirection: "row",
-    marginBottom: 2,
+    marginBottom: 0,
   },
   dayHeader: {
     flex: 1,
@@ -69,7 +73,8 @@ const styles = StyleSheet.create({
     fontSize: 7,
     fontWeight: 700,
     color: MUTED,
-    paddingBottom: 3,
+    paddingBottom: 4,
+    paddingTop: 2,
     borderBottom: `1px solid ${HAIRLINE}`,
   },
   weekRow: {
@@ -77,16 +82,17 @@ const styles = StyleSheet.create({
   },
   cell: {
     flex: 1,
-    minHeight: 52,
+    minHeight: 72,
     borderBottom: `1px solid ${HAIRLINE}`,
     borderRight: `1px solid ${HAIRLINE}`,
-    padding: 3,
+    padding: 4,
   },
   cellEmpty: {
     flex: 1,
-    minHeight: 52,
+    minHeight: 72,
     borderBottom: `1px solid ${HAIRLINE}`,
     borderRight: `1px solid ${HAIRLINE}`,
+    padding: 4,
     backgroundColor: GRAY_BG,
   },
   cellWeekend: {
@@ -102,14 +108,14 @@ const styles = StyleSheet.create({
   holidayName: {
     fontSize: 6,
     color: RED,
-    marginTop: 1,
-    lineHeight: 1.2,
+    marginTop: 2,
+    lineHeight: 1.3,
   },
   jointName: {
     fontSize: 6,
     color: ORANGE,
-    marginTop: 1,
-    lineHeight: 1.2,
+    marginTop: 2,
+    lineHeight: 1.3,
   },
   sidebarTitle: {
     fontSize: 7,
@@ -117,22 +123,23 @@ const styles = StyleSheet.create({
     color: MUTED,
     textTransform: "uppercase",
     letterSpacing: 0.5,
-    marginBottom: 6,
+    marginBottom: 8,
     borderBottom: `1px solid ${HAIRLINE}`,
-    paddingBottom: 3,
+    paddingBottom: 4,
   },
   holidayItem: {
-    marginBottom: 4,
+    marginBottom: 8,
   },
   holidayDate: {
     fontFamily: "JetBrainsMono",
     fontSize: 7,
     color: MUTED,
+    marginBottom: 1,
   },
   holidayItemName: {
-    fontSize: 7,
+    fontSize: 7.5,
     color: INK,
-    lineHeight: 1.3,
+    lineHeight: 1.4,
   },
   legend: {
     flexDirection: "row",
@@ -198,7 +205,7 @@ export default function CalendarPDF({ year, month, country, holidays }: Calendar
       <Page size="A4" orientation="landscape" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <View>
+          <View style={styles.headerLeft}>
             <Text style={styles.title}>{monthName} {year}</Text>
             <Text style={styles.subtitle}>Kalend · {countryLabel}</Text>
           </View>
@@ -235,8 +242,8 @@ export default function CalendarPDF({ year, month, country, holidays }: Calendar
                       <Text style={[styles.dayNum, isHoliday ? styles.dayNumHoliday : isJoint ? styles.dayNumJoint : {}]}>
                         {cell.day}
                       </Text>
-                      {holiday && <Text style={styles.holidayName} >{holiday.name.slice(0, 40)}</Text>}
-                      {jointHol && <Text style={styles.jointName}>{jointHol.name.slice(0, 40)}</Text>}
+                      {holiday && <Text style={styles.holidayName}>{holiday.name.slice(0, 28)}</Text>}
+                      {jointHol && <Text style={styles.jointName}>{jointHol.name.slice(0, 28)}</Text>}
                     </View>
                   );
                 })}
@@ -279,7 +286,7 @@ export default function CalendarPDF({ year, month, country, holidays }: Calendar
 
             {joint.length > 0 && (
               <>
-                <Text style={[styles.sidebarTitle, { marginTop: 12 }]}>Cuti Bersama</Text>
+                <Text style={[styles.sidebarTitle, { marginTop: 14 }]}>Cuti Bersama</Text>
                 {joint.map((h) => {
                   const d = new Date(h.date);
                   return (

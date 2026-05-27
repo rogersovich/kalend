@@ -10,67 +10,67 @@ module.exports = {
   	extend: {
   		colors: {
   			/* ── Core ── */
-  			canvas: 'var(--color-canvas)',
-  			'inverse-canvas': 'var(--color-inverse-canvas)',
+  			canvas: '#ffffff',
+  			'inverse-canvas': '#111111',
   			primary: {
-  				DEFAULT: 'var(--color-primary)',
-  				active: 'var(--color-primary-active)',
+  				DEFAULT: '#111111',
+  				active: '#242424',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
-  			'on-primary': 'var(--color-on-primary)',
-  			'accent-magenta': 'var(--color-accent-magenta)',
-  			'brand-accent': 'var(--color-primary)',
+  			'on-primary': '#ffffff',
+  			'accent-magenta': '#e040a0',
+  			'brand-accent': '#111111',
 
   			/* ── Surface ── */
   			surface: {
-  				soft: 'var(--color-surface-soft)',
-  				card: 'var(--color-surface-card)',
-  				strong: 'var(--color-surface-strong)',
-  				dark: 'var(--color-surface-dark)',
-  				'dark-elevated': 'var(--color-surface-dark-elevated)'
+  				soft: '#f5f5f5',
+  				card: '#f5f5f5',
+  				strong: '#e5e7eb',
+  				dark: '#101010',
+  				'dark-elevated': '#1a1a1a',
   			},
   			hairline: {
-  				DEFAULT: 'var(--color-hairline)',
-  				soft: 'var(--color-hairline-soft)'
+  				DEFAULT: '#e5e7eb',
+  				soft: '#f3f4f6',
   			},
 
   			/* ── Pastel color blocks ── */
   			block: {
-  				lime:   'var(--color-block-lime)',
-  				lilac:  'var(--color-block-lilac)',
-  				cream:  'var(--color-block-cream)',
-  				mint:   'var(--color-block-mint)',
-  				pink:   'var(--color-block-pink)',
-  				coral:  'var(--color-block-coral)',
-  				navy:   'var(--color-block-navy)',
+  				lime:   '#d5f37a',
+  				lilac:  '#e6d0ff',
+  				cream:  '#fdf4e3',
+  				mint:   '#c5f5e1',
+  				pink:   '#ffd6eb',
+  				coral:  '#ffc8a0',
+  				navy:   '#1e1b4b',
   			},
 
   			/* ── Text ── */
-  			ink: 'var(--color-ink)',
-  			'inverse-ink': 'var(--color-inverse-ink)',
+  			ink: '#111111',
+  			'inverse-ink': '#ffffff',
   			'on-inverse-soft': 'var(--color-on-inverse-soft)',
-  			body: 'var(--color-body)',
+  			body: '#374151',
   			muted: {
-  				DEFAULT: 'var(--color-muted)',
-  				soft: 'var(--color-muted-soft)',
+  				DEFAULT: '#6b7280',
+  				soft: '#898989',
   				foreground: 'hsl(var(--muted-foreground))'
   			},
-  			'on-dark': 'var(--color-on-dark)',
-  			'on-dark-soft': 'var(--color-on-dark-soft)',
+  			'on-dark': '#ffffff',
+  			'on-dark-soft': '#a1a1aa',
 
   			/* ── Badge ── */
   			badge: {
-  				orange: 'var(--color-badge-orange)',
-  				pink:   'var(--color-badge-pink)',
-  				violet: 'var(--color-badge-violet)',
-  				emerald:'var(--color-badge-emerald)'
+  				orange: '#fb923c',
+  				pink:   '#ec4899',
+  				violet: '#8b5cf6',
+  				emerald:'#34d399',
   			},
 
   			/* ── Semantic ── */
-  			'semantic-success': 'var(--color-semantic-success)',
-  			success: 'var(--color-success)',
-  			warning: 'var(--color-warning)',
-  			error:   'var(--color-error)',
+  			'semantic-success': '#22c55e',
+  			success: '#10b981',
+  			warning: '#f59e0b',
+  			error:   '#ef4444',
 
   			/* ── shadcn ── */
   			background: 'hsl(var(--background))',

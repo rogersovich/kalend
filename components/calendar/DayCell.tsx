@@ -66,7 +66,7 @@ export default function DayCell({
       >
         <span
           className={cn(
-            "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] leading-none",
+            "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] sm:text-[12px] leading-none",
             isToday && "font-bold text-[12px] bg-accent-magenta text-white",
             isWeekend && !isHoliday && !isToday && "text-muted",
             !isToday && hasNational && "font-semibold text-error",

@@ -31,7 +31,7 @@ export default function MonthNav({ year, month, country }: MonthNavProps) {
   const canGoNext = next.year <= MAX_YEAR;
 
   return (
-    <div className="flex items-center gap-lg">
+    <div className="flex w-full items-center justify-center gap-lg sm:w-auto sm:justify-start">
       {canGoPrev ? (
         <Link
           href={monthUrl(prev.year, prev.month, country)}

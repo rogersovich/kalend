@@ -8,9 +8,18 @@ interface HolidayListProps {
 }
 
 const TYPE_LABEL: Record<string, { label: string; className: string }> = {
-  national: { label: "Libur Nasional", className: "bg-error/10 text-error border-error/20" },
-  "joint-leave": { label: "Cuti Bersama", className: "bg-badge-orange/10 text-badge-orange border-badge-orange/20" },
-  regional: { label: "Libur Daerah", className: "bg-badge-violet/10 text-badge-violet border-badge-violet/20" },
+  national: {
+    label: "Libur Nasional",
+    className: "bg-error text-white border-error/20",
+  },
+  "joint-leave": {
+    label: "Cuti Bersama",
+    className: "bg-badge-orange text-white border-badge-orange/20",
+  },
+  regional: {
+    label: "Libur Daerah",
+    className: "bg-badge-violet text-white border-badge-violet/20",
+  },
 };
 
 function formatDate(date: Date, month?: number): string {
@@ -37,7 +46,9 @@ export default function HolidayList({ holidays, month }: HolidayListProps) {
         return (
           <li key={h.id} className="flex flex-col gap-[4px]">
             <div className="flex items-start justify-between gap-xs">
-              <span className="text-[13px] font-medium text-ink leading-snug">{h.name}</span>
+              <span className="text-[13px] font-medium text-ink leading-snug">
+                {h.name}
+              </span>
               <Badge
                 variant="outline"
                 className={`shrink-0 text-[10px] px-[6px] py-[2px] ${meta.className}`}
@@ -45,7 +56,9 @@ export default function HolidayList({ holidays, month }: HolidayListProps) {
                 {meta.label}
               </Badge>
             </div>
-            <span className="text-caption text-muted">{formatDate(h.date, month)}</span>
+            <span className="text-caption text-muted">
+              {formatDate(h.date, month)}
+            </span>
           </li>
         );
       })}

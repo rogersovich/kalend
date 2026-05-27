@@ -31,7 +31,7 @@ export default function CountrySwitcher({ current }: CountrySwitcherProps) {
           key={c.code}
           onClick={() => switchCountry(c.code as CountryCode)}
           className={cn(
-            "flex items-center gap-xs rounded-pill px-sm py-[6px] text-caption font-medium transition-colors",
+            "flex flex-1 items-center justify-center gap-xs rounded-pill px-sm py-[6px] text-caption font-medium transition-colors sm:flex-none sm:justify-start",
             current === c.code
               ? "bg-canvas text-ink shadow-soft"
               : "text-ink/50 hover:text-ink"

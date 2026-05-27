@@ -1,5 +1,4 @@
 import { HolidayData, countWorkdays } from "@/lib/calendar/holidays";
-import HolidayList from "./HolidayList";
 import EventSidebarSection from "./EventSidebarSection";
 import PDFDownloadButton from "@/components/pdf/PDFDownloadButton";
 
@@ -14,7 +13,6 @@ export default function MonthSidebar({ year, month, country, holidays }: MonthSi
   const start = new Date(year, month - 1, 1);
   const end = new Date(year, month, 0);
   const workdays = countWorkdays(start, end, holidays);
-  const nationalHolidays = holidays.filter((h) => h.type === "national");
 
   return (
     <aside className="flex flex-col gap-lg">
@@ -23,14 +21,6 @@ export default function MonthSidebar({ year, month, country, holidays }: MonthSi
         <p className="mb-xs font-mono text-caption uppercase tracking-widest text-ink/60">Hari Kerja</p>
         <p className="font-display text-display-sm font-normal text-ink">{workdays}</p>
         <p className="font-display text-body-sm text-ink">hari kerja bulan ini</p>
-      </div>
-
-      {/* Holiday list — color block lime */}
-      <div className="rounded-lg bg-block-lime p-lg">
-        <h3 className="mb-md font-mono text-caption uppercase tracking-widest text-ink/60">
-          Hari Libur Bulan Ini
-        </h3>
-        <HolidayList holidays={nationalHolidays} month={month} />
       </div>
 
       <EventSidebarSection year={year} month={month} />

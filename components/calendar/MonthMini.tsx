@@ -51,17 +51,49 @@ function getHolidaysForDate(holidays: HolidayData[], date: Date): HolidayData[] 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
+interface MonthItem {
+  date: Date;
+  label: string;
+  kind: "national" | "joint-leave" | "regional" | "event";
+  color?: string;
+}
+
+const MAX_VISIBLE = 5;
+
 export default function MonthMini({ year, month, holidays, country, eventMap }: MonthMiniProps) {
   const cells = buildMonthDays(year, month);
   const monthName = MONTH_NAMES_ID[month - 1];
   const countryParam = country === "ID" ? "" : `?country=${country}`;
   const monthSlug = monthName.toLowerCase();
 
+  // Build sorted list of all holidays + events for this month
+  const items: MonthItem[] = [];
+  for (const h of holidays) {
+    const d = new Date(h.date);
+    if (d.getMonth() + 1 === month && d.getFullYear() === year) {
+      items.push({ date: d, label: h.name, kind: h.type as MonthItem["kind"] });
+    }
+  }
+  if (eventMap) {
+    const prefix = `${year}-${String(month).padStart(2, "0")}`;
+    for (const [ds, evs] of eventMap.entries()) {
+      if (!ds.startsWith(prefix)) continue;
+      const d = new Date(ds);
+      for (const ev of evs) {
+        items.push({ date: d, label: ev.title, kind: "event", color: ev.color });
+      }
+    }
+  }
+  items.sort((a, b) => a.date.getTime() - b.date.getTime());
+
+  const visible = items.slice(0, MAX_VISIBLE);
+  const overflow = items.length - MAX_VISIBLE;
+
   return (
     <div className="rounded-lg border border-hairline bg-canvas p-2 transition-all hover:border-brand-accent/30 hover:shadow-soft sm:p-3">
       <Link
         href={`/${year}/${monthSlug}${countryParam}`}
-        className="mb-2 block text-center text-[0.8125rem] font-semibold text-ink transition-colors hover:text-brand-accent sm:mb-3 sm:text-body-sm"
+        className="mb-2 block text-center text-[13px] font-bold text-ink transition-colors hover:text-brand-accent sm:mb-3 sm:text-[15px]"
       >
         {monthName}
       </Link>
@@ -69,7 +101,7 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
       {/* Day headers */}
       <div className="mb-1 grid grid-cols-7">
         {DAY_NAMES_ID.map((d) => (
-          <div key={d} className="text-center text-[9px] font-medium uppercase text-muted">
+          <div key={d} className="text-center text-[9px] sm:text-[11px] font-medium uppercase text-muted">
             {d}
           </div>
         ))}
@@ -96,6 +128,35 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
           );
         })}
       </div>
+
+      {/* Event/holiday list */}
+      {items.length > 0 && (
+        <div className="mt-2 flex flex-col gap-[8px] border-t border-hairline pt-2">
+          {visible.map((item, i) => (
+            <div key={i} className="flex items-start gap-[5px]">
+              <span
+                className={`mt-[3px] h-[6px] w-[6px] shrink-0 rounded-full ${
+                  item.kind === "event"
+                    ? ""
+                    : item.kind === "national"
+                    ? "bg-error"
+                    : item.kind === "joint-leave"
+                    ? "bg-badge-orange"
+                    : "bg-ink/30"
+                }`}
+                style={item.kind === "event" && item.color ? { backgroundColor: item.color } : undefined}
+              />
+              <span className="min-w-0 truncate font-mono text-[11px] leading-tight text-ink/70 sm:text-[12px]">
+                <span className="font-medium text-ink/40">{item.date.getDate()} · </span>
+                {item.label}
+              </span>
+            </div>
+          ))}
+          {overflow > 0 && (
+            <span className="font-mono text-[11px] sm:text-[12px] text-ink/40 sm:text-[10px]">+{overflow} lainnya</span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

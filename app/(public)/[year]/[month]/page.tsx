@@ -4,6 +4,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import MonthGrid from "@/components/calendar/MonthGrid";
 import MonthNav from "@/components/calendar/MonthNav";
 import MonthSidebar from "@/components/calendar/MonthSidebar";
+import HolidayList from "@/components/calendar/HolidayList";
 import CountrySwitcher from "@/components/calendar/CountrySwitcher";
 import { getHolidaysByMonth } from "@/lib/calendar/holidays";
 import { MONTH_NAMES_ID, MIN_YEAR, MAX_YEAR, CountryCode } from "@/lib/calendar/constants";
@@ -87,8 +88,18 @@ export default async function MonthPage({ params, searchParams }: Props) {
 
         {/* 2-col layout */}
         <div className="grid grid-cols-1 gap-xl lg:grid-cols-[1fr_280px]">
-          <div>
+          <div className="flex flex-col gap-xl">
             <MonthGrid year={year} month={monthNum} holidays={holidays} country={country} />
+            {/* Holiday + cuti list below grid */}
+            <div className="rounded-lg bg-block-lime p-lg">
+              <h3 className="mb-md font-mono text-caption uppercase tracking-widest text-ink/60">
+                Libur &amp; Cuti Bersama
+              </h3>
+              <HolidayList
+                holidays={holidays.filter((h) => h.type === "national" || h.type === "joint-leave")}
+                month={monthNum}
+              />
+            </div>
           </div>
           <MonthSidebar year={year} month={monthNum} country={country} holidays={holidays} />
         </div>
