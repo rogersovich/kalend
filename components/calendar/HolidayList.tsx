@@ -31,13 +31,13 @@ export default function HolidayList({ holidays, month }: HolidayListProps) {
   }
 
   return (
-    <ul className="flex flex-col gap-xs">
+    <ul className="flex flex-col gap-md">
       {holidays.map((h) => {
         const meta = TYPE_LABEL[h.type] ?? TYPE_LABEL.national;
         return (
-          <li key={h.id} className="flex flex-col gap-[2px]">
+          <li key={h.id} className="flex flex-col gap-[4px]">
             <div className="flex items-start justify-between gap-xs">
-              <span className="text-body-sm font-medium text-ink leading-snug">{h.name}</span>
+              <span className="text-[13px] font-medium text-ink leading-snug">{h.name}</span>
               <Badge
                 variant="outline"
                 className={`shrink-0 text-[10px] px-[6px] py-[2px] ${meta.className}`}

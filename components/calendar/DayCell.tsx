@@ -1,6 +1,13 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { HolidayData } from "@/lib/calendar/holidays";
 import { calculateWeton } from "@/lib/calendar/weton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface DayCellProps {
   date: Date;
@@ -20,6 +27,12 @@ function getDotColors(holidays: HolidayData[]) {
   const hasJoint = holidays.some((h) => h.type === "joint-leave");
   return { hasNational, hasJoint };
 }
+
+const TYPE_LABEL: Record<string, { label: string; color: string }> = {
+  national:    { label: "Libur Nasional", color: "bg-error" },
+  "joint-leave": { label: "Cuti Bersama", color: "bg-badge-orange" },
+  regional:    { label: "Libur Daerah", color: "bg-primary" },
+};
 
 export default function DayCell({
   date,
@@ -42,7 +55,7 @@ export default function DayCell({
   const weton = showWeton ? calculateWeton(date) : null;
 
   if (size === "mini") {
-    return (
+    const cell = (
       <div
         className={cn(
           "relative flex flex-col items-center justify-start py-[2px]",
@@ -74,10 +87,38 @@ export default function DayCell({
         </div>
       </div>
     );
+
+    if (!isHoliday || !isCurrentMonth) return cell;
+
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>{cell}</TooltipTrigger>
+        <TooltipContent side="top">
+          <div className="flex flex-col gap-[6px]">
+            {holidays.map((h) => {
+              const meta = TYPE_LABEL[h.type] ?? { label: h.type, color: "bg-muted" };
+              return (
+                <div key={h.id ?? h.name} className="flex flex-col gap-[2px]">
+                  <p className="font-display text-[12px] font-medium leading-snug text-white">
+                    {h.name}
+                  </p>
+                  <div className="flex items-center gap-[4px]">
+                    <span className={cn("h-[6px] w-[6px] shrink-0 rounded-full", meta.color)} />
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-white/60">
+                      {meta.label}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </TooltipContent>
+      </Tooltip>
+    );
   }
 
   // full size (monthly view)
-  return (
+  const fullCell = (
     <div
       className={cn(
         "min-h-[60px] p-1.5",
@@ -119,5 +160,33 @@ export default function DayCell({
         </p>
       )}
     </div>
+  );
+
+  if (!isHoliday || !isCurrentMonth) return fullCell;
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>{fullCell}</TooltipTrigger>
+      <TooltipContent side="top">
+        <div className="flex flex-col gap-[6px]">
+          {holidays.map((h) => {
+            const meta = TYPE_LABEL[h.type] ?? { label: h.type, color: "bg-muted" };
+            return (
+              <div key={h.id ?? h.name} className="flex flex-col gap-[2px]">
+                <p className="font-display text-[12px] font-medium leading-snug text-white">
+                  {h.name}
+                </p>
+                <div className="flex items-center gap-[4px]">
+                  <span className={cn("h-[6px] w-[6px] shrink-0 rounded-full", meta.color)} />
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-white/60">
+                    {meta.label}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </TooltipContent>
+    </Tooltip>
   );
 }

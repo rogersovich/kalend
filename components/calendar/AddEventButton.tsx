@@ -29,7 +29,7 @@ export default function AddEventButton() {
   return (
     <Link
       href="/dashboard/events"
-      className="flex w-full items-center justify-center gap-xs rounded-lg bg-brand-accent py-sm text-body-sm font-medium text-white transition-opacity hover:opacity-90"
+      className="flex w-full items-center justify-center gap-xs rounded-lg bg-brand-accent py-sm text-body-sm font-medium text-ink/60 transition-opacity hover:opacity-90"
     >
       <Plus className="h-4 w-4" />
       Tambah Event
