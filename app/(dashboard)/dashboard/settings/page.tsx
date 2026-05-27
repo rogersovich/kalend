@@ -65,11 +65,11 @@ export default function SettingsPage() {
   if (!user) return null;
 
   return (
-    <div className="flex flex-col gap-xl">
+    <div className="flex flex-col gap-lg md:gap-xl">
       <h1 className="font-display text-display-sm font-normal text-ink">Pengaturan Akun</h1>
 
       {/* Profile */}
-      <div className="rounded-lg border border-hairline bg-canvas p-lg">
+      <div className="rounded-lg border border-hairline bg-canvas p-md sm:p-lg">
         <h2 className="mb-md font-display text-headline font-medium text-ink">Profil</h2>
 
         <form onSubmit={handleUpdateName} className="flex flex-col gap-md">
@@ -85,7 +85,7 @@ export default function SettingsPage() {
             <button
               type="submit"
               disabled={loading}
-              className="rounded-pill bg-primary px-lg py-xs font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
+              className="w-full rounded-pill bg-primary px-lg py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50 sm:w-auto sm:py-xs"
             >
               {loading ? "Menyimpan..." : "Simpan perubahan"}
             </button>
@@ -94,12 +94,12 @@ export default function SettingsPage() {
       </div>
 
       {/* Danger zone */}
-      <div className="rounded-lg border border-error/30 bg-canvas p-lg">
+      <div className="rounded-lg border border-error/30 bg-canvas p-md sm:p-lg">
         <h2 className="mb-xs font-display text-headline font-medium text-error">Zona Berbahaya</h2>
         <p className="mb-md font-display text-body-sm text-muted">Tindakan di bawah ini tidak dapat dibatalkan.</p>
         <button
           onClick={() => { setConfirmText(""); setDeleteOpen(true); }}
-          className="rounded-pill border border-error/30 px-lg py-xs font-display text-body-sm font-medium text-error transition-colors hover:bg-error/10"
+          className="w-full rounded-pill border border-error/30 px-lg py-sm font-display text-body-sm font-medium text-error transition-colors hover:bg-error/10 sm:w-auto sm:py-xs"
         >
           Hapus akun
         </button>

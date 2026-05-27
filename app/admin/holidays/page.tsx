@@ -57,7 +57,7 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+      <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         <div className="mb-md">
           <Link href="/admin" className="inline-flex items-center gap-xs font-mono text-caption uppercase tracking-widest text-ink/60 transition-colors hover:text-ink">
             <ChevronLeft className="h-3 w-3" /> Admin
@@ -65,47 +65,49 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
         </div>
 
         {/* Color block hero */}
-        <div className="mb-xl rounded-lg bg-block-lime p-xxl">
-          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Admin</p>
-          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">
+        <div className="mb-lg rounded-lg bg-block-lime p-lg sm:mb-xl sm:p-xxl">
+          <p className="mb-sm font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-caption">Admin</p>
+          <h1 className="mb-md font-display text-display-md font-normal text-ink leading-tight sm:text-display-lg">
             Hari Libur
           </h1>
-          <div className="flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-display text-body-lg text-ink">{holidays.length} data · {country} {year}</p>
+          <div className="flex flex-col gap-sm sm:flex-row sm:items-center sm:justify-between sm:gap-md">
+            <p className="font-display text-body-sm text-ink sm:text-body-lg">{holidays.length} data · {country} {year}</p>
             <HolidayFilters country={country} year={year} />
           </div>
         </div>
 
         <div className="overflow-hidden rounded-lg border border-hairline">
-          <table className="w-full text-left">
-            <thead className="bg-surface-soft">
-              <tr>
-                {["Tanggal", "Nama", "Tipe", "Region"].map((h) => (
-                  <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-ink/60">{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {holidays.map((h) => {
-                const d = new Date(h.date);
-                const dateStr = `${d.getDate()} ${MONTH_NAMES_ID[d.getMonth()]} ${d.getFullYear()}`;
-                return (
-                  <tr key={h.id} className="border-t border-hairline hover:bg-surface-soft">
-                    <td className="px-md py-sm font-mono text-caption text-ink">{dateStr}</td>
-                    <td className="px-md py-sm font-display text-body-sm text-ink">{h.name}</td>
-                    <td className="px-md py-sm">
-                      <span className={`rounded-pill px-sm py-xxs font-mono text-caption ${TYPE_CLASSES[h.type] ?? "bg-surface-soft text-ink/60"}`}>
-                        {TYPE_LABELS[h.type] ?? h.type}
-                      </span>
-                    </td>
-                    <td className="px-md py-sm font-mono text-caption text-ink/60">
-                      {h.region?.name ?? "—"}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="max-h-[600px] overflow-auto">
+            <table className="w-full min-w-[520px] text-left">
+              <thead className="bg-surface-soft">
+                <tr>
+                  {["Tanggal", "Nama", "Tipe", "Region"].map((h) => (
+                    <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-ink/60">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {holidays.map((h) => {
+                  const d = new Date(h.date);
+                  const dateStr = `${d.getDate()} ${MONTH_NAMES_ID[d.getMonth()]} ${d.getFullYear()}`;
+                  return (
+                    <tr key={h.id} className="border-t border-hairline hover:bg-surface-soft">
+                      <td className="px-md py-sm font-mono text-caption text-ink">{dateStr}</td>
+                      <td className="px-md py-sm font-display text-body-sm text-ink">{h.name}</td>
+                      <td className="px-md py-sm">
+                        <span className={`rounded-pill px-sm py-xxs font-mono text-caption ${TYPE_CLASSES[h.type] ?? "bg-surface-soft text-ink/60"}`}>
+                          {TYPE_LABELS[h.type] ?? h.type}
+                        </span>
+                      </td>
+                      <td className="px-md py-sm font-mono text-caption text-ink/60">
+                        {h.region?.name ?? "—"}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
 
           {holidays.length === 0 && (
             <p className="py-xl text-center font-display text-body text-ink">

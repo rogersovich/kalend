@@ -7,7 +7,7 @@ import JsonImporter from "@/components/admin/JsonImporter";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
-const selectCls = "rounded-md border border-hairline bg-canvas px-md py-xs font-display text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink";
+const selectCls = "w-full rounded-md border border-hairline bg-canvas px-md py-xs font-display text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink sm:w-auto";
 
 export default function AdminImportPage() {
   const currentYear = new Date().getFullYear();
@@ -17,7 +17,7 @@ export default function AdminImportPage() {
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+      <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         <div className="mb-md">
           <Link href="/admin" className="inline-flex items-center gap-xs font-mono text-caption uppercase tracking-widest text-ink/60 transition-colors hover:text-ink">
             <ChevronLeft className="h-3 w-3" /> Admin
@@ -25,14 +25,14 @@ export default function AdminImportPage() {
         </div>
 
         {/* Color block hero */}
-        <div className="mb-xl rounded-lg bg-block-coral p-xxl">
-          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Admin</p>
-          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">Import Data Hari Libur</h1>
-          <p className="font-display text-body-lg text-ink">Upload file JSON untuk menambah atau memperbarui data hari libur.</p>
+        <div className="mb-lg rounded-lg bg-block-coral p-lg sm:mb-xl sm:p-xxl">
+          <p className="mb-sm font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-caption">Admin</p>
+          <h1 className="mb-md font-display text-display-md font-normal text-ink leading-tight sm:text-display-lg">Import Data Hari Libur</h1>
+          <p className="font-display text-body-sm text-ink sm:text-body-lg">Upload file JSON untuk menambah atau memperbarui data hari libur.</p>
         </div>
 
         {/* Filters */}
-        <div className="mb-xl flex flex-wrap gap-md">
+        <div className="mb-lg flex flex-col gap-sm sm:mb-xl sm:flex-row sm:flex-wrap sm:gap-md">
           <div>
             <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Negara</label>
             <select value={country} onChange={(e) => setCountry(e.target.value)} className={selectCls}>

@@ -51,20 +51,20 @@ export default async function YearPage({ params, searchParams }: Props) {
   const holidays = await getHolidaysByYear(country, year);
 
   return (
-    <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         {/* Header */}
-        <div className="mb-lg flex flex-col items-center gap-md">
+        <div className="mb-md flex flex-col items-center gap-sm sm:mb-lg sm:gap-md">
           <CountrySwitcher current={country} />
           <YearNav year={year} country={country} />
         </div>
 
         {/* Info band */}
-        <div className="mb-lg">
+        <div className="mb-md sm:mb-lg">
           <YearInfoBand year={year} holidays={holidays} country={country} />
         </div>
 
         {/* Legend */}
-        <div className="mb-md flex flex-wrap items-center gap-md">
+        <div className="mb-md flex flex-wrap items-center gap-xs sm:gap-md">
           <div className="flex items-center gap-xs font-mono text-caption text-ink">
             <span className="h-[6px] w-[6px] rounded-full bg-error" />
             Hari Libur

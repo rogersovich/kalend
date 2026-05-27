@@ -83,9 +83,9 @@ export default function EventsPage() {
 
   if (mode === "create") {
     return (
-      <div className="flex flex-col gap-xl">
+      <div className="flex flex-col gap-lg md:gap-xl">
         <h1 className="font-display text-display-sm font-normal text-ink">Tambah Event</h1>
-        <div className="max-w-lg rounded-lg border border-hairline bg-canvas p-lg">
+        <div className="max-w-lg rounded-lg border border-hairline bg-canvas p-md sm:p-lg">
           <EventForm onSubmit={handleCreate} onCancel={() => setMode("list")} submitLabel="Tambah Event" />
         </div>
       </div>
@@ -94,9 +94,9 @@ export default function EventsPage() {
 
   if (mode === "edit" && editing) {
     return (
-      <div className="flex flex-col gap-xl">
+      <div className="flex flex-col gap-lg md:gap-xl">
         <h1 className="font-display text-display-sm font-normal text-ink">Edit Event</h1>
-        <div className="max-w-lg rounded-lg border border-hairline bg-canvas p-lg">
+        <div className="max-w-lg rounded-lg border border-hairline bg-canvas p-md sm:p-lg">
           <EventForm
             initial={{
               title: editing.title,
@@ -115,15 +115,15 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="flex flex-col gap-xl">
-      <div className="flex items-center justify-between">
-        <div>
+    <div className="flex flex-col gap-lg md:gap-xl">
+      <div className="flex flex-col gap-sm sm:flex-row sm:items-start sm:justify-between">
+        <div className="mb-3 sm:mb-0">
           <h1 className="font-display text-display-sm font-normal text-ink">Events</h1>
           <p className="mt-xs font-mono text-caption text-muted">Event pribadi tersimpan di kalender kamu</p>
         </div>
         <button
           onClick={() => setMode("create")}
-          className="flex items-center gap-xs rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+          className="flex w-full items-center justify-center gap-xs rounded-pill bg-primary px-lg py-sm font-display text-caption font-medium text-white transition-colors hover:bg-primary-active sm:w-auto sm:py-xs sm:text-body-sm"
         >
           <Plus className="h-4 w-4" />
           Tambah Event
@@ -136,7 +136,7 @@ export default function EventsPage() {
           Memuat event...
         </div>
       ) : events.length === 0 ? (
-        <div className="flex flex-col items-center gap-sm rounded-lg border border-hairline bg-canvas py-xxl text-center">
+        <div className="flex flex-col items-center gap-sm rounded-lg border border-hairline bg-canvas py-xl text-center sm:py-xxl">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-surface-soft">
             <CalendarDays className="h-7 w-7 text-muted" />
           </div>
@@ -146,7 +146,7 @@ export default function EventsPage() {
           </div>
           <button
             onClick={() => setMode("create")}
-            className="mt-xs inline-flex items-center gap-1 rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+            className="mt-xs inline-flex items-center gap-1 rounded-pill bg-primary px-md py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active sm:px-lg sm:py-xs sm:text-button"
           >
             <Plus className="h-4 w-4" />
             Tambah event
@@ -156,7 +156,7 @@ export default function EventsPage() {
         <div className="rounded-lg border border-hairline bg-canvas">
           <div className="divide-y divide-hairline">
             {events.map((ev) => (
-              <div key={ev.id} className="flex items-center gap-md px-lg py-md hover:bg-surface-soft/50">
+              <div key={ev.id} className="flex items-center gap-sm px-md py-sm hover:bg-surface-soft/50 sm:gap-md sm:px-lg sm:py-md">
                 <div className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: ev.color ?? "#6366f1" }} />
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-display text-body-sm font-medium text-ink">{ev.title}</p>

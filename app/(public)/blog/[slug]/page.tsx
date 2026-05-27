@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -56,9 +54,7 @@ export default function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         <div className="mb-md">
           <Breadcrumb items={[
             { label: "Beranda", href: "/" },
@@ -67,17 +63,17 @@ export default function BlogPostPage({ params }: Props) {
           ]} />
         </div>
 
-        <article className="mx-auto pt-4">
+        <article className="mx-auto pt-2 sm:pt-4">
           {/* Color block hero header */}
-          <header className={`${getCategoryBg(post.category)} mb-xl rounded-lg p-xxl`}>
-            <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">
+          <header className={`${getCategoryBg(post.category)} mb-lg rounded-lg p-lg sm:mb-xl sm:p-xxl`}>
+            <p className="mb-sm font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-caption">
               {post.category}
             </p>
-            <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">
+            <h1 className="mb-md font-display text-display-md font-normal text-ink leading-tight sm:text-display-lg">
               {post.title}
             </h1>
-            <p className="mb-md font-display text-body-lg text-ink">{post.excerpt}</p>
-            <div className="flex items-center gap-md font-mono text-caption text-ink/60">
+            <p className="mb-md font-display text-body-sm text-ink sm:text-body-lg">{post.excerpt}</p>
+            <div className="flex items-center gap-sm font-mono text-caption text-ink/60 sm:gap-md">
               <span>{formatDate(post.publishedAt)}</span>
               <span className="flex items-center gap-1">
                 <Clock className="h-3 w-3" />
@@ -93,25 +89,23 @@ export default function BlogPostPage({ params }: Props) {
             prose-a:text-ink prose-a:underline prose-a:underline-offset-2 hover:prose-a:opacity-70
             prose-strong:text-ink prose-strong:font-semibold
             prose-code:font-mono prose-code:text-caption prose-code:bg-surface-soft prose-code:px-xs prose-code:py-xxs prose-code:rounded-sm
-            prose-table:font-display prose-table:text-body-sm
+            prose-table:font-display prose-table:text-body-sm prose-table:block prose-table:overflow-x-auto
             prose-th:text-ink prose-th:font-semibold
             prose-td:text-ink
             prose-hr:border-hairline
-            prose-li:font-display prose-li:text-ink px-4">
+            prose-li:font-display prose-li:text-ink px-0 sm:px-4">
             <MDXRemote source={post.content} />
           </div>
 
-          <div className="mt-xl border-t border-hairline pt-lg">
+          <div className="mt-lg border-t border-hairline pt-lg sm:mt-xl">
             <a
               href="/blog"
-              className="inline-flex items-center gap-xs rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-opacity hover:opacity-80"
+              className="inline-flex items-center gap-xs rounded-pill bg-primary px-md py-sm font-display text-body-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-lg sm:py-xs sm:text-button"
             >
               ← Kembali ke Blog
             </a>
           </div>
         </article>
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

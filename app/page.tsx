@@ -66,28 +66,28 @@ export default function HomePage() {
       <Navbar />
 
       {/* ── White canvas hero ── */}
-      <section className="mx-auto max-w-content px-lg py-section text-center">
+      <section className="mx-auto max-w-content px-lg py-xl text-center sm:py-section">
         {/* eyebrow label — figmaMono uppercase */}
-        <p className="mb-lg font-mono text-eyebrow uppercase tracking-widest text-muted">
+        <p className="mb-md font-mono text-sm uppercase tracking-widest text-muted sm:mb-lg sm:text-eyebrow">
           Kalender Indonesia & Malaysia
         </p>
-        <h1 className="mx-auto mb-lg max-w-3xl font-display text-display-lg font-normal text-ink">
+        <h1 className="mx-auto mb-md max-w-3xl font-display text-display-md font-normal text-ink sm:mb-lg sm:text-display-lg">
           Satu platform untuk semua kebutuhan kalender kerjamu
         </h1>
-        <p className="mx-auto mb-xl max-w-xl font-display text-body-lg text-muted">
+        <p className="mx-auto mb-lg max-w-xl font-display text-body-sm text-muted sm:mb-xl sm:text-body-lg">
           Hari libur nasional, long weekend, penanggalan Jawa, dan API publik — semua gratis.
         </p>
         {/* Black + white pill pair */}
         <div className="flex flex-wrap items-center justify-center gap-sm">
           <Link
             href={`/${currentYear}`}
-            className="inline-flex items-center justify-center rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+            className="inline-flex items-center justify-center rounded-pill bg-primary px-md py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active sm:px-lg sm:py-xs sm:text-button"
           >
             Buka Kalender {currentYear}
           </Link>
           <Link
             href="/tools"
-            className="inline-flex items-center justify-center rounded-pill bg-canvas px-lg py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft border border-hairline"
+            className="inline-flex items-center justify-center rounded-pill border border-hairline bg-canvas px-md py-sm font-display text-body-sm font-medium text-ink transition-colors hover:bg-surface-soft sm:px-lg sm:py-xs sm:text-button"
           >
             Lihat Tools
           </Link>
@@ -96,7 +96,7 @@ export default function HomePage() {
 
       {/* ── Marquee strip (inverse canvas) ── */}
       <div className="w-full overflow-hidden bg-inverse-canvas py-xs">
-        <div className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-xl px-lg">
+        <div className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-md px-lg sm:gap-xl">
           {["Indonesia", "Malaysia", "Hari Libur", "Long Weekend", "Weton Jawa", "API Publik"].map((label) => (
             <span key={label} className="font-display text-body-sm font-medium text-white whitespace-nowrap">
               {label}
@@ -106,12 +106,12 @@ export default function HomePage() {
       </div>
 
       {/* ── Color block: LIME — features ── */}
-      <section className="mx-auto max-w-content px-lg pb-section pt-20">
-        <div className="rounded-lg bg-block-lime p-xxl">
-          <p className="mb-md font-mono text-eyebrow uppercase tracking-widest text-ink/60">
+      <section className="mx-auto max-w-content px-lg pb-xl pt-lg sm:pb-section sm:pt-20">
+        <div className="rounded-lg bg-block-lime p-lg sm:p-xxl">
+          <p className="mb-md font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-eyebrow">
             Fitur
           </p>
-          <h2 className="mb-xxl max-w-lg font-display text-display-lg font-normal text-ink">
+          <h2 className="mb-xl max-w-lg font-display text-display-md font-normal text-ink sm:mb-xxl sm:text-display-lg">
             Semua yang kamu butuhkan
           </h2>
           <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
@@ -129,30 +129,30 @@ export default function HomePage() {
       </section>
 
       {/* ── White canvas breathing room ── */}
-      <div className="py-xl" />
+      <div className="py-lg sm:py-xl" />
 
       {/* ── Color block: NAVY — ship/CTA ── */}
-      <section className="mx-auto max-w-content px-lg pb-section">
-        <div className="rounded-lg bg-block-navy p-xxl">
-          <p className="mb-md font-mono text-eyebrow uppercase tracking-widest text-white/60">
+      <section className="mx-auto max-w-content px-lg pb-xl sm:pb-section">
+        <div className="rounded-lg bg-block-navy p-lg sm:p-xxl">
+          <p className="mb-md font-mono text-sm uppercase tracking-widest text-white/60 sm:text-eyebrow">
             Mulai sekarang
           </p>
-          <h2 className="mb-md max-w-lg font-display text-display-lg font-normal text-white">
+          <h2 className="mb-md max-w-lg font-display text-display-md font-normal text-white sm:text-display-lg">
             Mulai gratis, tanpa kartu kredit
           </h2>
-          <p className="mb-xl max-w-md font-display text-body-lg text-white/70">
+          <p className="mb-lg max-w-md font-display text-body-sm text-white/70 sm:mb-xl sm:text-body-lg">
             Buat akun untuk menyimpan event pribadi dan mengakses API publik dengan rate limit lebih tinggi.
           </p>
           <div className="flex flex-wrap gap-sm">
             <Link
               href="/register"
-              className="inline-flex items-center justify-center rounded-pill bg-canvas px-lg py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft"
+              className="inline-flex items-center justify-center rounded-pill bg-canvas px-md py-sm font-display text-body-sm font-medium text-ink transition-colors hover:bg-surface-soft sm:px-lg sm:py-xs sm:text-button"
             >
               Daftar gratis
             </Link>
             <Link
               href={`/${currentYear}`}
-              className="inline-flex items-center justify-center rounded-pill border border-white/30 px-lg py-xs font-display text-button font-medium text-white/80 transition-colors hover:border-white/60 hover:text-white"
+              className="inline-flex items-center justify-center rounded-pill border border-white/30 px-md py-sm font-display text-body-sm font-medium text-white/80 transition-colors hover:border-white/60 hover:text-white sm:px-lg sm:py-xs sm:text-button"
             >
               Lihat kalender
             </Link>
@@ -161,30 +161,30 @@ export default function HomePage() {
       </section>
 
       {/* ── White canvas breathing room ── */}
-      <div className="py-lg" />
+      <div className="py-md sm:py-lg" />
 
       {/* ── Color block: CORAL — developer/API ── */}
-      <section className="mx-auto max-w-content px-lg pb-section">
-        <div className="rounded-lg bg-block-coral p-xxl">
-          <p className="mb-md font-mono text-eyebrow uppercase tracking-widest text-ink/60">
+      <section className="mx-auto max-w-content px-lg pb-xl sm:pb-section">
+        <div className="rounded-lg bg-block-coral p-lg sm:p-xxl">
+          <p className="mb-md font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-eyebrow">
             Developer
           </p>
-          <h2 className="mb-md max-w-lg font-display text-display-lg font-normal text-ink">
+          <h2 className="mb-md max-w-lg font-display text-display-md font-normal text-ink sm:text-display-lg">
             API publik siap pakai
           </h2>
-          <p className="mb-xl max-w-md font-display text-body-lg text-ink/70">
+          <p className="mb-lg max-w-md font-display text-body-sm text-ink/70 sm:mb-xl sm:text-body-lg">
             REST API untuk mengakses data hari libur, kalender, dan kalkulasi tanggal via HTTP. Gratis, no auth required.
           </p>
           <div className="flex flex-wrap gap-sm">
             <Link
               href="/docs"
-              className="inline-flex items-center justify-center rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+              className="inline-flex items-center justify-center rounded-pill bg-primary px-md py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active sm:px-lg sm:py-xs sm:text-button"
             >
               Lihat Dokumentasi
             </Link>
             <Link
               href="/dashboard/api-keys"
-              className="inline-flex items-center justify-center rounded-pill border border-ink/20 bg-canvas px-lg py-xs font-display text-button font-medium text-ink transition-colors hover:bg-surface-soft"
+              className="inline-flex items-center justify-center rounded-pill border border-ink/20 bg-canvas px-md py-sm font-display text-body-sm font-medium text-ink transition-colors hover:bg-surface-soft sm:px-lg sm:py-xs sm:text-button"
             >
               Dapatkan API Key
             </Link>

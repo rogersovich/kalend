@@ -52,7 +52,7 @@ export default async function LongWeekendsPage({ params, searchParams }: Props) 
   const periods = calculateLongWeekends(year, holidays, 3);
 
   return (
-    <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         <div className="mb-md">
           <Breadcrumb
             items={[
@@ -64,19 +64,19 @@ export default async function LongWeekendsPage({ params, searchParams }: Props) 
         </div>
 
         {/* Color block hero */}
-        <div className="mb-xl rounded-lg bg-block-lime p-xxl">
-          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-ink/60">
+        <div className="mb-lg rounded-lg bg-block-lime p-lg sm:mb-xl sm:p-xxl">
+          <p className="mb-sm font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-eyebrow">
             Long Weekend
           </p>
-          <h1 className="font-display text-display-lg font-normal text-ink">{year}</h1>
-          <p className="mt-sm font-display text-body-lg text-ink">
+          <h1 className="font-display text-display-md font-normal text-ink sm:text-display-lg">{year}</h1>
+          <p className="mt-sm font-display text-body-sm text-ink sm:text-body-lg">
             {periods.length} periode libur panjang ditemukan
           </p>
         </div>
 
         {/* Controls */}
-        <div className="mb-lg flex flex-wrap items-center justify-between gap-md">
-          <div className="flex flex-wrap items-center gap-md">
+        <div className="mb-lg flex flex-col gap-sm sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-md">
+          <div className="flex flex-wrap items-center gap-sm sm:gap-md">
             <YearNav year={year} country={country} />
             <LongWeekendFilter current={minDays} />
           </div>

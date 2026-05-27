@@ -74,15 +74,15 @@ export default function ApiKeysPage() {
   }
 
   return (
-    <div className="flex flex-col gap-xl">
-      <div className="flex items-center justify-between">
-        <div>
+    <div className="flex flex-col gap-lg md:gap-xl">
+      <div className="flex flex-col gap-sm sm:flex-row sm:items-start sm:justify-between">
+        <div className="mb-3 sm:mb-0">
           <h1 className="font-display text-display-sm font-normal text-ink">API Keys</h1>
           <p className="font-mono text-caption text-muted">Limit: 100 request/hari per key (Free tier)</p>
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-xs rounded-pill bg-primary px-lg py-xs font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active"
+          className="flex w-full items-center justify-center gap-xs rounded-pill bg-primary px-lg py-sm font-display text-caption font-medium text-white transition-colors hover:bg-primary-active sm:w-auto sm:py-xs sm:text-body-sm"
         >
           <Plus className="h-4 w-4" />
           Generate Key
@@ -90,9 +90,9 @@ export default function ApiKeysPage() {
       </div>
 
       {showForm && (
-        <div className="rounded-lg border border-hairline bg-canvas p-lg">
+        <div className="rounded-lg border border-hairline bg-canvas p-md sm:p-lg">
           <h2 className="mb-md font-display text-headline font-medium text-ink">API Key Baru</h2>
-          <form onSubmit={handleCreate} className="flex gap-sm">
+          <form onSubmit={handleCreate} className="flex flex-col gap-sm sm:flex-row">
             <input
               type="text"
               required
@@ -102,20 +102,22 @@ export default function ApiKeysPage() {
               placeholder="Nama key (contoh: Production App)"
               className={inputCls}
             />
-            <button
-              type="submit"
-              disabled={creating}
-              className="rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50"
-            >
-              {creating ? "Membuat..." : "Buat"}
-            </button>
-            <button
-              type="button"
-              onClick={() => { setShowForm(false); setNewName(""); }}
-              className="rounded-pill border border-hairline px-lg py-xs font-display text-button font-medium text-muted hover:text-ink"
-            >
-              Batal
-            </button>
+            <div className="flex gap-sm">
+              <button
+                type="submit"
+                disabled={creating}
+                className="flex-1 rounded-pill bg-primary px-lg py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active disabled:opacity-50 sm:flex-none sm:py-xs sm:text-button"
+              >
+                {creating ? "Membuat..." : "Buat"}
+              </button>
+              <button
+                type="button"
+                onClick={() => { setShowForm(false); setNewName(""); }}
+                className="flex-1 rounded-pill border border-hairline px-lg py-sm font-display text-body-sm font-medium text-muted hover:text-ink sm:flex-none sm:py-xs sm:text-button"
+              >
+                Batal
+              </button>
+            </div>
           </form>
         </div>
       )}
@@ -182,12 +184,10 @@ export default function ApiKeysPage() {
       )}
 
       <div className="mt-lg rounded-lg border border-hairline bg-surface-soft p-md">
-        <p className="font-mono text-caption text-muted">
-          Sertakan key di header request:{" "}
-          <code className="rounded-sm bg-canvas px-xs py-xxs font-mono text-caption">
-            Authorization: Bearer &lt;your-api-key&gt;
-          </code>
-        </p>
+        <p className="mb-xs font-mono text-caption text-muted">Sertakan key di header request:</p>
+        <code className="block w-full overflow-x-auto rounded-sm bg-canvas px-xs py-xxs font-mono text-caption whitespace-nowrap">
+          Authorization: Bearer &lt;your-api-key&gt;
+        </code>
       </div>
     </div>
   );

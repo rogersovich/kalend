@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Calculator, CalendarCheck, Calendar } from "lucide-react";
 
@@ -43,15 +41,13 @@ const tools = [
 
 export default function ToolsPage() {
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
 
         {/* Color block hero */}
-        <div className="mb-xl rounded-lg bg-block-mint p-xxl">
-          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-ink/60">Tools</p>
-          <h1 className="font-display text-display-lg font-normal text-ink">Tools Kalender</h1>
-          <p className="mt-sm font-display text-body-lg text-ink">Kalkulator dan tools kalender gratis.</p>
+        <div className="mb-lg rounded-lg bg-block-mint p-lg sm:mb-xl sm:p-xxl">
+          <p className="mb-sm font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-eyebrow">Tools</p>
+          <h1 className="font-display text-display-md font-normal text-ink sm:text-display-lg">Tools Kalender</h1>
+          <p className="mt-sm font-display text-body-sm text-ink sm:text-body-lg">Kalkulator dan tools kalender gratis.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
@@ -76,8 +72,6 @@ export default function ToolsPage() {
             </Link>
           ))}
         </div>
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

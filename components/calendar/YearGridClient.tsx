@@ -36,7 +36,7 @@ export default function YearGridClient({ year, holidays, country }: YearGridClie
   }, [year]);
 
   return (
-    <div className="grid grid-cols-2 gap-md sm:grid-cols-3 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-md sm:grid-cols-3 lg:grid-cols-3">
       {Array.from({ length: 12 }, (_, i) => i + 1).map((month) => {
         const monthHolidays = holidays.filter((h) => {
           const d = new Date(h.date);

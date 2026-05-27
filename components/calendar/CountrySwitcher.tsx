@@ -25,7 +25,7 @@ export default function CountrySwitcher({ current }: CountrySwitcherProps) {
   }
 
   return (
-    <div className="inline-flex items-center gap-[3px] rounded-pill bg-surface-soft p-[5px]">
+    <div className="flex w-full items-center justify-center gap-[3px] rounded-pill bg-surface-soft p-[5px] sm:inline-flex sm:w-auto sm:justify-start">
       {COUNTRIES.map((c) => (
         <button
           key={c.code}

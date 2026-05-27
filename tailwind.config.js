@@ -19,6 +19,7 @@ module.exports = {
   			},
   			'on-primary': 'var(--color-on-primary)',
   			'accent-magenta': 'var(--color-accent-magenta)',
+  			'brand-accent': 'var(--color-primary)',
 
   			/* ── Surface ── */
   			surface: {

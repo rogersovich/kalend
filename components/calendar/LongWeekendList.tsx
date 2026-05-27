@@ -57,12 +57,12 @@ export default function LongWeekendList({ periods, country, minDays }: LongWeeke
         const dayLink = `/${year}/${monthSlug}/${period.startDate.getDate()}${qs}`;
 
         return (
-          <div key={i} className={`${getPeriodBg(period.totalDays)} rounded-lg p-lg`}>
-            <div className="mb-md flex items-start justify-between gap-md">
+          <div key={i} className={`${getPeriodBg(period.totalDays)} rounded-lg p-md sm:p-lg`}>
+            <div className="mb-sm flex items-start justify-between gap-sm sm:mb-md sm:gap-md">
               <div>
                 <Link
                   href={dayLink}
-                  className="font-display text-display-sm font-normal text-ink transition-opacity hover:opacity-70"
+                  className="font-display text-headline font-normal text-ink transition-opacity hover:opacity-70 sm:text-display-sm"
                 >
                   {period.totalDays} hari
                 </Link>

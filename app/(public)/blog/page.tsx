@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getAllPosts } from "@/lib/blog";
 import { Clock } from "lucide-react";
@@ -29,18 +27,16 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         <div className="mb-md">
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Blog" }]} />
         </div>
 
         {/* Color block hero */}
-        <div className="mb-xl rounded-lg bg-block-cream p-xxl">
-          <p className="mb-sm font-mono text-eyebrow uppercase tracking-widest text-ink/60">Blog</p>
-          <h1 className="font-display text-display-lg font-normal text-ink">Artikel Kalender</h1>
-          <p className="mt-sm font-display text-body-lg text-ink">
+        <div className="mb-lg rounded-lg bg-block-cream p-lg sm:mb-xl sm:p-xxl">
+          <p className="mb-sm font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-eyebrow">Blog</p>
+          <h1 className="font-display text-display-md font-normal text-ink sm:text-display-lg">Artikel Kalender</h1>
+          <p className="mt-sm font-display text-body-sm text-ink sm:text-body-lg">
             Artikel seputar kalender, hari libur, dan penanggalan.
           </p>
         </div>
@@ -48,25 +44,25 @@ export default function BlogPage() {
         {posts.length === 0 ? (
           <p className="font-display text-body text-ink">Belum ada artikel.</p>
         ) : (
-          <div className="flex flex-col gap-md">
+          <div className="flex flex-col gap-sm sm:gap-md">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group rounded-lg border border-hairline bg-canvas p-lg transition-shadow hover:shadow-elevated"
+                className="group rounded-lg border border-hairline bg-canvas p-md transition-shadow hover:shadow-elevated sm:p-lg"
               >
-                <div className="mb-md flex items-center gap-sm">
+                <div className="mb-sm flex items-center gap-sm sm:mb-md">
                   <span className="rounded-pill bg-surface-soft px-sm py-xxs font-mono text-caption uppercase tracking-widest text-ink">
                     {post.category}
                   </span>
                 </div>
 
-                <h2 className="mb-sm font-display text-headline text-ink transition-opacity group-hover:opacity-70">
+                <h2 className="mb-xs font-display text-body-lg font-medium text-ink transition-opacity group-hover:opacity-70 sm:mb-sm sm:text-headline">
                   {post.title}
                 </h2>
-                <p className="mb-md font-display text-body-sm text-ink line-clamp-2">{post.excerpt}</p>
+                <p className="mb-sm font-display text-body-sm text-ink line-clamp-2 sm:mb-md">{post.excerpt}</p>
 
-                <div className="flex items-center gap-md font-mono text-caption text-ink/50">
+                <div className="flex items-center gap-sm font-mono text-caption text-ink/50 sm:gap-md">
                   <span>{formatDate(post.publishedAt)}</span>
                   <span className="flex items-center gap-1">
                     <Clock className="h-3 w-3" />
@@ -77,8 +73,6 @@ export default function BlogPage() {
             ))}
           </div>
         )}
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

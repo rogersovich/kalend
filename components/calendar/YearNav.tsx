@@ -13,7 +13,7 @@ export default function YearNav({ year, country }: YearNavProps) {
   const nextYear = year + 1;
 
   return (
-    <div className="flex items-center gap-lg">
+    <div className="flex w-full items-center justify-center gap-lg sm:w-auto sm:justify-start">
       {prevYear >= MIN_YEAR ? (
         <Link
           href={`/${prevYear}${countryParam}`}
@@ -29,7 +29,7 @@ export default function YearNav({ year, country }: YearNavProps) {
       )}
 
       <div className="text-center">
-        <h1 className="font-display text-display-lg font-normal text-ink">{year}</h1>
+        <h1 className="font-display text-display-md font-normal text-ink sm:text-display-lg">{year}</h1>
         <p className="font-mono text-caption uppercase tracking-widest text-ink/50">Kalender</p>
       </div>
 

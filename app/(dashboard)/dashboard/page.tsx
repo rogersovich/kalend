@@ -38,7 +38,7 @@ export default async function DashboardPage() {
   ];
 
   return (
-    <div className="flex flex-col gap-xl">
+    <div className="flex flex-col gap-lg md:gap-xl">
       <div>
         <h1 className="font-display text-display-sm font-normal text-ink">Halo, {displayName} 👋</h1>
         <p className="mt-xs font-display text-body text-muted">Selamat datang di dashboard Kalend.</p>
@@ -59,7 +59,7 @@ export default async function DashboardPage() {
               <ArrowRight className="h-4 w-4 text-muted/40 transition-transform group-hover:translate-x-0.5 group-hover:text-ink" />
             </div>
             <div>
-              <p className="font-display text-display-sm font-semibold text-ink leading-none">{value}</p>
+              <p className="font-display text-headline font-semibold text-ink leading-none sm:text-display-sm">{value}</p>
               <p className="mt-xs font-display text-body-sm font-medium text-ink">{label}</p>
               <p className="font-mono text-caption text-muted">{desc}</p>
             </div>
@@ -84,7 +84,7 @@ export default async function DashboardPage() {
         </div>
 
         {upcomingEvents.length === 0 ? (
-          <div className="flex flex-col items-center gap-sm py-xxl text-center">
+          <div className="flex flex-col items-center gap-sm py-xl text-center sm:py-xxl">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-soft">
               <Clock className="h-6 w-6 text-muted" />
             </div>
@@ -94,7 +94,7 @@ export default async function DashboardPage() {
             </div>
             <Link
               href="/dashboard/events"
-              className="mt-xs inline-flex items-center gap-1 rounded-pill bg-primary px-lg py-xs font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active"
+              className="mt-xs inline-flex items-center gap-1 rounded-pill bg-primary px-md py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active sm:px-lg sm:py-xs"
             >
               <CalendarDays className="h-4 w-4" />
               Tambah event
@@ -106,7 +106,7 @@ export default async function DashboardPage() {
               const d = new Date(ev.date);
               const dateStr = `${d.getDate()} ${MONTH_NAMES_ID[d.getMonth()]} ${d.getFullYear()}`;
               return (
-                <li key={ev.id} className="flex items-center gap-md px-lg py-md hover:bg-surface-soft/50">
+                <li key={ev.id} className="flex items-center gap-md px-md py-sm hover:bg-surface-soft/50 sm:px-lg sm:py-md">
                   <div className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: ev.color ?? "#6366f1" }} />
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-display text-body-sm font-medium text-ink">{ev.title}</p>

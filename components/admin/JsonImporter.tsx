@@ -150,14 +150,14 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
   return (
     <div className="flex flex-col gap-lg">
       {/* Download template */}
-      <div className="flex items-center justify-between rounded-lg border border-hairline bg-surface-soft px-lg py-md">
+      <div className="flex flex-col gap-sm rounded-lg border border-hairline bg-surface-soft px-md py-md sm:flex-row sm:items-center sm:justify-between sm:px-lg">
         <div>
           <p className="font-display text-body-sm font-medium text-ink">Download Template JSON</p>
           <p className="font-mono text-caption text-ink/60">Contoh format untuk {countryCode} {year}</p>
         </div>
         <button
           onClick={() => downloadTemplate(countryCode, year)}
-          className="flex items-center gap-xs rounded-pill border border-hairline bg-canvas px-md py-xs font-display text-body-sm font-medium text-ink transition-colors hover:bg-ink hover:text-white"
+          className="flex w-full items-center justify-center gap-xs rounded-pill border border-hairline bg-canvas px-md py-sm font-display text-caption font-medium text-ink transition-colors hover:bg-ink hover:text-white sm:w-auto sm:py-xs sm:text-body-sm"
         >
           <Download className="h-4 w-4" />
           Download Template

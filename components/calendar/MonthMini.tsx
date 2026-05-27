@@ -58,10 +58,10 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
   const monthSlug = monthName.toLowerCase();
 
   return (
-    <div className="rounded-lg border border-hairline bg-canvas p-3 hover:border-brand-accent/30 hover:shadow-soft transition-all">
+    <div className="rounded-lg border border-hairline bg-canvas p-2 transition-all hover:border-brand-accent/30 hover:shadow-soft sm:p-3">
       <Link
         href={`/${year}/${monthSlug}${countryParam}`}
-        className="mb-3 block text-center text-body-sm font-semibold text-ink hover:text-brand-accent transition-colors"
+        className="mb-2 block text-center text-[0.8125rem] font-semibold text-ink transition-colors hover:text-brand-accent sm:mb-3 sm:text-body-sm"
       >
         {monthName}
       </Link>

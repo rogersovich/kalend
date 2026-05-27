@@ -2,8 +2,6 @@
 
 import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { calculateWeton } from "@/lib/calendar/weton";
 import { MONTH_NAMES_ID } from "@/lib/calendar/constants";
@@ -68,21 +66,19 @@ function CekWetonContent() {
     : "";
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         <div className="mb-md">
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Tools", href: "/tools" }, { label: "Cek Weton" }]} />
         </div>
 
         {/* Color block hero */}
-        <div className="mb-xl rounded-lg bg-block-lilac p-xxl">
-          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Tools</p>
-          <h1 className="mb-md font-display text-display-lg font-normal text-ink leading-tight">Cek Weton</h1>
-          <p className="font-display text-body-lg text-ink">Hitung weton & neptu Jawa untuk tanggal apapun.</p>
+        <div className="mb-lg rounded-lg bg-block-lilac p-lg sm:mb-xl sm:p-xxl">
+          <p className="mb-sm font-mono text-sm uppercase tracking-widest text-ink/60 sm:text-caption">Tools</p>
+          <h1 className="mb-md font-display text-display-md font-normal text-ink leading-tight sm:text-display-lg">Cek Weton</h1>
+          <p className="font-display text-body-sm text-ink sm:text-body-lg">Hitung weton & neptu Jawa untuk tanggal apapun.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="mb-xl flex max-w-sm gap-sm">
+        <form onSubmit={handleSubmit} className="mb-lg flex max-w-sm gap-sm sm:mb-xl">
           <input
             type="date"
             value={date}
@@ -91,7 +87,7 @@ function CekWetonContent() {
           />
           <button
             type="submit"
-            className="rounded-pill bg-primary px-lg py-xs font-display text-button font-medium text-white transition-colors hover:bg-primary-active"
+            className="rounded-pill bg-primary px-md py-sm font-display text-body-sm font-medium text-white transition-colors hover:bg-primary-active sm:px-lg sm:py-xs sm:text-button"
           >
             Cek
           </button>
@@ -123,7 +119,7 @@ function CekWetonContent() {
 
               <div className="flex flex-col items-center gap-xs border-t border-ink/10 pt-md">
                 <p className="font-mono text-caption uppercase tracking-widest text-ink/60">Neptu</p>
-                <p className="font-display text-display-lg font-normal text-ink">{result.neptuTotal}</p>
+                <p className="font-display text-display-md font-normal text-ink sm:text-display-lg">{result.neptuTotal}</p>
                 {NEPTU_MEANING[result.neptuTotal] && (
                   <p className="font-display text-body-sm text-ink">{NEPTU_MEANING[result.neptuTotal]}</p>
                 )}
@@ -139,16 +135,14 @@ function CekWetonContent() {
             {/* Share */}
             <button
               onClick={handleShare}
-              className="flex w-full items-center justify-center gap-sm rounded-pill border border-hairline py-xs font-display text-button font-medium text-ink/60 transition-colors hover:text-ink"
+              className="flex w-full items-center justify-center gap-sm rounded-pill border border-hairline py-sm font-display text-body-sm font-medium text-ink/60 transition-colors hover:text-ink sm:py-xs sm:text-button"
             >
               {copied ? <Check className="h-4 w-4 text-semantic-success" /> : <Copy className="h-4 w-4" />}
               {copied ? "Link tersalin!" : "Salin link untuk berbagi"}
             </button>
           </div>
         )}
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }
 
