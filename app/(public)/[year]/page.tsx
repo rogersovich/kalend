@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import YearGrid from "@/components/calendar/YearGrid";
+import YearGridClient from "@/components/calendar/YearGridClient";
 import YearNav from "@/components/calendar/YearNav";
 import YearInfoBand from "@/components/calendar/YearInfoBand";
 import CountrySwitcher from "@/components/calendar/CountrySwitcher";
@@ -77,11 +77,15 @@ export default async function YearPage({ params, searchParams }: Props) {
             <span className="inline-block h-3 w-3 rounded-sm bg-surface-strong" />
             Sabtu/Minggu
           </div>
+          <div className="flex items-center gap-xs font-mono text-caption text-ink">
+            <span className="h-[6px] w-[6px] rounded-full bg-[#6366f1]" />
+            Event Saya
+          </div>
         </div>
 
         {/* Calendar grid */}
         {holidays !== null ? (
-          <YearGrid year={year} holidays={holidays} country={country} />
+          <YearGridClient year={year} holidays={holidays} country={country} />
         ) : (
           <p className="py-section text-center text-body text-ink">
             Data belum tersedia untuk tahun {year}.

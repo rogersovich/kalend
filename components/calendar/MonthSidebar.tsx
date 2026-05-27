@@ -1,6 +1,6 @@
 import { HolidayData, countWorkdays } from "@/lib/calendar/holidays";
 import HolidayList from "./HolidayList";
-import AddEventButton from "./AddEventButton";
+import EventSidebarSection from "./EventSidebarSection";
 import PDFDownloadButton from "@/components/pdf/PDFDownloadButton";
 
 interface MonthSidebarProps {
@@ -33,13 +33,7 @@ export default function MonthSidebar({ year, month, country, holidays }: MonthSi
         <HolidayList holidays={nationalHolidays} month={month} />
       </div>
 
-      {/* Add event — color block cream */}
-      <div className="rounded-lg bg-block-cream p-lg">
-        <h3 className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">
-          Event Saya
-        </h3>
-        <AddEventButton />
-      </div>
+      <EventSidebarSection year={year} month={month} />
 
       {/* Download — flat surface */}
       <div className="rounded-lg bg-surface-soft p-lg">

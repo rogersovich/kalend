@@ -69,7 +69,7 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
   const cells = buildMonthDays(year, month);
   const qs = country !== "ID" ? `?country=${country}` : "";
   const monthSlug = MONTH_NAMES_ID[month - 1].toLowerCase();
-  const [userEventMap, setUserEventMap] = useState<Map<string, string[]>>(new Map());
+  const [userEventMap, setUserEventMap] = useState<Map<string, { color: string; title: string }[]>>(new Map());
 
   useEffect(() => {
     const supabase = createClient();
@@ -78,16 +78,16 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
       const res = await fetch("/api/events");
       if (!res.ok) return;
       const json = await res.json();
-      const events: Array<{ date: string; color: string | null }> = json.data ?? [];
+      const events: Array<{ date: string; color: string | null; title: string }> = json.data ?? [];
 
-      const map = new Map<string, string[]>();
+      const map = new Map<string, { color: string; title: string }[]>();
       for (const ev of events) {
         const ds = ev.date.slice(0, 10);
         const evDate = new Date(ds);
         if (evDate.getFullYear() === year && evDate.getMonth() + 1 === month) {
-          const colors = map.get(ds) ?? [];
-          colors.push(ev.color ?? "#6366f1");
-          map.set(ds, colors);
+          const arr = map.get(ds) ?? [];
+          arr.push({ color: ev.color ?? "#6366f1", title: ev.title });
+          map.set(ds, arr);
         }
       }
       setUserEventMap(map);
@@ -123,7 +123,7 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
             cell.date.getMonth() === todayDate.getMonth() &&
             cell.date.getFullYear() === todayDate.getFullYear();
           const dayHolidays = cell.inMonth ? getHolidaysForDate(holidays, cell.date) : [];
-          const eventColors = cell.inMonth ? (userEventMap.get(toDateStr(cell.date)) ?? []) : [];
+          const dayEvents = cell.inMonth ? (userEventMap.get(toDateStr(cell.date)) ?? []) : [];
 
           return (
             <DayCell
@@ -134,7 +134,7 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
               isToday={isToday}
               showWeton={cell.inMonth}
               size="full"
-              eventColors={eventColors}
+              events={dayEvents}
               isLastRow={i >= cells.length - 7}
               isLastCol={i % 7 === 6}
               onClick={cell.inMonth ? () => navigateToDay(cell.date) : undefined}

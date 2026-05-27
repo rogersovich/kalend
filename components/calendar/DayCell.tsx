@@ -16,7 +16,7 @@ interface DayCellProps {
   isToday?: boolean;
   showWeton?: boolean;
   size?: "mini" | "full";
-  eventColors?: string[];
+  events?: { color: string; title: string }[];
   isLastRow?: boolean;
   isLastCol?: boolean;
   onClick?: () => void;
@@ -41,7 +41,7 @@ export default function DayCell({
   isToday = false,
   showWeton = false,
   size = "mini",
-  eventColors = [],
+  events = [],
   isLastRow = false,
   isLastCol = false,
   onClick,
@@ -67,10 +67,10 @@ export default function DayCell({
         <span
           className={cn(
             "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] leading-none",
-            isToday && "ring-2 ring-accent-magenta ring-offset-1",
-            isWeekend && !isHoliday && "text-muted",
-            hasNational && "font-semibold text-error",
-            hasJoint && !hasNational && "font-semibold text-badge-orange",
+            isToday && "font-bold text-[12px] bg-accent-magenta text-white",
+            isWeekend && !isHoliday && !isToday && "text-muted",
+            !isToday && hasNational && "font-semibold text-error",
+            !isToday && hasJoint && !hasNational && "font-semibold text-badge-orange",
             isWeekend && "bg-surface-strong/60"
           )}
         >
@@ -84,11 +84,15 @@ export default function DayCell({
           {hasJoint && (
             <span className="h-[4px] w-[4px] rounded-full bg-badge-orange" />
           )}
+          {events.slice(0, 2).map((ev, idx) => (
+            <span key={idx} className="h-[4px] w-[4px] rounded-full" style={{ backgroundColor: ev.color }} />
+          ))}
         </div>
       </div>
     );
 
-    if (!isHoliday || !isCurrentMonth) return cell;
+    const hasEvents = events.length > 0;
+    if ((!isHoliday && !hasEvents) || !isCurrentMonth) return cell;
 
     return (
       <Tooltip>
@@ -111,6 +115,17 @@ export default function DayCell({
                 </div>
               );
             })}
+            {hasEvents && holidays.length > 0 && (
+              <div className="border-t border-white/10 pt-[4px]" />
+            )}
+            {events.map((ev, idx) => (
+              <div key={idx} className="flex items-center gap-[6px]">
+                <span className="h-[6px] w-[6px] shrink-0 rounded-full" style={{ backgroundColor: ev.color }} />
+                <p className="font-display text-[12px] font-medium leading-snug text-white">
+                  {ev.title}
+                </p>
+              </div>
+            ))}
           </div>
         </TooltipContent>
       </Tooltip>
@@ -149,20 +164,21 @@ export default function DayCell({
           {hasJoint && (
             <span className="h-[5px] w-[5px] rounded-full bg-badge-orange" />
           )}
-          {eventColors.slice(0, 2).map((color, idx) => (
-            <span key={idx} className="h-[5px] w-[5px] rounded-full" style={{ backgroundColor: color }} />
+          {events.slice(0, 2).map((ev, idx) => (
+            <span key={idx} className="h-[5px] w-[5px] rounded-full" style={{ backgroundColor: ev.color }} />
           ))}
         </div>
       </div>
       {showWeton && weton && (
-        <p className="mt-1 truncate font-mono text-[10px] leading-none text-ink/50">
+        <p className="mt-1 truncate font-mono text-[10px] leading-5 text-ink/50">
           {weton.pasaran}
         </p>
       )}
     </div>
   );
 
-  if (!isHoliday || !isCurrentMonth) return fullCell;
+  const hasEvents = events.length > 0;
+  if ((!isHoliday && !hasEvents) || !isCurrentMonth) return fullCell;
 
   return (
     <Tooltip>
@@ -185,6 +201,17 @@ export default function DayCell({
               </div>
             );
           })}
+          {hasEvents && holidays.length > 0 && (
+            <div className="border-t border-white/10 pt-[4px]" />
+          )}
+          {events.map((ev, idx) => (
+            <div key={idx} className="flex items-center gap-[6px]">
+              <span className="h-[6px] w-[6px] shrink-0 rounded-full" style={{ backgroundColor: ev.color }} />
+              <p className="font-display text-[12px] font-medium leading-snug text-white">
+                {ev.title}
+              </p>
+            </div>
+          ))}
         </div>
       </TooltipContent>
     </Tooltip>

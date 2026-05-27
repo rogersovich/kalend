@@ -3,11 +3,14 @@ import { HolidayData } from "@/lib/calendar/holidays";
 import { MONTH_NAMES_ID, DAY_NAMES_ID } from "@/lib/calendar/constants";
 import DayCell from "./DayCell";
 
+export type EventEntry = { color: string; title: string };
+
 interface MonthMiniProps {
   year: number;
   month: number; // 1-12
   holidays: HolidayData[];
   country: string;
+  eventMap?: Map<string, EventEntry[]>;
 }
 
 function buildMonthDays(year: number, month: number) {
@@ -36,15 +39,19 @@ function buildMonthDays(year: number, month: number) {
   return cells;
 }
 
+function toLocalDateStr(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
 function getHolidaysForDate(holidays: HolidayData[], date: Date): HolidayData[] {
-  const ds = date.toISOString().slice(0, 10);
-  return holidays.filter((h) => h.date.toISOString().slice(0, 10) === ds);
+  const ds = toLocalDateStr(date);
+  return holidays.filter((h) => toLocalDateStr(new Date(h.date)) === ds);
 }
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-export default function MonthMini({ year, month, holidays, country }: MonthMiniProps) {
+export default function MonthMini({ year, month, holidays, country, eventMap }: MonthMiniProps) {
   const cells = buildMonthDays(year, month);
   const monthName = MONTH_NAMES_ID[month - 1];
   const countryParam = country === "ID" ? "" : `?country=${country}`;
@@ -74,6 +81,8 @@ export default function MonthMini({ year, month, holidays, country }: MonthMiniP
           if (!cell.date) return <div key={i} />;
           const isToday = cell.date.getTime() === today.getTime();
           const dayHolidays = cell.inMonth ? getHolidaysForDate(holidays, cell.date) : [];
+          const ds = toLocalDateStr(cell.date);
+          const dayEvents = cell.inMonth ? (eventMap?.get(ds) ?? []) : [];
           return (
             <DayCell
               key={i}
@@ -82,6 +91,7 @@ export default function MonthMini({ year, month, holidays, country }: MonthMiniP
               isCurrentMonth={cell.inMonth}
               isToday={isToday}
               size="mini"
+              events={dayEvents}
             />
           );
         })}
