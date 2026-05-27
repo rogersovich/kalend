@@ -60,10 +60,10 @@ export default function YearHolidayList({ year, holidays }: Props) {
     <section className="mt-xl sm:mt-xxl">
       {/* Heading */}
       <div className="mb-md sm:mb-lg">
-        <h2 className="mb-xs font-display text-display-sm font-normal text-ink sm:text-headline">
+        <h2 className="mb-xs font-display text-title-lg font-normal text-ink sm:text-headline">
           Daftar Hari Libur Tahun {year}
         </h2>
-        <p className="font-display text-[13px] text-ink/60 sm:text-[14px]">
+        <p className="font-display text-[12px] text-ink/60 sm:text-[13px]">
           Sepanjang tahun {year}, terdapat{" "}
           <strong className="font-semibold text-ink">{nationalCount} hari libur nasional</strong> dan{" "}
           <strong className="font-semibold text-ink">{jointCount} cuti bersama</strong> yang ditetapkan pemerintah.{" "}
