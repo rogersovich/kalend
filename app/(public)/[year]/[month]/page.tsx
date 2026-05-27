@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import MonthGrid from "@/components/calendar/MonthGrid";
 import MonthNav from "@/components/calendar/MonthNav";
@@ -69,9 +67,7 @@ export default async function MonthPage({ params, searchParams }: Props) {
   const qs = country !== "ID" ? `?country=${country}` : "";
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-xl">
         {/* Breadcrumb */}
         <div className="mb-md">
           <Breadcrumb
@@ -96,8 +92,6 @@ export default async function MonthPage({ params, searchParams }: Props) {
           </div>
           <MonthSidebar year={year} month={monthNum} country={country} holidays={holidays} />
         </div>
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

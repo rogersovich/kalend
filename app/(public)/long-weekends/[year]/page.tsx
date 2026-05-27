@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import YearNav from "@/components/calendar/YearNav";
 import CountrySwitcher from "@/components/calendar/CountrySwitcher";
@@ -54,9 +52,7 @@ export default async function LongWeekendsPage({ params, searchParams }: Props) 
   const periods = calculateLongWeekends(year, holidays, 3);
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-xl">
         <div className="mb-md">
           <Breadcrumb
             items={[
@@ -88,8 +84,6 @@ export default async function LongWeekendsPage({ params, searchParams }: Props) 
         </div>
 
         <LongWeekendList periods={periods} country={country} minDays={minDays} />
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

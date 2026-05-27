@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import DayHero from "@/components/calendar/DayHero";
 import MasehiCard from "@/components/calendar/MasehiCard";
@@ -96,9 +94,7 @@ export default async function DayPage({ params, searchParams }: Props) {
   ) ?? null;
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-xl">
         {/* Breadcrumb */}
         <div className="mb-md">
           <Breadcrumb
@@ -152,8 +148,6 @@ export default async function DayPage({ params, searchParams }: Props) {
             </div>
           </aside>
         </div>
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

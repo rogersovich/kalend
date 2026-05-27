@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import YearGrid from "@/components/calendar/YearGrid";
 import YearNav from "@/components/calendar/YearNav";
 import YearInfoBand from "@/components/calendar/YearInfoBand";
@@ -53,9 +51,7 @@ export default async function YearPage({ params, searchParams }: Props) {
   const holidays = await getHolidaysByYear(country, year);
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-content px-lg py-xl">
+    <main className="mx-auto max-w-content px-lg py-xl">
         {/* Header */}
         <div className="mb-lg flex flex-col items-center gap-md">
           <CountrySwitcher current={country} />
@@ -91,8 +87,6 @@ export default async function YearPage({ params, searchParams }: Props) {
             Data belum tersedia untuk tahun {year}.
           </p>
         )}
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

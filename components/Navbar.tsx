@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Menu, X, Calendar, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [role, setRole] = useState<string | null>(null);
-  const supabase = createClient();
+  const supabase = useRef(createClient()).current;
 
   async function fetchRole(userId: string) {
     const { data } = await supabase.from("profiles").select("role").eq("id", userId).single();
@@ -27,9 +27,10 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
-      if (data.user) fetchRole(data.user.id);
+    // getSession reads from cookie cache — no network roundtrip
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user) fetchRole(session.user.id);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {

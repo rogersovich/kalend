@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 const inter = Inter({
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${plusJakarta.variable} min-h-screen bg-canvas font-display text-ink antialiased`}
       >
+        <NextTopLoader color="#111111" height={2} showSpinner={false} />
         {children}
       </body>
     </html>
