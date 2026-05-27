@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { HolidayData } from "@/lib/calendar/holidays";
 import { calculateWeton } from "@/lib/calendar/weton";
@@ -20,6 +21,7 @@ interface DayCellProps {
   isLastRow?: boolean;
   isLastCol?: boolean;
   onClick?: () => void;
+  href?: string;
 }
 
 function getDotColors(holidays: HolidayData[]) {
@@ -45,6 +47,7 @@ export default function DayCell({
   isLastRow = false,
   isLastCol = false,
   onClick,
+  href,
 }: DayCellProps) {
   const day = date.getDate();
   const dayOfWeek = date.getDay();
@@ -54,13 +57,15 @@ export default function DayCell({
 
   const weton = showWeton ? calculateWeton(date) : null;
 
+  const isClickable = !!(href || onClick) && isCurrentMonth;
+
   if (size === "mini") {
-    const cell = (
+    const inner = (
       <div
         className={cn(
-          "relative flex flex-col items-center justify-start py-[2px]",
+          "relative flex flex-col items-center justify-start rounded py-[2px] transition-colors",
           !isCurrentMonth && "opacity-30",
-          onClick && "cursor-pointer"
+          isClickable && "cursor-pointer hover:font-bold"
         )}
         onClick={onClick}
       >
@@ -90,6 +95,10 @@ export default function DayCell({
         </div>
       </div>
     );
+
+    const cell = href && isCurrentMonth
+      ? <Link href={href} className="block">{inner}</Link>
+      : inner;
 
     const hasEvents = events.length > 0;
     if ((!isHoliday && !hasEvents) || !isCurrentMonth) return cell;
@@ -133,18 +142,8 @@ export default function DayCell({
   }
 
   // full size (monthly view)
-  const fullCell = (
-    <div
-      className={cn(
-        "min-h-[60px] p-1.5",
-        !isLastRow && "border-b border-hairline",
-        !isLastCol && "border-r border-hairline",
-        !isCurrentMonth && "bg-surface-soft/50",
-        isWeekend && "bg-surface-strong/30",
-        onClick && "cursor-pointer hover:bg-surface-soft transition-colors"
-      )}
-      onClick={onClick}
-    >
+  const fullCellContent = (
+    <>
       <div className="flex items-start justify-between">
         <span
           className={cn(
@@ -158,24 +157,33 @@ export default function DayCell({
           {day}
         </span>
         <div className="flex gap-[3px] pt-1">
-          {hasNational && (
-            <span className="h-[5px] w-[5px] rounded-full bg-error" />
-          )}
-          {hasJoint && (
-            <span className="h-[5px] w-[5px] rounded-full bg-badge-orange" />
-          )}
+          {hasNational && <span className="h-[5px] w-[5px] rounded-full bg-error" />}
+          {hasJoint && <span className="h-[5px] w-[5px] rounded-full bg-badge-orange" />}
           {events.slice(0, 2).map((ev, idx) => (
             <span key={idx} className="h-[5px] w-[5px] rounded-full" style={{ backgroundColor: ev.color }} />
           ))}
         </div>
       </div>
       {showWeton && weton && (
-        <p className="mt-1 truncate font-mono text-[10px] leading-5 text-ink/50">
-          {weton.pasaran}
-        </p>
+        <p className="mt-1 truncate font-mono text-[10px] leading-5 text-ink/50">{weton.pasaran}</p>
       )}
-    </div>
+    </>
   );
+
+  const fullCellCls = cn(
+    "min-h-[60px] p-1.5 transition-colors",
+    !isLastRow && "border-b border-hairline",
+    !isLastCol && "border-r border-hairline",
+    !isCurrentMonth && "bg-surface-soft/50",
+    isWeekend && isCurrentMonth && "bg-surface-strong/30",
+    isClickable && "cursor-pointer",
+    isClickable && isWeekend && isCurrentMonth && "hover:bg-surface-strong/50",
+    isClickable && (!isWeekend || !isCurrentMonth) && "hover:bg-surface-soft"
+  );
+
+  const fullCell = href && isCurrentMonth
+    ? <Link href={href} className={fullCellCls}>{fullCellContent}</Link>
+    : <div className={fullCellCls} onClick={onClick}>{fullCellContent}</div>;
 
   const hasEvents = events.length > 0;
   if ((!isHoliday && !hasEvents) || !isCurrentMonth) return fullCell;

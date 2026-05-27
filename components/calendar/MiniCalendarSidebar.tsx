@@ -50,7 +50,7 @@ export default function MiniCalendarSidebar({
         ))}
       </div>
 
-      <div className="grid grid-cols-7">
+      <div className="grid grid-cols-7 gap-2">
         {cells.map((cell, i) => {
           if (!cell.date) return <div key={i} className="h-6" />;
 
@@ -65,8 +65,8 @@ export default function MiniCalendarSidebar({
               key={i}
               href={`/${year}/${monthSlug}/${d.getDate()}${qs}`}
               className={cn(
-                "flex h-6 w-full items-center justify-center rounded-full font-mono text-[11px] transition-colors",
-                isActive && "bg-primary text-white font-semibold",
+                "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] transition-colors",
+                isActive && "bg-accent-magenta text-white font-semibold",
                 !isActive && isHoliday && "text-error font-semibold",
                 !isActive && isWeekend && !isHoliday && "text-ink/40",
                 !isActive && !isHoliday && !isWeekend && "text-ink",

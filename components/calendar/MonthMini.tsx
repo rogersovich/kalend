@@ -93,7 +93,7 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
     <div className="rounded-lg border border-hairline bg-canvas p-2 transition-all hover:border-brand-accent/30 hover:shadow-soft sm:p-3">
       <Link
         href={`/${year}/${monthSlug}${countryParam}`}
-        className="mb-2 block text-center text-[13px] font-bold text-ink transition-colors hover:text-brand-accent sm:mb-3 sm:text-[15px]"
+        className="mb-2 block text-center text-[13px] font-bold text-ink transition-colors hover:text-accent-magenta sm:mb-3 sm:text-[15px]"
       >
         {monthName}
       </Link>
@@ -115,6 +115,9 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
           const dayHolidays = cell.inMonth ? getHolidaysForDate(holidays, cell.date) : [];
           const ds = toLocalDateStr(cell.date);
           const dayEvents = cell.inMonth ? (eventMap?.get(ds) ?? []) : [];
+          const dayHref = cell.inMonth
+            ? `/${year}/${monthSlug}/${cell.date.getDate()}${countryParam}`
+            : undefined;
           return (
             <DayCell
               key={i}
@@ -124,6 +127,7 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
               isToday={isToday}
               size="mini"
               events={dayEvents}
+              href={dayHref}
             />
           );
         })}

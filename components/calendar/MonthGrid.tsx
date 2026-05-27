@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HolidayData } from "@/lib/calendar/holidays";
 import { DAY_NAMES_ID, MONTH_NAMES_ID } from "@/lib/calendar/constants";
@@ -65,7 +64,6 @@ function toDateStr(date: Date) {
 const todayDate = new Date();
 
 export default function MonthGrid({ year, month, holidays, country }: MonthGridProps) {
-  const router = useRouter();
   const cells = buildMonthDays(year, month);
   const qs = country !== "ID" ? `?country=${country}` : "";
   const monthSlug = MONTH_NAMES_ID[month - 1].toLowerCase();
@@ -94,12 +92,7 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
     });
   }, [year, month]);
 
-  function navigateToDay(date: Date) {
-    const d = date.getDate();
-    router.push(`/${year}/${monthSlug}/${d}${qs}`);
-  }
-
-  const headerBg = MONTH_COLORS[month];
+const headerBg = MONTH_COLORS[month];
 
   return (
     <div className="overflow-hidden rounded-lg border border-hairline">
@@ -125,6 +118,9 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
           const dayHolidays = cell.inMonth ? getHolidaysForDate(holidays, cell.date) : [];
           const dayEvents = cell.inMonth ? (userEventMap.get(toDateStr(cell.date)) ?? []) : [];
 
+          const dayHref = cell.inMonth
+            ? `/${year}/${monthSlug}/${cell.date.getDate()}${qs}`
+            : undefined;
           return (
             <DayCell
               key={i}
@@ -137,7 +133,7 @@ export default function MonthGrid({ year, month, holidays, country }: MonthGridP
               events={dayEvents}
               isLastRow={i >= cells.length - 7}
               isLastCol={i % 7 === 6}
-              onClick={cell.inMonth ? () => navigateToDay(cell.date) : undefined}
+              href={dayHref}
             />
           );
         })}
