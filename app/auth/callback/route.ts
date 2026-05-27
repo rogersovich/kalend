@@ -27,8 +27,22 @@ export async function GET(request: Request) {
       }
     );
 
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
+      // Detect new user: created_at within last 10 seconds
+      const user = data.session?.user;
+      if (user?.created_at) {
+        const ageMs = Date.now() - new Date(user.created_at).getTime();
+        if (ageMs < 10_000) {
+          const email = user.email ?? "";
+          const name = user.user_metadata?.full_name ?? user.user_metadata?.name ?? "";
+          fetch(`${origin}/api/auth/welcome`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, name }),
+          }).catch(() => {});
+        }
+      }
       return NextResponse.redirect(`${origin}${next}`);
     }
   }
