@@ -4,6 +4,7 @@ import YearGridClient from "@/components/calendar/YearGridClient";
 import YearNav from "@/components/calendar/YearNav";
 import YearInfoBand from "@/components/calendar/YearInfoBand";
 import CountrySwitcher from "@/components/calendar/CountrySwitcher";
+import YearHolidayList from "@/components/calendar/YearHolidayList";
 import { getHolidaysByYear } from "@/lib/calendar/holidays";
 import { MIN_YEAR, MAX_YEAR, getShio, getHijriYears, CountryCode } from "@/lib/calendar/constants";
 
@@ -91,6 +92,9 @@ export default async function YearPage({ params, searchParams }: Props) {
             Data belum tersedia untuk tahun {year}.
           </p>
         )}
+
+        {/* Holiday list */}
+        <YearHolidayList year={year} holidays={holidays} />
     </main>
   );
 }
