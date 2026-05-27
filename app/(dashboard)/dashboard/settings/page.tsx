@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { toast } from "sonner";
 import type { User } from "@supabase/supabase-js";
 
 const inputCls = "w-full max-w-sm rounded-md border border-hairline bg-canvas px-[14px] py-[12px] font-display text-body-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink transition-colors";
@@ -13,8 +14,6 @@ export default function SettingsPage() {
   const [user, setUser] = useState<User | null>(null);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
 
   useEffect(() => {
@@ -28,14 +27,11 @@ export default function SettingsPage() {
   async function handleUpdateName(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    setError(null);
-    setSuccess(false);
-
     const { error } = await supabase.auth.updateUser({ data: { full_name: name } });
     if (error) {
-      setError(error.message);
+      toast.error(error.message);
     } else {
-      setSuccess(true);
+      toast.success("Perubahan berhasil disimpan");
     }
     setLoading(false);
   }
@@ -54,15 +50,6 @@ export default function SettingsPage() {
       {/* Profile */}
       <div className="rounded-lg border border-hairline bg-canvas p-lg">
         <h2 className="mb-md font-display text-headline font-medium text-ink">Profil</h2>
-
-        {success && (
-          <div className="mb-md rounded-md bg-surface-soft px-md py-sm font-display text-body-sm text-semantic-success">
-            Perubahan berhasil disimpan.
-          </div>
-        )}
-        {error && (
-          <div className="mb-md rounded-md bg-error/10 px-md py-sm font-display text-body-sm text-error">{error}</div>
-        )}
 
         <form onSubmit={handleUpdateName} className="flex flex-col gap-md">
           <div>

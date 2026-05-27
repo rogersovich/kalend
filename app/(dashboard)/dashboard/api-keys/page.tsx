@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Plus, Copy, Trash2, Key, Check } from "lucide-react";
+import { toast } from "sonner";
 
 interface ApiKey {
   id: string;
@@ -47,13 +48,21 @@ export default function ApiKeysPage() {
       await fetchKeys();
       setNewName("");
       setShowForm(false);
+      toast.success("API key berhasil dibuat");
+    } else {
+      toast.error("Gagal membuat API key");
     }
     setCreating(false);
   }
 
   async function handleRevoke(id: string) {
     if (!confirm("Revoke API key ini?")) return;
-    await fetch(`/api/api-keys/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/api-keys/${id}`, { method: "DELETE" });
+    if (res.ok) {
+      toast.success("API key direvoke");
+    } else {
+      toast.error("Gagal merevoke API key");
+    }
     await fetchKeys();
   }
 
@@ -61,6 +70,7 @@ export default function ApiKeysPage() {
     await navigator.clipboard.writeText(key);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2000);
+    toast.success("API key disalin ke clipboard");
   }
 
   return (

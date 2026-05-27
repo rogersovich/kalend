@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 
 const COLOR_OPTIONS = [
   { value: "#6366f1", label: "Indigo" },
@@ -35,25 +36,20 @@ export default function EventForm({ initial, onSubmit, onCancel, submitLabel = "
     note: initial?.note ?? "",
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    setError(null);
     try {
       await onSubmit(form);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Terjadi kesalahan");
+      toast.error(err instanceof Error ? err.message : "Terjadi kesalahan");
       setLoading(false);
     }
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      {error && (
-        <div className="rounded-lg bg-error/10 px-3 py-2 text-body-sm text-error">{error}</div>
-      )}
 
       <div>
         <label className="mb-1 block text-caption font-medium text-ink">Judul *</label>

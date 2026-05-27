@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Plus, Pencil, Trash2, CalendarDays } from "lucide-react";
+import { toast } from "sonner";
 import EventForm from "@/components/dashboard/EventForm";
 import { MONTH_NAMES_ID } from "@/lib/calendar/constants";
 
@@ -49,6 +50,7 @@ export default function EventsPage() {
     }
     await fetchEvents();
     setMode("list");
+    toast.success("Event berhasil ditambahkan");
   }
 
   async function handleEdit(data: { title: string; date: string; endDate: string; color: string; note: string }) {
@@ -65,11 +67,17 @@ export default function EventsPage() {
     await fetchEvents();
     setMode("list");
     setEditing(null);
+    toast.success("Event berhasil diperbarui");
   }
 
   async function handleDelete(id: string) {
     if (!confirm("Hapus event ini?")) return;
-    await fetch(`/api/events/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/events/${id}`, { method: "DELETE" });
+    if (res.ok) {
+      toast.success("Event dihapus");
+    } else {
+      toast.error("Gagal menghapus event");
+    }
     await fetchEvents();
   }
 

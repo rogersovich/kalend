@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface Result {
   workdays: number;
@@ -16,15 +17,17 @@ export default function TabHariKerja() {
   const [country, setCountry] = useState("ID");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   async function calculate() {
     setLoading(true);
-    setError(null);
     setResult(null);
     const res = await fetch(`/api/tools/workdays?start=${start}&end=${end}&country=${country}`);
     const json = await res.json();
-    if (!res.ok) { setError(json.error ?? "Gagal menghitung"); setLoading(false); return; }
+    if (!res.ok) {
+      toast.error(json.error ?? "Gagal menghitung");
+      setLoading(false);
+      return;
+    }
     setResult(json);
     setLoading(false);
   }
@@ -59,8 +62,6 @@ export default function TabHariKerja() {
         className="w-full rounded-lg bg-brand-accent py-sm text-body-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50">
         {loading ? "Menghitung..." : "Hitung"}
       </button>
-
-      {error && <p className="text-body-sm text-error">{error}</p>}
 
       {result && (
         <div className="grid grid-cols-2 gap-3 rounded-xl border border-hairline bg-canvas p-lg">

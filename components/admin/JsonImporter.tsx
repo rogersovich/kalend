@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Upload, FileJson, CheckCircle, AlertCircle } from "lucide-react";
+import { Upload, FileJson, CheckCircle, AlertCircle, Download } from "lucide-react";
+import { toast } from "sonner";
 
 interface HolidayRow {
   date: string;
@@ -21,6 +22,42 @@ interface ImportResult {
 interface JsonImporterProps {
   countryCode: string;
   year: number;
+}
+
+const TEMPLATES: Record<string, HolidayRow[]> = {
+  ID: [
+    { date: "YYYY-01-01", name: "Tahun Baru Masehi", type: "national" },
+    { date: "YYYY-03-29", name: "Hari Raya Nyepi", type: "national", description: "Tahun Baru Saka" },
+    { date: "YYYY-04-18", name: "Wafat Yesus Kristus", type: "national" },
+    { date: "YYYY-05-01", name: "Hari Buruh Internasional", type: "national" },
+    { date: "YYYY-08-17", name: "Hari Kemerdekaan Republik Indonesia", type: "national" },
+    { date: "YYYY-12-25", name: "Hari Raya Natal", type: "national" },
+    { date: "YYYY-03-28", name: "Cuti Bersama Nyepi", type: "joint_leave" },
+    { date: "YYYY-02-01", name: "Hari Jadi Provinsi Bali", type: "regional", regionCode: "ID-BA" },
+  ],
+  MY: [
+    { date: "YYYY-01-01", name: "New Year's Day", type: "national" },
+    { date: "YYYY-02-01", name: "Federal Territory Day", type: "national", description: "Wilayah Persekutuan only", regionCode: "MY-14" },
+    { date: "YYYY-05-01", name: "Labour Day", type: "national" },
+    { date: "YYYY-08-31", name: "National Day", type: "national" },
+    { date: "YYYY-09-16", name: "Malaysia Day", type: "national" },
+    { date: "YYYY-12-25", name: "Christmas Day", type: "national" },
+  ],
+};
+
+function downloadTemplate(countryCode: string, year: number) {
+  const rows = (TEMPLATES[countryCode] ?? TEMPLATES.ID).map((row) => ({
+    ...row,
+    date: row.date.replace("YYYY", String(year)),
+  }));
+  const blob = new Blob([JSON.stringify(rows, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `template-holidays-${countryCode}-${year}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast.success(`Template ${countryCode} ${year} diunduh`);
 }
 
 export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
@@ -96,15 +133,37 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
         body: JSON.stringify({ countryCode, year, mode, data: JSON.parse(json) }),
       });
       const data = await res.json();
-      setResult(data.result);
+      const r = data.result as ImportResult;
+      setResult(r);
+      if (r.errors.length) {
+        toast.error(`Import selesai dengan ${r.errors.length} error`);
+      } else {
+        toast.success(`Import berhasil — ${r.inserted} inserted, ${r.updated} updated, ${r.skipped} skipped`);
+      }
     } catch {
       setResult({ inserted: 0, updated: 0, skipped: 0, errors: ["Request gagal"] });
+      toast.error("Request gagal");
     }
     setLoading(false);
   }
 
   return (
     <div className="flex flex-col gap-lg">
+      {/* Download template */}
+      <div className="flex items-center justify-between rounded-lg border border-hairline bg-surface-soft px-lg py-md">
+        <div>
+          <p className="font-display text-body-sm font-medium text-ink">Download Template JSON</p>
+          <p className="font-mono text-caption text-ink/60">Contoh format untuk {countryCode} {year}</p>
+        </div>
+        <button
+          onClick={() => downloadTemplate(countryCode, year)}
+          className="flex items-center gap-xs rounded-pill border border-hairline bg-canvas px-md py-xs font-display text-body-sm font-medium text-ink transition-colors hover:bg-ink hover:text-white"
+        >
+          <Download className="h-4 w-4" />
+          Download Template
+        </button>
+      </div>
+
       {/* Upload area */}
       <div
         onClick={() => fileRef.current?.click()}

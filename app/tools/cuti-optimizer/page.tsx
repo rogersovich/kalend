@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -38,6 +39,11 @@ export default function CutiOptimizerPage() {
     setStrategies(null);
     const res = await fetch(`/api/tools/cuti-optimizer?year=${year}&country=${country}&max_leave=${maxLeave}`);
     const json = await res.json();
+    if (!res.ok) {
+      toast.error(json.error ?? "Gagal menghitung strategi cuti");
+      setLoading(false);
+      return;
+    }
     setStrategies(json.data ?? []);
     setLoading(false);
   }
