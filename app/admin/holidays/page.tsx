@@ -8,6 +8,8 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { MONTH_NAMES_ID } from "@/lib/calendar/constants";
 import HolidayFilters from "@/components/admin/HolidayFilters";
+import HolidayTableActions from "@/components/admin/HolidayTableActions";
+import AddHolidayButton from "@/components/admin/AddHolidayButton";
 
 export const metadata: Metadata = {
   title: "Kelola Hari Libur — Admin Kalend",
@@ -76,12 +78,16 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
           </div>
         </div>
 
+        <div className="mb-md flex justify-end">
+          <AddHolidayButton country={country} year={year} />
+        </div>
+
         <div className="overflow-hidden rounded-lg border border-hairline">
           <div className="max-h-[600px] overflow-auto">
             <table className="w-full min-w-[520px] text-left">
               <thead className="bg-surface-soft">
                 <tr>
-                  {["Tanggal", "Nama", "Tipe", "Region"].map((h) => (
+                  {["Tanggal", "Nama", "Tipe", "Region", "Aksi"].map((h) => (
                     <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-ink/60">{h}</th>
                   ))}
                 </tr>
@@ -101,6 +107,11 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
                       </td>
                       <td className="px-md py-sm font-mono text-caption text-ink/60">
                         {h.region?.name ?? "—"}
+                      </td>
+                      <td className="px-md py-sm">
+                        <HolidayTableActions
+                          holiday={{ id: h.id, name: h.name, date: h.date.toISOString(), type: h.type, description: h.description }}
+                        />
                       </td>
                     </tr>
                   );

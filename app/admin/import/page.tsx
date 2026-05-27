@@ -50,6 +50,31 @@ export default function AdminImportPage() {
           </div>
         </div>
 
+        {/* Type legend */}
+        <div className="mb-lg rounded-lg border border-hairline bg-canvas p-md sm:p-lg">
+          <p className="mb-sm font-mono text-caption uppercase tracking-widest text-ink/60">Nilai Tipe yang Valid</p>
+          <div className="flex flex-col gap-sm sm:flex-row sm:flex-wrap sm:gap-lg">
+            {[
+              { value: "national", label: "Libur Nasional", dotCls: "bg-error", badgeCls: "bg-error/10 text-error" },
+              { value: "joint-leave", label: "Cuti Bersama", dotCls: "bg-badge-orange", badgeCls: "bg-badge-orange/10 text-badge-orange" },
+              { value: "regional", label: "Libur Daerah", dotCls: "bg-surface-strong border border-hairline", badgeCls: "bg-surface-soft text-ink/60" },
+            ].map((t) => (
+              <div key={t.value} className="flex items-center gap-sm">
+                <span className={`inline-flex items-center rounded-pill px-sm py-xxs font-mono text-caption ${t.badgeCls}`}>
+                  {t.label}
+                </span>
+                <span className="font-mono text-caption text-ink/40">→</span>
+                <code className="rounded bg-surface-soft px-xs py-[2px] font-mono text-caption text-ink">
+                  {t.value}
+                </code>
+              </div>
+            ))}
+          </div>
+          <p className="mt-sm font-mono text-caption text-ink/40">
+            Gunakan nilai <code className="rounded bg-surface-soft px-xs py-[2px]">type</code> persis seperti di atas saat membuat JSON.
+          </p>
+        </div>
+
         <JsonImporter countryCode={country} year={year} />
       </main>
       <Footer />
