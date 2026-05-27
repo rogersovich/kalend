@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Globe, Zap, Key } from "lucide-react";
+import { Globe, Zap, Key } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Tentang Kami",
@@ -73,7 +73,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 gap-xl md:grid-cols-2">
             <p className="font-display text-body-lg text-ink/80">
-              Saat membangun sistem HR dan payroll, kami selalu menghadapi pertanyaan yang sama: "Apakah tanggal ini hari libur?" Data resmi sulit diakses secara programatik, tersebar di berbagai dokumen PDF, dan sering berbeda antara satu sumber dengan sumber lain.
+              Saat membangun sistem HR dan payroll, kami selalu menghadapi pertanyaan yang sama: &ldquo;Apakah tanggal ini hari libur?&rdquo; Data resmi sulit diakses secara programatik, tersebar di berbagai dokumen PDF, dan sering berbeda antara satu sumber dengan sumber lain.
             </p>
             <p className="font-display text-body-lg text-ink/80">
               Kalend hadir sebagai satu sumber kebenaran — REST API yang bisa dipanggil kapan saja, dengan data yang diverifikasi, konsisten, dan mencakup seluruh wilayah Indonesia dan Malaysia.

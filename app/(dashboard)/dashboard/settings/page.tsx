@@ -33,6 +33,8 @@ export default function SettingsPage() {
       setUser(data.user);
       setName(data.user.user_metadata?.full_name ?? "");
     });
+  // router and supabase.auth are stable refs — safe to omit
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function handleUpdateName(e: React.FormEvent) {

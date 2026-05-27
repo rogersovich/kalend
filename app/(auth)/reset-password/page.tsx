@@ -22,6 +22,8 @@ export default function ResetPasswordPage() {
       if (data.session) setReady(true);
       else setError("Link reset password tidak valid atau sudah kedaluwarsa.");
     });
+  // supabase.auth is stable — created once via createClient()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function handleSubmit(e: React.FormEvent) {
