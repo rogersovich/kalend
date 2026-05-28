@@ -76,7 +76,7 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
   }
   if (eventMap) {
     const prefix = `${year}-${String(month).padStart(2, "0")}`;
-    for (const [ds, evs] of eventMap.entries()) {
+    for (const [ds, evs] of Array.from(eventMap.entries())) {
       if (!ds.startsWith(prefix)) continue;
       const d = new Date(ds);
       for (const ev of evs) {
