@@ -43,3 +43,25 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ data: holiday }, { status: 201 });
 }
+
+export async function DELETE(request: Request) {
+  const user = await getAdminUser();
+  if (!user) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+  try {
+    const { ids } = await request.json() as { ids: string[] };
+    if (!ids || !Array.isArray(ids) || ids.length === 0) {
+      return NextResponse.json({ error: "Missing or invalid ids" }, { status: 400 });
+    }
+
+    await prisma.holiday.deleteMany({
+      where: {
+        id: { in: ids },
+      },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Failed to delete" }, { status: 500 });
+  }
+}

@@ -29,10 +29,19 @@ export const metadata: Metadata = {
     siteName: "Kalend",
     type: "website",
     locale: "id_ID",
+    images: [
+      {
+        url: "/img/kalend-og-image-home.png",
+        width: 1200,
+        height: 630,
+        alt: "Kalend",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@kalend_id",
+    images: ["/img/kalend-og-image-home.png"],
   },
 };
 

@@ -6,10 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
-import { MONTH_NAMES_ID } from "@/lib/calendar/constants";
 import HolidayFilters from "@/components/admin/HolidayFilters";
-import HolidayTableActions from "@/components/admin/HolidayTableActions";
 import AddHolidayButton from "@/components/admin/AddHolidayButton";
+import HolidayTable from "@/components/admin/HolidayTable";
 
 export const metadata: Metadata = {
   title: "Kelola Hari Libur — Admin Kalend",
@@ -19,18 +18,6 @@ export const metadata: Metadata = {
 interface Props {
   searchParams: { country?: string; year?: string };
 }
-
-const TYPE_LABELS: Record<string, string> = {
-  national: "Nasional",
-  "joint-leave": "Cuti Bersama",
-  regional: "Regional",
-};
-
-const TYPE_CLASSES: Record<string, string> = {
-  national: "bg-error/10 text-error",
-  "joint-leave": "bg-badge-orange/10 text-badge-orange",
-  regional: "bg-surface-soft text-ink/60",
-};
 
 
 export default async function AdminHolidaysPage({ searchParams }: Props) {
@@ -72,60 +59,16 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
           <h1 className="mb-md font-display text-display-md font-normal text-ink leading-tight sm:text-display-lg">
             Hari Libur
           </h1>
-          <div className="flex flex-col gap-sm sm:flex-row sm:items-center sm:justify-between sm:gap-md">
-            <p className="font-display text-body-sm text-ink sm:text-body-lg">{holidays.length} data · {country} {year}</p>
-            <HolidayFilters country={country} year={year} />
-          </div>
+          <p className="font-display text-body-sm text-ink sm:text-body-lg">{holidays.length} data · {country} {year}</p>
         </div>
 
-        <div className="mb-md flex justify-end">
+        {/* Unified Actions Toolbar */}
+        <div className="mb-md flex flex-col gap-sm sm:flex-row sm:items-center sm:justify-between">
+          <HolidayFilters country={country} year={year} />
           <AddHolidayButton country={country} year={year} />
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-hairline">
-          <div className="max-h-[600px] overflow-auto">
-            <table className="w-full min-w-[520px] text-left">
-              <thead className="bg-surface-soft">
-                <tr>
-                  {["Tanggal", "Nama", "Tipe", "Region", "Aksi"].map((h) => (
-                    <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-ink/60">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {holidays.map((h) => {
-                  const d = new Date(h.date);
-                  const dateStr = `${d.getDate()} ${MONTH_NAMES_ID[d.getMonth()]} ${d.getFullYear()}`;
-                  return (
-                    <tr key={h.id} className="border-t border-hairline hover:bg-surface-soft">
-                      <td className="px-md py-sm font-mono text-caption text-ink">{dateStr}</td>
-                      <td className="px-md py-sm font-display text-body-sm text-ink">{h.name}</td>
-                      <td className="px-md py-sm">
-                        <span className={`rounded-pill px-sm py-xxs font-mono text-caption ${TYPE_CLASSES[h.type] ?? "bg-surface-soft text-ink/60"}`}>
-                          {TYPE_LABELS[h.type] ?? h.type}
-                        </span>
-                      </td>
-                      <td className="px-md py-sm font-mono text-caption text-ink/60">
-                        {h.region?.name ?? "—"}
-                      </td>
-                      <td className="px-md py-sm">
-                        <HolidayTableActions
-                          holiday={{ id: h.id, name: h.name, date: h.date.toISOString(), type: h.type, description: h.description }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {holidays.length === 0 && (
-            <p className="py-xl text-center font-display text-body text-ink">
-              Tidak ada data hari libur untuk {country} {year}.
-            </p>
-          )}
-        </div>
+        <HolidayTable holidays={holidays} />
       </main>
       <Footer />
     </>

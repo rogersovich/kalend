@@ -49,7 +49,7 @@ export async function POST(request: Request) {
 
       if (mode === "add") {
         const existing = await prisma.holiday.findFirst({
-          where: { countryId: country.id, date, name: row.name },
+          where: { countryId: country.id, date },
         });
         if (existing) { result.skipped++; continue; }
         await prisma.holiday.create({
@@ -64,23 +64,33 @@ export async function POST(request: Request) {
         });
         result.inserted++;
       } else {
-        await prisma.holiday.upsert({
-          where: { id: (await prisma.holiday.findFirst({ where: { countryId: country.id, date, name: row.name } }))?.id ?? "" },
-          create: {
-            countryId: country.id,
-            regionId,
-            date,
-            name: row.name,
-            type: row.type,
-            description: row.description ?? null,
-          },
-          update: {
-            type: row.type,
-            description: row.description ?? null,
-            regionId,
-          },
+        const existing = await prisma.holiday.findFirst({
+          where: { countryId: country.id, date },
         });
-        result.updated++;
+        if (existing) {
+          await prisma.holiday.update({
+            where: { id: existing.id },
+            data: {
+              name: row.name,
+              type: row.type,
+              description: row.description ?? null,
+              regionId,
+            },
+          });
+          result.updated++;
+        } else {
+          await prisma.holiday.create({
+            data: {
+              countryId: country.id,
+              regionId,
+              date,
+              name: row.name,
+              type: row.type,
+              description: row.description ?? null,
+            },
+          });
+          result.inserted++;
+        }
       }
     } catch (err) {
       result.errors.push(`[${row.date}] ${err instanceof Error ? err.message : "Unknown error"}`);

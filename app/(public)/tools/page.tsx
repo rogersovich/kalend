@@ -11,6 +11,18 @@ export const metadata: Metadata = {
     url: "/tools",
     type: "website",
     siteName: "Kalend",
+    images: [
+      {
+        url: "/img/kalend-og-image-tools.png",
+        width: 1200,
+        height: 630,
+        alt: "Tools Kalender — Kalend",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/img/kalend-og-image-tools.png"],
   },
   alternates: { canonical: "/tools" },
 };
