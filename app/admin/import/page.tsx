@@ -13,6 +13,13 @@ export default function AdminImportPage() {
   const currentYear = new Date().getFullYear();
   const [country, setCountry] = useState("ID");
   const [year, setYear] = useState(currentYear);
+  const [resetKey, setResetKey] = useState(0);
+
+  function handleReset() {
+    setCountry("ID");
+    setYear(currentYear);
+    setResetKey((prev) => prev + 1);
+  }
 
   return (
     <>
@@ -32,7 +39,7 @@ export default function AdminImportPage() {
         </div>
 
         {/* Filters */}
-        <div className="mb-lg flex flex-col gap-sm sm:mb-xl sm:flex-row sm:flex-wrap sm:gap-md">
+        <div className="mb-lg flex flex-col gap-sm sm:mb-xl sm:flex-row sm:flex-wrap sm:items-end sm:gap-md">
           <div>
             <label className="mb-xs block font-mono text-caption uppercase tracking-widest text-ink/60">Negara</label>
             <select value={country} onChange={(e) => setCountry(e.target.value)} className={selectCls}>
@@ -48,6 +55,12 @@ export default function AdminImportPage() {
               ))}
             </select>
           </div>
+          <button
+            onClick={handleReset}
+            className="flex h-9 w-full items-center justify-center rounded-md border border-hairline bg-canvas px-md font-display text-body-sm text-ink transition-colors hover:bg-surface-soft sm:w-auto"
+          >
+            Reset
+          </button>
         </div>
 
         {/* Type legend */}
@@ -75,7 +88,7 @@ export default function AdminImportPage() {
           </p>
         </div>
 
-        <JsonImporter countryCode={country} year={year} />
+        <JsonImporter key={`${country}-${year}-${resetKey}`} countryCode={country} year={year} />
       </main>
       <Footer />
     </>

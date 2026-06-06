@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     description: "Temukan kombinasi cuti paling efisien untuk libur terpanjang di Indonesia dan Malaysia.",
     url: "/tools/cuti-optimizer",
     type: "website",
+    images: [
+      {
+        url: "/img/kalend-og-image-tools.png",
+        width: 1200,
+        height: 630,
+        alt: "Cuti Optimizer — Kalend",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/img/kalend-og-image-tools.png"],
   },
   alternates: { canonical: "/tools/cuti-optimizer" },
 };

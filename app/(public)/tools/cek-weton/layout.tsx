@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     description: "Hitung weton dan neptu Jawa untuk tanggal apapun secara gratis.",
     url: "/tools/cek-weton",
     type: "website",
+    images: [
+      {
+        url: "/img/kalend-og-image-tools.png",
+        width: 1200,
+        height: 630,
+        alt: "Cek Weton Jawa — Kalend",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/img/kalend-og-image-tools.png"],
   },
   alternates: { canonical: "/tools/cek-weton" },
 };

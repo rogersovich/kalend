@@ -15,6 +15,18 @@ export const metadata: Metadata = {
     url: "/",
     type: "website",
     siteName: "Kalend",
+    images: [
+      {
+        url: "/img/kalend-og-image-home.png",
+        width: 1200,
+        height: 630,
+        alt: "Kalend",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/img/kalend-og-image-home.png"],
   },
   alternates: { canonical: "/" },
 };

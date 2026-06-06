@@ -35,7 +35,23 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   return {
     title,
     description,
-    openGraph: { title, description, type: "website" },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      images: [
+        {
+          url: "/img/kalend-og-image-long-week.png",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: ["/img/kalend-og-image-long-week.png"],
+    },
     alternates: { canonical: `/long-weekends/${year}${qs}` },
   };
 }
