@@ -25,6 +25,7 @@ export default function Navbar() {
 
   async function fetchRole(userId: string) {
     const { data } = await supabase.from("profiles").select("role").eq("id", userId).single();
+    console.log(data)
     setRole(data?.role ?? "user");
   }
 
