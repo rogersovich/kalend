@@ -31,12 +31,15 @@ export default function MiniCalendarSidebar({
   const monthSlug = MONTH_NAMES_ID[month - 1].toLowerCase();
   const qs = country !== "ID" ? `?country=${country}` : "";
 
-  const holidayDates = new Set(
-    holidays.map((h) => {
-      const d = new Date(h.date);
-      return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-    })
-  );
+  const holidayTypeMap = new Map<string, string>();
+  for (const h of holidays) {
+    const d = new Date(h.date);
+    const key = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    const existing = holidayTypeMap.get(key);
+    if (!existing || h.type === "national" || (h.type === "joint-leave" && existing === "regional")) {
+      holidayTypeMap.set(key, h.type);
+    }
+  }
 
   return (
     <div className="rounded-lg bg-block-cream p-md">
@@ -57,7 +60,7 @@ export default function MiniCalendarSidebar({
           const d = cell.date;
           const isActive = d.getDate() === activeDate.getDate();
           const dayStr = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-          const isHoliday = holidayDates.has(dayStr);
+          const holidayType = holidayTypeMap.get(dayStr);
           const isWeekend = d.getDay() === 0 || d.getDay() === 6;
 
           return (
@@ -67,9 +70,11 @@ export default function MiniCalendarSidebar({
               className={cn(
                 "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] transition-colors",
                 isActive && "bg-accent-magenta text-white font-semibold",
-                !isActive && isHoliday && "text-error font-semibold",
-                !isActive && isWeekend && !isHoliday && "text-ink/40",
-                !isActive && !isHoliday && !isWeekend && "text-ink",
+                !isActive && holidayType === "national" && "text-error font-semibold",
+                !isActive && holidayType === "joint-leave" && "text-badge-orange font-semibold",
+                !isActive && holidayType === "regional" && "text-badge-emerald font-semibold",
+                !isActive && isWeekend && !holidayType && "text-ink/40",
+                !isActive && !holidayType && !isWeekend && "text-ink",
                 !isActive && "hover:bg-black/10"
               )}
             >

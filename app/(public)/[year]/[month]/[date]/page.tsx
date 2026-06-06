@@ -8,6 +8,8 @@ import HolidayDetailCard from "@/components/calendar/HolidayDetailCard";
 import LongWeekendRelated from "@/components/calendar/LongWeekendRelated";
 import DayNav from "@/components/calendar/DayNav";
 import MiniCalendarSidebar from "@/components/calendar/MiniCalendarSidebar";
+import DateEventSection from "@/components/calendar/DateEventSection";
+import HolidayList from "@/components/calendar/HolidayList";
 import { getHolidaysByDate, getHolidaysByMonth } from "@/lib/calendar/holidays";
 import { getHolidaysByYear } from "@/lib/calendar/holidays";
 import { calculateLongWeekends } from "@/lib/calendar/longweekend";
@@ -131,21 +133,14 @@ export default async function DayPage({ params, searchParams }: Props) {
           </div>
 
           {/* Sidebar */}
-          <aside className="flex flex-col gap-lg">
+          <aside className="lg:sticky lg:top-[70px] flex flex-col gap-lg h-fit">
             <MiniCalendarSidebar
               activeDate={date}
               holidays={monthHolidays}
               country={country}
             />
 
-            <div className="rounded-lg border border-hairline bg-canvas p-lg">
-              <h3 className="mb-sm font-mono text-caption uppercase tracking-widest text-muted">
-                Tambah Event
-              </h3>
-              <p className="font-display text-body-sm text-muted">
-                Login untuk menambah event pribadi di tanggal ini.
-              </p>
-            </div>
+            <DateEventSection dateStr={dateStr} />
           </aside>
         </div>
     </main>

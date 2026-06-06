@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 interface Props {
-  searchParams: { country?: string; year?: string };
+  searchParams: { country?: string; year?: string; type?: string; region?: string };
 }
 
 
@@ -27,6 +27,8 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
 
   const country = searchParams.country ?? "ID";
   const year = Number(searchParams.year ?? new Date().getFullYear());
+  const type = searchParams.type;
+  const regionCode = searchParams.region;
 
   const countryRecord = await prisma.country.findUnique({ where: { code: country } });
   if (!countryRecord) redirect("/admin");
@@ -38,10 +40,16 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
     where: {
       countryId: countryRecord.id,
       date: { gte: startDate, lte: endDate },
+      ...(type ? { type } : {}),
+      ...(regionCode ? { region: { code: regionCode } } : {}),
     },
     include: { region: { select: { name: true } } },
     orderBy: { date: "asc" },
   });
+
+  const regions = country === "MY"
+    ? await prisma.region.findMany({ where: { countryId: countryRecord.id }, orderBy: { name: "asc" } })
+    : [];
 
   return (
     <>
@@ -64,7 +72,13 @@ export default async function AdminHolidaysPage({ searchParams }: Props) {
 
         {/* Unified Actions Toolbar */}
         <div className="mb-md flex flex-col gap-sm sm:flex-row sm:items-center sm:justify-between">
-          <HolidayFilters country={country} year={year} />
+          <HolidayFilters
+            country={country}
+            year={year}
+            type={type}
+            region={regionCode}
+            regions={regions.map((r) => ({ code: r.code, name: r.name }))}
+          />
           <AddHolidayButton country={country} year={year} />
         </div>
 

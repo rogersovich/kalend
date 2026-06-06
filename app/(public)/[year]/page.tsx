@@ -53,6 +53,8 @@ export default async function YearPage({ params, searchParams }: Props) {
   const country = (searchParams.country === "MY" ? "MY" : "ID") as CountryCode;
   const holidays = await getHolidaysByYear(country, year);
 
+  const hasRegional = holidays.some((h) => h.type === "regional");
+
   return (
     <main className="mx-auto max-w-content px-lg py-md sm:py-xl">
         {/* Header */}
@@ -76,6 +78,12 @@ export default async function YearPage({ params, searchParams }: Props) {
             <span className="h-[6px] w-[6px] rounded-full bg-badge-orange" />
             Cuti Bersama
           </div>
+          {hasRegional && (
+            <div className="flex items-center gap-xs font-mono text-caption text-ink">
+              <span className="h-[6px] w-[6px] rounded-full bg-badge-emerald" />
+              Libur Daerah
+            </div>
+          )}
           <div className="flex items-center gap-xs font-mono text-caption text-ink">
             <span className="inline-block h-3 w-3 rounded-sm bg-surface-strong" />
             Sabtu/Minggu

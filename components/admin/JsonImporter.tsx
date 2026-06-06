@@ -9,7 +9,7 @@ interface HolidayRow {
   name: string;
   type: string;
   description?: string;
-  regionCode?: string;
+  regionCodes?: string | string[];
 }
 
 interface ImportResult {
@@ -33,11 +33,11 @@ const TEMPLATES: Record<string, HolidayRow[]> = {
     { date: "YYYY-08-17", name: "Hari Kemerdekaan Republik Indonesia", type: "national" },
     { date: "YYYY-12-25", name: "Hari Raya Natal", type: "national" },
     { date: "YYYY-03-28", name: "Cuti Bersama Nyepi", type: "joint_leave" },
-    { date: "YYYY-02-01", name: "Hari Jadi Provinsi Bali", type: "regional", regionCode: "ID-BA" },
+    { date: "YYYY-02-01", name: "Hari Jadi Provinsi Bali", type: "regional", regionCodes: "ID-BA" },
   ],
   MY: [
     { date: "YYYY-01-01", name: "New Year's Day", type: "national" },
-    { date: "YYYY-02-01", name: "Federal Territory Day", type: "national", description: "Wilayah Persekutuan only", regionCode: "MY-14" },
+    { date: "YYYY-02-01", name: "Federal Territory Day", type: "national", description: "Wilayah Persekutuan only", regionCodes: "MY-14" },
     { date: "YYYY-05-01", name: "Labour Day", type: "national" },
     { date: "YYYY-08-31", name: "National Day", type: "national" },
     { date: "YYYY-09-16", name: "Malaysia Day", type: "national" },
@@ -209,7 +209,7 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
             <table className="w-full text-left">
               <thead className="bg-surface-soft">
                 <tr>
-                  {["date", "name", "type", "description", "regionCode"].map((h) => (
+                  {["date", "name", "type", "description", "regionCodes"].map((h) => (
                     <th key={h} className="px-md py-sm font-mono text-caption uppercase tracking-widest text-ink/60">{h}</th>
                   ))}
                 </tr>
@@ -221,7 +221,11 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
                     <td className="px-md py-sm font-display text-body-sm text-ink">{row.name}</td>
                     <td className="px-md py-sm font-mono text-caption text-ink">{row.type}</td>
                     <td className="px-md py-sm font-display text-body-sm text-ink/60">{row.description ?? "—"}</td>
-                    <td className="px-md py-sm font-mono text-caption text-ink/60">{row.regionCode ?? "—"}</td>
+                    <td className="px-md py-sm font-mono text-caption text-ink/60">
+                      {Array.isArray((row as any).regionCodes || (row as any).region)
+                        ? ((row as any).regionCodes || (row as any).region).join(", ")
+                        : (((row as any).regionCodes || (row as any).region) ?? "—")}
+                    </td>
                   </tr>
                 ))}
               </tbody>

@@ -18,7 +18,7 @@ const TYPE_LABEL: Record<string, { label: string; className: string }> = {
   },
   regional: {
     label: "Libur Daerah",
-    className: "bg-badge-violet text-white border-badge-violet/20",
+    className: "bg-badge-emerald text-white border-badge-emerald/20",
   },
 };
 
@@ -39,15 +39,45 @@ export default function HolidayList({ holidays, month }: HolidayListProps) {
     );
   }
 
+  // Group holidays by date, name, type
+  const groupedList: Array<HolidayData & { regions: Array<{ code: string; name: string | null }> }> = [];
+  for (const h of holidays) {
+    const dStr = new Date(h.date).toISOString().slice(0, 10);
+    const existing = groupedList.find(
+      (item) =>
+        new Date(item.date).toISOString().slice(0, 10) === dStr &&
+        item.name === h.name &&
+        item.type === h.type
+    );
+    if (existing) {
+      if (h.regionCode) {
+        existing.regions.push({ code: h.regionCode, name: h.regionName });
+      }
+    } else {
+      groupedList.push({
+        ...h,
+        regions: h.regionCode ? [{ code: h.regionCode, name: h.regionName }] : [],
+      });
+    }
+  }
+
   return (
     <ul className="flex flex-col gap-md">
-      {holidays.map((h) => {
+      {groupedList.map((h) => {
         const meta = TYPE_LABEL[h.type] ?? TYPE_LABEL.national;
+        const regionsStr = h.regions.length > 0
+          ? ` (${h.regions.map((r) => r.code).join(", ")})`
+          : "";
         return (
-          <li key={h.id} className="flex flex-col gap-[4px]">
+          <li key={`${new Date(h.date).toISOString().slice(0, 10)}_${h.name}_${h.type}`} className="flex flex-col gap-[4px]">
             <div className="flex items-start justify-between gap-xs">
               <span className="text-[13px] font-medium text-ink leading-snug">
                 {h.name}
+                {regionsStr && (
+                  <span className="ml-1.5 font-mono text-[10px] text-badge-emerald bg-badge-emerald/10 px-1 py-[1px] rounded">
+                    {h.regions.map((r) => r.code).join(", ")}
+                  </span>
+                )}
               </span>
               <Badge
                 variant="outline"

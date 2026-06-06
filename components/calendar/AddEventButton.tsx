@@ -33,16 +33,17 @@ interface FormData {
 
 interface AddEventButtonProps {
   onSuccess?: () => void;
+  defaultDate?: string;
 }
 
-export default function AddEventButton({ onSuccess }: AddEventButtonProps = {}) {
+export default function AddEventButton({ onSuccess, defaultDate }: AddEventButtonProps = {}) {
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState<FormData>({
     title: "",
-    date: "",
-    endDate: "",
+    date: defaultDate || "",
+    endDate: defaultDate || "",
     color: "#6366f1",
     note: "",
   });
@@ -58,7 +59,13 @@ export default function AddEventButton({ onSuccess }: AddEventButtonProps = {}) 
       toast.error("Login dulu untuk menambah event");
       return;
     }
-    setForm({ title: "", date: "", endDate: "", color: "#6366f1", note: "" });
+    setForm({
+      title: "",
+      date: defaultDate || "",
+      endDate: defaultDate || "",
+      color: "#6366f1",
+      note: "",
+    });
     setOpen(true);
   }
 

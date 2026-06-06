@@ -67,13 +67,40 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
   const monthSlug = monthName.toLowerCase();
 
   // Build sorted list of all holidays + events for this month
-  const items: MonthItem[] = [];
+  const groupedHolidays: Array<HolidayData & { regions: Array<{ code: string; name: string | null }> }> = [];
   for (const h of holidays) {
     const d = new Date(h.date);
     if (d.getMonth() + 1 === month && d.getFullYear() === year) {
-      items.push({ date: d, label: h.name, kind: h.type as MonthItem["kind"] });
+      const dStr = d.toISOString().slice(0, 10);
+      const existing = groupedHolidays.find(
+        (item) =>
+          new Date(item.date).toISOString().slice(0, 10) === dStr &&
+          item.name === h.name &&
+          item.type === h.type
+      );
+      if (existing) {
+        if (h.regionCode) {
+          existing.regions.push({ code: h.regionCode, name: h.regionName });
+        }
+      } else {
+        groupedHolidays.push({
+          ...h,
+          regions: h.regionCode ? [{ code: h.regionCode, name: h.regionName }] : [],
+        });
+      }
     }
   }
+
+  const items: MonthItem[] = [];
+  for (const h of groupedHolidays) {
+    const d = new Date(h.date);
+    items.push({
+      date: d,
+      label: h.name,
+      kind: h.type as MonthItem["kind"],
+    });
+  }
+
   if (eventMap) {
     const prefix = `${year}-${String(month).padStart(2, "0")}`;
     for (const [ds, evs] of Array.from(eventMap.entries())) {
@@ -146,6 +173,8 @@ export default function MonthMini({ year, month, holidays, country, eventMap }: 
                     ? "bg-error"
                     : item.kind === "joint-leave"
                     ? "bg-badge-orange"
+                    : item.kind === "regional"
+                    ? "bg-badge-emerald"
                     : "bg-ink/30"
                 }`}
                 style={item.kind === "event" && item.color ? { backgroundColor: item.color } : undefined}

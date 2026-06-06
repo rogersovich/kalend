@@ -58,6 +58,7 @@ function PeriodCard({
           const dayHolidays = holidayMap.get(ds) ?? [];
           const national = dayHolidays.find((h) => h.type === "national");
           const joint = dayHolidays.find((h) => h.type === "joint-leave");
+          const regional = dayHolidays.find((h) => h.type === "regional");
 
           let dot = "bg-surface-strong border border-hairline";
           let name: string;
@@ -74,6 +75,17 @@ function PeriodCard({
             name = joint.name;
             badgeCls = "bg-badge-orange/10 text-badge-orange border-badge-orange/20";
             typeLabel = "Cuti";
+          } else if (day.type === "holiday" && regional) {
+            dot = "bg-badge-emerald";
+            // Group regions for the same regional holiday on this day
+            const matches = dayHolidays.filter((h) => h.type === "regional");
+            const first = matches[0];
+            const regionsStr = matches.some((m) => m.regionCode)
+              ? ` (${matches.map((m) => m.regionCode).join(", ")})`
+              : "";
+            name = `${first.name}${regionsStr}`;
+            badgeCls = "bg-badge-emerald/10 text-badge-emerald border-badge-emerald/20";
+            typeLabel = "Regional";
           } else {
             name = DAY_NAMES_FULL_ID[day.date.getDay()];
           }

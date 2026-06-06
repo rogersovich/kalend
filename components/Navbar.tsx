@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Menu, X, LogOut, User } from "lucide-react";
+import { Menu, X, LogOut, User, ChevronDown } from "lucide-react";
 import calendarIcon from "@/app/assets/icons/calendar.png";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
@@ -69,15 +69,48 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-xs md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            if (link.label === "Kalender") {
+              return (
+                <div key={link.href} className="relative group py-2">
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-center gap-1.5 rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
+                  >
+                    <span>{link.label}</span>
+                    <ChevronDown className="h-3.5 w-3.5 opacity-60 transition-transform duration-200 group-hover:rotate-180" />
+                  </Link>
+                  {/* Dropdown Menu */}
+                  <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="w-36 rounded-lg border border-hairline bg-canvas p-1.5 shadow-lg">
+                      <Link
+                        href="/2026"
+                        className="block rounded-lg px-3 py-2 text-sm text-ink/75 hover:bg-surface-soft hover:text-ink transition-colors"
+                      >
+                        🇮🇩 Indonesia
+                      </Link>
+                      <Link
+                        href="/2026?country=MY"
+                        className="block rounded-lg px-3 py-2 text-sm text-ink/75 hover:bg-surface-soft hover:text-ink transition-colors"
+                      >
+                        🇲🇾 Malaysia
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Desktop CTA — black+white pill pair */}
@@ -122,17 +155,48 @@ export default function Navbar() {
       {/* Mobile overlay */}
       {mobileOpen && (
         <div className="border-b border-hairline bg-canvas md:hidden">
-          <nav className="mx-auto flex max-w-content flex-col px-lg py-md" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="mx-auto flex max-w-content flex-col px-lg py-md gap-y-xs" aria-label="Mobile navigation">
+            {navLinks.map((link) => {
+              if (link.label === "Kalender") {
+                return (
+                  <div key={link.href} className="flex flex-col">
+                    <Link
+                      href={link.href}
+                      className="rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink font-medium"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                    <div className="ml-md mt-xs flex flex-col gap-xs pl-sm border-l border-hairline">
+                      <Link
+                        href="/2026"
+                        className="rounded-full px-sm py-xs text-sm text-ink/60 hover:bg-surface-soft hover:text-ink"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        🇮🇩 Indonesia
+                      </Link>
+                      <Link
+                        href="/2026?country=MY"
+                        className="rounded-full px-sm py-xs text-sm text-ink/60 hover:bg-surface-soft hover:text-ink"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        🇲🇾 Malaysia
+                      </Link>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full px-sm py-xs text-nav-link text-ink/60 transition-colors hover:bg-surface-soft hover:text-ink"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <div className="mt-md flex flex-col gap-xs border-t border-hairline pt-md">
               {user ? (
                 <>

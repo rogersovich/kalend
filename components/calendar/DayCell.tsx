@@ -27,13 +27,14 @@ interface DayCellProps {
 function getDotColors(holidays: HolidayData[]) {
   const hasNational = holidays.some((h) => h.type === "national");
   const hasJoint = holidays.some((h) => h.type === "joint-leave");
-  return { hasNational, hasJoint };
+  const hasRegional = holidays.some((h) => h.type === "regional");
+  return { hasNational, hasJoint, hasRegional };
 }
 
 const TYPE_LABEL: Record<string, { label: string; color: string }> = {
   national:    { label: "Libur Nasional", color: "bg-error" },
   "joint-leave": { label: "Cuti Bersama", color: "bg-badge-orange" },
-  regional:    { label: "Libur Daerah", color: "bg-primary" },
+  regional:    { label: "Libur Daerah", color: "bg-badge-emerald" },
 };
 
 export default function DayCell({
@@ -52,12 +53,28 @@ export default function DayCell({
   const day = date.getDate();
   const dayOfWeek = date.getDay();
   const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-  const { hasNational, hasJoint } = getDotColors(holidays);
-  const isHoliday = hasNational || hasJoint;
+  const { hasNational, hasJoint, hasRegional } = getDotColors(holidays);
+  const isHoliday = hasNational || hasJoint || hasRegional;
 
   const weton = showWeton ? calculateWeton(date) : null;
 
   const isClickable = !!(href || onClick) && isCurrentMonth;
+
+  // Group holidays by name and type to display regions combined
+  const groupedHolidays = holidays.reduce((acc, h) => {
+    const existing = acc.find((item) => item.name === h.name && item.type === h.type);
+    if (existing) {
+      if (h.regionCode) {
+        existing.regions.push({ code: h.regionCode, name: h.regionName });
+      }
+    } else {
+      acc.push({
+        ...h,
+        regions: h.regionCode ? [{ code: h.regionCode, name: h.regionName }] : [],
+      });
+    }
+    return acc;
+  }, [] as Array<HolidayData & { regions: Array<{ code: string; name: string | null }> }>);
 
   if (size === "mini") {
     const inner = (
@@ -76,6 +93,7 @@ export default function DayCell({
             isWeekend && !isHoliday && !isToday && "text-muted",
             !isToday && hasNational && "font-semibold text-error",
             !isToday && hasJoint && !hasNational && "font-semibold text-badge-orange",
+            !isToday && hasRegional && !hasNational && !hasJoint && "font-semibold text-badge-emerald",
             isWeekend && "bg-surface-strong/60"
           )}
         >
@@ -88,6 +106,9 @@ export default function DayCell({
           )}
           {hasJoint && (
             <span className="h-[4px] w-[4px] rounded-full bg-badge-orange" />
+          )}
+          {hasRegional && (
+            <span className="h-[4px] w-[4px] rounded-full bg-badge-emerald" />
           )}
           {events.slice(0, 2).map((ev, idx) => (
             <span key={idx} className="h-[4px] w-[4px] rounded-full" style={{ backgroundColor: ev.color }} />
@@ -108,8 +129,11 @@ export default function DayCell({
         <TooltipTrigger asChild>{cell}</TooltipTrigger>
         <TooltipContent side="top">
           <div className="flex flex-col gap-[6px]">
-            {holidays.map((h) => {
+            {groupedHolidays.map((h) => {
               const meta = TYPE_LABEL[h.type] ?? { label: h.type, color: "bg-muted" };
+              const regionsStr = h.regions.length > 0
+                ? ` (${h.regions.map((r) => r.code).join(", ")})`
+                : "";
               return (
                 <div key={h.id ?? h.name} className="flex flex-col gap-[2px]">
                   <p className="font-display text-[12px] font-medium leading-snug text-white">
@@ -118,7 +142,7 @@ export default function DayCell({
                   <div className="flex items-center gap-[4px]">
                     <span className={cn("h-[6px] w-[6px] shrink-0 rounded-full", meta.color)} />
                     <span className="font-mono text-[10px] uppercase tracking-wider text-white/60">
-                      {meta.label}
+                      {meta.label}{regionsStr}
                     </span>
                   </div>
                 </div>
@@ -151,6 +175,7 @@ export default function DayCell({
             isToday && "bg-accent-magenta font-semibold text-white",
             !isToday && hasNational && "font-semibold text-error",
             !isToday && hasJoint && !hasNational && "font-semibold text-badge-orange",
+            !isToday && hasRegional && !hasNational && !hasJoint && "font-semibold text-badge-emerald",
             !isCurrentMonth && "text-muted"
           )}
         >
@@ -159,6 +184,7 @@ export default function DayCell({
         <div className="flex gap-[3px] pt-1">
           {hasNational && <span className="h-[5px] w-[5px] rounded-full bg-error" />}
           {hasJoint && <span className="h-[5px] w-[5px] rounded-full bg-badge-orange" />}
+          {hasRegional && <span className="h-[5px] w-[5px] rounded-full bg-badge-emerald" />}
           {events.slice(0, 2).map((ev, idx) => (
             <span key={idx} className="h-[5px] w-[5px] rounded-full" style={{ backgroundColor: ev.color }} />
           ))}
@@ -193,8 +219,11 @@ export default function DayCell({
       <TooltipTrigger asChild>{fullCell}</TooltipTrigger>
       <TooltipContent side="top">
         <div className="flex flex-col gap-[6px]">
-          {holidays.map((h) => {
+          {groupedHolidays.map((h) => {
             const meta = TYPE_LABEL[h.type] ?? { label: h.type, color: "bg-muted" };
+            const regionsStr = h.regions.length > 0
+              ? ` (${h.regions.map((r) => r.code).join(", ")})`
+              : "";
             return (
               <div key={h.id ?? h.name} className="flex flex-col gap-[2px]">
                 <p className="font-display text-[12px] font-medium leading-snug text-white">
@@ -203,7 +232,7 @@ export default function DayCell({
                 <div className="flex items-center gap-[4px]">
                   <span className={cn("h-[6px] w-[6px] shrink-0 rounded-full", meta.color)} />
                   <span className="font-mono text-[10px] uppercase tracking-wider text-white/60">
-                    {meta.label}
+                    {meta.label}{regionsStr}
                   </span>
                 </div>
               </div>

@@ -27,6 +27,7 @@ Font.register({
 const DAY_LABELS = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
 const RED = "#ef4444";
 const ORANGE = "#f59e0b";
+const EMERALD = "#10b981";
 const GRAY_BG = "#f4f4f5";
 const MUTED = "#71717a";
 const INK = "#09090b";
@@ -81,8 +82,10 @@ const styles = StyleSheet.create({
   dayNum: { fontFamily: "JetBrainsMono", fontSize: 10, color: INK },
   dayNumHoliday: { color: RED },
   dayNumJoint: { color: ORANGE },
+  dayNumRegional: { color: EMERALD },
   holidayName: { fontSize: 6, color: RED, marginTop: 2, lineHeight: 1.3 },
   jointName: { fontSize: 6, color: ORANGE, marginTop: 2, lineHeight: 1.3 },
+  regionalName: { fontSize: 6, color: EMERALD, marginTop: 2, lineHeight: 1.3 },
   sidebarTitle: {
     fontSize: 7,
     fontWeight: 700,
@@ -145,6 +148,26 @@ function MonthPage({
   });
   const national = monthHolidays.filter((h) => h.type === "national");
   const joint = monthHolidays.filter((h) => h.type === "joint-leave");
+  const regional = monthHolidays.filter((h) => h.type === "regional");
+
+  // Group regional holidays by date and name for sidebar
+  const groupedRegional: Array<HolidayData & { regions: string[] }> = [];
+  for (const h of regional) {
+    const dStr = new Date(h.date).toISOString().slice(0, 10);
+    const existing = groupedRegional.find(
+      (item) =>
+        new Date(item.date).toISOString().slice(0, 10) === dStr &&
+        item.name === h.name
+    );
+    if (existing) {
+      if (h.regionCode) existing.regions.push(h.regionCode);
+    } else {
+      groupedRegional.push({
+        ...h,
+        regions: h.regionCode ? [h.regionCode] : [],
+      });
+    }
+  }
 
   return (
     <Page size="A4" orientation="landscape" style={styles.page}>
@@ -172,15 +195,39 @@ function MonthPage({
                 const dayHolidays = getHolidaysForDay(holidays, year, month, cell.day);
                 const isHoliday = dayHolidays.some((h) => h.type === "national");
                 const isJoint = dayHolidays.some((h) => h.type === "joint-leave");
+                const isRegional = dayHolidays.some((h) => h.type === "regional");
+
                 const holiday = dayHolidays.find((h) => h.type === "national");
                 const jointHol = dayHolidays.find((h) => h.type === "joint-leave");
+                
+                const regionalHols = dayHolidays.filter((h) => h.type === "regional");
+                const groupedRegionalHols = regionalHols.reduce((acc, h) => {
+                  const existing = acc.find((x) => x.name === h.name);
+                  if (existing) {
+                    if (h.regionCode) existing.regions.push(h.regionCode);
+                  } else {
+                    acc.push({ ...h, regions: h.regionCode ? [h.regionCode] : [] });
+                  }
+                  return acc;
+                }, [] as Array<HolidayData & { regions: string[] }>);
+
                 return (
                   <View key={ci} style={[styles.cell, cell.isWeekend ? styles.cellWeekend : {}]}>
-                    <Text style={[styles.dayNum, isHoliday ? styles.dayNumHoliday : isJoint ? styles.dayNumJoint : {}]}>
+                    <Text style={[
+                      styles.dayNum,
+                      isHoliday ? styles.dayNumHoliday : isJoint ? styles.dayNumJoint : isRegional ? styles.dayNumRegional : {}
+                    ]}>
                       {cell.day}
                     </Text>
                     {holiday && <Text style={styles.holidayName}>{holiday.name.slice(0, 28)}</Text>}
                     {jointHol && <Text style={styles.jointName}>{jointHol.name.slice(0, 28)}</Text>}
+                    {groupedRegionalHols.map((reg, idx) => {
+                      return (
+                        <Text key={idx} style={styles.regionalName}>
+                          {reg.name.slice(0, 28)}
+                        </Text>
+                      );
+                    })}
                   </View>
                 );
               })}
@@ -191,10 +238,18 @@ function MonthPage({
               <View style={[styles.legendDot, { backgroundColor: RED }]} />
               <Text style={styles.legendLabel}>Hari Libur Nasional</Text>
             </View>
-            <View style={styles.legendItem}>
-              <View style={[styles.legendDot, { backgroundColor: ORANGE }]} />
-              <Text style={styles.legendLabel}>Cuti Bersama</Text>
-            </View>
+            {holidays.some((h) => h.type === "joint-leave") && (
+              <View style={styles.legendItem}>
+                <View style={[styles.legendDot, { backgroundColor: ORANGE }]} />
+                <Text style={styles.legendLabel}>Cuti Bersama</Text>
+              </View>
+            )}
+            {holidays.some((h) => h.type === "regional") && (
+              <View style={styles.legendItem}>
+                <View style={[styles.legendDot, { backgroundColor: EMERALD }]} />
+                <Text style={styles.legendLabel}>Libur Daerah</Text>
+              </View>
+            )}
             <View style={styles.legendItem}>
               <View style={[styles.legendDot, { backgroundColor: GRAY_BG, border: `1px solid ${HAIRLINE}` }]} />
               <Text style={styles.legendLabel}>Akhir Pekan</Text>
@@ -231,7 +286,22 @@ function MonthPage({
               })}
             </>
           )}
-          {national.length === 0 && joint.length === 0 && (
+          {groupedRegional.length > 0 && (
+            <>
+              <Text style={[styles.sidebarTitle, { marginTop: 14 }]}>Libur Daerah</Text>
+              {groupedRegional.map((h) => {
+                const d = new Date(h.date);
+                const regionsStr = h.regions.length > 0 ? ` (${h.regions.join(", ")})` : "";
+                return (
+                  <View key={h.id} style={styles.holidayItem}>
+                    <Text style={styles.holidayDate}>{d.getDate()} {MONTH_NAMES_ID[d.getMonth()]}</Text>
+                    <Text style={styles.holidayItemName}>{h.name}{regionsStr}</Text>
+                  </View>
+                );
+              })}
+            </>
+          )}
+          {national.length === 0 && joint.length === 0 && groupedRegional.length === 0 && (
             <Text style={{ fontSize: 8, color: MUTED }}>Tidak ada hari libur bulan ini.</Text>
           )}
         </View>

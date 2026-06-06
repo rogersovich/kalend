@@ -91,12 +91,12 @@ export default async function MonthPage({ params, searchParams }: Props) {
           <div className="flex flex-col gap-xl">
             <MonthGrid year={year} month={monthNum} holidays={holidays} country={country} />
             {/* Holiday + cuti list below grid */}
-            <div className="rounded-lg bg-block-lime p-lg">
+            <div className="rounded-lg border border-hairline bg-canvas p-lg">
               <h3 className="mb-md font-mono text-caption uppercase tracking-widest text-ink/60">
                 Libur &amp; Cuti Bersama
               </h3>
               <HolidayList
-                holidays={holidays.filter((h) => h.type === "national" || h.type === "joint-leave")}
+                holidays={holidays.filter((h) => h.type === "national" || h.type === "joint-leave" || h.type === "regional")}
                 month={monthNum}
               />
             </div>

@@ -17,12 +17,21 @@ const CARD_COLORS = [
 export default function YearInfoBand({ year, holidays, country }: YearInfoBandProps) {
   const nationalCount = holidays.filter((h) => h.type === "national").length;
   const jointLeaveCount = holidays.filter((h) => h.type === "joint-leave").length;
+
+  // Group regional holidays by date and name to get unique count
+  const regionalHolidays = holidays.filter((h) => h.type === "regional");
+  const uniqueRegionalKeys = new Set(
+    regionalHolidays.map((h) => `${new Date(h.date).toISOString().slice(0, 10)}_${h.name}`)
+  );
+  const regionalCount = uniqueRegionalKeys.size;
+
   const hijri = getHijriYears(year);
   const shio = country === "ID" ? getShio(year) : null;
 
   const stats = [
     { value: String(nationalCount), label: "Hari Libur Nasional" },
-    { value: String(jointLeaveCount), label: "Cuti Bersama" },
+    ...(jointLeaveCount > 0 || regionalCount === 0 ? [{ value: String(jointLeaveCount), label: "Cuti Bersama" }] : []),
+    ...(regionalCount > 0 ? [{ value: String(regionalCount), label: "Libur Daerah / Regional" }] : []),
     { value: hijri, label: "Tahun Hijriyah" },
     ...(shio ? [{ value: shio, label: "Shio" }] : []),
   ];
@@ -41,3 +50,4 @@ export default function YearInfoBand({ year, holidays, country }: YearInfoBandPr
     </div>
   );
 }
+
