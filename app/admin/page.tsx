@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Upload, CalendarDays, Globe, ArrowRight } from "lucide-react";
+import { Upload, CalendarDays, Globe, ArrowRight, LayoutDashboard } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Admin — Kalend",
@@ -23,6 +23,7 @@ export default async function AdminPage() {
   ]);
 
   const cards = [
+    { href: "/dashboard", label: "Dashboard User", desc: "Halaman dashboard utama", icon: LayoutDashboard },
     { href: "/admin/import", label: "Import Data", desc: "Upload JSON hari libur", icon: Upload },
     { href: "/admin/holidays", label: "Kelola Hari Libur", desc: `${totalHolidays} total data`, icon: CalendarDays },
     { href: "/admin/holidays?filter=countries", label: "Negara", desc: `${totalCountries} negara aktif`, icon: Globe },
@@ -39,7 +40,7 @@ export default async function AdminPage() {
           <p className="font-display text-body-sm text-ink sm:text-body-lg">Kelola data kalender Kalend.</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-md sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
           {cards.map(({ href, label, desc, icon: Icon }) => (
             <Link
               key={href}
