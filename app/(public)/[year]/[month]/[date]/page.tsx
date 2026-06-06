@@ -9,7 +9,6 @@ import LongWeekendRelated from "@/components/calendar/LongWeekendRelated";
 import DayNav from "@/components/calendar/DayNav";
 import MiniCalendarSidebar from "@/components/calendar/MiniCalendarSidebar";
 import DateEventSection from "@/components/calendar/DateEventSection";
-import HolidayList from "@/components/calendar/HolidayList";
 import { getHolidaysByDate, getHolidaysByMonth } from "@/lib/calendar/holidays";
 import { getHolidaysByYear } from "@/lib/calendar/holidays";
 import { calculateLongWeekends } from "@/lib/calendar/longweekend";

@@ -10,6 +10,7 @@ interface HolidayRow {
   type: string;
   description?: string;
   regionCodes?: string | string[];
+  region?: string | string[];
 }
 
 interface ImportResult {
@@ -222,9 +223,10 @@ export default function JsonImporter({ countryCode, year }: JsonImporterProps) {
                     <td className="px-md py-sm font-mono text-caption text-ink">{row.type}</td>
                     <td className="px-md py-sm font-display text-body-sm text-ink/60">{row.description ?? "—"}</td>
                     <td className="px-md py-sm font-mono text-caption text-ink/60">
-                      {Array.isArray((row as any).regionCodes || (row as any).region)
-                        ? ((row as any).regionCodes || (row as any).region).join(", ")
-                        : (((row as any).regionCodes || (row as any).region) ?? "—")}
+                      {(() => {
+                        const val = row.regionCodes || row.region;
+                        return Array.isArray(val) ? val.join(", ") : (val ?? "—");
+                      })()}
                     </td>
                   </tr>
                 ))}

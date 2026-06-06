@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LongWeekendPeriod, DayType } from "@/lib/calendar/longweekend";
+import { LongWeekendPeriod } from "@/lib/calendar/longweekend";
 import { MONTH_NAMES_ID } from "@/lib/calendar/constants";
 import { cn } from "@/lib/utils";
 

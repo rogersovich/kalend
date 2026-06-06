@@ -8,6 +8,7 @@ interface HolidayRow {
   type: string;
   description?: string;
   regionCodes?: string | string[];
+  region?: string | string[];
 }
 
 export async function POST(request: Request) {
@@ -39,7 +40,7 @@ export async function POST(request: Request) {
       const date = new Date(row.date);
       if (isNaN(date.getTime())) throw new Error(`Invalid date: ${row.date}`);
 
-      const rCode = row.regionCodes || (row as any).region;
+      const rCode = row.regionCodes || row.region;
       const rCodes = rCode ? (Array.isArray(rCode) ? rCode : [rCode]) : [null];
 
       for (const code of rCodes) {
