@@ -37,3 +37,7 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+.understand-anything/diff-overlay.json
+.understand-anything/intermediate/
+.understand-anything/tmp/
+.understand-anything/.trash-*

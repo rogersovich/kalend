@@ -1,0 +1,6999 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "5c88ef79068b0154a1f4f49c94a5d40dd01e88b6",
+  "generatedAt": "2026-06-10T07:55:16.735Z",
+  "files": {
+    ".env.example": {
+      "filePath": ".env.example",
+      "contentHash": "60ac44fea084729a292ceb6453f151656883dcdf7a19b0204aed7de6621a4e4e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    ".nvmrc": {
+      "filePath": ".nvmrc",
+      "contentHash": "5378796307535df3ec8d8b15a2e2dc5641419c3d3060cfe32238c0fa973f7aa3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "f5dfd5a9baaf0aa0c1af536eac2e296c059d68e0db788cedbf404054dbe743d4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 40,
+      "hasStructuralAnalysis": false
+    },
+    "app/(auth)/auth/callback/.gitkeep": {
+      "filePath": "app/(auth)/auth/callback/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(auth)/forgot-password/.gitkeep": {
+      "filePath": "app/(auth)/forgot-password/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(auth)/forgot-password/layout.tsx": {
+      "filePath": "app/(auth)/forgot-password/layout.tsx",
+      "contentHash": "744bcc1a38331b519ea85d0cf605548bbcb6f92a6997824047e1a3e7fa936887",
+      "functions": [
+        {
+          "name": "ForgotPasswordLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "ForgotPasswordLayout"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "app/(auth)/forgot-password/page.tsx": {
+      "filePath": "app/(auth)/forgot-password/page.tsx",
+      "contentHash": "e0bf854136713386fcbcafbbdf26e1e64ab0991f326af68d2a2c0532c8c30659",
+      "functions": [
+        {
+          "name": "ForgotPasswordPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 93
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays"
+          ]
+        }
+      ],
+      "exports": [
+        "ForgotPasswordPage"
+      ],
+      "totalLines": 103,
+      "hasStructuralAnalysis": true
+    },
+    "app/(auth)/login/.gitkeep": {
+      "filePath": "app/(auth)/login/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(auth)/login/layout.tsx": {
+      "filePath": "app/(auth)/login/layout.tsx",
+      "contentHash": "de7509f82c72783f4a999660d794f1a5c094441d0073833056737a0641646d45",
+      "functions": [
+        {
+          "name": "LoginLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "LoginLayout"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "app/(auth)/login/page.tsx": {
+      "filePath": "app/(auth)/login/page.tsx",
+      "contentHash": "a9feebc175d64e222ec8f2bac6fe87b509db9a3841b962b9268ea3472aca232a",
+      "functions": [
+        {
+          "name": "LoginContent",
+          "params": [],
+          "exported": false,
+          "lineCount": 120
+        },
+        {
+          "name": "LoginPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense",
+            "useState"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter",
+            "useSearchParams"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays"
+          ]
+        }
+      ],
+      "exports": [
+        "LoginPage"
+      ],
+      "totalLines": 137,
+      "hasStructuralAnalysis": true
+    },
+    "app/(auth)/register/.gitkeep": {
+      "filePath": "app/(auth)/register/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(auth)/register/layout.tsx": {
+      "filePath": "app/(auth)/register/layout.tsx",
+      "contentHash": "6c293e7e1d468d40f43206038f3b0dd3039760d79fe25326def56ddeb896959b",
+      "functions": [
+        {
+          "name": "RegisterLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "RegisterLayout"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "app/(auth)/register/page.tsx": {
+      "filePath": "app/(auth)/register/page.tsx",
+      "contentHash": "532cd19bba462e2d8a0cf6ec4acbccdcc667b156e8fa64869ef8549287bfbab8",
+      "functions": [
+        {
+          "name": "RegisterPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 149
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays"
+          ]
+        }
+      ],
+      "exports": [
+        "RegisterPage"
+      ],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "app/(auth)/reset-password/layout.tsx": {
+      "filePath": "app/(auth)/reset-password/layout.tsx",
+      "contentHash": "598105cf6d8aadc9f76c7a87bfb85ca042a57ef961233592ce45110144939911",
+      "functions": [
+        {
+          "name": "ResetPasswordLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "ResetPasswordLayout"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "app/(auth)/reset-password/page.tsx": {
+      "filePath": "app/(auth)/reset-password/page.tsx",
+      "contentHash": "c0cb646302e319faa9a7ee204bf4437b7fbe6b389876fdf329b35082f0b5d1be",
+      "functions": [
+        {
+          "name": "ResetPasswordPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 84
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays"
+          ]
+        }
+      ],
+      "exports": [
+        "ResetPasswordPage"
+      ],
+      "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "app/(dashboard)/dashboard/.gitkeep": {
+      "filePath": "app/(dashboard)/dashboard/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(dashboard)/dashboard/api-keys/.gitkeep": {
+      "filePath": "app/(dashboard)/dashboard/api-keys/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(dashboard)/dashboard/api-keys/page.tsx": {
+      "filePath": "app/(dashboard)/dashboard/api-keys/page.tsx",
+      "contentHash": "980039158e204989f704541fd5f12f50d94a378b0cf5043d048b7e13238b57cb",
+      "functions": [
+        {
+          "name": "ApiKeysPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 175
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Plus",
+            "Copy",
+            "Trash2",
+            "Key",
+            "Check"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        }
+      ],
+      "exports": [
+        "ApiKeysPage"
+      ],
+      "totalLines": 195,
+      "hasStructuralAnalysis": true
+    },
+    "app/(dashboard)/dashboard/events/.gitkeep": {
+      "filePath": "app/(dashboard)/dashboard/events/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(dashboard)/dashboard/events/page.tsx": {
+      "filePath": "app/(dashboard)/dashboard/events/page.tsx",
+      "contentHash": "4a3f26ffd56186d3eb52712ca4d74a6dc7a2940a88feb50a51d507925bc75947",
+      "functions": [
+        {
+          "name": "formatDate",
+          "params": [
+            "dateStr"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "EventsPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 167
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Plus",
+            "Pencil",
+            "Trash2",
+            "CalendarDays"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        },
+        {
+          "source": "@/components/dashboard/EventForm",
+          "specifiers": [
+            "EventForm"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "EventsPage"
+      ],
+      "totalLines": 192,
+      "hasStructuralAnalysis": true
+    },
+    "app/(dashboard)/dashboard/page.tsx": {
+      "filePath": "app/(dashboard)/dashboard/page.tsx",
+      "contentHash": "085304440151023005150b3ee8ba100fc968dc9178eeff47f75ee49048c7d540",
+      "functions": [
+        {
+          "name": "DashboardPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 139
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "redirect"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays",
+            "Key",
+            "Activity",
+            "Clock",
+            "ArrowRight"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "DashboardPage"
+      ],
+      "totalLines": 147,
+      "hasStructuralAnalysis": true
+    },
+    "app/(dashboard)/dashboard/settings/.gitkeep": {
+      "filePath": "app/(dashboard)/dashboard/settings/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(dashboard)/dashboard/settings/page.tsx": {
+      "filePath": "app/(dashboard)/dashboard/settings/page.tsx",
+      "contentHash": "62c1c92b2f1876748ae49cceb9744383c73726fd8282154be9a2b0f8fe806237",
+      "functions": [
+        {
+          "name": "SettingsPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 144
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "AlertTriangle"
+          ]
+        },
+        {
+          "source": "@/components/ui/dialog",
+          "specifiers": [
+            "Dialog",
+            "DialogContent",
+            "DialogHeader",
+            "DialogTitle",
+            "DialogDescription",
+            "DialogFooter"
+          ]
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            "User"
+          ]
+        }
+      ],
+      "exports": [
+        "SettingsPage"
+      ],
+      "totalLines": 164,
+      "hasStructuralAnalysis": true
+    },
+    "app/(dashboard)/layout.tsx": {
+      "filePath": "app/(dashboard)/layout.tsx",
+      "contentHash": "3d4aa2b30db1491f39e28f39394a7f9c348c476eef640c2eb353588ece9cd95b",
+      "functions": [
+        {
+          "name": "DashboardLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/dashboard/DashboardSidebar",
+          "specifiers": [
+            "DashboardSidebar"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "DashboardLayout"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/.gitkeep": {
+      "filePath": "app/(public)/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(public)/[year]/.gitkeep": {
+      "filePath": "app/(public)/[year]/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(public)/[year]/[month]/.gitkeep": {
+      "filePath": "app/(public)/[year]/[month]/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(public)/[year]/[month]/[date]/.gitkeep": {
+      "filePath": "app/(public)/[year]/[month]/[date]/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(public)/[year]/[month]/[date]/page.tsx": {
+      "filePath": "app/(public)/[year]/[month]/[date]/page.tsx",
+      "contentHash": "25f691a4dc21d1fe79834744b8a224dbed0e2e0e1f5e66d66216db003b8f4f57",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "DayPage",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "exported": true,
+          "lineCount": 80
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/components/calendar/DayHero",
+          "specifiers": [
+            "DayHero"
+          ]
+        },
+        {
+          "source": "@/components/calendar/MasehiCard",
+          "specifiers": [
+            "MasehiCard"
+          ]
+        },
+        {
+          "source": "@/components/calendar/WetonCard",
+          "specifiers": [
+            "WetonCard"
+          ]
+        },
+        {
+          "source": "@/components/calendar/HolidayDetailCard",
+          "specifiers": [
+            "HolidayDetailCard"
+          ]
+        },
+        {
+          "source": "@/components/calendar/LongWeekendRelated",
+          "specifiers": [
+            "LongWeekendRelated"
+          ]
+        },
+        {
+          "source": "@/components/calendar/DayNav",
+          "specifiers": [
+            "DayNav"
+          ]
+        },
+        {
+          "source": "@/components/calendar/MiniCalendarSidebar",
+          "specifiers": [
+            "MiniCalendarSidebar"
+          ]
+        },
+        {
+          "source": "@/components/calendar/DateEventSection",
+          "specifiers": [
+            "DateEventSection"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByDate",
+            "getHolidaysByMonth"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "calculateLongWeekends"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "DAY_NAMES_FULL_ID",
+            "MONTH_NAMES_ID",
+            "MIN_YEAR",
+            "MAX_YEAR",
+            "CountryCode"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/weton",
+          "specifiers": [
+            "calculateWeton"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "DayPage"
+      ],
+      "totalLines": 148,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/[year]/[month]/download/.gitkeep": {
+      "filePath": "app/(public)/[year]/[month]/download/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(public)/[year]/[month]/page.tsx": {
+      "filePath": "app/(public)/[year]/[month]/page.tsx",
+      "contentHash": "498bccc559af42b789c98afcc7e9a4734267b5495997635ac19c89e067d15835",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "MonthPage",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/components/calendar/MonthGrid",
+          "specifiers": [
+            "MonthGrid"
+          ]
+        },
+        {
+          "source": "@/components/calendar/MonthNav",
+          "specifiers": [
+            "MonthNav"
+          ]
+        },
+        {
+          "source": "@/components/calendar/MonthSidebar",
+          "specifiers": [
+            "MonthSidebar"
+          ]
+        },
+        {
+          "source": "@/components/calendar/HolidayList",
+          "specifiers": [
+            "HolidayList"
+          ]
+        },
+        {
+          "source": "@/components/calendar/CountrySwitcher",
+          "specifiers": [
+            "CountrySwitcher"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByMonth"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID",
+            "MIN_YEAR",
+            "MAX_YEAR",
+            "CountryCode"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "MonthPage"
+      ],
+      "totalLines": 109,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/[year]/page.tsx": {
+      "filePath": "app/(public)/[year]/page.tsx",
+      "contentHash": "65b42e81b1dd9fb725bece292dfd385fef91ac135ccf58a0eb1fda48f9d63a76",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "YearPage",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "exported": true,
+          "lineCount": 71
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/components/calendar/YearGridClient",
+          "specifiers": [
+            "YearGridClient"
+          ]
+        },
+        {
+          "source": "@/components/calendar/YearNav",
+          "specifiers": [
+            "YearNav"
+          ]
+        },
+        {
+          "source": "@/components/calendar/YearInfoBand",
+          "specifiers": [
+            "YearInfoBand"
+          ]
+        },
+        {
+          "source": "@/components/calendar/CountrySwitcher",
+          "specifiers": [
+            "CountrySwitcher"
+          ]
+        },
+        {
+          "source": "@/components/calendar/YearHolidayList",
+          "specifiers": [
+            "YearHolidayList"
+          ]
+        },
+        {
+          "source": "@/components/calendar/YearLongWeekendList",
+          "specifiers": [
+            "YearLongWeekendList"
+          ]
+        },
+        {
+          "source": "@/components/calendar/YearDownloadSection",
+          "specifiers": [
+            "YearDownloadSection"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MIN_YEAR",
+            "MAX_YEAR",
+            "getShio",
+            "getHijriYears",
+            "CountryCode"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "YearPage"
+      ],
+      "totalLines": 117,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/about/page.tsx": {
+      "filePath": "app/(public)/about/page.tsx",
+      "contentHash": "8540883e2e2aa474a879a370204a755cb96c0be0714f443ca602446f0e148525",
+      "functions": [
+        {
+          "name": "AboutPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 105
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Globe",
+            "Zap",
+            "Key"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "AboutPage"
+      ],
+      "totalLines": 142,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/blog/[slug]/page.tsx": {
+      "filePath": "app/(public)/blog/[slug]/page.tsx",
+      "contentHash": "a6456d67f78b3a26f70abe21a1d98e1def5a8fd9c31b30b93e746de7d1fb4403",
+      "functions": [
+        {
+          "name": "getCategoryBg",
+          "params": [
+            "category"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{ params }"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "formatDate",
+          "params": [
+            "dateStr"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "BlogPostPage",
+          "params": [
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 60
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/lib/blog",
+          "specifiers": [
+            "getAllSlugs",
+            "getPostBySlug"
+          ]
+        },
+        {
+          "source": "next-mdx-remote/rsc",
+          "specifiers": [
+            "MDXRemote"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Clock"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "BlogPostPage"
+      ],
+      "totalLines": 112,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/blog/page.tsx": {
+      "filePath": "app/(public)/blog/page.tsx",
+      "contentHash": "21a5b792e3607d2f62fc03467d728d4bf99e4b1bafc1c99403134bb1c892b42a",
+      "functions": [
+        {
+          "name": "formatDate",
+          "params": [
+            "dateStr"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "BlogPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 53
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/lib/blog",
+          "specifiers": [
+            "getAllPosts"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Clock"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "BlogPage"
+      ],
+      "totalLines": 79,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/contact/actions.ts": {
+      "filePath": "app/(public)/contact/actions.ts",
+      "contentHash": "9373307c4f84d90add810dd1e5586014eca42831d5a3faa92fce1d4a961fb356",
+      "functions": [
+        {
+          "name": "sendContactEmail",
+          "params": [
+            "_prev",
+            "formData"
+          ],
+          "returnType": "Promise<ContactFormState>",
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "resend",
+          "specifiers": [
+            "Resend"
+          ]
+        }
+      ],
+      "exports": [
+        "sendContactEmail"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/contact/ContactForm.tsx": {
+      "filePath": "app/(public)/contact/ContactForm.tsx",
+      "contentHash": "bb652f0ed36c8a195b2d6d1700d676a83fef721cc15f3f00d7ebf85eb21b6324",
+      "functions": [
+        {
+          "name": "SubmitButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "ContactForm",
+          "params": [],
+          "exported": true,
+          "lineCount": 73
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-dom",
+          "specifiers": [
+            "useFormState",
+            "useFormStatus"
+          ]
+        },
+        {
+          "source": "./actions",
+          "specifiers": [
+            "sendContactEmail",
+            "ContactFormState"
+          ]
+        }
+      ],
+      "exports": [
+        "ContactForm"
+      ],
+      "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/contact/page.tsx": {
+      "filePath": "app/(public)/contact/page.tsx",
+      "contentHash": "27a0fd94d6264a7b2b95752c5d7219d03fdaff8568117b2aaf6eff59896085e9",
+      "functions": [
+        {
+          "name": "ContactPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 83
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Mail",
+            "MessageSquare",
+            "Clock"
+          ]
+        },
+        {
+          "source": "./ContactForm",
+          "specifiers": [
+            "ContactForm"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "ContactPage"
+      ],
+      "totalLines": 116,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/layout.tsx": {
+      "filePath": "app/(public)/layout.tsx",
+      "contentHash": "f7605d9ad8e7563fa0bcb442b3c92b4ae7263411ac7e8884312788b15c1181e3",
+      "functions": [
+        {
+          "name": "PublicLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        }
+      ],
+      "exports": [
+        "PublicLayout"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/long-weekends/[year]/.gitkeep": {
+      "filePath": "app/(public)/long-weekends/[year]/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/(public)/long-weekends/[year]/page.tsx": {
+      "filePath": "app/(public)/long-weekends/[year]/page.tsx",
+      "contentHash": "38684de493f9086cb3cb13a0ab2fcf2dc0f9ebc37d54a1c724156e2dd24f94f6",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "LongWeekendsPage",
+          "params": [
+            "{ params, searchParams }"
+          ],
+          "exported": true,
+          "lineCount": 47
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/components/calendar/YearNav",
+          "specifiers": [
+            "YearNav"
+          ]
+        },
+        {
+          "source": "@/components/calendar/CountrySwitcher",
+          "specifiers": [
+            "CountrySwitcher"
+          ]
+        },
+        {
+          "source": "@/components/calendar/LongWeekendList",
+          "specifiers": [
+            "LongWeekendList"
+          ]
+        },
+        {
+          "source": "@/components/calendar/LongWeekendFilter",
+          "specifiers": [
+            "LongWeekendFilter"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "calculateLongWeekends"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MIN_YEAR",
+            "MAX_YEAR",
+            "CountryCode"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "LongWeekendsPage"
+      ],
+      "totalLines": 106,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/long-weekends/layout.tsx": {
+      "filePath": "app/(public)/long-weekends/layout.tsx",
+      "contentHash": "1d5354cc8be0d1af5b6293025dd70f1b24c0f25491c996a348a5ec990e18b0a4",
+      "functions": [
+        {
+          "name": "LongWeekendsLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "LongWeekendsLayout"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/tools/cek-weton/layout.tsx": {
+      "filePath": "app/(public)/tools/cek-weton/layout.tsx",
+      "contentHash": "c8bacfe6c63fb557f0ff9bd57b5b51fe3fd1c4e6877c9f471e5ccfb97e0147bd",
+      "functions": [
+        {
+          "name": "CekWetonLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "CekWetonLayout"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/tools/cek-weton/page.tsx": {
+      "filePath": "app/(public)/tools/cek-weton/page.tsx",
+      "contentHash": "aef3be27a90cc433a0434781c80e99368f01ced65816c9467fd5ce667eec18fc",
+      "functions": [
+        {
+          "name": "CekWetonContent",
+          "params": [],
+          "exported": false,
+          "lineCount": 121
+        },
+        {
+          "name": "CekWetonPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter",
+            "useSearchParams"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/weton",
+          "specifiers": [
+            "calculateWeton"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Copy",
+            "Check"
+          ]
+        }
+      ],
+      "exports": [
+        "CekWetonPage"
+      ],
+      "totalLines": 156,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/tools/cuti-optimizer/layout.tsx": {
+      "filePath": "app/(public)/tools/cuti-optimizer/layout.tsx",
+      "contentHash": "fc1812afcb38e42dcfbf94b8f6e58f894bc908af0b5065e118d53c9d96a35a61",
+      "functions": [
+        {
+          "name": "CutiOptimizerLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "CutiOptimizerLayout"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/tools/cuti-optimizer/page.tsx": {
+      "filePath": "app/(public)/tools/cuti-optimizer/page.tsx",
+      "contentHash": "044f861695d4bcd2032f23171c2af84e650a1f7a8e302dd0ce560ed1fe7b5387",
+      "functions": [
+        {
+          "name": "formatDate",
+          "params": [
+            "ds"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "CutiOptimizerPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 131
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarCheck"
+          ]
+        }
+      ],
+      "exports": [
+        "CutiOptimizerPage"
+      ],
+      "totalLines": 157,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/tools/kalkulator/layout.tsx": {
+      "filePath": "app/(public)/tools/kalkulator/layout.tsx",
+      "contentHash": "889317b25090c121d9b82e405a6359ed3e2bf8fef2e0c23c20413c659840e3ac",
+      "functions": [
+        {
+          "name": "KalkulatorLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "KalkulatorLayout"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/tools/kalkulator/page.tsx": {
+      "filePath": "app/(public)/tools/kalkulator/page.tsx",
+      "contentHash": "369dd3cded3bb0d44eacdb6d768aa99bb1e21a7d1a49cb964470c2d5c4200d5a",
+      "functions": [
+        {
+          "name": "KalkulatorPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/Breadcrumb",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/components/tools/TabSelisih",
+          "specifiers": [
+            "TabSelisih"
+          ]
+        },
+        {
+          "source": "@/components/tools/TabTambahKurang",
+          "specifiers": [
+            "TabTambahKurang"
+          ]
+        },
+        {
+          "source": "@/components/tools/TabHariKerja",
+          "specifiers": [
+            "TabHariKerja"
+          ]
+        },
+        {
+          "source": "@/components/tools/TabNamaHari",
+          "specifiers": [
+            "TabNamaHari"
+          ]
+        },
+        {
+          "source": "@/components/tools/TabHitungUmur",
+          "specifiers": [
+            "TabHitungUmur"
+          ]
+        }
+      ],
+      "exports": [
+        "KalkulatorPage"
+      ],
+      "totalLines": 66,
+      "hasStructuralAnalysis": true
+    },
+    "app/(public)/tools/page.tsx": {
+      "filePath": "app/(public)/tools/page.tsx",
+      "contentHash": "aa6cff81274bd82ffdd202acbbff1fd379c316cc68575b1c3a849cce5a651924",
+      "functions": [
+        {
+          "name": "ToolsPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Calculator",
+            "CalendarCheck",
+            "Calendar"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "ToolsPage"
+      ],
+      "totalLines": 90,
+      "hasStructuralAnalysis": true
+    },
+    "app/admin/holidays/page.tsx": {
+      "filePath": "app/admin/holidays/page.tsx",
+      "contentHash": "1061a12b1be4c98f1f2c80afde9c19af3202c08dd2c80ac941dd2b597b9034f2",
+      "functions": [
+        {
+          "name": "AdminHolidaysPage",
+          "params": [
+            "{ searchParams }"
+          ],
+          "exported": true,
+          "lineCount": 68
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "redirect"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        },
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronLeft"
+          ]
+        },
+        {
+          "source": "@/components/admin/HolidayFilters",
+          "specifiers": [
+            "HolidayFilters"
+          ]
+        },
+        {
+          "source": "@/components/admin/AddHolidayButton",
+          "specifiers": [
+            "AddHolidayButton"
+          ]
+        },
+        {
+          "source": "@/components/admin/HolidayTable",
+          "specifiers": [
+            "HolidayTable"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "AdminHolidaysPage"
+      ],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "app/admin/import/layout.tsx": {
+      "filePath": "app/admin/import/layout.tsx",
+      "contentHash": "751297856b97c27f1fd8d1c283699328f722c286fa20df4d886bd1eedb8ab332",
+      "functions": [
+        {
+          "name": "AdminImportLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "AdminImportLayout"
+      ],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "app/admin/import/page.tsx": {
+      "filePath": "app/admin/import/page.tsx",
+      "contentHash": "0be3036338879d5eced0b0dab0aada5b9368e14a638037dcc23d8127f856bcfb",
+      "functions": [
+        {
+          "name": "AdminImportPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 85
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/admin/JsonImporter",
+          "specifiers": [
+            "JsonImporter"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronLeft"
+          ]
+        }
+      ],
+      "exports": [
+        "AdminImportPage"
+      ],
+      "totalLines": 97,
+      "hasStructuralAnalysis": true
+    },
+    "app/admin/page.tsx": {
+      "filePath": "app/admin/page.tsx",
+      "contentHash": "489f56fc477034836b7f91e8666a4534cdf9c02283204daf9ae7c13f8477847b",
+      "functions": [
+        {
+          "name": "AdminPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 51
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "redirect"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Upload",
+            "CalendarDays",
+            "Globe",
+            "ArrowRight",
+            "LayoutDashboard"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "AdminPage"
+      ],
+      "totalLines": 66,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/admin/holidays/[id]/route.ts": {
+      "filePath": "app/api/admin/holidays/[id]/route.ts",
+      "contentHash": "bbfb055d157024d17caead903049d0463b7ed43caf0ba5654a1b10b5b5c1f43f",
+      "functions": [
+        {
+          "name": "getAdminUser",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "PATCH",
+          "params": [
+            "request",
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "DELETE",
+          "params": [
+            "_request",
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "PATCH",
+        "DELETE"
+      ],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/admin/holidays/route.ts": {
+      "filePath": "app/api/admin/holidays/route.ts",
+      "contentHash": "5bf42328fde20196fcc44d8f90316a4b8ba1dffc27f4ae7aa87b63815ea12b3c",
+      "functions": [
+        {
+          "name": "getAdminUser",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "POST",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 32
+        },
+        {
+          "name": "DELETE",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "POST",
+        "DELETE"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/admin/import/route.ts": {
+      "filePath": "app/api/admin/import/route.ts",
+      "contentHash": "1658c7ba8da419fc8ca1dc093ccfac6565a00d2bdefc20df1100973a0b320cab",
+      "functions": [
+        {
+          "name": "POST",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 94
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "POST"
+      ],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/api-keys/[id]/route.ts": {
+      "filePath": "app/api/api-keys/[id]/route.ts",
+      "contentHash": "dfd1be689e8e15728655113f174862377889b4573fed4cd975818ba746008475",
+      "functions": [
+        {
+          "name": "DELETE",
+          "params": [
+            "_req",
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "DELETE"
+      ],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/api-keys/route.ts": {
+      "filePath": "app/api/api-keys/route.ts",
+      "contentHash": "78118bf1d3fe7de372bb44b15d46523d3f37ae7c978b91c64caea9a1925c6754",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "POST",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        },
+        {
+          "source": "crypto",
+          "specifiers": [
+            "randomBytes"
+          ]
+        },
+        {
+          "source": "@/lib/email",
+          "specifiers": [
+            "sendApiKeyEmail"
+          ]
+        }
+      ],
+      "exports": [
+        "GET",
+        "POST"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/auth/welcome/route.ts": {
+      "filePath": "app/api/auth/welcome/route.ts",
+      "contentHash": "29845a0b477cf7f517c4d3b9dca3d5f4adf26931d2bea83d0b03641aaa752025",
+      "functions": [
+        {
+          "name": "POST",
+          "params": [
+            "req"
+          ],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextRequest",
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/email",
+          "specifiers": [
+            "sendWelcomeEmail"
+          ]
+        }
+      ],
+      "exports": [
+        "POST"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/cron/event-reminders/route.ts": {
+      "filePath": "app/api/cron/event-reminders/route.ts",
+      "contentHash": "e11ca6cb1aca1a10be78903e86eb34e27e7d2c99f88e0d80633b046a41c2b86d",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [
+            "req"
+          ],
+          "exported": true,
+          "lineCount": 79
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextRequest",
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/admin",
+          "specifiers": [
+            "createAdminClient"
+          ]
+        },
+        {
+          "source": "@/lib/email",
+          "specifiers": [
+            "sendEventReminderEmail",
+            "ReminderEvent"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/cron/keep-alive/route.ts": {
+      "filePath": "app/api/cron/keep-alive/route.ts",
+      "contentHash": "adbfc41b76013e670ece0a468a8a65963d5dcff84a5e7706654a968b4dbc78d7",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [
+            "req"
+          ],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextRequest",
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/events/[id]/route.ts": {
+      "filePath": "app/api/events/[id]/route.ts",
+      "contentHash": "d58633f553135876c78fb76db5f4102fe6e0bddf6832c66f4715b08e00340327",
+      "functions": [
+        {
+          "name": "PUT",
+          "params": [
+            "request",
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "DELETE",
+          "params": [
+            "_request",
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "PUT",
+        "DELETE"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/events/route.ts": {
+      "filePath": "app/api/events/route.ts",
+      "contentHash": "280cff265353f0762bbe1bbababde2ce381c6c61712379eed213d491629fd2fe",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "POST",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "GET",
+        "POST"
+      ],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/tools/cuti-optimizer/route.ts": {
+      "filePath": "app/api/tools/cuti-optimizer/route.ts",
+      "contentHash": "ba43ec7bddd03ec0de983446b0bc7c2f1109e2f0614a64744901dd52c2cdfcd6",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "calculateLeaveStrategies"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/tools/workdays/route.ts": {
+      "filePath": "app/api/tools/workdays/route.ts",
+      "contentHash": "f747d3cb46761327f487e4dce9cc0bfb8bd774417771d07ef61584a652d2e26b",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 43
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear",
+            "countWorkdays",
+            "isWeekend"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/user/route.ts": {
+      "filePath": "app/api/user/route.ts",
+      "contentHash": "5a43c33ce0da3d8efe7e8d7b9e5545df9285b372b9d6c1cc2887c7aea3d3750d",
+      "functions": [
+        {
+          "name": "DELETE",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            "createAdminClient"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "DELETE"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/calculate/diff/.gitkeep": {
+      "filePath": "app/api/v1/calculate/diff/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/calculate/diff/route.ts": {
+      "filePath": "app/api/v1/calculate/diff/route.ts",
+      "contentHash": "4cac2f5e40fd7819e0d5d2ebec7cd3aed36e3c684ad1b6304ddc4d0f1926e367",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/calculate/workdays/.gitkeep": {
+      "filePath": "app/api/v1/calculate/workdays/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/calculate/workdays/route.ts": {
+      "filePath": "app/api/v1/calculate/workdays/route.ts",
+      "contentHash": "95627a731089ba5cce3c3f9124e15f051e983aed39748c4d9075cc2e381c98d5",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear",
+            "countWorkdays"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/calendar/.gitkeep": {
+      "filePath": "app/api/v1/calendar/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/calendar/route.ts": {
+      "filePath": "app/api/v1/calendar/route.ts",
+      "contentHash": "edd1fdddcc5e75b0c8a2177d0a346ccc7365939b055b2375de30edcce9a196aa",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByMonth",
+            "isWeekend"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/check/.gitkeep": {
+      "filePath": "app/api/v1/check/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/check/route.ts": {
+      "filePath": "app/api/v1/check/route.ts",
+      "contentHash": "064fb874d74725e3edbcdc3d733feb52d8f90b0f38adad83a61dcc9f0a827f4a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByDate",
+            "isWeekend"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/check/workday/route.ts": {
+      "filePath": "app/api/v1/check/workday/route.ts",
+      "contentHash": "5f75b8fd0fb3dca8198e4e38e74ee2ae4ca713ede6459f763f9b5577b2bf06e7",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByDate",
+            "isWeekend"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/countries/.gitkeep": {
+      "filePath": "app/api/v1/countries/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/countries/route.ts": {
+      "filePath": "app/api/v1/countries/route.ts",
+      "contentHash": "6c2c49c4d24d23c37c394ab6c66ca99ea28eb80643c03ccf684a09fd55d3b30a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/holidays/.gitkeep": {
+      "filePath": "app/api/v1/holidays/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/holidays/route.ts": {
+      "filePath": "app/api/v1/holidays/route.ts",
+      "contentHash": "d0b4e2c2d225f9aa064f3800a23c88e2dda008c2a2259278bd0c4e3fcc086648",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear",
+            "getHolidaysByMonth"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/long-weekends/.gitkeep": {
+      "filePath": "app/api/v1/long-weekends/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/long-weekends/optimize/.gitkeep": {
+      "filePath": "app/api/v1/long-weekends/optimize/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/long-weekends/optimize/route.ts": {
+      "filePath": "app/api/v1/long-weekends/optimize/route.ts",
+      "contentHash": "ec4169d31ec7f9729bede0d1a14dcd976c9360bf575a480d00cea4226d3e7739",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "calculateLeaveStrategies"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/long-weekends/route.ts": {
+      "filePath": "app/api/v1/long-weekends/route.ts",
+      "contentHash": "2d6f85d7a43b36712c14f426ab08f441ca29eb88e40bf0a3c27e723cb2f80220",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "calculateLongWeekends"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/v1/year-info/.gitkeep": {
+      "filePath": "app/api/v1/year-info/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "app/api/v1/year-info/route.ts": {
+      "filePath": "app/api/v1/year-info/route.ts",
+      "contentHash": "e636bedb4d9bccda275f8bb16c0909455115a022c3826ab7bccf9fa8b42a28bc",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/api/middleware",
+          "specifiers": [
+            "withApiAuth",
+            "apiSuccess",
+            "apiError"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "getHolidaysByYear"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "getShio",
+            "getHijriYears"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "app/auth/callback/route.ts": {
+      "filePath": "app/auth/callback/route.ts",
+      "contentHash": "4298dac26a50d8029fba63edc234ad9c97690bf85138bfc7d7f1e446e0244ade",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 47
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@supabase/ssr",
+          "specifiers": [
+            "createServerClient"
+          ]
+        },
+        {
+          "source": "next/headers",
+          "specifiers": [
+            "cookies"
+          ]
+        },
+        {
+          "source": "@/lib/email",
+          "specifiers": [
+            "sendWelcomeEmail"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "app/globals.css": {
+      "filePath": "app/globals.css",
+      "contentHash": "8ad4c3c57e18b1f91c63e4bb0f07319b39bf73881f61d78d85f3051e7ae8a1e9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 143,
+      "hasStructuralAnalysis": false
+    },
+    "app/layout.tsx": {
+      "filePath": "app/layout.tsx",
+      "contentHash": "2432ff742d704793b826b27938fdcd215e2f39a3f39de7914784c0cf8961ded3",
+      "functions": [
+        {
+          "name": "RootLayout",
+          "params": [
+            "{\n  children,\n}"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/font/google",
+          "specifiers": [
+            "Inter",
+            "Plus_Jakarta_Sans"
+          ]
+        },
+        {
+          "source": "nextjs-toploader",
+          "specifiers": [
+            "NextTopLoader"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "Toaster"
+          ]
+        },
+        {
+          "source": "@/components/Providers",
+          "specifiers": [
+            "Providers"
+          ]
+        },
+        {
+          "source": "./globals.css",
+          "specifiers": []
+        }
+      ],
+      "exports": [
+        "metadata",
+        "RootLayout"
+      ],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "app/manifest.ts": {
+      "filePath": "app/manifest.ts",
+      "contentHash": "e2db17b5476fdf7b711f7ab17736725621a903a6679ded4e8bdb36754d31eeeb",
+      "functions": [
+        {
+          "name": "manifest",
+          "params": [],
+          "returnType": "MetadataRoute.Manifest",
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "MetadataRoute"
+          ]
+        }
+      ],
+      "exports": [
+        "manifest"
+      ],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "app/page.module.css": {
+      "filePath": "app/page.module.css",
+      "contentHash": "e8ab36c2d996db7ba7825a8a96a7a4ddcd9128b724538efd3242af61eb46827a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 149,
+      "hasStructuralAnalysis": false
+    },
+    "app/page.tsx": {
+      "filePath": "app/page.tsx",
+      "contentHash": "3476f69336955490335149ae135e44b2934aa1fb34460bf7db5d7f8393056796",
+      "functions": [
+        {
+          "name": "HomePage",
+          "params": [],
+          "exported": true,
+          "lineCount": 136
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Calendar",
+            "CalendarDays",
+            "Calculator",
+            "Zap",
+            "Globe",
+            "Key"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "HomePage"
+      ],
+      "totalLines": 211,
+      "hasStructuralAnalysis": true
+    },
+    "app/robots.ts": {
+      "filePath": "app/robots.ts",
+      "contentHash": "acc7f85568872f4792240e388eb747f66dd8105a92ece73973d9f29da32c090a",
+      "functions": [
+        {
+          "name": "robots",
+          "params": [],
+          "returnType": "MetadataRoute.Robots",
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "MetadataRoute"
+          ]
+        }
+      ],
+      "exports": [
+        "robots"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "app/sitemap.ts": {
+      "filePath": "app/sitemap.ts",
+      "contentHash": "1379dd895f8ac9bfc3404f054e8e93dbde10cb072ae3d1f708592b85f08ee33b",
+      "functions": [
+        {
+          "name": "sitemap",
+          "params": [],
+          "returnType": "MetadataRoute.Sitemap",
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "MetadataRoute"
+          ]
+        },
+        {
+          "source": "@/lib/blog",
+          "specifiers": [
+            "getAllSlugs"
+          ]
+        }
+      ],
+      "exports": [
+        "sitemap"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "CLAUDE.md": {
+      "filePath": "CLAUDE.md",
+      "contentHash": "7f7856fe4f19cdf7444a91a42931305ca5c43347363e552336b43b7fdc5b467f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "components.json": {
+      "filePath": "components.json",
+      "contentHash": "9a1e4215ec94f22bf27e74e1ae8a869094fb2992643b74b28b0c2f9e64ea6e95",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "components/admin/AddHolidayButton.tsx": {
+      "filePath": "components/admin/AddHolidayButton.tsx",
+      "contentHash": "a761cdee727984df8d8bc3e6087b6f5ba07b47bf154bca8f9afd3183541f17c1",
+      "functions": [
+        {
+          "name": "AddHolidayButton",
+          "params": [
+            "{ country, year }"
+          ],
+          "exported": true,
+          "lineCount": 141
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useTransition"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Plus",
+            "Loader2"
+          ]
+        },
+        {
+          "source": "@/components/ui/dialog",
+          "specifiers": [
+            "Dialog",
+            "DialogContent",
+            "DialogHeader",
+            "DialogTitle",
+            "DialogFooter"
+          ]
+        }
+      ],
+      "exports": [
+        "AddHolidayButton"
+      ],
+      "totalLines": 166,
+      "hasStructuralAnalysis": true
+    },
+    "components/admin/HolidayFilters.tsx": {
+      "filePath": "components/admin/HolidayFilters.tsx",
+      "contentHash": "03407ceff758153f5eb33b2062cceedb10baafa5e481f371ad9f7068a63591e0",
+      "functions": [
+        {
+          "name": "HolidayFilters",
+          "params": [
+            "{ country, year, type, region, regions }"
+          ],
+          "exported": true,
+          "lineCount": 65
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useTransition"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "RotateCw"
+          ]
+        }
+      ],
+      "exports": [
+        "HolidayFilters"
+      ],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
+    "components/admin/HolidayTable.tsx": {
+      "filePath": "components/admin/HolidayTable.tsx",
+      "contentHash": "0107ffc18d3ce6fd2a2542a348ba5bbf2b135db59ed64e30fd5ab76649cb5966",
+      "functions": [
+        {
+          "name": "HolidayTable",
+          "params": [
+            "{ holidays }"
+          ],
+          "exported": true,
+          "lineCount": 202
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useTransition"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Trash2",
+            "Loader2"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "./HolidayTableActions",
+          "specifiers": [
+            "HolidayTableActions"
+          ]
+        },
+        {
+          "source": "@/components/ui/dialog",
+          "specifiers": [
+            "Dialog",
+            "DialogContent",
+            "DialogHeader",
+            "DialogTitle",
+            "DialogFooter"
+          ]
+        }
+      ],
+      "exports": [
+        "HolidayTable"
+      ],
+      "totalLines": 249,
+      "hasStructuralAnalysis": true
+    },
+    "components/admin/HolidayTableActions.tsx": {
+      "filePath": "components/admin/HolidayTableActions.tsx",
+      "contentHash": "6637756cabdeed85d37dbe446f02dcf2ef0efd3ecb8cafd21bc3459bb0a33f43",
+      "functions": [
+        {
+          "name": "toInputDate",
+          "params": [
+            "isoString"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "HolidayTableActions",
+          "params": [
+            "{ holiday }"
+          ],
+          "exported": true,
+          "lineCount": 191
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useTransition"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Pencil",
+            "Trash2",
+            "Loader2"
+          ]
+        },
+        {
+          "source": "@/components/ui/dialog",
+          "specifiers": [
+            "Dialog",
+            "DialogContent",
+            "DialogHeader",
+            "DialogTitle",
+            "DialogFooter"
+          ]
+        }
+      ],
+      "exports": [
+        "HolidayTableActions"
+      ],
+      "totalLines": 223,
+      "hasStructuralAnalysis": true
+    },
+    "components/admin/JsonImporter.tsx": {
+      "filePath": "components/admin/JsonImporter.tsx",
+      "contentHash": "212709a276df5dc54d4dcf555bf416b0783cd7c203a6da35087ea669ae99cc7f",
+      "functions": [
+        {
+          "name": "downloadTemplate",
+          "params": [
+            "countryCode",
+            "year"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "JsonImporter",
+          "params": [
+            "{ countryCode, year }"
+          ],
+          "exported": true,
+          "lineCount": 236
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useRef"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Upload",
+            "FileJson",
+            "CheckCircle",
+            "AlertCircle",
+            "Download"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        }
+      ],
+      "exports": [
+        "JsonImporter"
+      ],
+      "totalLines": 300,
+      "hasStructuralAnalysis": true
+    },
+    "components/Breadcrumb.tsx": {
+      "filePath": "components/Breadcrumb.tsx",
+      "contentHash": "07cc392d1f3e9976ff0d878ab17d4d1a7a03c5a093253cc0a0f0c3dce59e943a",
+      "functions": [
+        {
+          "name": "Breadcrumb",
+          "params": [
+            "{ items }"
+          ],
+          "exported": true,
+          "lineCount": 50
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronLeft",
+            "ChevronRight"
+          ]
+        }
+      ],
+      "exports": [
+        "Breadcrumb"
+      ],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/.gitkeep": {
+      "filePath": "components/calendar/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "components/calendar/AddEventButton.tsx": {
+      "filePath": "components/calendar/AddEventButton.tsx",
+      "contentHash": "80ca80d798b56cde049d2610e215557dc84c17644511472612e6e381fe322b3b",
+      "functions": [
+        {
+          "name": "AddEventButton",
+          "params": [
+            "{ onSuccess, defaultDate }"
+          ],
+          "exported": true,
+          "lineCount": 180
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Plus",
+            "CalendarPlus"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@/components/ui/dialog",
+          "specifiers": [
+            "Dialog",
+            "DialogContent",
+            "DialogHeader",
+            "DialogTitle"
+          ]
+        }
+      ],
+      "exports": [
+        "AddEventButton"
+      ],
+      "totalLines": 219,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/CountrySwitcher.tsx": {
+      "filePath": "components/calendar/CountrySwitcher.tsx",
+      "contentHash": "fe5726afbd151cdd5ce4ca6efc3c922cb7829a90130a42e767e83aa06351f42e",
+      "functions": [
+        {
+          "name": "CountrySwitcher",
+          "params": [
+            "{ current }"
+          ],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter",
+            "usePathname",
+            "useSearchParams"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "COUNTRIES",
+            "CountryCode"
+          ]
+        }
+      ],
+      "exports": [
+        "CountrySwitcher"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/DateEventSection.tsx": {
+      "filePath": "components/calendar/DateEventSection.tsx",
+      "contentHash": "51cca98785d6458d9fedb27f070965260b7e6fb68ed876185b225d82a79faa38",
+      "functions": [
+        {
+          "name": "DateEventSection",
+          "params": [
+            "{ dateStr }"
+          ],
+          "exported": true,
+          "lineCount": 84
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays"
+          ]
+        },
+        {
+          "source": "./AddEventButton",
+          "specifiers": [
+            "AddEventButton"
+          ]
+        }
+      ],
+      "exports": [
+        "DateEventSection"
+      ],
+      "totalLines": 104,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/DayCell.tsx": {
+      "filePath": "components/calendar/DayCell.tsx",
+      "contentHash": "6f82e74b84237afc26d7d22da89452ffd89b971736b9262bc9358cb45caed67e",
+      "functions": [
+        {
+          "name": "getDotColors",
+          "params": [
+            "holidays"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "DayCell",
+          "params": [
+            "{\n  date,\n  holidays,\n  isCurrentMonth = true,\n  isToday = false,\n  showWeton = false,\n  size = \"mini\",\n  events = [],\n  isLastRow = false,\n  isLastCol = false,\n  onClick,\n  href,\n}"
+          ],
+          "exported": true,
+          "lineCount": 217
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/weton",
+          "specifiers": [
+            "calculateWeton"
+          ]
+        },
+        {
+          "source": "@/components/ui/tooltip",
+          "specifiers": [
+            "Tooltip",
+            "TooltipContent",
+            "TooltipTrigger"
+          ]
+        }
+      ],
+      "exports": [
+        "DayCell"
+      ],
+      "totalLines": 257,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/DayHero.tsx": {
+      "filePath": "components/calendar/DayHero.tsx",
+      "contentHash": "ae370ba9700bfe620132e215fbfe5167a1f7a6ec687900fefee99eb378d09911",
+      "functions": [
+        {
+          "name": "getBg",
+          "params": [
+            "holidays"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "DayHero",
+          "params": [
+            "{ date, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "DAY_NAMES_FULL_ID",
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "DayHero"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/DayNav.tsx": {
+      "filePath": "components/calendar/DayNav.tsx",
+      "contentHash": "2de6a3f7b2eaf8286fe024f2725bb6a2d1ca9030696bdd0cf54d9f1d7bcff4da",
+      "functions": [
+        {
+          "name": "formatDayLink",
+          "params": [
+            "date",
+            "country"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "DayNav",
+          "params": [
+            "{ date, country }"
+          ],
+          "exported": true,
+          "lineCount": 33
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronLeft",
+            "ChevronRight"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "DayNav"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/EventSidebarSection.tsx": {
+      "filePath": "components/calendar/EventSidebarSection.tsx",
+      "contentHash": "c456ba6ccff7557f0c837fa0dbc18bf8376c196022c7a663cd28f769430461e2",
+      "functions": [
+        {
+          "name": "formatDate",
+          "params": [
+            "dateStr"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "EventSidebarSection",
+          "params": [
+            "{ year, month }"
+          ],
+          "exported": true,
+          "lineCount": 80
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CalendarDays"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "./AddEventButton",
+          "specifiers": [
+            "AddEventButton"
+          ]
+        }
+      ],
+      "exports": [
+        "EventSidebarSection"
+      ],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/HolidayDetailCard.tsx": {
+      "filePath": "components/calendar/HolidayDetailCard.tsx",
+      "contentHash": "bdcec0b862a8ba7f6ac072bb6f7b9aa5646bd2a507e50674f613dab25549a6d1",
+      "functions": [
+        {
+          "name": "HolidayDetailCard",
+          "params": [
+            "{ holidays }"
+          ],
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        }
+      ],
+      "exports": [
+        "HolidayDetailCard"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/HolidayList.tsx": {
+      "filePath": "components/calendar/HolidayList.tsx",
+      "contentHash": "bd54c26792059180bd379f676b62322a13e52b6f3343bf682fada813e7707045",
+      "functions": [
+        {
+          "name": "formatDate",
+          "params": [
+            "date",
+            "month"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "HolidayList",
+          "params": [
+            "{ holidays, month }"
+          ],
+          "exported": true,
+          "lineCount": 65
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "@/components/ui/badge",
+          "specifiers": [
+            "Badge"
+          ]
+        }
+      ],
+      "exports": [
+        "HolidayList"
+      ],
+      "totalLines": 98,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/LongWeekendFilter.tsx": {
+      "filePath": "components/calendar/LongWeekendFilter.tsx",
+      "contentHash": "bcdadea8799255bfb398a6da6fb553adacff14c4a0a7296fe524125205d5d1bd",
+      "functions": [
+        {
+          "name": "LongWeekendFilter",
+          "params": [
+            "{ current }"
+          ],
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter",
+            "usePathname",
+            "useSearchParams"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "LongWeekendFilter"
+      ],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/LongWeekendList.tsx": {
+      "filePath": "components/calendar/LongWeekendList.tsx",
+      "contentHash": "7c961ecde2e846937e290b778518c0a6c594bfe179c67ef6d977e4d8306c81f2",
+      "functions": [
+        {
+          "name": "getPeriodBg",
+          "params": [
+            "totalDays"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "formatRange",
+          "params": [
+            "start",
+            "end"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "LongWeekendList",
+          "params": [
+            "{\n  periods,\n  country,\n  minDays,\n}"
+          ],
+          "exported": true,
+          "lineCount": 115
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "LongWeekendPeriod"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "LongWeekendList"
+      ],
+      "totalLines": 189,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/LongWeekendRelated.tsx": {
+      "filePath": "components/calendar/LongWeekendRelated.tsx",
+      "contentHash": "e265380308709cf2a6912c5511faeb17169fa276d7a42057d166199d2f67b626",
+      "functions": [
+        {
+          "name": "formatRange",
+          "params": [
+            "start",
+            "end"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "LongWeekendRelated",
+          "params": [
+            "{ period, country }"
+          ],
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "LongWeekendPeriod",
+            "DayType"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Umbrella"
+          ]
+        }
+      ],
+      "exports": [
+        "LongWeekendRelated"
+      ],
+      "totalLines": 69,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/MasehiCard.tsx": {
+      "filePath": "components/calendar/MasehiCard.tsx",
+      "contentHash": "d889989447341e136f42a87a906e4548327415c91d0473019e8907c7154296ad",
+      "functions": [
+        {
+          "name": "getWeekOfMonth",
+          "params": [
+            "date"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "getDayOfYear",
+          "params": [
+            "date"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "isLeapYear",
+          "params": [
+            "year"
+          ],
+          "returnType": "boolean",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "MasehiCard",
+          "params": [
+            "{ date }"
+          ],
+          "exported": true,
+          "lineCount": 33
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "DAY_NAMES_FULL_ID",
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "MasehiCard"
+      ],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/MiniCalendarSidebar.tsx": {
+      "filePath": "components/calendar/MiniCalendarSidebar.tsx",
+      "contentHash": "e1a1e21a186bac0e5e211aad1c84e51e8efc55328f735af62be2476dc8d12eac",
+      "functions": [
+        {
+          "name": "buildMonthDays",
+          "params": [
+            "year",
+            "month"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "MiniCalendarSidebar",
+          "params": [
+            "{\n  activeDate,\n  holidays,\n  country,\n}"
+          ],
+          "exported": true,
+          "lineCount": 66
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID",
+            "DAY_NAMES_ID"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "MiniCalendarSidebar"
+      ],
+      "totalLines": 89,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/MonthGrid.tsx": {
+      "filePath": "components/calendar/MonthGrid.tsx",
+      "contentHash": "7ae57f56e68b23dade70268bcb5d1c619389814a86916d40ec23c3763f826a32",
+      "functions": [
+        {
+          "name": "buildMonthDays",
+          "params": [
+            "year",
+            "month"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "getHolidaysForDate",
+          "params": [
+            "holidays",
+            "date"
+          ],
+          "returnType": "HolidayData[]",
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "toDateStr",
+          "params": [
+            "date"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "MonthGrid",
+          "params": [
+            "{ year, month, holidays, country }"
+          ],
+          "exported": true,
+          "lineCount": 78
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "DAY_NAMES_ID",
+            "MONTH_NAMES_ID"
+          ]
+        },
+        {
+          "source": "./DayCell",
+          "specifiers": [
+            "DayCell"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        }
+      ],
+      "exports": [
+        "MonthGrid"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/MonthMini.tsx": {
+      "filePath": "components/calendar/MonthMini.tsx",
+      "contentHash": "a7d1f1da7c73964113a9cfc47eefdaa020f9def376c4665307a4078cca87da03",
+      "functions": [
+        {
+          "name": "buildMonthDays",
+          "params": [
+            "year",
+            "month"
+          ],
+          "exported": false,
+          "lineCount": 25
+        },
+        {
+          "name": "toLocalDateStr",
+          "params": [
+            "d"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getHolidaysForDate",
+          "params": [
+            "holidays",
+            "date"
+          ],
+          "returnType": "HolidayData[]",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "MonthMini",
+          "params": [
+            "{ year, month, holidays, country, eventMap }"
+          ],
+          "exported": true,
+          "lineCount": 133
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID",
+            "DAY_NAMES_ID"
+          ]
+        },
+        {
+          "source": "./DayCell",
+          "specifiers": [
+            "DayCell"
+          ]
+        }
+      ],
+      "exports": [
+        "MonthMini"
+      ],
+      "totalLines": 196,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/MonthNav.tsx": {
+      "filePath": "components/calendar/MonthNav.tsx",
+      "contentHash": "fe1e5bd331fbbcd129898b604530108fd22921ae65714c8c07f09b524caf1e74",
+      "functions": [
+        {
+          "name": "prevMonth",
+          "params": [
+            "year",
+            "month"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "nextMonth",
+          "params": [
+            "year",
+            "month"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "monthUrl",
+          "params": [
+            "year",
+            "month",
+            "country"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "MonthNav",
+          "params": [
+            "{ year, month, country }"
+          ],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronLeft",
+            "ChevronRight"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID",
+            "MIN_YEAR",
+            "MAX_YEAR"
+          ]
+        }
+      ],
+      "exports": [
+        "MonthNav"
+      ],
+      "totalLines": 72,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/MonthSidebar.tsx": {
+      "filePath": "components/calendar/MonthSidebar.tsx",
+      "contentHash": "cd441c406dbc02c15eb13f301a6dead42e9d3dc44659c88f96096f66cfe9e3d0",
+      "functions": [
+        {
+          "name": "MonthSidebar",
+          "params": [
+            "{ year, month, country, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData",
+            "countWorkdays"
+          ]
+        },
+        {
+          "source": "./EventSidebarSection",
+          "specifiers": [
+            "EventSidebarSection"
+          ]
+        },
+        {
+          "source": "@/components/pdf/PDFDownloadButton",
+          "specifiers": [
+            "PDFDownloadButton"
+          ]
+        }
+      ],
+      "exports": [
+        "MonthSidebar"
+      ],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/WetonCard.tsx": {
+      "filePath": "components/calendar/WetonCard.tsx",
+      "contentHash": "db567bf6643efaa675b0b88147e30bf4c037419f31161562ba7649851c491649",
+      "functions": [
+        {
+          "name": "WetonCard",
+          "params": [
+            "{ date }"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useMemo"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/weton",
+          "specifiers": [
+            "calculateWeton"
+          ]
+        }
+      ],
+      "exports": [
+        "WetonCard"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/YearDownloadSection.tsx": {
+      "filePath": "components/calendar/YearDownloadSection.tsx",
+      "contentHash": "364712a94dc13b34f6615790b8de20af89ac057b7134e3efdd228ee4f7c4d0ce",
+      "functions": [
+        {
+          "name": "YearDownloadSection",
+          "params": [
+            "{ year, holidays, country }"
+          ],
+          "exported": true,
+          "lineCount": 64
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/components/pdf/YearPDFDownloadButton",
+          "specifiers": [
+            "YearPDFDownloadButton"
+          ]
+        }
+      ],
+      "exports": [
+        "YearDownloadSection"
+      ],
+      "totalLines": 74,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/YearGrid.tsx": {
+      "filePath": "components/calendar/YearGrid.tsx",
+      "contentHash": "c0b29f0df56261d548a941d91f1ae6c1ed38e620f0b8758b12ff7f25b17e4bff",
+      "functions": [
+        {
+          "name": "YearGrid",
+          "params": [
+            "{ year, holidays, country }"
+          ],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "./MonthMini",
+          "specifiers": [
+            "MonthMini"
+          ]
+        }
+      ],
+      "exports": [
+        "YearGrid"
+      ],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/YearGridClient.tsx": {
+      "filePath": "components/calendar/YearGridClient.tsx",
+      "contentHash": "8bc60d5a5407265087e0a9d22554190685be5538b67c20fde8d04a18c30c81a1",
+      "functions": [
+        {
+          "name": "YearGridClient",
+          "params": [
+            "{ year, holidays, country }"
+          ],
+          "exported": true,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "./MonthMini",
+          "specifiers": [
+            "MonthMini",
+            "EventEntry"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        }
+      ],
+      "exports": [
+        "YearGridClient"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/YearHolidayList.tsx": {
+      "filePath": "components/calendar/YearHolidayList.tsx",
+      "contentHash": "788197202ff322ef5345253adb3039e79c4d4608ed0a6e12599d5d147c0857ac",
+      "functions": [
+        {
+          "name": "formatDate",
+          "params": [
+            "date"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getDayName",
+          "params": [
+            "date"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "HolidayRow",
+          "params": [
+            "{ h, border = true }"
+          ],
+          "exported": false,
+          "lineCount": 31
+        },
+        {
+          "name": "YearHolidayList",
+          "params": [
+            "{ year, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 90
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID",
+            "DAY_NAMES_FULL_ID"
+          ]
+        },
+        {
+          "source": "@/components/ui/badge",
+          "specifiers": [
+            "Badge"
+          ]
+        }
+      ],
+      "exports": [
+        "YearHolidayList"
+      ],
+      "totalLines": 153,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/YearInfoBand.tsx": {
+      "filePath": "components/calendar/YearInfoBand.tsx",
+      "contentHash": "d1c06db32ba19acc9d17c246e2fd00e08e7cd3a04692aa7db082340cc7149bca",
+      "functions": [
+        {
+          "name": "YearInfoBand",
+          "params": [
+            "{ year, holidays, country }"
+          ],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "getShio",
+            "getHijriYears"
+          ]
+        }
+      ],
+      "exports": [
+        "YearInfoBand"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/YearLongWeekendList.tsx": {
+      "filePath": "components/calendar/YearLongWeekendList.tsx",
+      "contentHash": "c398a10a87cf45ea6037284b1ba3ab7c97888c2837a547a5b51850ad2db53371",
+      "functions": [
+        {
+          "name": "toDateStr",
+          "params": [
+            "d"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "formatDateRange",
+          "params": [
+            "start",
+            "end"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "PeriodCard",
+          "params": [
+            "{\n  period,\n  holidayMap,\n}"
+          ],
+          "exported": false,
+          "lineCount": 95
+        },
+        {
+          "name": "YearLongWeekendList",
+          "params": [
+            "{ year, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 59
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID",
+            "DAY_NAMES_ID",
+            "DAY_NAMES_FULL_ID"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/longweekend",
+          "specifiers": [
+            "calculateLongWeekends",
+            "LongWeekendPeriod"
+          ]
+        },
+        {
+          "source": "@/components/ui/badge",
+          "specifiers": [
+            "Badge"
+          ]
+        }
+      ],
+      "exports": [
+        "YearLongWeekendList"
+      ],
+      "totalLines": 180,
+      "hasStructuralAnalysis": true
+    },
+    "components/calendar/YearNav.tsx": {
+      "filePath": "components/calendar/YearNav.tsx",
+      "contentHash": "cd209cff3309a20d888f91dc92e755f36758c8b2d7d676161997218da73508a0",
+      "functions": [
+        {
+          "name": "YearNav",
+          "params": [
+            "{ year, country }"
+          ],
+          "exported": true,
+          "lineCount": 42
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronLeft",
+            "ChevronRight"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MIN_YEAR",
+            "MAX_YEAR"
+          ]
+        }
+      ],
+      "exports": [
+        "YearNav"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "components/dashboard/.gitkeep": {
+      "filePath": "components/dashboard/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "components/dashboard/DashboardSidebar.tsx": {
+      "filePath": "components/dashboard/DashboardSidebar.tsx",
+      "contentHash": "da979fc2d7d25b66fd06b8c91506f2b1762207277164838953713c9c2998d411",
+      "functions": [
+        {
+          "name": "DashboardSidebar",
+          "params": [],
+          "exported": true,
+          "lineCount": 56
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "usePathname"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "LayoutDashboard",
+            "CalendarDays",
+            "Key",
+            "Settings"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "DashboardSidebar"
+      ],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "components/dashboard/EventForm.tsx": {
+      "filePath": "components/dashboard/EventForm.tsx",
+      "contentHash": "59ea61b2f3008933d51d9a82dd862ad7b04f94eb6526e7101f74f6658d9f8c20",
+      "functions": [
+        {
+          "name": "EventForm",
+          "params": [
+            "{ initial, onSubmit, onCancel, submitLabel = \"Simpan\" }"
+          ],
+          "exported": true,
+          "lineCount": 109
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        }
+      ],
+      "exports": [
+        "EventForm"
+      ],
+      "totalLines": 139,
+      "hasStructuralAnalysis": true
+    },
+    "components/Footer.tsx": {
+      "filePath": "components/Footer.tsx",
+      "contentHash": "17c9ff8b778c9ba9a98582aba745b566be61462614db839f9a19a748de1b892c",
+      "functions": [
+        {
+          "name": "Footer",
+          "params": [],
+          "exported": true,
+          "lineCount": 67
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "next/image",
+          "specifiers": [
+            "Image"
+          ]
+        },
+        {
+          "source": "@/app/assets/icons/calendar.png",
+          "specifiers": [
+            "calendarIcon"
+          ]
+        }
+      ],
+      "exports": [
+        "Footer"
+      ],
+      "totalLines": 89,
+      "hasStructuralAnalysis": true
+    },
+    "components/Navbar.tsx": {
+      "filePath": "components/Navbar.tsx",
+      "contentHash": "f7e6d759a27fd6c8b167b9b6c31c1407602f678764a0cace7465f3a5af101fe7",
+      "functions": [
+        {
+          "name": "Navbar",
+          "params": [],
+          "exported": true,
+          "lineCount": 214
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "next/image",
+          "specifiers": [
+            "Image"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Menu",
+            "X",
+            "LogOut",
+            "User",
+            "ChevronDown"
+          ]
+        },
+        {
+          "source": "@/app/assets/icons/calendar.png",
+          "specifiers": [
+            "calendarIcon"
+          ]
+        },
+        {
+          "source": "@/components/ui/button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            "createClient"
+          ]
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            "SupabaseUser"
+          ]
+        }
+      ],
+      "exports": [
+        "Navbar"
+      ],
+      "totalLines": 233,
+      "hasStructuralAnalysis": true
+    },
+    "components/pdf/CalendarPDF.tsx": {
+      "filePath": "components/pdf/CalendarPDF.tsx",
+      "contentHash": "b12a05cfc412f6f8b413ea813dbb56613ccd6799a25579eb88cd8d2df644bef2",
+      "functions": [
+        {
+          "name": "buildMonthGrid",
+          "params": [
+            "year",
+            "month"
+          ],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "getHolidayForDay",
+          "params": [
+            "holidays",
+            "year",
+            "month",
+            "day"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "CalendarPDF",
+          "params": [
+            "{ year, month, country, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 182
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@react-pdf/renderer",
+          "specifiers": [
+            "Document",
+            "Page",
+            "Text",
+            "View",
+            "StyleSheet",
+            "Font"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "CalendarPDF"
+      ],
+      "totalLines": 386,
+      "hasStructuralAnalysis": true
+    },
+    "components/pdf/PDFDownloadButton.tsx": {
+      "filePath": "components/pdf/PDFDownloadButton.tsx",
+      "contentHash": "0bc68b5bcefd35b351453f805b0dae7a6273e7245e99191862fc82a13b8d6550",
+      "functions": [
+        {
+          "name": "PDFDownloadButton",
+          "params": [
+            "{ year, month, country, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/dynamic",
+          "specifiers": [
+            "dynamic"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Download"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "PDFDownloadButton"
+      ],
+      "totalLines": 58,
+      "hasStructuralAnalysis": true
+    },
+    "components/pdf/YearCalendarPDF.tsx": {
+      "filePath": "components/pdf/YearCalendarPDF.tsx",
+      "contentHash": "9e7db7409306ca20ddfc6fc2d6b168e9d875e78ed28a34d91ba915ad57ec417a",
+      "functions": [
+        {
+          "name": "buildMonthGrid",
+          "params": [
+            "year",
+            "month"
+          ],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "getHolidaysForDay",
+          "params": [
+            "holidays",
+            "year",
+            "month",
+            "day"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "MonthPage",
+          "params": [
+            "{\n  year,\n  month,\n  holidays,\n  countryLabel,\n}"
+          ],
+          "exported": false,
+          "lineCount": 180
+        },
+        {
+          "name": "YearCalendarPDF",
+          "params": [
+            "{ year, country, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@react-pdf/renderer",
+          "specifiers": [
+            "Document",
+            "Page",
+            "Text",
+            "View",
+            "StyleSheet",
+            "Font"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "YearCalendarPDF"
+      ],
+      "totalLines": 335,
+      "hasStructuralAnalysis": true
+    },
+    "components/pdf/YearPDFDownloadButton.tsx": {
+      "filePath": "components/pdf/YearPDFDownloadButton.tsx",
+      "contentHash": "40ed1ebcfc6ff9df32542fe9a280790f4aa8ed8b65b77cd0d63eb1ee78a45dd4",
+      "functions": [
+        {
+          "name": "YearPDFDownloadButton",
+          "params": [
+            "{ year, country, holidays }"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/dynamic",
+          "specifiers": [
+            "dynamic"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Download"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        }
+      ],
+      "exports": [
+        "YearPDFDownloadButton"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "components/Providers.tsx": {
+      "filePath": "components/Providers.tsx",
+      "contentHash": "4ea3be6b7f4eb7d412e3600d902c4a90ab9c0da983f845eab454482de2b11e71",
+      "functions": [
+        {
+          "name": "Providers",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ui/tooltip",
+          "specifiers": [
+            "TooltipProvider"
+          ]
+        }
+      ],
+      "exports": [
+        "Providers"
+      ],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "components/tools/.gitkeep": {
+      "filePath": "components/tools/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "components/tools/TabHariKerja.tsx": {
+      "filePath": "components/tools/TabHariKerja.tsx",
+      "contentHash": "69f5cac0b985ddfb0700b147627c63f3dea8d5a682e37a78a73a7844ee5bc434",
+      "functions": [
+        {
+          "name": "TabHariKerja",
+          "params": [],
+          "exported": true,
+          "lineCount": 73
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        }
+      ],
+      "exports": [
+        "TabHariKerja"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "components/tools/TabHitungUmur.tsx": {
+      "filePath": "components/tools/TabHitungUmur.tsx",
+      "contentHash": "0a4db9eb07134e397121780e457e7245b911ef131313a4262d108a8985f34c99",
+      "functions": [
+        {
+          "name": "TabHitungUmur",
+          "params": [],
+          "exported": true,
+          "lineCount": 77
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "TabHitungUmur"
+      ],
+      "totalLines": 85,
+      "hasStructuralAnalysis": true
+    },
+    "components/tools/TabNamaHari.tsx": {
+      "filePath": "components/tools/TabNamaHari.tsx",
+      "contentHash": "f08cd837da4da267defd8940f734dd1aa180669003db77ff9326128db30a3fd6",
+      "functions": [
+        {
+          "name": "TabNamaHari",
+          "params": [],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "TabNamaHari"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "components/tools/TabSelisih.tsx": {
+      "filePath": "components/tools/TabSelisih.tsx",
+      "contentHash": "aa6071413332fb3fc028969e87f57dc575f665569980243c639710f527b3b0ee",
+      "functions": [
+        {
+          "name": "TabSelisih",
+          "params": [],
+          "exported": true,
+          "lineCount": 55
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "TabSelisih"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "components/tools/TabTambahKurang.tsx": {
+      "filePath": "components/tools/TabTambahKurang.tsx",
+      "contentHash": "a124c72f3c8bcfb345ea54df282f6d2603dfec4a8e634b5ae8e09897d8c2148f",
+      "functions": [
+        {
+          "name": "TabTambahKurang",
+          "params": [],
+          "exported": true,
+          "lineCount": 60
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/calendar/constants",
+          "specifiers": [
+            "MONTH_NAMES_ID"
+          ]
+        }
+      ],
+      "exports": [
+        "TabTambahKurang"
+      ],
+      "totalLines": 69,
+      "hasStructuralAnalysis": true
+    },
+    "components/ui/badge.tsx": {
+      "filePath": "components/ui/badge.tsx",
+      "contentHash": "df94c31bd13ff3c6ee9db03cedf90cdb36cbb242d9b9b6deeda3e949b69a5c2b",
+      "functions": [
+        {
+          "name": "Badge",
+          "params": [
+            "{ className, variant, ...props }"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "class-variance-authority",
+          "specifiers": [
+            "cva",
+            "VariantProps"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Badge",
+        "badgeVariants"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "components/ui/button.tsx": {
+      "filePath": "components/ui/button.tsx",
+      "contentHash": "599f49d759d32b75d82722a4a19b9f232b0c55d1960745b6d6b4038d71208b4d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-slot",
+          "specifiers": [
+            "Slot"
+          ]
+        },
+        {
+          "source": "class-variance-authority",
+          "specifiers": [
+            "cva",
+            "VariantProps"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Button",
+        "buttonVariants"
+      ],
+      "totalLines": 73,
+      "hasStructuralAnalysis": true
+    },
+    "components/ui/dialog.tsx": {
+      "filePath": "components/ui/dialog.tsx",
+      "contentHash": "fe70a91bb924ef3a40b7504e6847ef9a57aed3b503d2a7dbb7610e821ea40b6f",
+      "functions": [
+        {
+          "name": "DialogHeader",
+          "params": [
+            "{\n  className,\n  ...props\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "DialogFooter",
+          "params": [
+            "{\n  className,\n  ...props\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-dialog",
+          "specifiers": [
+            "* as DialogPrimitive"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Dialog",
+        "DialogPortal",
+        "DialogOverlay",
+        "DialogTrigger",
+        "DialogClose",
+        "DialogContent",
+        "DialogHeader",
+        "DialogFooter",
+        "DialogTitle",
+        "DialogDescription"
+      ],
+      "totalLines": 123,
+      "hasStructuralAnalysis": true
+    },
+    "components/ui/input.tsx": {
+      "filePath": "components/ui/input.tsx",
+      "contentHash": "945bc956d465f4e1def856d4c8ab7e123b202dca781571d346bb5c705488b2ab",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Input"
+      ],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "components/ui/tooltip.tsx": {
+      "filePath": "components/ui/tooltip.tsx",
+      "contentHash": "8a95714fa899126850dc659685ecb5acfd88bdfe556e266cb668c83fbc29a27c",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "* as React"
+          ]
+        },
+        {
+          "source": "@radix-ui/react-tooltip",
+          "specifiers": [
+            "* as TooltipPrimitive"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "TooltipProvider",
+        "Tooltip",
+        "TooltipTrigger",
+        "TooltipContent"
+      ],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "content/blog/mengenal-weton-jawa.mdx": {
+      "filePath": "content/blog/mengenal-weton-jawa.mdx",
+      "contentHash": "0fb91c26ef57873dc13d0f68714ed897cb4ddceffe69576593d0248537f23a8f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
+    "content/blog/sejarah-hari-libur-indonesia.mdx": {
+      "filePath": "content/blog/sejarah-hari-libur-indonesia.mdx",
+      "contentHash": "8006e32966ebd8d4603acd49ba9f71f9e627378fef78e63ab22d224249e563dc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 73,
+      "hasStructuralAnalysis": true
+    },
+    "content/blog/strategi-cuti-efisien-2026.mdx": {
+      "filePath": "content/blog/strategi-cuti-efisien-2026.mdx",
+      "contentHash": "2b404c1aec79448b280d37b01f02133a562dd38158db76b836a45e500d979220",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "content/docs/getting-started.md": {
+      "filePath": "content/docs/getting-started.md",
+      "contentHash": "b9d5749c9ff45fb52c1e2b171fb9965b80b2904227e21d9eb6e4216666937a2c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 127,
+      "hasStructuralAnalysis": true
+    },
+    "content/docs/openapi.yaml": {
+      "filePath": "content/docs/openapi.yaml",
+      "contentHash": "292a4c015d2a7ae52c2158badb62f0e5fb0384933a7b365e0af5f35e7c9b55ee",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 434,
+      "hasStructuralAnalysis": true
+    },
+    "lib/api/.gitkeep": {
+      "filePath": "lib/api/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "lib/api/auth.ts": {
+      "filePath": "lib/api/auth.ts",
+      "contentHash": "d1fd69842856f257ad1993c4f0cbef3276a2abf4a36a5e913b9cb4807191965b",
+      "functions": [
+        {
+          "name": "validateApiKey",
+          "params": [
+            "request"
+          ],
+          "returnType": "Promise<ValidatedKey | null>",
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "validateApiKey"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "lib/api/middleware.ts": {
+      "filePath": "lib/api/middleware.ts",
+      "contentHash": "07c296a94db6288ccf1f7b6aac569148a5c11f97fa90ce306f9df10c4110d477",
+      "functions": [
+        {
+          "name": "withApiAuth",
+          "params": [
+            "handler"
+          ],
+          "exported": true,
+          "lineCount": 37
+        },
+        {
+          "name": "apiSuccess",
+          "params": [
+            "data",
+            "meta"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "apiError",
+          "params": [
+            "code",
+            "message",
+            "status"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "./auth",
+          "specifiers": [
+            "validateApiKey",
+            "ValidatedKey"
+          ]
+        },
+        {
+          "source": "./rateLimit",
+          "specifiers": [
+            "checkRateLimit",
+            "logUsage"
+          ]
+        }
+      ],
+      "exports": [
+        "withApiAuth",
+        "apiSuccess",
+        "apiError"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "lib/api/rateLimit.ts": {
+      "filePath": "lib/api/rateLimit.ts",
+      "contentHash": "80335632d7973533fda02c8c223eb4a43089adb7146db26e1f87895aa472ba04",
+      "functions": [
+        {
+          "name": "checkRateLimit",
+          "params": [
+            "apiKeyId",
+            "limit"
+          ],
+          "returnType": "Promise<boolean>",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "logUsage",
+          "params": [
+            "apiKeyId",
+            "endpoint",
+            "statusCode",
+            "responseMs",
+            "country"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "checkRateLimit",
+        "logUsage"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "lib/blog.ts": {
+      "filePath": "lib/blog.ts",
+      "contentHash": "354e4fe4b17bd0369719672e258577a0b628c3ccbbe4350e1aa8b36e197d082b",
+      "functions": [
+        {
+          "name": "getAllPosts",
+          "params": [],
+          "returnType": "Omit<BlogPost, \"content\">[]",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "getPostBySlug",
+          "params": [
+            "slug"
+          ],
+          "returnType": "BlogPost | null",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "getAllSlugs",
+          "params": [],
+          "returnType": "string[]",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fs",
+          "specifiers": [
+            "fs"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": "gray-matter",
+          "specifiers": [
+            "matter"
+          ]
+        }
+      ],
+      "exports": [
+        "getAllPosts",
+        "getPostBySlug",
+        "getAllSlugs"
+      ],
+      "totalLines": 61,
+      "hasStructuralAnalysis": true
+    },
+    "lib/calendar/.gitkeep": {
+      "filePath": "lib/calendar/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "lib/calendar/constants.ts": {
+      "filePath": "lib/calendar/constants.ts",
+      "contentHash": "0d9fda0dd0e437cf0124c6dd1c9881ef45ecbdedcb5034b30351d3fe3599c004",
+      "functions": [
+        {
+          "name": "getShio",
+          "params": [
+            "year"
+          ],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "getHijriYears",
+          "params": [
+            "year"
+          ],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "MONTH_NAMES_ID",
+        "DAY_NAMES_ID",
+        "DAY_NAMES_FULL_ID",
+        "DAY_NAMES_FULL_EN",
+        "COUNTRIES",
+        "getShio",
+        "getHijriYears",
+        "MIN_YEAR",
+        "MAX_YEAR"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "lib/calendar/holidays.ts": {
+      "filePath": "lib/calendar/holidays.ts",
+      "contentHash": "b94010bd2264c0b046cefcc371a2184700bc0c599f9920b35b859c392434508d",
+      "functions": [
+        {
+          "name": "toHolidayData",
+          "params": [
+            "h"
+          ],
+          "returnType": "HolidayData",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getHolidaysByYear",
+          "params": [
+            "countryCode",
+            "year"
+          ],
+          "returnType": "Promise<HolidayData[]>",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "getHolidaysByMonth",
+          "params": [
+            "countryCode",
+            "year",
+            "month"
+          ],
+          "returnType": "Promise<HolidayData[]>",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "getHolidaysByDate",
+          "params": [
+            "countryCode",
+            "date"
+          ],
+          "returnType": "Promise<HolidayData[]>",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "isHoliday",
+          "params": [
+            "holidays",
+            "date"
+          ],
+          "returnType": "boolean",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "isWeekend",
+          "params": [
+            "date"
+          ],
+          "returnType": "boolean",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "countWorkdays",
+          "params": [
+            "start",
+            "end",
+            "holidays"
+          ],
+          "returnType": "number",
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/cache",
+          "specifiers": [
+            "unstable_cache"
+          ]
+        },
+        {
+          "source": "@/lib/prisma",
+          "specifiers": [
+            "prisma"
+          ]
+        }
+      ],
+      "exports": [
+        "getHolidaysByYear",
+        "getHolidaysByMonth",
+        "getHolidaysByDate",
+        "isHoliday",
+        "isWeekend",
+        "countWorkdays"
+      ],
+      "totalLines": 172,
+      "hasStructuralAnalysis": true
+    },
+    "lib/calendar/longweekend.ts": {
+      "filePath": "lib/calendar/longweekend.ts",
+      "contentHash": "09b6179e0045fde920404d31328e99fa500e6827f1c8505c076f065b666151f5",
+      "functions": [
+        {
+          "name": "calculateLongWeekends",
+          "params": [
+            "year",
+            "holidays",
+            "minDays"
+          ],
+          "returnType": "LongWeekendPeriod[]",
+          "exported": true,
+          "lineCount": 91
+        },
+        {
+          "name": "calculateLeaveStrategies",
+          "params": [
+            "year",
+            "holidays",
+            "maxLeave"
+          ],
+          "returnType": "LeaveStrategy[]",
+          "exported": true,
+          "lineCount": 138
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./holidays",
+          "specifiers": [
+            "HolidayData"
+          ]
+        }
+      ],
+      "exports": [
+        "calculateLongWeekends",
+        "calculateLeaveStrategies"
+      ],
+      "totalLines": 263,
+      "hasStructuralAnalysis": true
+    },
+    "lib/calendar/weton.test.ts": {
+      "filePath": "lib/calendar/weton.test.ts",
+      "contentHash": "10fa50d1ed62c34e21a7db7a65cb842aeb1d82f1b55d0fbaca80821a84c77ba7",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vitest",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect"
+          ]
+        },
+        {
+          "source": "./weton",
+          "specifiers": [
+            "calculateWeton",
+            "isValidWetonDate"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "lib/calendar/weton.ts": {
+      "filePath": "lib/calendar/weton.ts",
+      "contentHash": "fd4d5a8904b2d33e42e096e20f36d05c7c996111a16bc26f16a1b6c776a0ff7b",
+      "functions": [
+        {
+          "name": "daysBetween",
+          "params": [
+            "a",
+            "b"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "calculateWeton",
+          "params": [
+            "date"
+          ],
+          "returnType": "WetonResult",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "getMakna",
+          "params": [
+            "hari",
+            "pasaran",
+            "neptu"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "isValidWetonDate",
+          "params": [
+            "date"
+          ],
+          "returnType": "boolean",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "calculateWeton",
+        "isValidWetonDate"
+      ],
+      "totalLines": 98,
+      "hasStructuralAnalysis": true
+    },
+    "lib/email/index.ts": {
+      "filePath": "lib/email/index.ts",
+      "contentHash": "23f7644f02253679f74c0bc4546afc0aacde7140ea3f52203eae593bc6d53a67",
+      "functions": [
+        {
+          "name": "sendEventReminderEmail",
+          "params": [
+            "to",
+            "name",
+            "events"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "sendApiKeyEmail",
+          "params": [
+            "to",
+            "name",
+            "keyName",
+            "keyPreview"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "sendWelcomeEmail",
+          "params": [
+            "to",
+            "name"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "welcomeTemplate",
+          "params": [
+            "name"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 85
+        },
+        {
+          "name": "eventReminderTemplate",
+          "params": [
+            "name",
+            "events"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 57
+        },
+        {
+          "name": "apiKeyTemplate",
+          "params": [
+            "name",
+            "keyName",
+            "keyPreview"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 85
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "resend",
+          "specifiers": [
+            "Resend"
+          ]
+        }
+      ],
+      "exports": [
+        "sendEventReminderEmail",
+        "sendApiKeyEmail",
+        "sendWelcomeEmail"
+      ],
+      "totalLines": 272,
+      "hasStructuralAnalysis": true
+    },
+    "lib/prisma.ts": {
+      "filePath": "lib/prisma.ts",
+      "contentHash": "597cf0223460a3c27be74a3d996d56387354efaae2b4bb42067d3b7c93cbc814",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@prisma/client",
+          "specifiers": [
+            "PrismaClient"
+          ]
+        }
+      ],
+      "exports": [
+        "prisma"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "lib/supabase/admin.ts": {
+      "filePath": "lib/supabase/admin.ts",
+      "contentHash": "f3bdeffba2bcada394ae339b88434ce4cca36ab3eccd4794e688514bd9354452",
+      "functions": [
+        {
+          "name": "createAdminClient",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            "createClient"
+          ]
+        }
+      ],
+      "exports": [
+        "createAdminClient"
+      ],
+      "totalLines": 10,
+      "hasStructuralAnalysis": true
+    },
+    "lib/supabase/client.ts": {
+      "filePath": "lib/supabase/client.ts",
+      "contentHash": "7a1c73804ca024e38a432cc0a1c33c352fe11f4b2876a3ea99a540a71e900dde",
+      "functions": [
+        {
+          "name": "createClient",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@supabase/ssr",
+          "specifiers": [
+            "createBrowserClient"
+          ]
+        }
+      ],
+      "exports": [
+        "createClient"
+      ],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "lib/supabase/server.ts": {
+      "filePath": "lib/supabase/server.ts",
+      "contentHash": "4b637e17578fe91297e66f2be3f8a78a788e67badf052b65010be2b1d2d36071",
+      "functions": [
+        {
+          "name": "createClient",
+          "params": [],
+          "exported": true,
+          "lineCount": 29
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@supabase/ssr",
+          "specifiers": [
+            "createServerClient"
+          ]
+        },
+        {
+          "source": "next/headers",
+          "specifiers": [
+            "cookies"
+          ]
+        }
+      ],
+      "exports": [
+        "createClient"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "lib/utils.ts": {
+      "filePath": "lib/utils.ts",
+      "contentHash": "2a433c16ec43f88379e89cf5c122606609588e216a0e77f81859e26971d6409e",
+      "functions": [
+        {
+          "name": "cn",
+          "params": [
+            "...inputs"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "clsx",
+          "specifiers": [
+            "clsx",
+            "ClassValue"
+          ]
+        },
+        {
+          "source": "tailwind-merge",
+          "specifiers": [
+            "extendTailwindMerge"
+          ]
+        }
+      ],
+      "exports": [
+        "cn"
+      ],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "middleware.ts": {
+      "filePath": "middleware.ts",
+      "contentHash": "deaf4ff831bb489c4d872351f7d24bb6e4c48aa4e276a422f7feab1217a65d64",
+      "functions": [
+        {
+          "name": "middleware",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse",
+            "NextRequest"
+          ]
+        },
+        {
+          "source": "@supabase/ssr",
+          "specifiers": [
+            "createServerClient"
+          ]
+        }
+      ],
+      "exports": [
+        "middleware",
+        "config"
+      ],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "next.config.mjs": {
+      "filePath": "next.config.mjs",
+      "contentHash": "833e1afb35ccb269e1c6c978b863436a819b8b8b991c2300c234a946ee9a3f59",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@next/mdx",
+          "specifiers": [
+            "createMDX"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "bd8e4b64bfdbbd2e17536e0629893db4a83da0fac4669f53cb7ceeea68f0b0c9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "postcss.config.js": {
+      "filePath": "postcss.config.js",
+      "contentHash": "251ecddd4672c9cf467547e3dc535de00ad2129df26e7e7ae728fa4e5ac45fc5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "prisma.config.ts": {
+      "filePath": "prisma.config.ts",
+      "contentHash": "ad3038eaf8c1952a846abe76eb63f9593b485f49d4c5df722e85301d00ecee5b",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "dotenv/config",
+          "specifiers": []
+        },
+        {
+          "source": "prisma/config",
+          "specifiers": [
+            "defineConfig",
+            "env"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "prisma/data/holidays-id-2025.json": {
+      "filePath": "prisma/data/holidays-id-2025.json",
+      "contentHash": "d7b14e6ebf533fa434299c4a617f2f7dc89790dc31a32a1ec9486f450779a407",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 196,
+      "hasStructuralAnalysis": true
+    },
+    "prisma/data/holidays-id-2026.json": {
+      "filePath": "prisma/data/holidays-id-2026.json",
+      "contentHash": "9c3de6934d31a0523796cfc0fbb31cc4b267219e40c7383876f9e80e74947271",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 175,
+      "hasStructuralAnalysis": true
+    },
+    "prisma/data/holidays-my-2025.json": {
+      "filePath": "prisma/data/holidays-my-2025.json",
+      "contentHash": "c3d5efbcd38f30326812ba2cc859118f75082bbae1c0861cc6d574e4ba9cd64d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 161,
+      "hasStructuralAnalysis": true
+    },
+    "prisma/data/holidays-my-2026.json": {
+      "filePath": "prisma/data/holidays-my-2026.json",
+      "contentHash": "8468f19f080a0b05ceae18e56fac5c04124219d0d02557de65d7e816f8f7ae6f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 161,
+      "hasStructuralAnalysis": true
+    },
+    "prisma/migrations/create_profile_trigger.sql": {
+      "filePath": "prisma/migrations/create_profile_trigger.sql",
+      "contentHash": "d8cd859662e54c6c005174f25e0c145e1761fdb1a5a63c5e1e09544b8acb51cc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "prisma/schema.prisma": {
+      "filePath": "prisma/schema.prisma",
+      "contentHash": "939f9add001a1ce9b2eade305538a7bd1b4b3b622f277be10c3a1c005ee0c595",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 121,
+      "hasStructuralAnalysis": false
+    },
+    "prisma/seed-users.ts": {
+      "filePath": "prisma/seed-users.ts",
+      "contentHash": "1d386c38003100a0096ebfef7b2b2a5bad4b9340ee3d977379df2ba2be5bfb49",
+      "functions": [
+        {
+          "name": "adminCreateUser",
+          "params": [
+            "email",
+            "password",
+            "name"
+          ],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "adminListUsers",
+          "params": [],
+          "returnType": "Promise<Array<{ id: string; email: string }>>",
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 43
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@prisma/client",
+          "specifiers": [
+            "PrismaClient"
+          ]
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "* as dotenv"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "prisma/seed.ts": {
+      "filePath": "prisma/seed.ts",
+      "contentHash": "a87e152166c07fda4155e2484d4cdc5aaeda1311c215b3e793759fabbb66c92f",
+      "functions": [
+        {
+          "name": "seedCountries",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "seedRegions",
+          "params": [],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "seedHolidaysFromFile",
+          "params": [
+            "filePath"
+          ],
+          "exported": false,
+          "lineCount": 52
+        },
+        {
+          "name": "seedHolidays",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@prisma/client",
+          "specifiers": [
+            "PrismaClient"
+          ]
+        },
+        {
+          "source": "fs",
+          "specifiers": [
+            "fs"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 148,
+      "hasStructuralAnalysis": true
+    },
+    "public/fonts/.gitkeep": {
+      "filePath": "public/fonts/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "60b55ff7df79af72590f9524208e46642bc32bdc175cdad41349681c0e2f958f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 37,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/test-email.ts": {
+      "filePath": "scripts/test-email.ts",
+      "contentHash": "280a32b992efec37b4008ecb258f7c39d2e5cfc1fa075b1a1a20a70c6674ada3",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "resend",
+          "specifiers": [
+            "Resend"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    },
+    "tailwind.config.js": {
+      "filePath": "tailwind.config.js",
+      "contentHash": "caccbc8092dd0760a3bc66320bdfedda7f7a72b67312facd6552860f6caca543",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 193,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.json": {
+      "filePath": "tsconfig.json",
+      "contentHash": "54202f1d6d35ba51c3daea32bf67e8da24568ec0cb0c341fa0b5ed2ceb174f2d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "types/globals.d.ts": {
+      "filePath": "types/globals.d.ts",
+      "contentHash": "cb2b7498fd27265ed52bea32388e09c27fd46ec51115c03d8e988c53f460d85e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 5,
+      "hasStructuralAnalysis": true
+    },
+    "vercel.json": {
+      "filePath": "vercel.json",
+      "contentHash": "b552981b04e90162b59c3dc3521e6dbf5461188b0192432ccdd63f89d28f6b6a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    }
+  }
+}
